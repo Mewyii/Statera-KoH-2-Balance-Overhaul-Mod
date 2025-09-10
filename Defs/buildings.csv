@@ -1,0 +1,9 @@
+extend *,BasedOn,GoldCost,HammersCost,BooksCost,PietyCost,GoldUpkeep,Bonuses,Requires
+Harbor,Building,1000,800,,,,"1 Gold in Town
+1 Food in Town
+2 Trade in Town",
+Shipyard,Building,5000,3000,,,,"2 Gold in Town
+4 Trade in Town",
+MarketSquare,Building,500,800,,,,"1 Gold in Town
+1 Trade in Town
+2 rs_happiness",

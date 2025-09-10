@@ -1,0 +1,16 @@
+Kingdom.tax_rates = 30
+Kingdom.wage_thresholds = [5, 20, 50, 100, 200, 300, 400, 500]
+Kingdom.trade_route_profit_exclusive_mod = 1.1
+Kingdom.trade_route_profit_relation_mod = 1.2
+Kingdom.trade_route_capacity_mod = 0.25
+
+
+CrownAuthority.requirementGoldBaseAmounts = [100, 100, 100, 100, 150, 200, 250, 300, 350, 400]
+CrownAuthority.requirementPietyAmounts = [600, 600, 600, 600, 700, 800, 900, 1000, 1100, 1200]
+
+Tradition.per_adopted_cost_piety = 0
+Tradition.tier_cost_piety = [100,200,300,400]
+Tradition.adopt_cost.piety = (per_adopted_cost_piety * adopted_num + tier_cost_piety[tier])
+Tradition.tier_cost_books = [300,400,500,600]
+
+WarExhaustionModifier.time_period_increase = 175

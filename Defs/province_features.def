@@ -1,0 +1,3 @@
+DeepForests.area = [0, 0.125, 1, 1]
+Vines.area = [0, 0.1, 1, 0.8]
+Camels.area = [0, 0, 1, 0.25]

@@ -1,0 +1,10 @@
+// def BolsterCultureAction : ReligionSpecificAction
+// {
+// 	cost
+// 	{
+// 		piety = 200
+// 		gold = 0
+// 	}
+// 
+//     float gold_upkeep = 5
+// }

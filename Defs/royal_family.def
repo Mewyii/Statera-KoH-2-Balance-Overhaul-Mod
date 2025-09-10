@@ -1,0 +1,14 @@
+RoyalFamily.max_children = 5
+RoyalFamily.max_princes = 5
+RoyalFamily.max_princesses = 5
+RoyalFamily.child_per_age.Adult.max = 3
+RoyalFamily.child_per_age.Old.max = 5
+RoyalFamily.child_per_age.Venerable.max = 5
+
+CharacterAge.marriage_chance_perc  = [0,0,0,15,25,25,5] //infant, child, juvenile, young, adult, old, venerable
+CharacterAge.child_birth_chance_perc  = 15
+CharacterAge.die_chance_perc  = 3
+
+NormalAging.age_speed = 1.2
+SlowAging.age_speed = 2.1
+FastAging.age_speed = 0.75

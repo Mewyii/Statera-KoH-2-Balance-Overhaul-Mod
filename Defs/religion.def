@@ -1,0 +1,68 @@
+Crusade.max_peasants = 3
+Crusade.supplies_consumption_rate_mod = 0.1
+
+Catholic.ask_crusade_funds_cooldown = 150/300
+
+
+
+
+//Religion Factors
+def Catholic : Christian
+{
+    mod ks_prod_piety_flat = 5
+    mod ks_population_growth_perc = 10
+    mod ks_base_gold_income = 5
+    mod ks_prod_books_religion = -5
+}
+
+def Orthodox : Christian
+{
+    mod ks_base_gold_income = 10
+    mod ks_hammers_in_provinces_perc = 10
+    mod ks_max_population = 3
+    mod ks_culture = -10
+}
+
+def Pagan : Religion
+{
+    mod ks_happiness = 2
+    mod ks_army_morale = 2
+    mod ks_commerce_religion = 5
+    mod ks_base_levy_income = -5
+}
+
+def Shia : Muslim
+{
+    mod ks_prod_books_religion = 5
+    mod ks_base_gold_income = 5
+    mod ks_hammers_in_provinces_perc = 5
+    mod ks_corruption = 5
+}
+
+def Sunni : Muslim
+{
+    mod ks_prod_piety_flat = 5
+    mod ks_hammers_in_provinces_perc = 5
+    mod ks_max_population = 3
+    mod ks_corruption = 5
+}
+
+// Old Values
+Catholic.ks_commerce_religion = 0
+Catholic.ks_trade_income_perc = 0
+Catholic.ks_build_upgrade_cost_discount_perc = 0
+
+Orthodox.ks_prod_books_religion_perc.subordinated = 0
+Orthodox.ks_prod_books_religion_perc.independent = 0
+Orthodox.ks_prod_books_religion_perc.ecumenical_patriarch = 0
+Orthodox.ks_army_morale.subordinated = 0
+Orthodox.ks_army_morale.independent = 0
+
+Pagan.ks_prod_gold_perc = 0
+Pagan.ks_prod_books_religion_perc = 0
+
+Shia.ks_prod_gold_perc = 0
+Shia.ks_prod_piety_religion_perc = 0
+
+Sunni.ks_prod_piety_religion_perc = 0
+Sunni.ks_stability_religion = 0

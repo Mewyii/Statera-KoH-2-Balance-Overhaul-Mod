@@ -1,0 +1,2 @@
+Building.slots_base = 5
+Building.slots_expand_cost.gold = (500 + 500 * (realm_tier))

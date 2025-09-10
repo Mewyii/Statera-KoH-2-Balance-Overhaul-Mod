@@ -1,0 +1,100 @@
+def CampaignVars {
+    int knight_aging
+	{
+		bool show_in_rules = true
+		options
+		{
+			0
+			{
+				text name = "Off"
+				text description = "Only Royal Family members age"
+				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_Aging_Off.png:Icon_MultiplayerCampaign_Aging_Off#2"
+			}
+			default 1
+			{
+				text name = "On"
+				text description = "All knights and Royal Family members age"
+				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_Aging_On.png:Icon_MultiplayerCampaign_Aging_On#2"
+			}
+		}
+	}
+
+    string kingdom_standing 
+	{
+		options
+		{
+			default historical
+			{
+				text name = "Historical"
+				text description = "Players' kingdoms keep their initial autocephaly or caliphate statuses, along with all of their vassals or sovereigns. They have chances to start with trade centers."
+			}
+			challenging 
+			{
+				text name = "Balanced"
+				text description = "Players' kingdoms lose their initial caliphate or autocephaly statuses, along with all of their vassals. They also can't start with a trade center."
+			}
+			challenging_religion //!!! to be implemented
+			{
+				text name = "Limited (religion)"
+				text description = "Players' kingdoms lose their initial caliphate or autocephaly statuses."
+			}
+			challenging_vassals //!!! to be implemented
+			{
+				text name = "Limited (vassalage)"
+				text description = "Players' kingdoms lose their initial vassals or sovereigns."
+			}
+			challenging_trade //!!! to be implemented
+			{
+				text name = "Limited (trade)"
+				text description = "Players' kingdoms lose their chances to start with trade centers."
+			}
+		}
+    }
+
+    string starting_king_class
+	{
+		options
+		{
+			default historical
+			{
+				text name = "Historical"
+				text description = "A random class is picked for each players' king, among those defined as historically correct. Royal families are also historically correct as much as possible."
+			}
+			random
+			{
+				text name = "Random"
+				text description = "A random class is picked for each players' king. Each players' king is married and has no children."
+			}
+			random_same
+			{
+				text name = "Random (same)"
+				text description = "One random class is picked for all players' king. Each players' king is married and has no children."
+			}
+			marshal
+			{
+				text name = "Marshal"
+				text description = "All players' kings are marshals, married and have no children."
+			}
+			merchant
+			{
+				text name = "Merchant"
+				text description = "All players' kings are merchants, married and have no children."
+			}
+			diplomat
+			{
+				text name = "Diplomat"
+				text description = "All players' kings are diplomats, married and have no children."
+			}
+			cleric
+			{
+				text name = "Cleric"
+				text description = "All players' kings are clerics, married and have no children."
+			}
+			spy
+			{
+				text name = "Spy"
+				text description = "All players' kings are spies, married and have no children."
+			}
+		}
+	}
+}

@@ -1,0 +1,188 @@
+def Army
+{
+	max_units = 8
+	int max_inventory = 2
+	{
+		marshal = 3
+		king = 3
+	}
+	water_enter_duration = 10
+	water_exit_duration = 10
+	supplies_consumption_interval = 4
+}
+
+Unit.retreat_damage_mod = 5
+
+FoodWagon.add_supplies = 50
+FoodWagon.progressive_cost.1 = "250g 50f"
+FoodWagon.progressive_cost.2 = "300g 50f"
+FoodWagon.progressive_cost.3 = "350g 50f"
+FoodWagon.progressive_cost.4 = "400g 50f"
+FoodWagon.progressive_upkeep.1 = "2g"
+FoodWagon.progressive_upkeep.2 = "3g"
+FoodWagon.progressive_upkeep.3 = "4g"
+FoodWagon.progressive_upkeep.4 = "5g"
+
+AdditionalTroops.food_upkeep_per_unit = 0
+AdditionalTroops.add_squad_size_perc = 10
+AdditionalTroops.progressive_cost.1 = "250g 5 workers 250 Levy"
+AdditionalTroops.progressive_cost.2 = "300g 6 workers 300 Levy"
+AdditionalTroops.progressive_cost.3 = "350g 7 workers 350 Levy"
+AdditionalTroops.progressive_cost.4 = "400g 8 workers 400 Levy"
+AdditionalTroops.progressive_upkeep.1 = "4g 4f"
+AdditionalTroops.progressive_upkeep.2 = "5g 5f"
+AdditionalTroops.progressive_upkeep.3 = "6g 6f"
+AdditionalTroops.progressive_upkeep.4 = "7g 7f"
+
+Siege_Ram.available = false
+Catapult.available = false
+Trebuchet.available = false
+
+def Battering_Ram : SiegeEquipment
+{
+	//csv://csv: name = "Battering Ram"
+	description = "Warmachine, created to take down castle gates."
+	model = "Assets/Units/BV_Ram/BV_Ram.prefab" //GUID:80c841c513f833c4ea25283b8ce14c26
+	available = true
+	selection_radius = 1.5
+	radius = 4
+	turn_speed = 45
+	siege_damage = 3
+	max_health = 6
+	hire_sound = "event:/sound_effects/interaction/siege/battering_ram"
+	select_sound = "event:/sound_effects/interaction/siege/battering_ram"
+	hire_failed_sound = "event:/sound_effects/interaction/unavailable"
+	dying_sound = "event:/sound_effects/battleview/siege_equipment/destroyed/battering_ram"
+	marching_sound = "event:/sound_effects/battleview/siege_equipment/moving/batteing_ram"
+	running_sound = marching_sound
+	sprinting_sound = marching_sound
+	charging_sound = marching_sound
+	
+	counter = ["Gate"]
+	countered = ["Heavy_Trebuchet"]
+
+    require
+	{
+        Barracks
+	}
+	
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_InvetoryItem_BatteringRam.png:Icon_InvetoryItem_BatteringRam#1" //GUID:d96e15c9cc15fe04f8232c46aa5cfd53
+	float attack_frame_anim_time = 1.17
+	
+	hit_wood_gate_sound = "event:/sound_effects/battleview/gate/hit/wooden"
+	hit_metal_gate_sound = "event:/sound_effects/battleview/gate/hit/metal"
+	
+	can_attack_gates = true
+	can_attack_melee = false
+
+	hide_in_wiki = false
+}
+
+def Heavy_Siege_Ram : SiegeEquipment
+{
+	//csv://csv: name = "Battering Ram"
+	description = "Warmachine, created to take down castle gates."
+	model = "Assets/Units/BV_Ram/BV_Ram.prefab" //GUID:80c841c513f833c4ea25283b8ce14c26
+	available = true
+	selection_radius = 1.5
+	radius = 4
+	turn_speed = 45
+	siege_damage = 5
+	max_health = 6
+	hire_sound = "event:/sound_effects/interaction/siege/battering_ram"
+	select_sound = "event:/sound_effects/interaction/siege/battering_ram"
+	hire_failed_sound = "event:/sound_effects/interaction/unavailable"
+	dying_sound = "event:/sound_effects/battleview/siege_equipment/destroyed/battering_ram"
+	marching_sound = "event:/sound_effects/battleview/siege_equipment/moving/batteing_ram"
+	running_sound = marching_sound
+	sprinting_sound = marching_sound
+	charging_sound = marching_sound
+	
+	counter = ["Gate"]
+	countered = ["Heavy_Trebuchet"]
+
+    require
+	{
+        Barracks
+        SiegeWorkshop
+	}
+	
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_InvetoryItem_BatteringRam.png:Icon_InvetoryItem_BatteringRam#1" //GUID:d96e15c9cc15fe04f8232c46aa5cfd53
+	float attack_frame_anim_time = 1.17
+	
+	hit_wood_gate_sound = "event:/sound_effects/battleview/gate/hit/wooden"
+	hit_metal_gate_sound = "event:/sound_effects/battleview/gate/hit/metal"
+	
+	can_attack_gates = true
+	can_attack_melee = false
+
+	hide_in_wiki = false
+}
+
+
+def Heavy_Trebuchet : SiegeEquipment
+{
+	//csv://csv: name = "Trebuchet"
+	description = "Warmachine, created to take down castle walls and devastate all structures and men in the way of its projectiles."
+	model = "Assets/Units/BV_Trebuchet_01/BV_Trebuchet_01.prefab" //GUID:9fbb64ef8cbe99e428139d47c62df98d
+	squad_banner = "Assets/Units/BV_Trebuchet_01/squad_banner_trebuchet.prefab" //GUID:a30f5a28240d54c4eb9b1483c95a6b80
+	squad_icon = "Assets/Units/BV_Trebuchet_01/squad_icon trebuchet.prefab" //GUID:1fe88756a0339dc48ac0c442bc2fed9e
+	hire_sound = "event:/sound_effects/interaction/siege/trebuchet"
+	select_sound = "event:/sound_effects/interaction/siege/trebuchet"
+	hire_failed_sound = "event:/sound_effects/interaction/unavailable"
+	packing_sound = "event:/sound_effects/battleview/siege_equipment/unpacking/trebuchet" //sound effect not ready
+	dying_sound = "event:/sound_effects/battleview/siege_equipment/destroyed/trebuchet"
+	marching_sound = "event:/sound_effects/battleview/siege_equipment/moving/trebuchet"
+	running_sound = marching_sound
+	sprinting_sound = marching_sound
+	charging_sound = marching_sound
+	VO_role = null
+	
+	counter = ["WallsAndTowers","Catapult","Battering_Ram","Heavy_Siege_Ram"]
+	countered = ["Heavy_Trebuchet"]
+	
+	walk_anim_speed = 0
+	
+	available = true
+	selection_radius = 1.8
+	turn_speed = 45
+	siege_damage = 7
+	max_health = 10
+	
+	secondary_type = "Ranged"
+	
+	require
+	{
+        Barracks
+        RoyalArmory
+        SiegeWorkshop
+	}
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_InvetoryItem_Trebuchet.png:Icon_InvetoryItem_Trebuchet#2" //GUID:bfe320789668afc4c80cb8355db68093
+	
+	float attack_frame_anim_time = 0.25
+	auto_find_target = true
+	can_attack_gates = true
+	can_attack_walls = true
+	can_attack_towers = true
+	can_attack_melee = false
+	max_random_shoot_offset = 15
+	
+	string packed_def_key = "TrebuchetPacked"
+	float unpack_time = 10
+	prefab unpack_particles = "Assets/BattleView/BV_FX/SiegeEquipmentPackDust.prefab" //GUID:50d9951f19e09a64d85feddf7bfc56e5
+	radius = 6.8
+	battle_scale = 0.8
+	
+	float terrain_normal_points = [
+	0, 1,
+	1, 0,
+	-1, 0,
+	0, -1
+	]
+
+	hide_in_wiki = false
+}
+
+SquadTypeIconSettings.Battering_Ram = "Assets/UI/BattleView/Elements/UnitIcons/BatteringRam_28.png:BatteringRam_28#2" //GUID:d08b3289df0bfe64d943767e55019f1d
+SquadTypeIconSettings.Heavy_Siege_Ram = "Assets/UI/BattleView/Elements/UnitIcons/BatteringRam_28.png:BatteringRam_28#2" //GUID:d08b3289df0bfe64d943767e55019f1d
+SquadTypeIconSettings.Heavy_Trebuchet = "Assets/UI/BattleView/Elements/UnitIcons/Trebuchet_28.png:Trebuchet_28#2" //GUID:7305e4c184bb70d4088110a02ffc02ab

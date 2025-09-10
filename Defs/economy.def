@@ -1,0 +1,155 @@
+def Economy {
+	trade
+	{	
+		trade_level
+		{
+			text name
+			float upgrade_gold_cost
+			float commerce
+			
+			float base_income = 1
+			float income_modifier
+			float royal_profit_mod = ( (is_king and 1.33) or 1 )
+			float relations_profit = (map_clamp(GetRelationship(src_kingdom, tgt_kingdom), 0, 1000, 0, 15))
+			float profit_from_navigation = (obj.cs_gold_per_coastal_where_trading * tgt_kingdom.coastal_realms_count)
+
+			float with_subordinated = (tgt_kingdom.subordinated * tgt_kingdom.is_orthodox * src_kingdom.ks_trade_income_with_subordinated_perc)
+			float with_constantople = (tgt_kingdom.is_constantinople_kingdom * src_kingdom.ks_trade_income_with_constantinople_perc)
+			float stat_mod = (1 + (cs_trade_income_perc + src_kingdom.ks_trade_income_perc + with_subordinated + with_constantople) / 100)
+			float profit = (ceil( (base_income + cs_base_trading_income + ( class_level * 0.5 ) + relations_profit + src_kingdom.kingdom.king_economy_ability) * stat_mod * income_modifier * royal_profit_mod + profit_from_navigation))
+			
+			float foreign_profit = (profit * 0.1)
+			float base_chance = 20
+			float time_needed = 30
+		}
+		
+		level_0 : trade_level
+		{
+			name = "Trade Not Started"
+			commerce = 0
+			profit = 0
+			income_modifier = 1
+		}
+		level_1 : trade_level
+		{
+			name = "Small Scale Trade"
+			commerce = (10 - (tgt_kingdom.kingdom.vassal_of == src_kingdom) * 5)
+			income_modifier = 1
+		}
+		level_2 : trade_level
+		{
+			name = "Medium Scale Trade"
+			upgrade_gold_cost = 100
+			commerce = (20 - (tgt_kingdom.kingdom.vassal_of == src_kingdom) * 10)
+			income_modifier = 1.5
+		}
+		level_3 : trade_level
+		{
+			name = "Large Scale Trade"
+			upgrade_gold_cost = 200
+			commerce = (40 - (tgt_kingdom.kingdom.vassal_of == src_kingdom) * 20)
+			income_modifier = 2.0
+		}
+		level_4 : trade_level
+		{
+			name = "Exclusive Trade"
+			upgrade_gold_cost = 300
+			commerce = (60 - (tgt_kingdom.kingdom.vassal_of == src_kingdom) * 30)
+			income_modifier = 2.5
+		}
+		level_5 : trade_level
+		{
+			name = "Imperial Trade"
+			upgrade_gold_cost = 500
+			commerce = (100 - (tgt_kingdom.kingdom.vassal_of == src_kingdom) * 50)
+			income_modifier = 3.0
+		}
+	}
+
+	upkeep
+	{
+		Gold
+		{
+			Kingdom
+			{
+				func CalcWagesUpkeep
+				func CalcBuildingsUpkeep
+				func CalcArmiesGoldUpkeep
+				func CalcBribesUpkeep
+				func CalcSupportPretendersUpkeep
+				func CalcRuinRelationsUpkeep
+				func CalcSowDissentUpkeep
+				func CalcBolsterCultureUpkeep
+				func CalcBolsterInfluenceUpkeep
+				func CalcOccupationsUpkeep
+				func CalcDisorderUpkeep
+				func CalcSovereignTax
+				func CalcJihadUpkeep
+				func CalcPaganBeliefsUpkeep
+
+				//action upkeeps
+				func CalcImproveRelationsUpkeep = "CalcStatusResources" { status = ImprovingRelationsStatus }
+				func CalcImrpoveOpinionsUpkeep = "CalcStatusResources" { status = ImprovingOpinionsStatus }
+				func CalcPeaceTalksUpkeep = "CalcStatusResources" { status = PeaceTalksStatus }
+				func CalcDefensivePactsUpkeep = "CalcStatusResources" { status = HoldingADefensivePactStatus }
+				func CalcInvasionPlansUpkeep = "CalcStatusResources" { status = HoldingAnInvasionPlanStatus }
+				// func CalcMissionInRomeUpkeep = "CalcStatusResources" { status = OnMissionInRomeStatus }
+				// func CalcMissionInConstantinopleUpkeep = "CalcStatusResources" { status = OnMissionInConstantinopleStatus }
+				func CalcStudyUpkeep = "CalcStatusResources" { status = OnStudyStatus }
+				func CalcSearchingForSpouseUpkeep = "CalcStatusResources" { status = SearchingForSpouseStatus }
+				func CalcPreachGoldUpkeep = "CalcActionResources" { action = ConvertProvinceReligionAction }
+				func CalcPreachVassalGoldUpkeep = "CalcActionResources" { action = ConvertVassalReligionAction }
+				func CalcJourneyGoldUpkeep = "CalcActionResources" { action = GoOnAJourneyAction }
+
+				func CalcHelpTheWeakUpkeep
+				func CalcUpkeepGoldFromGoodsImport
+				func CalcUpkeepGoldFromFoodImport
+
+				// inflation may need to be last (not at the moment)
+				func CalcInflationPenalty
+			}
+		}
+
+		Books
+		{
+			Kingdom
+			{
+				func CalcSovereignTaxBooks
+				func CalcPreachBooksUpkeep = "CalcActionResources" { action = ConvertProvinceReligionAction }
+				func CalcPreachVassalBooksUpkeep = "CalcActionResources" { action = ConvertVassalReligionAction }
+			}
+		}
+
+		Piety
+		{
+			Kingdom
+			{
+				func CalcSovereignTaxPiety
+				func CalcPreachPietyUpkeep = "CalcActionResources" { action = ConvertProvinceReligionAction }
+				func CalcPreachVassalPietyUpkeep = "CalcActionResources" { action = ConvertVassalReligionAction }
+			}
+		}
+
+		Food
+		{
+			Kingdom
+			{
+				func CalcArmiesFoodUpkeep
+				func CalcFoodExportUpkeep
+			}
+
+			Realm
+			{
+				func CalcGarrisonFoodUpkeep
+			}
+		}
+
+		Trade
+		{
+			Kingdom
+			{
+				func CalcAllocattedCommerce
+			}
+		}		
+	}
+}

@@ -1,0 +1,2 @@
+River.retreat_damage_mod = 25 { perc = true }
+OceanCoast.retreat_damage_mod = 50 { perc = true }

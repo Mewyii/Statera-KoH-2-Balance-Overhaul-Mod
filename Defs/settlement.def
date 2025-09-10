@@ -1,0 +1,74 @@
+Castle.no_governor_penalty = 30
+
+// Settlement numbers on map are also limited by settlements.def in /maps
+
+Settlement.max_identical_settlement_per_realm = 3 // Limit for all settlements
+Settlement.max_allowed_features_per_settlement_type = 2 // Features are not limited here anyways?
+Settlement.max_specal_settlements_per_realm = 3
+Settlement.min_restriction_settlements = 6
+Settlement.max_restriction_settlements = 9
+Settlement.settlement_repeating_chance_mul = 1.3 // relevant only for base settlements
+
+def SettlementsRandomizationWeights = 3 // Same settlement type limit for normal settlements
+{
+	float Village = 30
+	float Farm = 30
+    {
+		float has_river_city = -27 // is_desert
+		float has_mountains = -15
+	}
+	float Monastery = 20
+	float Keep = 20
+    {
+		float has_mountains = 20
+	}
+}
+
+def SpecialSettlementsRandomizationWeights = 1 // Same settlement type limit for special settlements
+{
+    float LoggingCamp = 30
+    {
+		float has_river_city = -28 // is_desert
+		float has_mountains = -15
+	}
+    float SheepFarm = 20
+    {
+		float has_river_city = -13 // is_desert
+	}
+    float Mine = 10
+	{
+		float has_mountains = 40
+	}
+	float Quarry = 15
+    {
+		float has_mountains = 15
+	}
+	float HorseFarm = 15
+    {
+        float has_rivers = 15
+		float has_river_city = -8 // is_desert
+		float has_coastal_city = 15 // is_lush
+	}
+	float CattleFarm = 15
+    {
+		float has_river_city = -13 // is_desert
+        float has_coastal_city = 15 // is_lush
+	}
+	float FlaxField = 15
+    {
+		float has_rivers = 15
+		float has_river_city = -8 // is_desert
+        float has_mountains = -8
+	}
+    float Vineyard = 15
+    {
+		float has_rivers = 18
+		float has_river_city = -13 // is_desert
+		float has_coastal_city = 8 // is_lush
+		float has_mountains = -8
+	}
+    float HerbsGardens = 15
+    {
+		float has_river_city = -8 // is_desert
+	}
+}
