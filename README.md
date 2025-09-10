@@ -1,5 +1,7 @@
-#Statera - Balance, Realism and Strategic Overhaul for Knights of Honor 2
+# Statera - Balance, Realism and Strategic Overhaul for Knights of Honor 2
 
+
+## Content
 This overhaul focuses on 3 things:
 - Fixing known issues of the game like lowering prices for settlement expand slots, increasing birth rates, balancing knights.
 - Increasing thematic aspects trough f.e. adjusting unit names, descriptions etc. for certain kingdoms/cultures.
@@ -9,5 +11,6 @@ All of this is done to improve balance, strategic depth and replayability.
 There are no radical solutions in this mod that just elimiate aspects of the game, my focus is make them fit better.
 Better description follows.
 
-##V.01 Changelog:
+
+## V.01 Changelog:
 TODO
