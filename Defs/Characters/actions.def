@@ -4,50 +4,353 @@
 // own_kingdom.S2 means Kingdom Income (Without Expenes) * 25
 // own_kingdom.S3 means Kingdom Income (Without Expenes) * 50
 
-
+GatherArmyAction.cost.gold = 0
 
 // Priest
-ConvertProvinceReligionAction.cost.gold = (ceil((200 - agent_level_cost_modifier) * kingdom_income_cost_modifier, 5))
-ConvertProvinceReligionAction.cost.piety = (ceil((600 - agent_level_cost_modifier) * kingdom_income_cost_modifier, 5))
-ConvertProvinceReligionAction.cost.books = (ceil((200 - agent_level_cost_modifier) * kingdom_income_cost_modifier, 5))
-ConvertProvinceReligionAction.gold_upkeep = (ceil((25 - agent_level_upkeep_modifier) * kingdom_income_upkeep_modifier, 1))
+ConvertProvinceReligionAction.cost.gold = (ceil((200 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+ConvertProvinceReligionAction.cost.piety = (ceil((600 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+ConvertProvinceReligionAction.cost.books = (ceil((200 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+ConvertProvinceReligionAction.gold_upkeep = (ceil((25 * kingdom_income_upkeep_modifier - agent_level_upkeep_modifier), 1))
 
-ConvertVassalReligionAction.cost.gold = (ceil((400 - agent_level_cost_modifier) * kingdom_income_cost_modifier, 5))
-ConvertVassalReligionAction.cost.piety = (ceil((800 - agent_level_cost_modifier) * kingdom_income_cost_modifier, 5))
-ConvertVassalReligionAction.cost.books = (ceil((400 - agent_level_cost_modifier) * kingdom_income_cost_modifier, 5))
-ConvertVassalReligionAction.gold_upkeep = (ceil((50 - agent_level_upkeep_modifier) * kingdom_income_upkeep_modifier, 1))
+ConvertVassalReligionAction.cost.gold = (ceil((400 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+ConvertVassalReligionAction.cost.piety = (ceil((800 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+ConvertVassalReligionAction.cost.books = (ceil((400 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+ConvertVassalReligionAction.gold_upkeep = (ceil((50 * kingdom_income_upkeep_modifier - agent_level_upkeep_modifier), 1))
 
-AdoptPopulationAction.cost.gold = (ceil((100 - agent_level_cost_modifier) * kingdom_income_cost_modifier, 10))
-AdoptPopulationAction.cost.piety = (ceil((400 - agent_level_cost_modifier) * kingdom_income_cost_modifier, 5))
-AdoptPopulationAction.cost.books = (ceil((100 - agent_level_cost_modifier) * kingdom_income_cost_modifier, 5))
+AdoptPopulationAction.cost.gold = (ceil((100 * kingdom_income_cost_modifier - agent_level_cost_modifier), 10))
+AdoptPopulationAction.cost.piety = (ceil((400 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+AdoptPopulationAction.cost.books = (ceil((100 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
 AdoptPopulationAction.level_buff = (3 + (owner.is_patriarch || owner.is_cardinal))
 AdoptPopulationAction.success_fail.sf_base = (70)
 
 BolsterCultureAction.cost.gold = 0
-BolsterCultureAction.cost.piety = (ceil((100 - agent_level_cost_modifier) * kingdom_income_cost_modifier, 5))
-BolsterCultureAction.cost.books = (ceil((100 - agent_level_cost_modifier) * kingdom_income_cost_modifier, 5))
-BolsterCultureAction.gold_upkeep = (ceil((10 - agent_level_upkeep_modifier) * kingdom_income_upkeep_modifier, 1))
+BolsterCultureAction.cost.piety = (ceil((100 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+BolsterCultureAction.cost.books = (ceil((100 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+BolsterCultureAction.gold_upkeep = (ceil((10 * kingdom_income_upkeep_modifier - agent_level_upkeep_modifier), 1))
 
-HelpTheWeakAction.cost.gold = (ceil((50 - agent_level_cost_modifier) * kingdom_income_cost_modifier, 5))
-HelpTheWeakAction.cost.piety = (ceil((50 - agent_level_cost_modifier) * kingdom_income_cost_modifier, 5))
-HelpTheWeakAction.gold_upkeep = (ceil((owner.help_the_weak_upkeep - agent_level_upkeep_modifier) * kingdom_income_upkeep_modifier, 1))
-HelpTheWeakStatus.upkeep.gold = (ceil((owner.help_the_weak_upkeep - agent_level_upkeep_modifier) * kingdom_income_upkeep_modifier, 1))
+HelpTheWeakAction.cost.gold = (ceil((50 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+HelpTheWeakAction.cost.piety = (ceil((50 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+HelpTheWeakAction.gold_upkeep = (ceil((owner.help_the_weak_upkeep * kingdom_income_upkeep_modifier - agent_level_upkeep_modifier), 1))
+HelpTheWeakStatus.upkeep.gold = (ceil((owner.help_the_weak_upkeep * kingdom_income_upkeep_modifier - agent_level_upkeep_modifier), 1))
 
-AppeaseClergyAction.cost.gold = (ceil((100 - agent_level_cost_modifier) * kingdom_income_cost_modifier, 5))
-AppeaseClergyAction.cost.piety = (ceil((200 - agent_level_cost_modifier) * kingdom_income_cost_modifier, 5))
+AppeaseClergyAction.cost.gold = (ceil((100 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+AppeaseClergyAction.cost.piety = (ceil((200 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
 
-EnlightmentMissionAction.cost.gold = (ceil((150 - agent_level_cost_modifier) * kingdom_income_cost_modifier, 5))
-EnlightmentMissionAction.cost.piety = (ceil((300 - agent_level_cost_modifier) * kingdom_income_cost_modifier, 5))
-EnlightmentMissionAction.cost.levy = (ceil((25 - agent_level_upkeep_modifier) * kingdom_income_cost_modifier, 5))
+EnlightmentMissionAction.cost.gold = (ceil((150 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+EnlightmentMissionAction.cost.piety = (ceil((300 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+EnlightmentMissionAction.cost.levy = (ceil((25 * kingdom_income_cost_modifier - agent_level_upkeep_modifier), 5))
 
-ReligiousMissionAction.cost.gold = (ceil((150 - agent_level_cost_modifier) * kingdom_income_cost_modifier, 5))
-ReligiousMissionAction.cost.piety = (ceil((300 - agent_level_cost_modifier) * kingdom_income_cost_modifier, 5))
-ReligiousMissionAction.cost.levy = (ceil((25 - agent_level_upkeep_modifier) * kingdom_income_cost_modifier, 5))
+ReligiousMissionAction.cost.gold = (ceil((150 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+ReligiousMissionAction.cost.piety = (ceil((300 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+ReligiousMissionAction.cost.levy = (ceil((25 * kingdom_income_cost_modifier - agent_level_upkeep_modifier), 5))
 
+def ClericPreachAction : ReligionSpecificAction
+{
+	name = "Preach"
+	tooltip = "Have {owner} travel troughout our lands to preach ([{kingdom.religion:ism}|our religion]) and increase the belief of our population. [ ({piety_income}{piety_icon})]."
+	icon = "Assets/UI/Elements/Actions/Icon_CharacterAction_Study.tga:Icon_CharacterAction_Study#2" //GUID:a2202d72f02c90d49a2b109513e13942
+	success_voice_line = "action_succeeded"
+	
+	float piety_income = (ceil((75 + (agent_level_cost_modifier * 0.5)), 5))
+	cost
+	{
+		gold = (ceil((75 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+	}
+	
+	prepare_duration = 300 
+	prepare_status_text = $[
+		"{owner} is travelling troughout our lands to preach."
+		]
+	
+	outcomes
+	{
+		main success = 100
+		{
+			message
+			{
+				case src_kingdom
+				{
+					text caption = "Cleric's travels finished"
+					text text = "{owner} finished his travels troughout our lands. He successfully preached to our population to increase our kingdom's piety."
+				}
+			}
+            also give_piety = piety_income
+		}
+	}
+}
+def Cleric : CharacterClass
+{
+    actions
+	{
+		ClericPreachAction
+		ExcommunicateAction
+		CrusadeAction
+		AskToExcommunicateEnemyAction
+		PopeLeaveAction
+		PopeArrangePeaceTalksAction
+		PopeGrantIndependanceAction
+		AskForAbsolution
+		//MissionInRomeAction
+		//MissionInConstantinopleAction
+		
+		BolsterCultureAction
+		ClericStudyAction
+		AdoptPopulationAction
+		ConvertProvinceReligionAction
+		ConvertVassalReligionAction
+		AskForCrusadeAction
+		AutocephalyAction
+		SubordinateAction
+		OpenChoosePatriarchAction
+		
+		PromotePaganBeliefAction
+		ChangePaganBeliefAction
+		StopPromotingPaganBeliefAction
+		
+		GoOnAJourneyAction
+		PacifyRebelsAction
+		AppeaseClergyAction
+		ArrangePeaceAction
+		EnlightmentMissionAction
+		ReligiousMissionAction
+		DiplomaticMissionAction
+		GainNeighborsLoyaltyAction
+		ReligionSpreadAction
 
+		GatherArmyAction { bool requirement = (kingdom.is_pagan)} 
+	}
+}
+def Diplomat : CharacterClass
+{
+	actions
+	{
+		ImproveRelationsAction
+		ImproveOpinionsAction
+		BolsterInfluenceAction
+		CreateDefensivePactAction
+		CreateOffensivePactAction
+		//FindPactMembersAction
+		//DiplomacySendGiftAction
+		//DiplomacyBecomeFavoriteAction
+		//DiplomacySearchForSpouceAction
+		//DiplomacySearchForHelpWithRebelsAction
+		OpenAudienceAction
+		DiplomacyPeaceTalksPreparationAction
+		DiplomacyPeaceTalksAction
+		DissolveDefensivePactAction
+		DissolveOffensivePactAction
+        ClericStudyAction
+	}
+}
 
 // Merchant
-TradeWithKingdomAction.cost.gold = (ceil((100 * dist_mod - agent_level_cost_modifier) * kingdom_income_cost_modifier, 5))
-TradeWithKingdomAction.cost.levy = (ceil((100 * dist_mod - agent_level_cost_modifier) * kingdom_income_cost_modifier, 5))
+TradeWithKingdomAction.cost.gold = (ceil((100 * dist_mod * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+TradeWithKingdomAction.cost.levy = (ceil((100 * dist_mod * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
 
 // TODO see how this can be lowered ImportGoodAction.cost = (import_cost)
+
+// Diplomat
+def ImproveRelationsAction : CharacterAction
+{
+    cost
+	{
+		gold = (ceil((50 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+		books = (ceil((50 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+        levy = (ceil((25 * kingdom_income_cost_modifier - agent_level_upkeep_modifier), 5))
+	}
+}
+def ImprovingRelationsStatus : CharacterStatus
+{
+    resources upkeep
+	{
+		gold = (ceil((10 * kingdom_income_upkeep_modifier - agent_level_upkeep_modifier - (100 * own_character.cs_diplomat_actions_upkeep_reduction_perc)), 1))
+	}
+
+    rel_change_amount = (25 + from_CL * royal_bonus) * nerf_if_papacy * stat_mod // roughly half an hour for ~500 relatioship?
+	{
+		from_CL = (ceil(RndI(30, 60) * MapCL(owner, 1, 2)))
+		royal_bonus = (1 + owner.is_king  + owner.is_prince * 0.5)
+		nerf_if_papacy = (owner.mission_kingdom.is_papacy and 0.1 or 1)
+		stat_mod = (1 + owner.cs_diplomat_improve_relations_perc / 100)
+	}
+}
+
+def ImproveOpinionsAction : CharacterAction
+{
+    upkeep 
+    {
+        gold = ImprovingOpinionsStatus.upkeep.gold
+    }
+}
+def ImprovingOpinionsStatus : CharacterAction
+{
+    cost
+	{
+		gold = (ceil((100 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+	}
+
+    upkeep
+    {
+        gold = (ceil((5 * kingdom_income_upkeep_modifier - agent_level_upkeep_modifier - (100 * own_character.cs_diplomat_actions_upkeep_reduction_perc)), 1))
+    }
+}
+
+BolsterInfluenceAction.cost.gold = (ceil((200 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+BolsterInfluenceAction.cost.books = (ceil((200 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+BolsterInfluenceAction.cost.levy = (ceil((25 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+BolsterInfluenceAction.gold_upkeep = (ceil((20 * kingdom_income_upkeep_modifier - agent_level_upkeep_modifier - (100 * own_character.cs_diplomat_actions_upkeep_reduction_perc)), 1))
+
+PeaceTalksStatus.upkeep.gold = (ceil((10 * kingdom_income_upkeep_modifier - agent_level_upkeep_modifier - (100 * own_character.cs_diplomat_actions_upkeep_reduction_perc)), 1))
+
+def DiplomatTeachAction : CharacterAction
+{
+	name = "Spread Knowledge"
+	tooltip = "Have {owner} spread the knowledge he learned from his travels and contacts from other kingdoms. [ ({book_income}{books_icon})]."
+	icon = "Assets/UI/Elements/Actions/Icon_CharacterAction_SearchForHelpWithRebels.tga:Icon_CharacterAction_SearchForHelpWithRebels#2" //GUID:ce0bece2f9450264894a60ae0b7094c7
+	success_voice_line = "action_succeeded"
+	
+	float book_income = (ceil((75 + (agent_level_cost_modifier * 0.5)), 5))
+	cost
+	{
+		gold = (ceil((75 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+	}
+	
+	prepare_duration = 300 
+	prepare_status_text = $[
+		"{owner} is spreading knowledge in our kingdom."
+		]
+	
+	outcomes
+	{
+		main success = 100
+		{
+			message
+			{
+				case src_kingdom
+				{
+					text caption = "Diplomats finished spreading knowledge"
+					text text = "{owner} finished sharing is knowledge, increasing our kingdom's books."
+				}
+			}
+            also give_books = book_income
+		}
+	}
+}
+
+def Diplomat : CharacterClass
+{
+	actions
+	{
+		DiplomatTeachAction
+		ImproveRelationsAction
+		ImproveOpinionsAction
+		BolsterInfluenceAction
+		CreateDefensivePactAction
+		CreateOffensivePactAction
+		//FindPactMembersAction
+		//DiplomacySendGiftAction
+		//DiplomacyBecomeFavoriteAction
+		//DiplomacySearchForSpouceAction
+		//DiplomacySearchForHelpWithRebelsAction
+		OpenAudienceAction
+		DiplomacyPeaceTalksPreparationAction
+		DiplomacyPeaceTalksAction
+		DissolveDefensivePactAction
+		DissolveOffensivePactAction
+	}
+}
+
+
+// Spy
+InfiltrateKingdomAction.cost.gold = (ceil((50 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+InfiltrateKingdomAction.cost.books = (ceil((50 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+
+def SpyHuntCorruptionAction : CharacterAction
+{
+	name = "Hunt for Corruption"
+	tooltip = "Instruct {owner} to gather some of the kingdom's levies and compel those within our realm who shirk their dues—be they idle peasants or corrupt officials—to fulfill their obligations [ ({gold_income}{gold_icon})]."
+	icon = "Assets/UI/Elements/Actions/Icon_Opportunity_RebelAttackOther.tga:Icon_Opportunity_RebelAttackOther#2" //GUID:19a24f555e7db7d4ba1c2753c1c255e4
+	success_voice_line = "action_succeeded"
+	
+	float gold_income = (ceil((200 + (agent_level_cost_modifier * 0.5)), 5))
+	cost
+	{
+		levy = (ceil((100 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+	}
+	
+	prepare_duration = 300 
+	prepare_status_text = $[
+		"{owner} is hunting corruption in our kingdom."
+		]
+	
+	outcomes
+	{
+		main success = 100
+		{
+			message
+			{
+				case src_kingdom
+				{
+					text caption = "Spy successfully cleansed corruption"
+					text text = "{owner} has successfully 'convinced' both peasants and officials to honor their obligations, increasing our kingdom's treasury."
+				}
+			}
+            also give_gold = gold_income
+		}
+	}
+}
+
+def Spy : CharacterClass
+{
+	actions
+	{
+		SpyHuntCorruptionAction
+		CancelSpyPlotAction
+		WitchHuntRevealAction
+		ForceRevealAction
+		PrinceBecomesKingRevealAction
+		
+		InfiltrateKingdomAction
+		RuinRelationsAction
+		SowDissentAction
+		PlotHelpOurPrisonersEscapeAction
+		HelpFriendlyPrisonersEscape
+		InstigateDungeonRiot
+		BribeNobleAction
+		ProvokeWarAction
+		SpyMurderAction
+		AssassinateRebellionLeader
+		AbductRebellionLeader
+		InspireRebellion
+		BurnFoodStorageAction
+		OpenTheGatesAction
+		InciteLoyalistRebellionAction
+		TurnRebelIntoLoyalist
+		WitchHuntAction
+		
+		// puppet actions
+		ReleasePuppetAction
+		//StopSupportingPretenderToTheThroneAction
+		PuppetArrangeAnnexationAction
+		PuppetArmyRevoltAction
+		PuppetSwitchSidesAction
+		//PuppetArmySurrenderAction
+		PuppetSpreadHeresyAction
+		PuppetPreachAction
+		PuppetStealTreasuryAction
+		PuppetFundRebelsAction
+		PuppetPlotAssassinationAction
+		PuppetHandOverTheCrownAction
+		//PuppetAbandonCaliphateAction
+		PuppetVassalizeAction
+		PuppetVassalizeSmallKingdomAction
+		PuppetDeclareIndependenceAction
+		PuppetSurrenderTownAction
+		PuppetDivertCrusadeAction
+		//PuppetRebelAttackOtherKingdomAction
+		PuppetExcommunicateKingdomAction
+		//PuppetSupportPretenderToTheThroneAction //temporarily removed; if adding it, remember to add back StopSupportingPretenderToTheThroneAction
+		PuppetPlotAbolishAutocephaly
+		PuppetRuinPactAction
+	}
+}

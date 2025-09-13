@@ -7,5 +7,10 @@ All of this is done to improve balance, strategic depth and replayability.
 There are no radical solutions in this mod that just elimiate aspects of the game, my focus is make them fit better.
 Better description follows.
 
+
 V.01 Changelog:
 TODO
+
+
+Github Link to review changes or make suggestions:
+https://github.com/Mewyii/Statera-KoH-2-Balance-Overhaul-Mod

@@ -186,14 +186,14 @@ extend Skill.effects
 				recalc_on { kingdom_religion_changed }
 			}
 
-			governed_realm_mod rs_governor_piety_from_shaman = (ceil(class_level / 5))
+			governed_realm_mod rs_governor_piety_from_shaman = (ceil(1 +class_level / 5))
 			{
 				condition = (kingdom.is_pagan && governed_castle.realm.is_same_k_religion)
 				per_level_value = true
 				recalc_on { skills_changed; kingdom_religion_changed; governed_realm_religion_changed }
 			}
 
-			governed_realm_mod rs_governor_piety_per_shrine = (ceil(class_level / 5))
+			governed_realm_mod rs_governor_piety_per_shrine = (ceil(1 + class_level / 5))
 			{
 				condition = (kingdom.is_pagan && governed_castle.realm.is_same_k_religion)
 				per_level_value = true

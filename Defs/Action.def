@@ -6,7 +6,7 @@ def Action
     float piety_upkeep = 0
     float kingdom_income_cost_modifier = (1 + 0.0003 * own_kingdom.S1)
     float kingdom_income_upkeep_modifier = (1 + 0.0003 * own_kingdom.S1)
-    float agent_level_cost_modifier = (owner.class_level * 10)
+    float agent_level_cost_modifier = (owner.class_level * 5)
     float agent_level_upkeep_modifier = (owner.class_level * 1)
 
 	resources upkeep
