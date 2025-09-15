@@ -11,4 +11,4 @@ CharacterAge.die_chance_perc  = 3
 
 NormalAging.age_speed = 1.2
 SlowAging.age_speed = 2.1
-FastAging.age_speed = 0.75
+FastAging.age_speed = 0.8

@@ -1,3 +1,36 @@
-DeepForests.area = [0, 0.125, 1, 1]
-Vines.area = [0, 0.1, 1, 0.8]
-Camels.area = [0, 0, 1, 0.25]
+// Area: (east limit,y) bottom left, (x,y) top right for where it can spawn //size  3000, 2100
+// Random Settlement features
+DeepForests.area = [0, 0.2, 1, 1]
+Horses.area = [0, 0.15, 1, 0.9]
+Sheep.area = [0, 0.175, 1, 1]
+Vines.area = [0, 0.225, 1, 0.675]
+Herbage.area = [0, 0.0, 1, 0.35]
+FlaxFields.area = [0, 0, 0, 0]
+Cattle.area = [0, 0.25, 1, 1]
+
+// Random Province features
+Camels.area = [0, 0, 1, 0.27]
+Camels.spawn_chance = 40
+AmberDeposits.spawn_chance = 65
+AmberDeposits.area = [0.375, 0.6, 1, 1]
+RareGame.spawn_chance = 25
+RareGame.area = [0.5, 0.55, 1, 1]
+SaltDeposit.spawn_chance = 1
+SaltDeposit.spawn_chance.Mountains = 25
+SaltDeposit.spawn_chance.Coastal = 20
+MineralsDeposit.spawn_chance = 6
+SulfurDeposits.spawn_chance = 2
+SaltpeterDeposits.spawn_chance = 2
+
+// Custom Settlement dependent features
+// Quarry
+LimestoneDeposit.spawn_chance = 100
+MarbleDeposit.spawn_chance = 5
+MarbleDeposit.spawn_chance.Mountains = 5
+
+// Mines
+IronOre.spawn_chance = 60
+IronOre.spawn_chance.Mountains = 60
+SilverOre.spawn_chance = 20
+LodestoneDeposits.spawn_chance = 10
+GoldOre.spawn_chance = 5

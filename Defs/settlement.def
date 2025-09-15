@@ -3,18 +3,32 @@ Castle.no_governor_penalty = 30
 // Settlement numbers on map are also limited by settlements.def in /maps
 
 Settlement.max_identical_settlement_per_realm = 3 // Limit for all settlements
-Settlement.max_allowed_features_per_settlement_type = 2 // Features are not limited here anyways?
+Settlement.max_allowed_features_per_settlement_type = 3 // Features are not limited here anyways?
 Settlement.max_specal_settlements_per_realm = 3
 Settlement.min_restriction_settlements = 6
 Settlement.max_restriction_settlements = 9
 Settlement.settlement_repeating_chance_mul = 1.3 // relevant only for base settlements
+
+def Castle : Settlement
+{
+	enable_feature
+	{
+		AmberDeposits
+		Camels
+		MineralsDeposit
+		Pirates
+		RareGame
+		SaltDeposit
+		SaltpeterDeposits
+		SulfurDeposits
+	}
+}
 
 def SettlementsRandomizationWeights = 3 // Same settlement type limit for normal settlements
 {
 	float Village = 30
 	float Farm = 30
     {
-		float has_river_city = -27 // is_desert
 		float has_mountains = -15
 	}
 	float Monastery = 20
@@ -24,51 +38,80 @@ def SettlementsRandomizationWeights = 3 // Same settlement type limit for normal
 	}
 }
 
-def SpecialSettlementsRandomizationWeights = 1 // Same settlement type limit for special settlements
+delete SpecialSettlementsRandomizationWeights
+def SpecialSettlementsRandomizationWeights = 2 // Same settlement type limit for special settlements
 {
-    float LoggingCamp = 30
+    float LoggingCamp = 50
     {
-		float has_river_city = -28 // is_desert
-		float has_mountains = -15
+		float has_mountains = -20
 	}
-    float SheepFarm = 20
-    {
-		float has_river_city = -13 // is_desert
-	}
-    float Mine = 10
+    float Mine = 0
 	{
-		float has_mountains = 40
+		float has_mountains = 60
 	}
-	float Quarry = 15
+	float Quarry = 30
     {
-		float has_mountains = 15
+		float has_mountains = 10
 	}
-	float HorseFarm = 15
-    {
-        float has_rivers = 15
-		float has_river_city = -8 // is_desert
-		float has_coastal_city = 15 // is_lush
-	}
+    float SheepFarm = 15
 	float CattleFarm = 15
-    {
-		float has_river_city = -13 // is_desert
-        float has_coastal_city = 15 // is_lush
-	}
-	float FlaxField = 15
-    {
-		float has_rivers = 15
-		float has_river_city = -8 // is_desert
-        float has_mountains = -8
-	}
+	float HorseFarm = 15
     float Vineyard = 15
-    {
-		float has_rivers = 18
-		float has_river_city = -13 // is_desert
-		float has_coastal_city = 8 // is_lush
-		float has_mountains = -8
+	float OasisVillage = 15
+    float HerbsGardens = 5
+}
+
+Mine.max_allowed_features_per_settlement_type = 3
+def Quarry : Settlement
+{
+	enable_feature
+	{
+		default LimestoneDeposit
+		secondary MarbleDeposit
 	}
-    float HerbsGardens = 15
-    {
-		float has_river_city = -8 // is_desert
+}
+
+
+
+
+def OasisVillage : Settlement
+{
+	name = "Oasis"
+	{
+		multiple = "Oasis"
 	}
+	
+	description = $[
+	"Areas where shepherds guard and herd large flocks of sheep."]
+	//" These settlements allow the development of {SheepFarming}, where {Meat}, {Wool} and {Parchment} can be produced to satisfy the kingdom's various needs."]
+	
+	enable_feature
+	{
+		default Oasis
+	}
+	
+	production = "1f"
+	
+	icon = "Assets/UI/Elements/Settlements/Icons/UI_Settlement_Village.tga:UI_Settlement_Village#2" //GUID:227fb709071fd87449eb902c070c87e3
+	illustration = "Assets/UI/Elements/Common/Icons/Settlements/UI_Settlement_Village_Illustration.png:UI_Settlement_Village_Illustration#2" //GUID:d01e15f82b19c60488a434e8574b3967
+	selection_sound = "event:/sound_effects/interaction/select/settlement/village"
+	max_identical_settlement_per_realm = 1
+	
+	radius = 6
+
+	ai_eval_food = 1
+	ai_eval_trade = 3
+}
+
+def Oasis : ProvinceFeature
+{
+	name = "Oasis"
+	flavor = "Oasis description."
+	tooltip = "Oasis stockfirming provides useful recources for cultural and trade growth."
+	icon = "Assets/UI/Elements/Common/Icons/ProvinceFeatures/Icon_ProvinceFeature_Rivers.tga:Icon_ProvinceFeature_Rivers#2" //GUID:86f09521a72f4f84091ad110928d9d36
+	icon_big = "Assets/UI/Elements/Common/Icons/ProvinceFeatures/Icon_ProvinceFeature_Rivers_60x60.tga:Icon_ProvinceFeature_Rivers_60x60#2" //GUID:5ca7aa0246cccc24b92a7c0169e8bfa7
+	
+	area = [0.125, 0, 1, 0.175]
+	spawn_chance = 100
+	special = true
 }

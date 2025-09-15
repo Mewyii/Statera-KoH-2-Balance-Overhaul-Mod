@@ -1,0 +1,23 @@
+Realms.europe.Ghadames.has_mountains = true
+Realms.europe.Bolghar.has_mountains = true
+Realms.europe.Damascus.has_mountains = true
+Realms.europe.Draa.has_mountains = true
+Realms.europe.Taron.has_mountains = true
+Realms.europe.Gwynedd.has_mountains = true
+Realms.europe.Alania.has_mountains = true
+Realms.europe.Ustyug.has_mountains = true
+Realms.europe.Perm.has_mountains = true
+Realms.europe.Amasya.has_mountains = true
+Realms.europe.Ankara.has_mountains = true
+Realms.europe.Alsace.has_mountains = true
+Realms.europe.Thuringia.has_mountains = true
+Realms.europe.Vastermanland.has_mountains = true
+
+Realms.europe.Dumyat.has_rivers = true
+Realms.europe.Alexandria.has_rivers = true
+
+Realms.europe.Dumyat.has_river_city = true
+
+Realms.europe.Hamburg.has_coastal_city = true
+Realms.europe.Bremen.has_coastal_city = true
+Realms.europe.Hordaland.has_coastal_city = true

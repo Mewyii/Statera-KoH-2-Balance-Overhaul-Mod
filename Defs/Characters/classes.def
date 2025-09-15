@@ -1,0 +1,10 @@
+Marshal.ai_min_court_count = (1 + min(num_wars, 2))
+Marshal.ai_max_court_count = 5
+Merchant.ai_min_court_count = 0
+Merchant.ai_max_court_count = 4
+Cleric.ai_min_court_count = 1
+Cleric.ai_max_court_count = 2
+Diplomat.ai_min_court_count = 0
+Diplomat.ai_max_court_count = 2
+Spy.ai_min_court_count = 0
+Spy.ai_max_court_count = 2
