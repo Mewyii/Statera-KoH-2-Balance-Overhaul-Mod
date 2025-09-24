@@ -1,0 +1,31 @@
+extend CropFarmsDistrict
+{
+    delete buildings
+	buildings
+	{
+		CropFarming = 1.5
+
+		FlaxGrowing = 1,2 { prerequisites { CropFarming } }
+		HerbGardening = 2,2 { prerequisites { CropFarming } }
+		Windmill = 1,3 { prerequisites { CropFarming } }
+		FoodMarket = 2,3 { prerequisites { Windmill; MarketSquare } }
+	}
+}
+
+extend CommonDistrict
+{
+    delete buildings
+	buildings
+	{
+		HillFort
+		PirateHaven { prerequisites { Harbor } }
+		Viticulture
+		SheepFarming
+		CattleFarming
+		HorseBreeding
+		Woodworking
+		Stoneworking
+		Metalworking
+		RiverTrade { prerequisites { MarketSquare } }
+	}
+}

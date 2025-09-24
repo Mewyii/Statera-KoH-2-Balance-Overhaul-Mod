@@ -51,10 +51,10 @@ def ClericPreachAction : ReligionSpecificAction
 	icon = "Assets/UI/Elements/Actions/Icon_CharacterAction_Study.tga:Icon_CharacterAction_Study#2" //GUID:a2202d72f02c90d49a2b109513e13942
 	success_voice_line = "action_succeeded"
 	
-	float piety_income = (ceil((75 + (agent_level_cost_modifier * 0.5)), 5))
+	float piety_income = (ceil((100 + (agent_level_cost_modifier * 0.5)), 5))
 	cost
 	{
-		gold = (ceil((75 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+		gold = (ceil((100 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
 	}
 	
 	prepare_duration = 300 
@@ -189,10 +189,10 @@ def DiplomatTeachAction : CharacterAction
 	icon = "Assets/UI/Elements/Actions/Icon_CharacterAction_SearchForHelpWithRebels.tga:Icon_CharacterAction_SearchForHelpWithRebels#2" //GUID:ce0bece2f9450264894a60ae0b7094c7
 	success_voice_line = "action_succeeded"
 	
-	float book_income = (ceil((75 + (agent_level_cost_modifier * 0.5)), 5))
+	float book_income = (ceil((100 + (agent_level_cost_modifier * 0.5)), 5))
 	cost
 	{
-		gold = (ceil((75 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+		gold = (ceil((100 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
 	}
 	
 	prepare_duration = 300 
@@ -247,6 +247,9 @@ def Diplomat : CharacterClass
 InfiltrateKingdomAction.cost.gold = (ceil((50 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
 InfiltrateKingdomAction.cost.books = (ceil((50 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
 
+WitchHuntAction.cost.gold = (ceil((400 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+WitchHuntAction.cost.levy = (ceil((400 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+
 def SpyHuntCorruptionAction : CharacterAction
 {
 	name = "Hunt for Corruption"
@@ -254,10 +257,10 @@ def SpyHuntCorruptionAction : CharacterAction
 	icon = "Assets/UI/Elements/Actions/Icon_Opportunity_RebelAttackOther.tga:Icon_Opportunity_RebelAttackOther#2" //GUID:19a24f555e7db7d4ba1c2753c1c255e4
 	success_voice_line = "action_succeeded"
 	
-	float gold_income = (ceil((200 + (agent_level_cost_modifier * 0.5)), 5))
+	float gold_income = (ceil((300 + (agent_level_cost_modifier * 0.5)), 5))
 	cost
 	{
-		levy = (ceil((100 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+		levy = (ceil((150 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
 	}
 	
 	prepare_duration = 300 

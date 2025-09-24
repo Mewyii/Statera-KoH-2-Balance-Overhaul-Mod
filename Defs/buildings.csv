@@ -7,3 +7,9 @@ Shipyard,Building,5000,3000,,,,"2 Gold in Town
 MarketSquare,Building,500,800,,,,"1 Gold in Town
 1 Trade in Town
 2 rs_happiness",
+FlaxGrowing,Building,500,1000,,,,"2 Trade in Farm
+1 Trade in Farm
+2 rs_happiness",
+HerbGardening,Building,500,1000,,,,"2 Gold in Farm
+1 Gold in Farm
+10 rs_growth_rate_perc",

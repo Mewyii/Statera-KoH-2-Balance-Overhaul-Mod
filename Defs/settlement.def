@@ -21,6 +21,9 @@ def Castle : Settlement
 		SaltDeposit
 		SaltpeterDeposits
 		SulfurDeposits
+		SlaveTradersAfrica
+		SlaveTradersRussia
+		SpiceTraders
 	}
 }
 
@@ -43,22 +46,21 @@ def SpecialSettlementsRandomizationWeights = 2 // Same settlement type limit for
 {
     float LoggingCamp = 50
     {
-		float has_mountains = -20
+		float has_mountains = -15
 	}
     float Mine = 0
 	{
 		float has_mountains = 60
 	}
-	float Quarry = 30
+	float Quarry = 25
     {
 		float has_mountains = 10
 	}
-    float SheepFarm = 15
-	float CattleFarm = 15
-	float HorseFarm = 15
+    float SheepFarm = 20
+	float CattleFarm = 20
     float Vineyard = 15
+	float HorseFarm = 15
 	float OasisVillage = 15
-    float HerbsGardens = 5
 }
 
 Mine.max_allowed_features_per_settlement_type = 3
@@ -107,7 +109,7 @@ def Oasis : ProvinceFeature
 {
 	name = "Oasis"
 	flavor = "Oasis description."
-	tooltip = "Oasis stockfirming provides useful recources for cultural and trade growth."
+	tooltip = "An Oasis is an area in a desert that provides water, food and shelter."
 	icon = "Assets/UI/Elements/Common/Icons/ProvinceFeatures/Icon_ProvinceFeature_Rivers.tga:Icon_ProvinceFeature_Rivers#2" //GUID:86f09521a72f4f84091ad110928d9d36
 	icon_big = "Assets/UI/Elements/Common/Icons/ProvinceFeatures/Icon_ProvinceFeature_Rivers_60x60.tga:Icon_ProvinceFeature_Rivers_60x60#2" //GUID:5ca7aa0246cccc24b92a7c0169e8bfa7
 	
@@ -115,3 +117,40 @@ def Oasis : ProvinceFeature
 	spawn_chance = 100
 	special = true
 }
+
+def SlaveTradersAfrica : ProvinceFeature
+{
+	name = "Slave Traders (Africa)"
+	flavor = "Slave Traders description."
+	tooltip = "Slave traders can be used to hunt and trade slaves in nearby provinces. Slaves might be used as soldiers, workers or servants."
+	icon_big = "Assets/UI/Elements/Common/Icons/ProvinceFeatures/Icon_ProvinceFeature_Pirates_60x60.tga:Icon_ProvinceFeature_Pirates_60x60#2" //GUID:17804d103ed73b24c8afee901aaed2ce
+	icon = "Assets/UI/Elements/Common/Icons/ProvinceFeatures/Icon_ProvinceFeature_Pirates.tga:Icon_ProvinceFeature_Pirates#2" //GUID:54c3be7b0914c64448465e8d0c8b91ad
+	
+	area = [0, 0, 0.9, 0.25]
+	spawn_chance = 4
+}
+
+def SlaveTradersRussia : ProvinceFeature
+{
+	name = "Slave Traders (Caucasus and Ural)"
+	flavor = "Slave Traders description."
+	tooltip = "Slave traders can be used to hunt and trade slaves in nearby provinces. Slaves might be used as soldiers, workers or servants."
+	icon_big = "Assets/UI/Elements/Common/Icons/ProvinceFeatures/Icon_ProvinceFeature_Pirates_60x60.tga:Icon_ProvinceFeature_Pirates_60x60#2" //GUID:17804d103ed73b24c8afee901aaed2ce
+	icon = "Assets/UI/Elements/Common/Icons/ProvinceFeatures/Icon_ProvinceFeature_Pirates.tga:Icon_ProvinceFeature_Pirates#2" //GUID:54c3be7b0914c64448465e8d0c8b91ad
+	
+	area = [0.75, 0.35, 1, 0.75]
+	spawn_chance = 2
+}
+
+def SpiceTraders : ProvinceFeature
+{
+	name = "Spice Traders"
+	flavor = "Spice Traders description."
+	tooltip = "This province is on a spice trade route where spice traders are active. This trade can be profitted from."
+	icon = "Assets/UI/Elements/Common/Icons/ProvinceFeatures/Icon_ProvinceFeature_Sulfur.tga:Icon_ProvinceFeature_Sulfur#2" //GUID:2308106aec45c8b48a208f130c1cea12
+	icon_big = "Assets/UI/Elements/Common/Icons/ProvinceFeatures/Icon_ProvinceFeature_Sulfur_60x60.tga:Icon_ProvinceFeature_Sulfur_60x60#2" //GUID:926e6bc2a61fb244890ec1170cdb1e2b
+	
+	area = [0.65, 0, 1, 0.45]
+	spawn_chance = 4
+}
+

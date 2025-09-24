@@ -106,21 +106,6 @@ extend RealmFeaturesPresets
 			}
 		}
 
-		def HerbsSpicesRealmSet : RealmFeaturesPreset // This will be spices only
-		{
-			occurances = 2
-			required_settlements
-			{
-				HerbsGardens
-			}
-			required_province_fetures = [Herbage]
-			desired_in_realms = 100
-			{
-				Aden
-				Pars
-			}
-		}
-
 		def MarbleRealmSet : RealmFeaturesPreset
 		{
 			occurances = 4
@@ -215,7 +200,66 @@ extend RealmFeaturesPresets
 			}
 		}
 
-		def CornChamberRealSet : RealmFeaturesPreset 
+		def MineralsRealmSet : RealmFeaturesPreset 
+		{
+			occurances = 6
+			required_province_fetures = [MineralsDeposit]
+			desired_in_realms = 100
+			{
+				Gilan // Aquamarin, Afghanistan
+				Toledo // Zinnoberrot, Almaden 
+				Menteshe // Orpiment, Anatolien
+				Lyonnais // Azurit, Lyon
+				Meissen // Azurit, Saxony
+				Bolghar // Malachit, Ural
+			}
+		}
+
+		def SlaveTradersAfricaRealmSet : RealmFeaturesPreset 
+		{
+			occurances = 4
+			required_province_fetures = [SlaveTradersAfrica]
+			desired_in_realms = 100
+			{
+				Amogjar = 80
+				Adrar = 55
+				Draa = 30
+				Sawakin = 80
+				Alodia = 55
+				Aden = 30
+			}
+		}
+
+		def SlaveTradersRussiaRealmSet : RealmFeaturesPreset 
+		{
+			occurances = 4
+			required_province_fetures = [SlaveTradersRussia]
+			desired_in_realms = 100
+			{
+				Al_Maqhrus = 80
+				Manych = 55
+				Crimea = 30
+				Chaldia = 55
+				Taron = 30
+			}
+		}
+
+		def SpiceTradersRealmSet : RealmFeaturesPreset 
+		{
+			occurances = 6
+			required_province_fetures = [SpiceTraders]
+			desired_in_realms = 100
+			{
+				Khuzestan
+				Basra
+				Aden
+				Ispahan
+				Cairo
+				Basra
+			}
+		}
+
+		def CornChamberRealmSet : RealmFeaturesPreset 
 		{
 			occurances = 10
 			required_settlements
@@ -352,6 +396,11 @@ extend RealmFeaturesPresets
 		}
 
 		def LimestoneRealmSet : RealmFeaturesPreset
+		{
+			occurances = 0
+		}
+
+		def HerbsSpicesRealmSet : RealmFeaturesPreset
 		{
 			occurances = 0
 		}

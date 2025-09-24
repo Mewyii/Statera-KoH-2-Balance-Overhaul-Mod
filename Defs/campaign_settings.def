@@ -1,0 +1,311 @@
+def CampaignVars {
+    int knight_aging
+	{
+		bool show_in_rules = true
+		delete options
+		options
+		{
+			0
+			{
+				text name = "Off"
+				text description = "Only Royal Family members age"
+				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_Aging_Off.png:Icon_MultiplayerCampaign_Aging_Off#2"
+			}
+			default 1
+			{
+				text name = "On"
+				text description = "All knights and Royal Family members age"
+				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_Aging_On.png:Icon_MultiplayerCampaign_Aging_On#2"
+			}
+		}
+	}
+
+    string kingdom_standing 
+	{
+		delete options
+		options
+		{
+			default historical
+			{
+				text name = "Historical"
+				text description = "Players' kingdoms keep their initial autocephaly or caliphate statuses, along with all of their vassals or sovereigns. They have chances to start with trade centers."
+			}
+			challenging 
+			{
+				text name = "Balanced"
+				text description = "Players' kingdoms lose their initial caliphate or autocephaly statuses, along with all of their vassals. They also can't start with a trade center."
+			}
+			challenging_religion //!!! to be implemented
+			{
+				text name = "Limited (religion)"
+				text description = "Players' kingdoms lose their initial caliphate or autocephaly statuses."
+			}
+			challenging_vassals //!!! to be implemented
+			{
+				text name = "Limited (vassalage)"
+				text description = "Players' kingdoms lose their initial vassals or sovereigns."
+			}
+			challenging_trade //!!! to be implemented
+			{
+				text name = "Limited (trade)"
+				text description = "Players' kingdoms lose their chances to start with trade centers."
+			}
+		}
+    }
+
+    string starting_king_class
+	{
+		delete options
+		options
+		{
+			default historical
+			{
+				text name = "Historical"
+				text description = "A random class is picked for each players' king, among those defined as historically correct. Royal families are also historically correct as much as possible."
+			}
+			random
+			{
+				text name = "Random"
+				text description = "A random class is picked for each players' king. Each players' king is married and has no children."
+			}
+			random_same
+			{
+				text name = "Random (same)"
+				text description = "One random class is picked for all players' king. Each players' king is married and has no children."
+			}
+			marshal
+			{
+				text name = "Marshal"
+				text description = "All players' kings are marshals, married and have no children."
+			}
+			merchant
+			{
+				text name = "Merchant"
+				text description = "All players' kings are merchants, married and have no children."
+			}
+			diplomat
+			{
+				text name = "Diplomat"
+				text description = "All players' kings are diplomats, married and have no children."
+			}
+			cleric
+			{
+				text name = "Cleric"
+				text description = "All players' kings are clerics, married and have no children."
+			}
+			spy
+			{
+				text name = "Spy"
+				text description = "All players' kings are spies, married and have no children."
+			}
+		}
+	}
+
+	int max_unlockable_tiers
+	{
+		delete options
+		options
+		{
+			4 // max_unlockable_tiers
+			{
+				text name = "8 Buildings"
+				text description = "You can build up to 8 Buildings in a realm"
+			}
+			default 6
+			{
+				text name = "10 Buildings"
+				text description = "You can build up to 10 Buildings in a realm"
+			}
+			8
+			{
+				text name = "12 Buildings"
+				text description = "You can build up to 12 Buildings in a realm"
+			}
+			11
+			{
+				text name = "15 Buildings"
+				text description = "You can build up to 12 Buildings in a realm"
+			}
+			14
+			{
+				text name = "18 Buildings"
+				text description = "You can build up to 18 Buildings in a realm"
+			}
+		}
+	}
+
+	string aging_speed
+	{
+		delete options
+		options
+		{
+			default slow
+			{
+				text name = "Slow"
+				text description = "Characters age slowly"
+				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_AgingSpeed_Slow.png:Icon_MultiplayerCampaign_AgingSpeed_Slow#2" //GUID:4c111722f0409c54cb298099e68fe36a
+			}
+			normal
+			{
+				text name = "Normal"
+				text description = "Characters age at normal rates"
+				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_AgingSpeed_Normal.png:Icon_MultiplayerCampaign_AgingSpeed_Normal#2" //GUID:eded35eda85e36149aed21bfc04119c6
+			}
+			fast
+			{
+				text name = "Fast"
+				text description = "Characters age quickly"
+				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_AgingSpeed_Fast.png:Icon_MultiplayerCampaign_AgingSpeed_Fast#2" //GUID:0eeb363eb14891d4698ca053325a5b59
+			}
+		}
+	}
+}
+
+
+def SinglePlayerCampaignVars
+{
+	string ai_difficulty
+	{
+		delete options
+		options
+		{
+			easy
+			{
+				text name = "Easy"
+				text description = "Recommended for inexperienced or casual players.{p}Players will have less troubles in the beginning of the campaign and both AI and rebels will pose a smaller threat towards them."
+				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_AIDifficulty_Easy.png:Icon_MultiplayerCampaign_AIDifficulty_Easy#2" //GUID:14a91993fd4ef3d4ab571a96a80623e4
+			}
+			normal
+			{
+				text name = "Normal"
+				text description = "Standard campaign difficulty.{p}Players will have moderate challenge with no rules to increase or decrease it."
+				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_AgingSpeed_Normal.png:Icon_MultiplayerCampaign_AgingSpeed_Normal#2" //GUID:eded35eda85e36149aed21bfc04119c6
+			}
+			default hard
+			{
+				text name = "Hard"
+				text description = "Recommended for experienced grand-strategy players, ready for a challenge.{p}AI kingdoms will be slightly stronger and player kingdoms might have some domestic or foreign problems immediately after starting the campaign."
+				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_AIDifficulty_High.png:Icon_MultiplayerCampaign_AIDifficulty_High#2" //GUID:302202ff72a73ca40a78bb345b49e394
+			}
+			very_hard
+			{
+				text name = "Very hard"
+				text description = "Recommended for experienced players of the campaign, ready to face stronger and competitive enemies.{p}AI kingdoms will be significantly stronger and player kingdoms are likely to have domestic or foreign problems immediately after starting the campaign."
+				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_AIDifficulty_Impossible.png:Icon_MultiplayerCampaign_AIDifficulty_Impossible#2" //GUID:51293efe90e5cf6429471b7bbaa8cd0f
+			}
+		}
+	}
+	
+	string kingdom_standing 
+    {
+		delete options
+		options
+		{
+			default historical
+			{
+				text name = "Historical"
+				text description = "Player's kingdom keep their initial autocephaly or caliphate status, along with all of their vassals or sovereign. They can also start with a trade center."
+			}
+			challenging 
+			{
+				text name = "Balanced"
+				text description = "Player's kingdom loses their initial caliphate or autocephaly status, along with all of their vassals. It also loses the chance to start with trade centers."
+			}
+			challenging_religion //!!! to be implemented
+			{
+				text name = "Limited (religion)"
+				text description = "Player's kingdom loses its initial caliphate or autocephaly status."
+			}
+			challenging_vassals //!!! to be implemented
+			{
+				text name = "Limited (vassalage)"
+				text description = "Player's kingdom loses its starting vassals or sovereign."
+			}
+			challenging_trade //!!! to be implemented
+			{
+				text name = "Limited (trade)"
+				text description = "Player's kingdom can't start with a trade center."
+			}
+		}
+	}
+	
+	int max_unlockable_tiers
+	{
+		delete options
+		options
+		{
+			4 // max_unlockable_tiers
+			{
+				text name = "8 Buildings"
+				text description = "You can build up to 8 Buildings in a realm"
+			}
+			default 6
+			{
+				text name = "10 Buildings"
+				text description = "You can build up to 10 Buildings in a realm"
+			}
+			8
+			{
+				text name = "12 Buildings"
+				text description = "You can build up to 12 Buildings in a realm"
+			}
+			11
+			{
+				text name = "15 Buildings"
+				text description = "You can build up to 12 Buildings in a realm"
+			}
+			14
+			{
+				text name = "18 Buildings"
+				text description = "You can build up to 18 Buildings in a realm"
+			}
+		}
+	}
+	
+	string aging_speed
+	{
+		delete options
+		options
+		{
+			default slow
+			{
+				text name = "Slow"
+				text description = "Characters age slowly"
+				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_AgingSpeed_Slow.png:Icon_MultiplayerCampaign_AgingSpeed_Slow#2" //GUID:4c111722f0409c54cb298099e68fe36a
+			}
+			normal
+			{
+				text name = "Normal"
+				text description = "Characters age at normal rates"
+				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_AgingSpeed_Normal.png:Icon_MultiplayerCampaign_AgingSpeed_Normal#2" //GUID:eded35eda85e36149aed21bfc04119c6
+			}
+			fast
+			{
+				text name = "Fast"
+				text description = "Characters age quickly"
+				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_AgingSpeed_Fast.png:Icon_MultiplayerCampaign_AgingSpeed_Fast#2" //GUID:0eeb363eb14891d4698ca053325a5b59
+			}
+		}
+	}
+	
+	int knight_aging
+	{
+		bool show_in_rules = true
+		delete options
+		options
+		{
+			0
+			{
+				text name = "Off"
+				text description = "Only Royal Family members age"
+				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_Aging_Off.png:Icon_MultiplayerCampaign_Aging_Off#2"
+			}
+			default 1
+			{
+				text name = "On"
+				text description = "All knights and Royal Family members age"
+				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_Aging_On.png:Icon_MultiplayerCampaign_Aging_On#2"
+			}
+		}
+	}
+}
