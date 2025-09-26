@@ -1,10 +1,11 @@
 KingdomStats.ks_max_piety = 2000
 KingdomStats.ks_max_books = 2000
 KingdomStats.ks_vassal_tax_perc = 15
-KingdomStats.ks_base_gold_income = 25
+KingdomStats.ks_base_gold_income = 30
+KingdomStats.ks_base_commerce = 10
 KingdomStats.ks_base_levy_income = 10
-KingdomStats.ks_prod_books_flat = 0
-KingdomStats.ks_base_commerce = 15
+KingdomStats.ks_prod_books_flat = 5
+KingdomStats.ks_prod_piety_flat = 5
 KingdomStats.ks_max_levy = 2000
 KingdomStats.ks_books_per_cleric = 1
 

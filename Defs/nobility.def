@@ -1,0 +1,17 @@
+def AssassinNobility : Nobility
+{
+	Duchy = "Duchy"
+	Kingdom = "State"
+	Empire = "Empire"
+	
+	Knight = "Dāʿī"
+	Duke = ""
+	Duchess = ""
+	King = "Mawla"
+	Queen = ""
+	Prince = ""
+	Princess = ""
+	Lady = ""
+	Emperor = "Emperor"
+	Empress = "Empress"
+}

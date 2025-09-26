@@ -1,0 +1,32 @@
+﻿def Cultures
+{
+	groups
+	{
+		Germanic
+		{
+			German
+			Bavarian
+			Swiss
+			Austrian
+			Saxon
+			Swabian
+		}
+		WestGermanic
+		{
+			English
+			Flemish
+			Frisian
+			Dutch
+		}
+		WestSlavic
+		{
+			Pomeranian
+			Polish
+			Bohemian
+			Moravian
+			Mazovian
+			Obotritian
+		}
+	}
+}
+

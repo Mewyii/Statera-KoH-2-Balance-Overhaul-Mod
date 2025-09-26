@@ -1,4 +1,36 @@
 def CampaignVars {
+	string ai_difficulty
+	{
+		delete options
+		options
+		{
+			easy
+			{
+				text name = "Easy"
+				text description = "Recommended for inexperienced or casual players.{p}Players will have less troubles in the beginning of the campaign and both AI and rebels will pose a smaller threat towards them."
+				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_AIDifficulty_Easy.png:Icon_MultiplayerCampaign_AIDifficulty_Easy#2" //GUID:14a91993fd4ef3d4ab571a96a80623e4
+			}
+			normal
+			{
+				text name = "Normal"
+				text description = "Standard campaign difficulty.{p}Players will have moderate challenge with no rules to increase or decrease it."
+				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_AgingSpeed_Normal.png:Icon_MultiplayerCampaign_AgingSpeed_Normal#2" //GUID:eded35eda85e36149aed21bfc04119c6
+			}
+			default hard
+			{
+				text name = "Hard"
+				text description = "Recommended for experienced grand-strategy players, ready for a challenge.{p}AI kingdoms will be slightly stronger and player kingdoms might have some domestic or foreign problems immediately after starting the campaign."
+				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_AIDifficulty_High.png:Icon_MultiplayerCampaign_AIDifficulty_High#2" //GUID:302202ff72a73ca40a78bb345b49e394
+			}
+			very_hard
+			{
+				text name = "Very hard"
+				text description = "Recommended for experienced players of the campaign, ready to face stronger and competitive enemies.{p}AI kingdoms will be significantly stronger and player kingdoms are likely to have domestic or foreign problems immediately after starting the campaign."
+				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_AIDifficulty_Impossible.png:Icon_MultiplayerCampaign_AIDifficulty_Impossible#2" //GUID:51293efe90e5cf6429471b7bbaa8cd0f
+			}
+		}
+	}
+	
     int knight_aging
 	{
 		bool show_in_rules = true
