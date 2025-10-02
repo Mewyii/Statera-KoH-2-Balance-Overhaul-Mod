@@ -5,9 +5,9 @@ Castle.no_governor_penalty = 30
 Settlement.max_identical_settlement_per_realm = 3 // Limit for all settlements
 Settlement.max_allowed_features_per_settlement_type = 3 // Features are not limited here anyways?
 Settlement.max_specal_settlements_per_realm = 3
-Settlement.min_restriction_settlements = 6
-Settlement.max_restriction_settlements = 9
-Settlement.settlement_repeating_chance_mul = 1.3 // relevant only for base settlements
+Settlement.min_restriction_settlements = 8
+Settlement.max_restriction_settlements = 12
+Settlement.settlement_repeating_chance_mul = 1.4 // relevant only for base settlements
 
 def Castle : Settlement
 {

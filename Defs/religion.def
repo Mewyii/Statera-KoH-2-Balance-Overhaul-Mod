@@ -13,6 +13,15 @@ def Catholic : Christian
     mod ks_population_growth_perc = 10
     mod ks_base_gold_income = 5
     mod ks_prod_books_religion = -5
+
+    religious_tension
+	{
+		float Catholic = 0
+		float Orthodox = 5
+		float Sunni = 15
+		float Shia = 15
+		float Pagan = 10
+	}
 }
 
 def Orthodox : Christian
@@ -21,6 +30,15 @@ def Orthodox : Christian
     mod ks_hammers_in_provinces_perc = 10
     mod ks_max_population = 3
     mod ks_culture = -10
+
+    religious_tension
+	{
+		float Catholic = 5
+		float Orthodox = 0
+		float Sunni = 10
+		float Shia = 10
+		float Pagan = 5
+	}
 }
 
 def Pagan : Religion
@@ -29,6 +47,15 @@ def Pagan : Religion
     mod ks_army_morale = 2
     mod ks_commerce_religion = 5
     mod ks_base_levy_income = -5
+
+    religious_tension
+	{
+		float Catholic = 10
+		float Orthodox = 5
+		float Sunni = 10
+		float Shia = 10
+		float Pagan = 0
+	}
 }
 
 def Shia : Muslim
@@ -37,6 +64,15 @@ def Shia : Muslim
     mod ks_base_gold_income = 5
     mod ks_hammers_in_provinces_perc = 5
     mod ks_corruption = 5
+
+    religious_tension
+	{
+		float Catholic = 15
+		float Orthodox = 10
+		float Sunni = 5
+		float Shia = 0
+		float Pagan = 5
+	}
 }
 
 def Sunni : Muslim
@@ -45,6 +81,15 @@ def Sunni : Muslim
     mod ks_hammers_in_provinces_perc = 5
     mod ks_max_population = 3
     mod ks_corruption = 5
+
+    religious_tension
+	{
+		float Catholic = 15
+		float Orthodox = 10
+		float Sunni = 5
+		float Shia = 0
+		float Pagan = 10
+	}
 }
 
 // Old Values

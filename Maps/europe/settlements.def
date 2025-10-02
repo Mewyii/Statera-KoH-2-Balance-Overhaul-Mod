@@ -1,0 +1,1412 @@
+extend Settlements
+{
+	europe
+	{
+		def 465 : Castle
+		{
+			name = "Constantinople"
+			position = 2607.53, 1117.23
+			coastal = true
+			forest = true
+			rotation = 3.248042
+			citadel = 3.139939, -0.6400179
+			{
+				architecture = "Roman"
+				rotation = 15.28501
+			}
+			houses = "Roman"
+			{
+				1 = 1.84003, -6.87994 { rotation = 230.0797 }
+				2 = 1.75004, 3.97003 { rotation = 299.9999 }
+				3 = -4.92992, 3.82004 { rotation = 239.9999 }
+				4 = -3.57008, 0.40997 { rotation = -0.00006 }
+				5 = -1.80005, 3.06003 { rotation = 59.99994 }
+				6 = 9.35984, 0.06 { rotation = 52.74763 }
+				7 = -1.29, -8.25016 { rotation = 340.1427 }
+				8 = -6.09988, -9.38004 { rotation = 112.7476 }
+				9 = 6.60992, -3.92 { rotation = 164.1293 }
+				10 = -3.62004, -5.98997 { rotation = 238.4642 }
+				11 = 3.709849, -4.400023
+				{
+					type = "Fillers"
+					rotation = 234.0906
+				}
+				12 = -9.780041, -7.959978
+				{
+					type = "Fillers"
+					rotation = 354.0906
+				}
+				13 = -0.6099409, -4.7601
+				{
+					type = "Fillers"
+					rotation = 38.34473
+				}
+				14 = -0.4099942, -12.42001
+				{
+					type = "Fillers"
+					rotation = 9.382828
+				}
+				15 = 2.753377, -11.43047
+				{
+					type = "Fillers"
+					rotation = 354.0906
+				}
+				16 = 6.719955, 2.689997
+				{
+					type = "Fillers"
+					rotation = 278.3447
+				}
+				17 = -6.50999, -1.930053
+				{
+					type = "Fillers"
+					rotation = 354.0906
+				}
+				18 = 8.999811, -2.249311
+				{
+					type = "Fillers"
+					rotation = 52.14848
+				}
+				19 = -11.27997, -10.48994 { rotation = 59.99994 }
+				20 = -9.420006, 2.879959 { rotation = 178.9441 }
+				21 = -9.920034, 6.740031 { rotation = 59.99994 }
+				22 = -2.950043, -12.40998
+				{
+					type = "Fillers"
+					rotation = 335.0414
+				}
+				23 = -2.19009, -2.550059 { rotation = 238.4642 }
+				24 = -5.280051, -3.979993
+				{
+					type = "Fillers"
+					rotation = 354.0906
+				}
+				25 = 5.0599, -6.299971
+				{
+					type = "Fillers"
+					rotation = 278.3447
+				}
+				26 = 4.470927, 3.690642
+				{
+					type = "Fillers"
+					rotation = 16.80323
+				}
+				27 = -14, 0.45 { rotation = 354.0906 }
+				28 = -13.8, -4.4 { rotation = 154.0906 }
+				29 = -13.25, 5 { rotation = 354.0906 }
+				30 = -11.5, -2 { rotation = 254.0906 }
+				31 = -16.5, 3 { rotation = 314.0906 }
+				32 = -19, 1 { rotation = 314.0906 }
+				33 = -15, -9 { rotation = 314.0906 }
+				34 = -11.5, -6 { rotation = 61.3628 }
+				35 = -17, 8 { rotation = 61.3628 }
+				36 = -6.36875, 0.25402 { rotation = 0 }
+				37 = -6.01875, -5.59598 { rotation = 0 }
+			}
+			wall = -0.5759, 0.60523
+			{
+				towers_architecture = "Roman"
+				segments_architecture = "Roman"
+				level = 4
+				curveness = 0.5
+				corners
+				{
+					1 = -7.52008, 2.43 { height_ofs = -0.12168 }
+					2 = -9.2, -1.42997 { height_ofs = 0.18112 }
+					14 = -7.90349, -6.87409
+					15 = -8.60991, -10.39001
+					13 = -7.55991, -11.89001
+					3 = -3.85991, -10.79001 { height_ofs = 0.00967 }
+					4 = 1.5099, -11.13001 { height_ofs = -0.65077 }
+					5 = 5.88005, -8.42994 { height_ofs = 0.15436 }
+					6 = 9.30011, -5.99996 { height_ofs = -0.22436 }
+					7 = 12.45976, -3.50981 { height_ofs = 0.55334 }
+					8 = 12.09027, 0.94993 { height_ofs = 0.76258 }
+					9 = 8.61999, 3.61036
+					10 = 4.41992, 5.26005
+					11 = -1.16962, 6.28986
+					12 = -7.20999, 6.07996
+				}
+			}
+		}
+		
+		def 2106 : Settlement
+		{
+			position = 2586, 1113
+			forest = false
+			houses = "Roman"
+		}
+
+		def 2107 : Settlement
+		{
+			position = 2584.9, 1126
+			forest = false
+			houses = "Roman"
+		}
+
+		def 2108 : Settlement
+		{
+			position = 2571, 1120
+			forest = false
+			houses = "Roman"
+		}
+
+		def 95 : Castle
+		{
+			name = "Nicaea"
+			position = 2671.3, 1086.4
+			houses = "Roman"
+			{
+				11 = -8, -10 { rotation = 61.3628 }
+				12 = -7, -6 { rotation = 61.3628 }
+				13 = -5, -8 { rotation = 61.3628 }
+			}
+		}
+
+		def 2109 : Settlement
+		{
+			position = 2734.3, 1089.4
+			forest = false
+			houses = "Roman"
+		}
+
+		def 2110 : Settlement
+		{
+			position = 2669.3, 1064.4
+			forest = false
+			houses = "Roman"
+		}
+
+		def 69 : Castle
+		{
+			name = "Palermo"
+			position = 1843.47, 927.64
+			coastal = true
+			forest = true
+			rotation = 3.248042
+			citadel = 0.1600408, -0.4200129
+			{
+				architecture = "Roman"
+				rotation = 15.28501
+			}
+			houses = "Roman"
+			{
+				1 = 1.84003, -6.87994 { rotation = 230.0797 }
+				2 = 1.75004, 3.97003 { rotation = 299.9999 }
+				3 = -4.87992, 3.67004 { rotation = 239.9999 }
+				4 = -4.27008, 0.40997 { rotation = -0.00006 }
+				5 = -1.80005, 3.06003 { rotation = 59.99994 }
+				6 = 7.25984, 0.16 { rotation = 52.74763 }
+				7 = -1.29, -8.25016 { rotation = 340.1427 }
+				8 = -6.24988, -8.33004 { rotation = 112.7476 }
+				9 = 6.60992, -3.92 { rotation = 164.1293 }
+				10 = -3.12004, -5.33997 { rotation = 238.4642 }
+				11 = -8.410062, -4.309966
+				{
+					type = "Fillers"
+					rotation = 294.0906
+				}
+				12 = 0.3700384, -7.88
+				{
+					type = "Fillers"
+					rotation = 54.09058
+				}
+				13 = 1.230032, -4.399962
+				{
+					type = "Fillers"
+					rotation = 338.3447
+				}
+				14 = 9.490076, -1.290122
+				{
+					type = "Fillers"
+					rotation = 338.3447
+				}
+				15 = -5.980067, -1.870086
+				{
+					type = "Fillers"
+					rotation = 174.0906
+				}
+				16 = -8.510056, 2.640054
+				{
+					type = "Fillers"
+					rotation = 338.3447
+				}
+				17 = -1.079978, 4.520046
+				{
+					type = "Fillers"
+					rotation = 114.0906
+				}
+				18 = 2.55, -12.3 { rotation = 241.3628 }
+				19 = 13.2, -9.4 { rotation = 221.3628 }
+				20 = -4.9, -11.1 { rotation = 131.3628 }
+				21 = 6.25, -12.25 { rotation = 311.3628 }
+				22 = 8, -9.5 { rotation = 111.3628 }
+				23 = 3.9, -9.5 { rotation = 271.3628 }
+				24 = 11, 2 { rotation = 271.3628 }
+				25 = -10.6, -1.1 { rotation = 271.3628 }
+				26 = 9.48125, -5.09598 { rotation = 50 }
+				27 = 6.23125, -6.94598 { rotation = 123 }
+				28 = 13.13125, -12.64598 { rotation = 53 }
+				29 = 0.78125, -10.59598 { rotation = 311 }
+				30 = 4.03125, 1.70402 { rotation = 0 }
+			}
+			wall = -0.5759, 0.60523
+			{
+				towers_architecture = "Roman"
+				segments_architecture = "Roman"
+				level = 4
+				curveness = 0.5
+				corners
+				{
+					1 = -7.18055, -2.51035
+					2 = -4.75013, -6.41018 { height_ofs = -0.10375 }
+					3 = -2.76036, -8.87972
+					4 = -1.81903, -12.62048 { height_ofs = 0.34649 }
+					14 = 1.17272, -14.34329
+					15 = 7.50661, -14.526
+					13 = 10.60661, -12.476
+					5 = 10.77011, -8.5998 { height_ofs = -0.5629 }
+					6 = 12.4899, -5.51984 { height_ofs = -0.04586 }
+					7 = 12.90004, -1.9098 { height_ofs = 0.46332 }
+					8 = 8.24008, 1.71044
+					9 = 5.08008, 5.36975 { height_ofs = 0.2498 }
+					12 = 1.21928, 5.49205
+					10 = -3.86966, 5.58998
+					11 = -6.36993, 2.43005
+				}
+			}
+		}
+
+		def 2111 : Settlement
+		{
+			position = 1834, 907
+			forest = false
+			houses = "Roman"
+		}
+
+		def 2112 : Settlement
+		{
+			position = 1872, 896
+			forest = false
+			houses = "Roman"
+		}
+
+		def 239 : Castle
+		{
+			name = "Baghdad"
+			position = 3252.9, 716
+			forest = true
+			rotation = 323.4794
+			citadel = 0.1600717, -0.4201258
+			{
+				architecture = "Arab"
+				rotation = 15.28501
+			}
+			houses = "Arab"
+			{
+				1 = -1.73999, -6.50008 { rotation = 77.31794 }
+				2 = 2.84008, 3.67979 { rotation = 59.99994 }
+				3 = 5.32123, 0.9329 { rotation = 59.99994 }
+				4 = -4.38007, 0.3401 { rotation = 179.9999 }
+				5 = 7.36998, 6.76005 { rotation = 172.7476 }
+				6 = 4.27002, -6.88995 { rotation = 280.1427 }
+				7 = 5.20998, -3.12003 { rotation = 112.7476 }
+				8 = -4.12994, 3.47 { rotation = 1.3628 }
+				9 = -3.78999, -4.27006 { rotation = 301.3628 }
+				10 = 0.37021, -7.88012 { rotation = 294.0906 }
+				{
+					type = "Fillers"
+					rotation = 294.0906
+				}
+				11 = 1.229986, -4.399957
+				{
+					type = "Fillers"
+					rotation = 38.34473
+				}
+				12 = 5.239972, -10.04993
+				{
+					type = "Fillers"
+					rotation = 98.34473
+				}
+				13 = -5.980031, -1.870136
+				{
+					type = "Fillers"
+					rotation = 234.0906
+				}
+				14 = -8.569892, -6.030047
+				{
+					type = "Fillers"
+					rotation = 98.34473
+				}
+				15 = -1.080019, 4.520014
+				{
+					type = "Fillers"
+					rotation = 294.0906
+				}
+				16 = 2.25011, -12.40005 { rotation = 172.7476 }
+				17 = 2.38125, -9.64598 { rotation = 13 }
+				18 = 2.73125, -1.29598 { rotation = 50 }
+				19 = -6.86875, 10.25402 { rotation = 80 }
+				20 = -9.06875, -2.24598 { rotation = 150 }
+				21 = -6.86875, 2.05402 { rotation = 310 }
+				22 = -12.31875, 0.00402 { rotation = 123 }
+				23 = -6.56875, -13.99598 { rotation = 204 }
+				24 = -9.16875, 8.20402 { rotation = 280 }
+				25 = -5.91875, -9.69598 { rotation = 500 }
+				26 = 2.23125, 9.45402 { rotation = 0 }
+				27 = -3.81875, 6.60402 { rotation = 30 }
+				28 = -2.71875, -9.44598 { rotation = 80 }
+				29 = -9.26875, -8.19598 { rotation = 90 }
+				30 = -5.46875, -6.99598 { rotation = 10 }
+				31 = -0.56875, 6.15402 { rotation = 190 }
+				32 = -6.46875, 4.65402 { rotation = 50 }
+				33 = -1.16875, 13.15402 { rotation = 10 }
+				34 = -12.96875, -13.79598 { rotation = 310 }
+				35 = -0.41875, -17.39598 { rotation = 30 }
+				36 = 3.03125, -16.34598 { rotation = 10 }
+				37 = -7.16875, -3.79598 { rotation = 0 }
+				38 = -1.01875, -3.54598 { rotation = 0 }
+				39 = -0.86875, -11.39598 { rotation = 0 }
+			}
+			wall = -0.5759, 0.60523
+			{
+				towers_architecture = "Arab"
+				segments_architecture = "Arab"
+				level = 4
+				curveness = 0.5
+				corners
+				{
+					1 = -5.41924, 8.42998
+					2 = -8.62964, 5.13915
+					3 = -9.35028, 0.8898 { height_ofs = -0.10375 }
+					4 = -11.16082, -3.42943
+					5 = -12.21964, -7.97047 { height_ofs = 0.34649 }
+					16 = -10.58023, -11.30025
+					15 = -7.48023, -11.65025
+					14 = -3.93023, -12.05025
+					13 = 0.51977, -14.30025
+					12 = 4.76977, -13.70025
+					6 = 7.26977, -10.30025 { height_ofs = -0.5629 }
+					7 = 7.0898, -6.32978 { height_ofs = -0.10042 }
+					8 = 8.45016, 0.54094 { height_ofs = 0.46332 }
+					9 = 6.79058, 4.46127
+					10 = 2.58065, 6.9192 { height_ofs = 0.2498 }
+					11 = -1.71942, 8.99078
+				}
+			}
+		}
+
+		def 2113 : Settlement
+		{
+			position = 3234.9, 723
+			forest = false
+			houses = "Arab"
+		}
+
+		def 2114 : Settlement
+		{
+			position = 3252.9, 675
+			forest = false
+			houses = "Arab"
+		}
+
+		def 2115 : Settlement
+		{
+			position = 3262.1, 697
+			forest = false
+			houses = "Arab"
+		}
+
+		def 2116 : Settlement
+		{
+			position = 3295.9, 594
+			forest = false
+			houses = "Arab"
+		}
+
+		def 2117 : Settlement
+		{
+			position = 3281.9, 571
+			forest = false
+			houses = "Arab"
+		}
+
+		def 172 : Castle
+		{
+			name = "Cairo"
+			position = 2701.3, 430.2
+			forest = true
+			rotation = 150.3649
+			citadel = 0.1601338, -0.4201169
+			{
+				architecture = "Egypt"
+				rotation = 15.28501
+			}
+			houses = "Arab"
+			{
+				1 = -1.13997, -6.05003 { rotation = 17.31794 }
+				2 = 2.84011, 3.68002 { rotation = 299.9999 }
+				3 = 5.52115, 2.13287 { rotation = 299.9999 }
+				4 = -4.37996, 0.33991 { rotation = 299.9999 }
+				5 = 3.81009, 8.81013 { rotation = 59.99994 }
+				6 = 4.10008, -11.50007 { rotation = 292.7476 }
+				7 = 4.57009, -5.59003 { rotation = 160.1427 }
+				8 = 5.30989, -1.37005 { rotation = 292.7476 }
+				9 = -4.98007, 4.72003 { rotation = 241.3628 }
+				10 = -3.79001, -4.26996 { rotation = 241.3628 }
+				11 = 0.3006073, 9.182158
+				{
+					type = "Fillers"
+					rotation = 294.0906
+				}
+				12 = 0.3701878, -7.880088
+				{
+					type = "Fillers"
+					rotation = 54.09058
+				}
+				13 = 1.230068, -4.400046
+				{
+					type = "Fillers"
+					rotation = 338.3447
+				}
+				14 = -8.800109, 5.900055
+				{
+					type = "Fillers"
+					rotation = 338.3447
+				}
+				15 = -5.980137, -1.870055
+				{
+					type = "Fillers"
+					rotation = 174.0906
+				}
+				16 = -9.400005, 2.799994
+				{
+					type = "Fillers"
+					rotation = 338.3447
+				}
+				17 = -1.079827, 4.51997
+				{
+					type = "Fillers"
+					rotation = 114.0906
+				}
+				18 = -3.06875, 6.20402 { rotation = 0 }
+				19 = -7.01875, 6.70402 { rotation = 50 }
+				20 = -7.61875, 1.20402 { rotation = 150 }
+				21 = -7.01875, -6.74598 { rotation = 0 }
+				22 = -4.51875, -8.19598 { rotation = 80 }
+				23 = 2.98125, 0.15402 { rotation = 170 }
+				24 = -10.41875, -8.59598 { rotation = 90 }
+				25 = -8.86875, -11.89598 { rotation = 0 }
+				26 = -14.26875, 6.90402 { rotation = 30 }
+				27 = 3.43125, -3.09598 { rotation = 200 }
+				28 = -7.51875, 3.55402 { rotation = 20 }
+				29 = 0.13125, 2.00402 { rotation = 140 }
+				30 = -1.41875, -9.14598 { rotation = 50 }
+				31 = 2.63125, -7.94598 { rotation = 0 }
+				32 = 0.63125, 5.10402 { rotation = 10 }
+				33 = -9.06875, -0.64598 { rotation = 25 }
+				34 = -7.56875, -3.79598 { rotation = 60 }
+				35 = -9.96875, 4.50402 { rotation = 0 }
+				36 = -3.01875, 2.95402 { rotation = 0 }
+			}
+			wall = -0.5759, 0.60523
+			{
+				towers_architecture = "Egypt"
+				segments_architecture = "Egypt"
+				level = 4
+				curveness = 0.5
+				corners
+				{
+					1 = 7.13012, -3.86025 { height_ofs = -0.04697 }
+					2 = 8.44929, 0.53972 { height_ofs = 0.46332 }
+					3 = 6.78976, 4.45986
+					4 = 1.3303, 6.66954 { height_ofs = 0.2498 }
+					5 = -3.87053, 8.0896
+					6 = -9.76994, 8.27995
+					7 = -11.87989, 4.33932
+					8 = -11.45052, -0.36053 { height_ofs = -0.10375 }
+					9 = -9.30938, -2.52878
+					14 = -8.71299, -5.33819
+					13 = -8.36299, -8.88819
+					12 = -5.01299, -10.93819
+					10 = 0.18161, -11.72066 { height_ofs = 0.34649 }
+					11 = 6.6698, -8.1004
+				}
+			}
+		}
+
+		def 2118 : Settlement
+		{
+			position = 2741.3, 460.2
+			forest = false
+			houses = "Arab"
+		}
+
+		def 2119 : Settlement
+		{
+			position = 2721.3, 440.2
+			forest = false
+			houses = "Arab"
+		}
+
+		def 36 : Castle
+		{
+			name = "Alexandria"
+			position = 2631.2, 491
+			coastal = true
+			forest = true
+			rotation = 212.7683
+			citadel = 0.9299008, -0.8100166
+			{
+				architecture = "Egypt"
+				rotation = 15.28501
+			}
+			houses = "Arab"
+			{
+				1 = 1.84018, -6.72998 { rotation = 257.3179 }
+				2 = 1.7501, 3.97005 { rotation = 299.9999 }
+				3 = 5.6202, 2.24003 { rotation = 239.9999 }
+				4 = -4.27003, 0.40993 { rotation = -0.00006 }
+				5 = -1.96997, 3.65999 { rotation = 59.99994 }
+				6 = 8.61001, 0.45988 { rotation = 52.74763 }
+				7 = -1.29006, -8.25005 { rotation = 340.1427 }
+				8 = 5.84004, -2.60008 { rotation = 112.7476 }
+				9 = -4.65997, -12.90997 { rotation = 164.1293 }
+				10 = -3.68004, -5.56997 { rotation = 238.4642 }
+				11 = 3.70988, -4.400009
+				{
+					type = "Fillers"
+					rotation = 234.0906
+				}
+				12 = -1.409776, -12.60998
+				{
+					type = "Fillers"
+					rotation = 354.0906
+				}
+				13 = -0.610142, -4.759983
+				{
+					type = "Fillers"
+					rotation = 38.34473
+				}
+				14 = -7.079752, -8.219925
+				{
+					type = "Fillers"
+					rotation = 278.3447
+				}
+				15 = 1.069978, -9.81997
+				{
+					type = "Fillers"
+					rotation = 354.0906
+				}
+				16 = 13.30997, -0.2300501
+				{
+					type = "Fillers"
+					rotation = 278.3447
+				}
+				17 = -3.869984, -2.669931
+				{
+					type = "Fillers"
+					rotation = 354.0906
+				}
+				18 = 8.999715, -2.249368
+				{
+					type = "Fillers"
+					rotation = 52.14848
+				}
+				19 = 13.81018, 3.19999 { rotation = 59.99994 }
+				20 = 10.78008, 4.860057 { rotation = 178.9441 }
+				21 = 5.74995, 7.329996 { rotation = 59.99994 }
+				22 = 15.06045, 0.9373362
+				{
+					type = "Fillers"
+					rotation = 278.3447
+				}
+				23 = -8.71875, -10.34598 { rotation = 10 }
+				24 = -1.61875, -10.74598 { rotation = 190 }
+				25 = -1.66875, -14.14598 { rotation = 30 }
+				26 = -3.81875, -9.69598 { rotation = 341 }
+				27 = -1.66875, 1.10402 { rotation = 50 }
+				28 = -2.96875, -17.29598 { rotation = 100 }
+				29 = -11.96875, -14.19598 { rotation = 75 }
+			}
+			wall = -0.5759, 0.60523
+			{
+				towers_architecture = "Egypt"
+				segments_architecture = "Egypt"
+				level = 4
+				curveness = 0.5
+				corners
+				{
+					1 = 4.41984, 5.25998
+					2 = -1.16969, 6.28995
+					3 = -6.86008, -1.00988
+					13 = -6.05655, -5.86916
+					12 = -5.35655, -9.06916
+					4 = -6.77003, -12.74001
+					14 = -5.45403, -15.32339
+					5 = 0.59023, -15.74953
+					6 = 1.96039, -12.53002 { height_ofs = 0.02194 }
+					7 = 5.01007, -7.9402 { height_ofs = -0.01517 }
+					8 = 8.73009, -5.41978 { height_ofs = -0.38765 }
+					9 = 12.45983, -3.50991 { height_ofs = 0.55334 }
+					10 = 12.08979, 0.95008 { height_ofs = 0.76258 }
+					11 = 8.62001, 3.61032
+				}
+			}
+		}
+
+		def 2120 : Settlement
+		{
+			position = 2651.2, 487
+			forest = false
+			houses = "Arab"
+		}
+
+		def 180 : Castle
+		{
+			name = "Ispahan"
+			position = 3540.9, 697.7
+			forest = true
+			rotation = 3.248042
+			citadel = 0.1199155, 0.5800528
+			{
+				architecture = "Arab"
+				rotation = 15.28501
+			}
+			houses = "Arab"
+			{
+				1 = 4.6401, -0.82008 { rotation = 52.74765 }
+				2 = 4.84443, -7.14845 { rotation = 220.1427 }
+				3 = 3.3899, -4.16992 { rotation = 52.74757 }
+				4 = -8.90229, -2.7513 { rotation = 61.3628 }
+				5 = 0.5098347, -4.300044
+				{
+					type = "Fillers"
+					rotation = 234.0906
+				}
+				6 = -6.869958, 1.750044
+				{
+					type = "Fillers"
+					rotation = 354.0906
+				}
+				7 = -2.300097, -4.269932
+				{
+					type = "Fillers"
+					rotation = 38.34473
+				}
+				8 = -3.870112, 0.1400806
+				{
+					type = "Fillers"
+					rotation = 278.3447
+				}
+				9 = 4.370051, 2.370061
+				{
+					type = "Fillers"
+					rotation = 54.09058
+				}
+				10 = -4.580013, -2.319987
+				{
+					type = "Fillers"
+					rotation = 114.0906
+				}
+				11 = -8.16875, 2.75402 { rotation = 75 }
+				12 = -9.81875, 0.30402 { rotation = 30 }
+				13 = -6.76875, -0.74598 { rotation = 100 }
+				14 = 7.18125, -8.99598 { rotation = 50 }
+				15 = 9.83125, -4.99598 { rotation = 0 }
+				16 = 7.83125, -1.89598 { rotation = 75 }
+				17 = -0.51875, -5.74598 { rotation = 30 }
+				18 = -5.06875, -4.49598 { rotation = 0 }
+				19 = -2.46875, 2.20402 { rotation = 100 }
+				20 = -0.66875, 4.30402 { rotation = 0 }
+				21 = -5.36875, 4.15402 { rotation = 50 }
+				22 = 3.33125, 4.60402 { rotation = 30 }
+				23 = 7.23125, 1.15402 { rotation = 75 }
+				24 = 6.33125, -4.64598 { rotation = 100 }
+				25 = 9.18125, -7.29598 { rotation = 0 }
+				26 = -6.51875, -7.74598 { rotation = 30 }
+				27 = -10.81875, -6.64598 { rotation = 0 }
+				28 = -0.61875, -8.89598 { rotation = 50 }
+				29 = -3.16875, 9.75402 { rotation = 75 }
+				30 = 2.08125, 9.50402 { rotation = 0 }
+				31 = -8.41875, -9.74598 { rotation = 0 }
+				32 = -7.36875, 7.90402 { rotation = 0 }
+				33 = -10.46875, 5.70402 { rotation = 0 }
+				34 = -11.96875, 2.80402 { rotation = 0 }
+				35 = -12.06875, -1.54598 { rotation = 0 }
+				36 = -4.01875, 6.50402 { rotation = 0 }
+				37 = -7.61875, 5.20402 { rotation = 0 }
+			}
+			wall = -0.5759, 0.60523
+			{
+				towers_architecture = "Arab"
+				segments_architecture = "Arab"
+				level = 4
+				curveness = 0.5
+				corners
+				{
+					1 = -13.9297, 2.41981 { height_ofs = 0.20433 }
+					2 = -13.90948, -1.74009 { height_ofs = -0.13462 }
+					11 = -12.22007, -4.86004
+					15 = -8.06405, -5.40812
+					10 = -3.82007, -7.26004
+					9 = 2.22993, -7.51004
+					8 = 7.77993, -11.11004
+					13 = 11.47993, -8.56004
+					12 = 12.02993, -4.46004
+					3 = 9.62993, -1.11004 { height_ofs = 0.29842 }
+					4 = 8.9203, 3.46003 { height_ofs = 0.18481 }
+					5 = 4.19966, 6.78994 { height_ofs = 0.48298 }
+					14 = -1.07966, 6.68
+					6 = -5.87966, 9.78 { height_ofs = 0.4304 }
+					7 = -10.59058, 8.74029
+				}
+			}
+		}
+		
+		def 2121 : Settlement
+		{
+			position = 3536.5, 682.8
+			forest = false
+			houses = "Arab"
+		}
+		
+		def 2122 : Settlement
+		{
+			position = 3543.6, 711.4
+			forest = false
+			houses = "Arab"
+		}
+		
+		def 2123 : Settlement
+		{
+			position = 3518.9, 710.7
+			forest = false
+			houses = "Arab"
+		}
+
+		def 115 : Castle
+		{
+			name = "Venice"
+			position = 1774, 1376.48
+			coastal = true
+			forest = true
+			rotation = 349.4611
+			citadel = 0.9299191, -0.8099694
+			{
+				architecture = "Central"
+				rotation = 15.28501
+			}
+			houses = "Central"
+			{
+				1 = 1.84, -6.7301 { rotation = 257.3179 }
+				2 = 1.75004, 3.97003 { rotation = 299.9999 }
+				3 = 5.61998, 2.23998 { rotation = 239.9999 }
+				4 = -4.27011, 0.16 { rotation = -0.00006 }
+				5 = -2.67003, 3.10986 { rotation = 59.99994 }
+				6 = 8.60998, 0.45994 { rotation = 52.74763 }
+				7 = -1.28999, -8.25003 { rotation = 340.1427 }
+				8 = 5.14, -1.50005 { rotation = 112.7476 }
+				9 = -8.73006, -2.90004 { rotation = 164.1293 }
+				10 = -3.6801, -5.57003 { rotation = 238.4642 }
+				11 = 3.709958, -4.400004
+				{
+					type = "Fillers"
+					rotation = 234.0906
+				}
+				12 = -1.410024, -12.60997
+				{
+					type = "Fillers"
+					rotation = 354.0906
+				}
+				13 = -0.6100322, -4.759981
+				{
+					type = "Fillers"
+					rotation = 38.34473
+				}
+				14 = -7.459966, -7.18001
+				{
+					type = "Fillers"
+					rotation = 278.3447
+				}
+				15 = 1.06999, -9.819854
+				{
+					type = "Fillers"
+					rotation = 354.0906
+				}
+				16 = 13.31003, -0.2299527
+				{
+					type = "Fillers"
+					rotation = 278.3447
+				}
+				17 = -3.870156, -2.66994
+				{
+					type = "Fillers"
+					rotation = 354.0906
+				}
+				18 = 8.999807, -2.249346
+				{
+					type = "Fillers"
+					rotation = 52.14848
+				}
+				19 = 13.81007, 3.19995 { rotation = 59.99994 }
+				20 = 10.78, 4.86005 { rotation = 178.9441 }
+				21 = -4.7134, -12.30177 { rotation = 59.99994 }
+				22 = 15.06039, 0.9373667
+				{
+					type = "Fillers"
+					rotation = 278.3447
+				}
+				23 = -11.66875, -9.09598 { rotation = 111 }
+				24 = -3.71875, -9.44598 { rotation = 10 }
+				25 = -1.81875, -14.14598 { rotation = 170 }
+				26 = -8.61875, -13.79598 { rotation = 50 }
+				27 = -4.76875, -18.34598 { rotation = 0 }
+				28 = -1.31875, 0.85402 { rotation = 80 }
+				29 = -1.71875, -2.84598 { rotation = 160 }
+				30 = -5.11875, -3.09598 { rotation = 10 }
+				31 = 2.68125, 2.65402 { rotation = 0 }
+				32 = -0.76875, 4.40402 { rotation = 0 }
+				33 = -9.66875, 7.15402 { rotation = 0 }
+				34 = 6.43125, -4.29598 { rotation = 0 }
+			}
+			wall = -0.5759, 0.60523
+			{
+				towers_architecture = "Central"
+				segments_architecture = "Central"
+				level = 4
+				curveness = 0.5
+				corners
+				{
+					1 = -6.21011, 1.0402
+					2 = -6.86989, -4.04012
+					14 = -5.65985, -7.09977
+					13 = -6.70985, -10.49977
+					12 = -5.95985, -14.79977
+					3 = -0.45985, -16.84977
+					4 = 1.96008, -12.52978 { height_ofs = 0.02194 }
+					5 = 5.00981, -7.94009 { height_ofs = -0.01517 }
+					6 = 8.73012, -5.4202 { height_ofs = -0.38765 }
+					7 = 12.46005, -3.51001 { height_ofs = 0.55334 }
+					8 = 12.09005, 0.95029 { height_ofs = 0.76258 }
+					9 = 8.61966, 3.61001
+					10 = 4.41969, 5.26003
+					11 = -1.17005, 6.29002
+				}
+			}
+		}
+		
+		def 2124 : Settlement
+		{
+			position = 1760.5, 1373
+			forest = false
+			houses = "Central"
+		}
+		
+		def 2125 : Settlement
+		{
+			position = 1781, 1389
+			forest = false
+			houses = "Central"
+		}
+
+		def 158 : Castle
+		{
+			name = "Rome"
+			position = 1815.2, 1150
+			forest = true
+			rotation = 105.418
+			citadel = 0.1600443, -0.4200785
+			{
+				architecture = "Central"
+				rotation = 15.28501
+			}
+			houses = "Central"
+			{
+				1 = -1.13998, -6.04998 { rotation = 17.31794 }
+				2 = 2.84004, 3.67997 { rotation = 299.9999 }
+				3 = 5.32117, 0.93288 { rotation = 299.9999 }
+				4 = -4.37997, 0.33997 { rotation = 299.9999 }
+				5 = 9.40005, 4.39 { rotation = 59.99994 }
+				6 = 8.45995, -4.15982 { rotation = 292.7476 }
+				7 = 3.11994, -6.88993 { rotation = 160.1427 }
+				8 = 4.11008, -3.61997 { rotation = 292.7476 }
+				9 = -4.13004, 3.47011 { rotation = 241.3628 }
+				10 = -3.78998, -4.27004 { rotation = 241.3628 }
+				11 = -8.410118, -4.309967
+				{
+					type = "Fillers"
+					rotation = 294.0906
+				}
+				12 = 0.3700212, -7.880043
+				{
+					type = "Fillers"
+					rotation = 54.09058
+				}
+				13 = 1.230024, -4.399938
+				{
+					type = "Fillers"
+					rotation = 338.3447
+				}
+				14 = 9.49007, -1.290127
+				{
+					type = "Fillers"
+					rotation = 338.3447
+				}
+				15 = -5.980009, -1.870034
+				{
+					type = "Fillers"
+					rotation = 174.0906
+				}
+				16 = -8.510126, 2.640133
+				{
+					type = "Fillers"
+					rotation = 338.3447
+				}
+				17 = -1.079931, 4.520093
+				{
+					type = "Fillers"
+					rotation = 114.0906
+				}
+				18 = 6.58125, 9.55402 { rotation = 90 }
+				19 = -11.56875, 0.50402 { rotation = 50 }
+				20 = 2.98125, -1.04598 { rotation = 0 }
+				21 = -6.21875, 2.20402 { rotation = 80 }
+				22 = -3.66875, 6.80402 { rotation = 50 }
+				23 = -7.71875, -6.64598 { rotation = 10 }
+				24 = -4.11875, -7.04598 { rotation = 0 }
+				25 = -0.41875, 2.50402 { rotation = 30 }
+				26 = -1.76875, 14.35402 { rotation = 0 }
+				27 = -9.96875, -12.29598 { rotation = 0 }
+			}
+			wall = -0.5759, 0.60523
+			{
+				towers_architecture = "Central"
+				segments_architecture = "Central"
+				level = 4
+				curveness = 0.5
+				corners
+				{
+					1 = 6.67015, -8.0997 { height_ofs = -0.5629 }
+					2 = 6.63975, -4.17023 { height_ofs = -0.04586 }
+					3 = 8.4499, 0.54062 { height_ofs = 0.46332 }
+					4 = 6.79045, 4.46086
+					5 = 1.0298, 5.86905 { height_ofs = 0.2498 }
+					6 = -1.66954, 8.4908
+					7 = -4.31998, 9.2297
+					8 = -7.48037, 5.13959
+					9 = -8.00073, -0.36053 { height_ofs = -0.10375 }
+					15 = -10.38018, -4.11295
+					14 = -10.23018, -7.31295
+					13 = -8.43018, -8.76295
+					12 = -3.98018, -8.76295
+					10 = -0.56099, -10.32976
+					11 = 3.33032, -10.22075
+				}
+			}
+		}
+
+		
+		def 2126 : Settlement
+		{
+			position = 1827.2, 1140
+			forest = false
+			houses = "Central"
+		}
+
+		def 229 : Castle
+		{
+			name = "Genoa"
+			position = 1609.4, 1317.7
+			coastal = true
+			forest = true
+			rotation = 44.04524
+			citadel = 0.9299884, -0.809982
+			{
+				architecture = "Central"
+				rotation = 15.28501
+			}
+			houses = "Central"
+			{
+				1 = 1.839994, -6.730034 { rotation = 257.3179 }
+				2 = 1.750004, 3.970015 { rotation = 299.9999 }
+				3 = 5.620038, 2.23998 { rotation = 239.9999 }
+				4 = -4.270068, 0.4099159 { rotation = -5.656251E-05 }
+				5 = -1.970063, 3.659935 { rotation = 59.99994 }
+				6 = 8.60998, 0.4599502 { rotation = 52.74763 }
+				7 = -1.289978, -8.250005 { rotation = 340.1427 }
+				8 = 5.84006, -2.600083 { rotation = 112.7476 }
+				9 = -4.309969, -12.20999 { rotation = 164.1293 }
+				10 = -3.680044, -5.569983 { rotation = 238.4642 }
+				11 = 3.709944, -4.40002
+				{
+					type = "Fillers"
+					rotation = 234.0906
+				}
+				12 = -1.409947, -12.61002
+				{
+					type = "Fillers"
+					rotation = 354.0906
+				}
+				13 = -0.6100761, -4.760015
+				{
+					type = "Fillers"
+					rotation = 38.34473
+				}
+				14 = -7.079893, -8.219989
+				{
+					type = "Fillers"
+					rotation = 278.3447
+				}
+				15 = 1.069986, -9.819942
+				{
+					type = "Fillers"
+					rotation = 354.0906
+				}
+				16 = 13.31005, -0.230017
+				{
+					type = "Fillers"
+					rotation = 278.3447
+				}
+				17 = -3.870154, -2.669966
+				{
+					type = "Fillers"
+					rotation = 354.0906
+				}
+				18 = 8.999754, -2.249326
+				{
+					type = "Fillers"
+					rotation = 52.14848
+				}
+				19 = 13.81007, 3.199952 { rotation = 59.99994 }
+				20 = 10.78006, 4.860047 { rotation = 178.9441 }
+				21 = 5.749928, 7.330003 { rotation = 59.99994 }
+				22 = 15.06039, 0.9373295
+				{
+					type = "Fillers"
+					rotation = 278.3447
+				}
+				23 = -1.81875, -1.54598 { rotation = 10 }
+				24 = 5.68125, -1.29598 { rotation = 110 }
+				25 = 1.08125, 12.70402 { rotation = 50 }
+				26 = -12.76875, -7.54598 { rotation = 90 }
+				27 = -10.76875, -1.44598 { rotation = 310 }
+			}
+			wall = -0.5759, 0.60523
+			{
+				towers_architecture = "Central"
+				segments_architecture = "Central"
+				level = 4
+				curveness = 0.5
+				corners
+				{
+					1 = -6.019861, -6.090104 { straight = true }
+					2 = -3.209889, -10.34995 { straight = true }
+					3 = 1.960008, -12.53001
+					{
+						straight = true
+						height_ofs = 0.02193642
+					}
+					4 = 5.01001, -7.939978
+					{
+						straight = true
+						height_ofs = -0.0151701
+					}
+					5 = 8.730042, -5.419966
+					{
+						straight = true
+						height_ofs = -0.3876495
+					}
+					6 = 12.46002, -3.510034
+					{
+						straight = true
+						height_ofs = 0.5533447
+					}
+					7 = 12.09002, 0.9502642
+					{
+						straight = true
+						height_ofs = 0.7625761
+					}
+					8 = 8.619647, 3.610134 { straight = true }
+					9 = 4.41971, 5.26003 { straight = true }
+					10 = -1.16992, 6.289936 { straight = true }
+					11 = -6.85995, -1.009814 { straight = true }
+				}
+			}
+		}
+
+		def 118 : Castle
+		{
+			name = "Damascus"
+			position = 3044.007, 637.0834
+			forest = true
+			rotation = 116.6013
+			citadel = 0.1600553, -0.4200624
+			{
+				architecture = "Arab"
+				rotation = 15.28501
+			}
+			houses = "Arab"
+			{
+				1 = -1.13997, -6.05006 { rotation = 17.31794 }
+				2 = 2.84003, 3.67979 { rotation = 299.9999 }
+				3 = 5.32116, 0.93287 { rotation = 299.9999 }
+				4 = -4.38009, 0.34006 { rotation = 299.9999 }
+				5 = 8.18037, 5.27402 { rotation = 292.7476 }
+				6 = 3.12001, -6.88988 { rotation = 160.1427 }
+				7 = 4.10992, -3.62001 { rotation = 292.7476 }
+				8 = -4.13003, 3.47014 { rotation = 241.3628 }
+				9 = -3.79004, -4.26996 { rotation = 241.3628 }
+				10 = 0.3701509, -7.88008
+				{
+					type = "Fillers"
+					rotation = 54.09058
+				}
+				11 = 1.230057, -4.40009
+				{
+					type = "Fillers"
+					rotation = 338.3447
+				}
+				12 = 5.239942, -10.04977
+				{
+					type = "Fillers"
+					rotation = 338.3447
+				}
+				13 = -5.980028, -1.870079
+				{
+					type = "Fillers"
+					rotation = 174.0906
+				}
+				14 = -0.8615569, 8.269634
+				{
+					type = "Fillers"
+					rotation = 338.3447
+				}
+				15 = -1.080116, 4.519959
+				{
+					type = "Fillers"
+					rotation = 114.0906
+				}
+				16 = 6.68125, -4.59598 { rotation = 30 }
+				17 = 8.13125, -0.49598 { rotation = 0 }
+				18 = 7.43125, 2.75402 { rotation = 80 }
+				19 = 10.63125, 2.80402 { rotation = 240 }
+				20 = 5.03125, 5.85402 { rotation = 10 }
+				21 = 8.23125, -8.64598 { rotation = 300 }
+				22 = 6.53125, -2.19598 { rotation = 50 }
+				23 = -6.61875, -12.79598 { rotation = 0 }
+				24 = 3.53125, 12.25402 { rotation = 1200 }
+				25 = 11.78125, -6.79598 { rotation = 180 }
+				26 = -12.71875, 4.80402 { rotation = 0 }
+			}
+			wall = -0.5759, 0.60523
+			{
+				towers_architecture = "Arab"
+				segments_architecture = "Arab"
+				level = 4
+				curveness = 0.5
+				corners
+				{
+					1 = 10.96978, -0.75007 { height_ofs = -0.5629 }
+					2 = 13.24093, 2.72933 { height_ofs = -0.04586 }
+					3 = 11.29978, 6.0417 { height_ofs = 0.46332 }
+					4 = 5.7905, 8.11144
+					5 = 1.03042, 5.86991 { height_ofs = 0.2498 }
+					6 = -3.86975, 5.59102
+					7 = -6.36946, 2.42978
+					8 = -7.18101, -2.51025
+					9 = -4.85038, -6.65981 { height_ofs = -0.10375 }
+					10 = -1.86005, -9.2806
+					14 = 2.43036, -10.32116
+					13 = 5.78036, -7.67116
+					12 = 8.58036, -6.22116
+					11 = 8.73036, -3.37116
+				}
+			}
+		}
+
+		def 222 : Castle
+		{
+			name = "Aleppo"
+			position = 3066.6, 811.4
+			forest = true
+			rotation = 3.248042
+			citadel = 0.119919, 0.5799919
+			{
+				architecture = "Roman"
+				rotation = 15.28501
+			}
+			houses = "Roman"
+			{
+				1 = 6.0901, -0.32008 { rotation = 52.74765 }
+				2 = 5.39442, -7.89839 { rotation = 220.1427 }
+				3 = 3.38991, -4.16998 { rotation = 52.74757 }
+				4 = -9.00229, -1.9513 { rotation = 61.3628 }
+				5 = 0.5098347, -4.300044
+				{
+					type = "Fillers"
+					rotation = 234.0906
+				}
+				6 = -6.869958, 1.750044
+				{
+					type = "Fillers"
+					rotation = 354.0906
+				}
+				7 = -2.300093, -4.269993
+				{
+					type = "Fillers"
+					rotation = 38.34473
+				}
+				8 = -3.870112, 0.1400806
+				{
+					type = "Fillers"
+					rotation = 278.3447
+				}
+				9 = 4.370051, 2.370061
+				{
+					type = "Fillers"
+					rotation = 54.09058
+				}
+				10 = -4.580013, -2.319987
+				{
+					type = "Fillers"
+					rotation = 114.0906
+				}
+				11 = -0.81875, 2.25402 { rotation = 10 }
+				12 = 6.08125, -5.14598 { rotation = 80 }
+				13 = -0.21875, -6.04598 { rotation = 240 }
+				14 = 7.28125, -2.79598 { rotation = 120 }
+				15 = 9.08125, 0.80402 { rotation = 10 }
+				16 = 0.73125, 4.80402 { rotation = 140 }
+				17 = 2.73125, -7.89598 { rotation = 30 }
+				18 = 10.88125, -5.59598 { rotation = 80 }
+				19 = 3.73125, -1.59598 { rotation = 30 }
+				20 = -3.96875, -9.44598 { rotation = 120 }
+				21 = 8.28125, 8.55402 { rotation = 50 }
+				22 = 14.58125, -2.29598 { rotation = 0 }
+				23 = -4.06875, -4.49598 { rotation = 50 }
+				24 = 5.73125, 2.20402 { rotation = 90 }
+				25 = -10.51875, 1.50402 { rotation = 150 }
+			}
+			wall = -0.5759, 0.60523
+			{
+				towers_architecture = "Roman"
+				segments_architecture = "Roman"
+				level = 4
+				curveness = 0.5
+				corners
+				{
+					1 = -5.8797, -2.58013 { height_ofs = 0.20433 }
+					2 = -6.80997, -5.69006 { height_ofs = -0.13462 }
+					11 = -2.42007, -7.31004
+					10 = 2.92993, -10.26004
+					9 = 7.27993, -9.96004
+					8 = 8.17993, -6.96004
+					14 = 9.21683, -3.00828
+					13 = 11.11683, 0.64172
+					12 = 10.71683, 2.29172
+					3 = 5.62993, 4.43996 { height_ofs = 0.29842 }
+					4 = 1.5203, 7.20997 { height_ofs = 0.18481 }
+					5 = -0.7001, 7.03995 { height_ofs = 0.48298 }
+					6 = -2.27991, 4.47998 { height_ofs = 0.4304 }
+					7 = -4.24007, 2.14007
+				}
+			}
+		}
+
+		def 148 : Castle
+		{
+			name = "Jerusalem"
+			position = 2978.4, 584.9
+			forest = true
+			rotation = 3.248042
+			citadel = 0.1600477, -0.4201348
+			{
+				architecture = "Arab"
+				rotation = 15.28501
+			}
+			houses = "Arab"
+			{
+				1 = -1.14, -6.05008 { rotation = 77.31794 }
+				2 = 2.84001, 3.67982 { rotation = 59.99994 }
+				3 = 2.87117, 0.33293 { rotation = 59.99994 }
+				4 = -4.38007, 0.34009 { rotation = 179.9999 }
+				5 = 8.1804, 5.27391 { rotation = 172.7476 }
+				6 = 2.11999, -8.4899 { rotation = 280.1427 }
+				7 = 4.1099, -3.62 { rotation = 112.7476 }
+				8 = -4.13, 3.47006 { rotation = 1.3628 }
+				9 = -3.79003, -4.27006 { rotation = 301.3628 }
+				10 = 0.3701672, -7.880115
+				{
+					type = "Fillers"
+					rotation = 294.0906
+				}
+				11 = 1.230035, -4.400023
+				{
+					type = "Fillers"
+					rotation = 38.34473
+				}
+				12 = 5.239941, -10.04989
+				{
+					type = "Fillers"
+					rotation = 98.34473
+				}
+				13 = -5.980067, -1.870086
+				{
+					type = "Fillers"
+					rotation = 234.0906
+				}
+				14 = -8.182259, -5.9779
+				{
+					type = "Fillers"
+					rotation = 98.34473
+				}
+				15 = -1.0801, 4.52004
+				{
+					type = "Fillers"
+					rotation = 294.0906
+				}
+				16 = 1.800086, -12.20002 { rotation = 172.7476 }
+				17 = 5.53125, -1.94598 { rotation = 20 }
+				18 = 5.53125, -1.94598 { rotation = 80 }
+				19 = -4.26875, -7.04598 { rotation = 100 }
+				20 = -2.86875, -9.34598 { rotation = 80 }
+				21 = 5.38125, 1.25402 { rotation = 10 }
+				22 = -3.26875, -12.99598 { rotation = 250 }
+				23 = -9.66875, -1.49598 { rotation = 120 }
+				24 = -1.96875, 10.65402 { rotation = 0 }
+				25 = 3.53125, -6.24598 { rotation = 100 }
+			}
+			wall = -0.5759, 0.60523
+			{
+				towers_architecture = "Arab"
+				segments_architecture = "Arab"
+				level = 4
+				curveness = 0.5
+				corners
+				{
+					1 = -7.17966, -2.51097
+					2 = -6.40024, -5.11031 { height_ofs = -0.10375 }
+					14 = -6.20103, -8.27294
+					13 = -5.80103, -10.82294
+					12 = -1.65103, -11.07294
+					3 = 3.03914, -10.32951
+					4 = 5.83035, -7.42033 { height_ofs = 0.34649 }
+					5 = 6.72002, -3.75023 { height_ofs = -0.5629 }
+					6 = 7.83999, -0.87995 { height_ofs = -0.10042 }
+					7 = 7.65037, 2.19095 { height_ofs = 0.46332 }
+					8 = 5.39052, 5.51126
+					9 = 1.03084, 5.86918 { height_ofs = 0.2498 }
+					10 = -4.56946, 5.84085
+					11 = -6.36944, 2.43008
+				}
+			}
+		}
+
+		def 2127 : Settlement
+		{
+			position = 2990.25, 812.54
+			forest = false
+			houses = "Roman"
+		}
+	}
+}

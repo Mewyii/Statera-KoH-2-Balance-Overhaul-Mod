@@ -16,3 +16,31 @@ def GermanNames : Names
 		Gottfried
 	}
 }
+
+def TurkNames : Names
+{
+	male
+	{
+		Tugorkan
+		Sharukan
+		Baradz
+	}
+}
+def FinishNames : Names
+{
+	male
+	{
+		Chumblat
+	}
+}
+
+def SlavNames : Names
+{
+	male
+	{
+		Vladimir
+	}
+	female
+	{
+	}
+}
