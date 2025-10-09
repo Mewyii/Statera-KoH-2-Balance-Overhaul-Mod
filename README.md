@@ -1,4 +1,4 @@
-# Statera - Balance, Realism and Strategic Overhaul for Knights of Honor 2
+# Statera - A Balance, Immersion and Strategy Overhaul for Knights of Honor 2
 
 
 ## Content
