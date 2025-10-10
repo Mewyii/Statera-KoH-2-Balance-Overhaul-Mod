@@ -60,7 +60,7 @@ def SpecialSettlementsRandomizationWeights = 2 // Same settlement type limit for
 	float CattleFarm = 20
     float Vineyard = 15
 	float HorseFarm = 15
-	float OasisVillage = 15
+	float OasisVillage = 20
 }
 
 Mine.max_allowed_features_per_settlement_type = 3
@@ -127,7 +127,7 @@ def SlaveTradersAfrica : ProvinceFeature
 	icon = "Assets/UI/Elements/Common/Icons/ProvinceFeatures/Icon_ProvinceFeature_Pirates.tga:Icon_ProvinceFeature_Pirates#2" //GUID:54c3be7b0914c64448465e8d0c8b91ad
 	
 	area = [0, 0, 0.9, 0.25]
-	spawn_chance = 4
+	spawn_chance = 5
 }
 
 def SlaveTradersRussia : ProvinceFeature
@@ -139,7 +139,7 @@ def SlaveTradersRussia : ProvinceFeature
 	icon = "Assets/UI/Elements/Common/Icons/ProvinceFeatures/Icon_ProvinceFeature_Pirates.tga:Icon_ProvinceFeature_Pirates#2" //GUID:54c3be7b0914c64448465e8d0c8b91ad
 	
 	area = [0.75, 0.35, 1, 0.75]
-	spawn_chance = 2
+	spawn_chance = 3
 }
 
 def SpiceTraders : ProvinceFeature

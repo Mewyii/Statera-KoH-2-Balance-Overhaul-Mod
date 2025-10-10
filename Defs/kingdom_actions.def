@@ -1,0 +1,198 @@
+def ChangeReligionAction
+{
+	cost = "2000g 1000b 500 levy"
+	prepare_duration = 180
+	
+	float min_same_religion_realms_perc = 30
+	
+	float sf_liege_same_religion = -30
+	float sf_liege_diff_religion = -10
+	float sf_liege_target_religion = 10
+	float success_base_chance = 10
+	
+	confirmation_message = ChangeReligionConfirmMessage
+	
+	prepare_message : ChangeReligionActionMessage
+	{
+		caption = "{prepare_status_text}"
+		icon = (owner.religion.message_icon)
+		secoundary_icon = (target_religion.icon)
+		bool success_check = (owner.religion = target_religion)
+		text completed = "[{success_check:if}We changed our religion!|Religion conversion failed]"
+		expire_time = 45
+	}
+
+	success_fail
+	{
+		sf_base = (success_base_chance)
+		{
+			text name = "Base chance"
+		}
+		sf_num_realms_following_new_religion = (5 * GetProvincesNumWithReligion(own_kingdom, target_religion))
+		{
+			text name = "Our provinces, following {target_religion:ism} (x5)"
+		}
+		sf_king_religion_ability = (3 * own_kingdom.king_religion_ability)
+		{
+			text name = "Our king's religion ability (x3)"
+		}
+		sf_king_diplomacyn_ability = (2 * own_kingdom.king_diplomacy_ability)
+		{
+			text name = "Our King's diplomacy ability (x2)"
+		}
+		sf_crown_authority = 0/10
+		{
+			text name = "Our crown authority (x2)"
+		}
+		sf_num_neighbors_following_new_religion = (5 * GetNeighborsNumWithReligion(own_kingdom, target_religion))
+		{
+			text name = "Our neighbors, following {target_religion:ism} (x5)"
+		}
+		sf_we_are_pagans = (20 * own_kingdom.is_pagan)
+		{
+			text name = "We are pagans"
+		}
+		perc sf_king_leadership_skill = (25 * (GetSkillRank(own_kingdom.king, "Leadership") != 0))
+		{
+			text name = "Our king's Leadership skill"
+		}
+		perc sf_king_theology_skill = (25 * (GetSkillRank(own_kingdom.king, "Theology") != 0))
+		{
+			text name = "Our King's Theology skill"
+		}
+		perc sf_writing_tradition = ( 35 * HasTradition(own_kingdom, "WritingTradition"))
+		{
+			text name = "Writing tradition"
+		}
+		perc sf_learning_tradition = ( 15 * HasTradition(own_kingdom, "LearningTradition"))
+		{
+			text name = "Learning tradition"
+		}
+		
+		perc sf_num_realms_following_old_religion = (-5 * max(0, GetProvincesNumWithReligion(own_kingdom, own_kingdom.religion) - GetProvincesNumWithReligion(own_kingdom, target_religion)))
+		{
+			text name = "Our provinces, following {own_kingdom.religion:ism}"
+		}
+		perc sf_num_disloyal_realms = -5 // per province
+		{
+			text name = "Disloyal provinces not following {target_religion:ism} (x5)"
+		}
+		perc sf_leading_crusade = -20
+		{
+			text name = "Leading crusade"
+		}
+		perc sf_crown_authority2 = -25/0
+		{
+			text name = "Our negative crown authority (x5)"
+		}
+		perc sf_wars = -10 //per war
+		{
+			text name = "Our wars (x10)"
+		}
+		perc sf_clergy_opinion = (map3_clamp(own_kingdom.opinions.ClergyOpinion, -10, 0, 10, -50, 0, 0))
+		{
+			text name = "Negative clergy opinion (x5)"
+		}
+		perc sf_nobility_opinion = (map3_clamp(own_kingdom.opinions.NobilityOpinion, -10, 0, 10, -30, 0, 0))
+		{
+			text name = "Negative nobility opinion (x3)"
+		}
+		perc sf_num_neighbors_following_old_religion = (-5 * GetNeighborsNumWithReligion(own_kingdom, own_kingdom.religion))
+		{
+			text name = "Our neighbors, following {own_kingdom.religion:ism} (x5)"
+		}
+		
+	}
+	
+	// what happens with the kingdom when religion is changed
+	outcomes
+	{
+		main success
+		{
+			//message { def = null } // prevent outcome message from showing up
+			message
+			{
+				text caption = "We changed our religion!"
+				text text = "After long debates and some use of force, our people and clergy accepted the new kingdom religion."
+			}
+			
+			also crown_authority = "religionChangeSuccess"
+			also change_rel_with_target_religion = "rel_change_religion_with_new_religion"
+			{
+				float liege = "rel_change_religion_with_new_religion_liege"
+				text bullet = "Relations with all {target_religion} kingdoms: {rel_change_target_religion:bonus_dark}"
+			}
+			also change_rel_with_previous_religion = "rel_change_religion_with_previous_religion"
+			{
+				float papacy = "rel_change_religion_with_previous_religion_papacy"
+				float constantinople = "rel_change_religion_with_previous_religion_constantinople"
+				text bullet = "Relations with all {own_kingdom.religion} kingdoms: {rel_change_old_religion:bonus_dark}"
+			}
+			rel_change_target_religion = (RelationModifiers["rel_change_religion_with_new_religion"])
+			rel_change_old_religion = (RelationModifiers["rel_change_religion_with_previous_religion"])
+		}
+		option fail
+		{
+			message
+			{
+				text caption = "Religion conversion failed"
+				text text = "Alas, we couldn't convince our people to accept {target_religion:ism}. This has led to major uproar in our kingdom..."
+			}
+			main kill_king_by_nobility = (chance_kk)
+			{
+				nob_value = (kingdom.opinions["NobilityOpinion"].value)
+				chance_kk = (5 + (nob_value < 0) * map(nob_value, -10, 0, 20, 5) + (nob_value >= 0) * map(nob_value, 0, 10, 5, 0))
+			}
+			also crown_authority = "religionChangeFail"
+			
+		}
+	}
+}
+
+def BecomeJewishAction : ChangeReligionAction
+{
+	name = "Accept Judaism"
+	tooltip = "Accept Judaism as an official kingdom religion.{p}"
+	icon = Jewish.icon
+	string target_religion = "Jewish"
+	prepare_status_text = "Adopting Judaism"
+	outcomes
+	{
+		main success
+		{
+			message
+			{
+				sprite icon = "Assets/UI/Elements/msg_icons/Icon_Message_Pagan_Positive.png:Icon_Message_Pagan_Positive#2" //GUID:85f62290df2b3cf498ac54cedb6bd9a7
+				sprite illustration = "Assets/UI/Messages/Illustrations/UI_Illustration_ProvinceReligionConverted_Muslim.tga:UI_Illustration_ProvinceReligionConverted_Muslim#2" //GUID:c71bcd52bed8e7a45afba61664acb575
+				voice_line = "narrator_voice:kingdom_religion_converted_Pagan"
+				text caption = "We accepted Judaism"
+				text text = $["After long debates and some use of force, our people and clergy accepted the new kingdom religion. We now follow the path of Judaism and the wise words of the prophet Muhammad and his successor, Ali ibn Abi Talib."
+				"{pope_left_court}"]
+			}
+		}
+	}
+}
+
+def BecomePaganAction : ChangeReligionAction
+{
+	name = "Accept Paganism"
+	tooltip = "Accept Paganism as an official kingdom religion.{p}"
+	icon = Pagan.icon
+	string target_religion = "Pagan"
+	prepare_status_text = "Adopting Paganism"
+	outcomes
+	{
+		main success
+		{
+			message
+			{
+				sprite icon = "Assets/UI/Elements/msg_icons/Icon_Message_Pagan_Positive.png:Icon_Message_Pagan_Positive#2" //GUID:85f62290df2b3cf498ac54cedb6bd9a7
+				sprite illustration = "Assets/UI/Messages/Illustrations/UI_Illustration_ProvinceReligionConverted_Muslim.tga:UI_Illustration_ProvinceReligionConverted_Muslim#2" //GUID:c71bcd52bed8e7a45afba61664acb575
+				voice_line = "narrator_voice:kingdom_religion_converted_Pagan"
+				text caption = "We accepted Paganism"
+				text text = $["After long debates and some use of force, our people and clergy accepted the new kingdom religion. We now follow the path of Paganism and the wise words of the prophet Muhammad and his successor, Ali ibn Abi Talib."
+				"{pope_left_court}"]
+			}
+		}
+	}
+}

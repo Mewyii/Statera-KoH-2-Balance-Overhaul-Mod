@@ -69,6 +69,14 @@ extend Settlements
 		delete 1684
 		delete 442
 		delete 2093
+		delete 1577
+		delete 1484
+		delete 1718
+		delete 959
+		delete 377
+		delete 957
+		delete 1721
+		delete 1510
 
 
 		def 465 : Castle
@@ -2657,6 +2665,83 @@ extend Settlements
 			position = 2102, 2221
 			forest = true
 			houses = "Nordic"
+		}
+		
+		def 2158 : Settlement
+		{
+			position = 1973.6, 1612.4
+			forest = true
+			houses = "Central"
+		}
+		
+		def 2159 : Settlement
+		{
+			position = 2280.6, 1058.4
+			forest = true
+			houses = "Roman"
+		}
+		
+		def 2160 : Settlement
+		{
+			position = 2583.6, 951.8
+			forest = true
+			houses = "Roman"
+		}
+		
+		def 2161 : Settlement
+		{
+			position = 1895.6, 1101.4
+			forest = true
+			houses = "Roman"
+		}
+		
+		def 2162 : Settlement
+		{
+			position = 1891.6, 1168.4
+			forest = true
+			houses = "Roman"
+		}
+		
+		def 2163 : Settlement
+		{
+			position = 1749.6, 1399.4
+			forest = true
+			houses = "Roman"
+		}
+		
+		def 2164 : Settlement
+		{
+			position = 3679.6, 339.4
+			forest = true
+			houses = "Arab"
+		}
+		
+		def 2165 : Settlement
+		{
+			position = 3715.6, 662.4
+			forest = true
+			houses = "Arab"
+		}
+		
+		def 2166 : Settlement
+		{
+			position = 2722.6, 467.7
+			forest = false
+			houses = "Arab"
+		}
+		
+		def 2167 : Settlement
+		{
+			position = 3267.6, 672.4
+			forest = true
+			houses = "Arab"
+		}
+		
+		def 2168 : Settlement
+		{
+			position = 952.6, 611.8
+			forest = false
+			houses = "Arab"
 		}
 	}
 }

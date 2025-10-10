@@ -1,8 +1,93 @@
-Crusade.max_peasants = 3
-Crusade.supplies_consumption_rate_mod = 0.1
-
 Catholic.ask_crusade_funds_cooldown = 150/300
 
+def Crusade
+{
+	
+	float cooldown = 1200 // cooldown of the crusade action
+	float cooldown_for_players = 600 // cooldown of the crusade action through audience
+	float initial_cooldown_crusade = 1500 //cooldown after the game starts
+	
+	float minTroopsOnGoHome = 2
+	float maxTroopsOnGoHome = 5
+	float skillCopyPercentage = 70
+	float crusadeNumKingdoms = 3
+	float crusadePlayerKingdomsPerc = 30
+	float sackGoldMultiplier = 50
+	
+	int max_peasants = 4 //num guaranteed peasant squads in the army, reduced by 1 for each hour ingame time
+	
+	int supplies_consumption_rate_mod = 0.1
+	
+	bool crusader_kingdom_is_hostile = (src_kingdom.IsEnemy(plr_kingdom))
+	bool pope_kingdom_is_hostile = (pope.original_kingdom != papacy && pope.original_kingdom.IsEnemy(plr_kingdom))
+	bool papacy_is_hostile = (papacy.IsEnemy(plr_kingdom))
+	bool crusade_is_hostile_and_we_are_not_involved = ((crusader_kingdom_is_hostile || pope_kingdom_is_hostile || papacy_is_hostile) && target != plr_kingdom && leader.kingdom != plr_kingdom && pope.original_kingdom != plr_kingdom)
+	text crusade_flavor_non_target = "Since we are at war against [{crusader_kingdom_is_hostile:if}{leader:s} kingdom ({src_kingdom})|{pope_kingdom_is_hostile:if}{pope:s} kingdom of origin ({pope.original_kingdom})|{papacy_is_hostile:if}{papacy}], the crusaders might attack our towns and armies."
+	text fundsValue = "{wealth}{gold_icon}"
+	
+	int giveToKingdomMaxDistance = 2
+	capture_realm_outcomes
+	{
+		main give_to_kingdom = 100
+		{
+			upScaleOptions = true //scale to sum(chances) instead to 100, to prevent no outcomes.
+			
+			option give_to_leader_kingdom = 30
+			{
+				king = 90
+				prince = 50
+			}
+			option give_to_papacy = 30
+			option give_to_helping_kingdom = 30
+			option give_to_established_kingdom = 10
+		}
+		option establish_new_kingdom //happens when it cant be given to any kingdom
+		{
+			upScaleOptions = true
+			main give_to_leader_kingdom_ignore_checks = 0
+			{
+				cant_establish_new_kingdom = 100
+			}
+			option independent = 0
+			{
+				leader_and_papacy_are_vassals_of_ther_kingdoms = 100
+			}
+			option vasal_of_leader_kingdom = 60
+			{
+				king = 100
+				prince = 80
+			}
+			option vasal_of_papacy = 40
+		}
+	}
+	
+	end_crusade_outcomes
+	{
+		main return = 50
+		{
+			crusade_successful = 100
+			leader_kingdom_destroyed = 100
+			papacy_destroyed = 0
+			king = 100
+			prince = 75
+		}
+		option rogue
+		option default // prevent "no outcome"
+	}
+	
+	crusader_death_outcomes
+	{
+		main army_goes_rogue = 70
+		option army_becomes_merc_camp = 30
+		option default // prevent "no outcome"
+	}
+	
+	crusader_exiled_outcomes
+	{
+		main army_becomes_merc_camp = 100
+		option default // prevent "no outcome"
+	}
+}
 
 
 
@@ -21,6 +106,7 @@ def Catholic : Christian
 		float Sunni = 15
 		float Shia = 15
 		float Pagan = 10
+		float Jewish = 10
 	}
 }
 
@@ -38,6 +124,7 @@ def Orthodox : Christian
 		float Sunni = 10
 		float Shia = 10
 		float Pagan = 5
+		float Jewish = 5
 	}
 }
 
@@ -55,6 +142,7 @@ def Pagan : Religion
 		float Sunni = 10
 		float Shia = 10
 		float Pagan = 0
+		float Jewish = 5
 	}
 }
 
@@ -72,6 +160,7 @@ def Shia : Muslim
 		float Sunni = 5
 		float Shia = 0
 		float Pagan = 5
+		float Jewish = 10
 	}
 }
 
@@ -89,6 +178,7 @@ def Sunni : Muslim
 		float Sunni = 5
 		float Shia = 0
 		float Pagan = 10
+		float Jewish = 10
 	}
 }
 
@@ -111,3 +201,75 @@ Shia.ks_prod_piety_religion_perc = 0
 
 Sunni.ks_prod_piety_religion_perc = 0
 Sunni.ks_stability_religion = 0
+
+
+// Judaism
+// Sadly this doesnt seem to work
+def Jewish : Religion
+{
+	name = "Jewish"
+	{
+		ism = "Judaism"
+		ans = "Jews"
+	}
+	full_name
+	{
+		text default = "Jewish"
+	}
+	descritpion
+	{
+		text default = "Our chruch is currently led by His Holiness {pope}, Bishop of Rome."
+	}
+	tooltip = "One of the branches of Christianity, most popular in western, northern and central Europe"
+
+	christian = true
+
+	map_color = "38,92,199" //275DC7FF
+
+	piety = "Piety"
+
+	titles
+	{
+		text Cleric = "Cleric"
+		{
+			s = "Clerics"
+		}
+		text Governor = "Bishop of {governed_castle}"
+	}
+	
+	// bonuses
+	// context: Kingdom
+	mod ks_commerce_religion = 5
+	mod ks_trade_income_perc = 20
+	mod ks_build_upgrade_cost_discount_perc = 5
+
+	mod ks_liege_rein_perc
+	{
+		hidden
+		Catholic = 0
+		Orthodox = -10
+		Sunni = -25
+		Shia = -25
+		Pagan = -5
+		Jewish = 0
+	}
+	
+	religious_tension // from realm religion to kingdom religion
+	{
+		float Catholic = 0
+		float Orthodox = 2
+		float Sunni = 12
+		float Shia = 14
+		float Pagan = 10
+		float Jewish = 0
+	}
+	
+	illustration = "Assets/UI/Elements/Religion/Illustrations/UI_ReligionWindow_Illustration_Catholic.psd:UI_ReligionWindow_Illustration_Catholic#2" //GUID:2be7db456f5bd664d92ba0a10975e320
+	message_icon = "Assets/UI/Elements/Religion/Icons/Icon__Religion_Message_Catholic.tga:Icon__Religion_Message_Catholic#2" //GUID:976a7738c2d2c894988250be7c6db224
+}
+
+template NotJewish : Religion
+{
+	name = "{Christian.name} / {Muslim.name}" // "Not Jewish"
+	tooltip = "Kingdoms and provinces, following {Muslim.name} and {Christian.name} religions"
+}
