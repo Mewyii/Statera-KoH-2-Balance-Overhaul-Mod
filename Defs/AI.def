@@ -1,4 +1,56 @@
-AI.non_governed_production_eval_mul = 0.3
+extend AI 
+{
+	non_governed_production_eval_mul = 0.3
+
+	// maximum percentage of gold earned to spend on specific category
+	budget
+	{
+		None = (map_clamp(game.time_hours, 0.5, 1.5, 0, 20)) // reserves
+		Military = (25 - Espionage / 2 + king_warfare_ability + min(num_wars, 3) * 15)
+		Economy = (45 - Espionage / 2 + king_economy_ability - min(num_wars, 3) * 10)
+		Diplomacy = (8 + king_diplomacy_ability - min(num_wars, 3))
+		Espionage = (3 + spies_count * (5 + king_espionage_ability))
+		Religion = (8 + king_religion_ability - min(num_wars, 3))
+
+		//Total: 90 - 135
+	}
+
+	// maximum percentage of income allowed for upkeeps
+	// subcategories are taken from IncomePanels.def
+	// for subcategories both the subcategory and the parent category must be OK
+	// total is also always checked, as if it was the parent of everything
+	upkeeps_budget
+	{
+		None = (Military + map_clamp(game.time_hours, 1, 3, 10, 20)) // total
+		Military = (20 + king_warfare_ability + min(num_wars, 2) * 5)
+		{
+			ArmyUpkeep = (num_marshals >= Marshal.ai_max_court_count and all_armies_full and 10)
+		}
+		Economy = (5 + king_economy_ability)
+		Diplomacy = (10 + king_diplomacy_ability)
+		Espionage = (5 + spies_count * (5 + king_espionage_ability))
+		{
+			Bribes = 10
+		}
+		Religion = (5 + king_religion_ability + is_pagan * 10)
+		{
+			subtotal = "Religion_Culture"
+		}
+	}	
+
+	BigBonusPower = 2.5;
+	BonusPower = 1.5;
+	MalusPower = 0.85;
+
+	// big bonus for offmap empires
+	delete big_bonus_eligible_kingdoms
+	big_bonus_eligible_kingdoms { Kanem; Kipchak; Golden_Horde; }
+
+	// bonus for historically important kingdoms
+	delete bonus_eligible_kingdoms
+	bonus_eligible_kingdoms { England; Scotland; France; Castile; Germany; Sweden; Denmark; Poland; Lithuania; Hungary; Venice; Genoa; Sicily; Byzantium; Kyiv; Novgorod; Georgia; Rum; Abbasids; Jerusalem; Fatimids; Almoravids; Nicaea; Mongols; Ottomans; Austria; Muscovy; Mali; Mamluks; }
+	// malus are all the others
+}
 
 def PC_Crusade : ProsAndCons
 {
@@ -11,14 +63,14 @@ def PC_Crusade : ProsAndCons
         pc_they_are_excommunicated_and_we_are_catholic = 10
         pc_they_have_many_trade_centers = 5
 		pc_they_have_high_taxes = 5
-		pc_they_fight_catolics { max = 15; per_war = 10 }
+		pc_they_fight_catolics { max = 20; per_war = 10 }
         pc_we_are_their_vassal = 10
 		pc_they_are_at_war_with_papacy = 30
         pc_they_recently_disobeyed_papacy  { max = 5; pow = 1 }
 		pc_we_have_bad_relation	{ max = 10;	pow = 1 }
-		pc_they_hold_many_christian_provinces { max = 5; per_province = 1; constantinople = 2 }
+		pc_they_hold_many_christian_provinces { max = 10; per_province = 1; constantinople = 5 }
         pc_they_have_war_exhaustion	{ max = 5 }
-		pc_they_are_evil_empire = 5
+		pc_they_are_evil_empire = 10
 		pc_we_have_no_border = 5
 		pc_they_have_rebels	{ max = 5; per_rebel = 1 }
 	}
@@ -59,9 +111,9 @@ def PC_WeWouldBecomeTheirVassal : ProsAndCons
 		pc_they_hold_Constantinople_and_we_are_Ortodox = 30 //they are our boss
 		pc_we_are_losing { max = 30 } //we have to surrender
 		pc_their_influence_in_our_kingdom {max = 40 }
-		pc_they_are_X_times_larger = 10 { X = 2; added_realms = 2 }
-		pc_they_are_X_times_larger = 10 { X = 3; added_realms = 2 }
-		pc_they_are_X_times_larger = 10 { X = 4; added_realms = 2 }
+		pc_they_are_X_times_larger = 10 { X = 2; added_realms = 1 }
+		pc_they_are_X_times_larger = 10 { X = 3; added_realms = 1 }
+		pc_they_are_X_times_larger = 10 { X = 4; added_realms = 1 }
 	}
 
 	cons = 50
@@ -69,14 +121,14 @@ def PC_WeWouldBecomeTheirVassal : ProsAndCons
 		//pc_we_have_bad_relation	{ max = 20;	pow = 2 } this is expected to be true and already included in the War signing
 		pc_we_are_wining { max = 30 } //absurd
 		pc_we_have_no_border = 10
-		pc_they_are_too_far = 30 {	threshold = 3 }
+		pc_they_are_too_far = 30 {	threshold = 4 }
 		pc_they_have_different_religion = 10 //why should we give lands to someone very different from us?
 		pc_we_have_caliphate = 50 //caliphate is lost in vassalage
 		pc_our_army_is_stronger { max = 30 }
 		pc_we_are_papacy = 30
-		pc_we_are_X_times_larger = 60 {	X = 3; added_realms = 2}
-		pc_we_are_X_times_larger = 30 {	X = 2; added_realms = 2}
-		pc_we_are_X_times_larger = 15 {	X = 1; added_realms = 2}
+		pc_we_are_X_times_larger = 60 {	X = 2; added_realms = 1}
+		pc_we_are_X_times_larger = 40 {	X = 1.5; added_realms = 1}
+		pc_we_are_X_times_larger = 20 {	X = 1; added_realms = 1}
 		pc_they_are_excommunicated_and_we_are_catholic = 30
 		pc_we_want_to_liberate_rome = 50
 		pc_they_hold_our_holy_cities_and_we_are_Sunni {	shia_control = 10; other_religion_control = 50 }
@@ -251,7 +303,7 @@ def PC_Peace : ProsAndCons
 		pc_they_are_too_far = 50 { threshold = 3 }
 		pc_we_share_same_religion = 5
 		pc_we_are_catholic_and_they_are_papacy = 50
-		pc_we_have_rebels {	max = 25; per_rebel = 5 }
+		pc_we_have_rebels {	max = 30; per_rebel = 10 }
 		pc_we_have_war_exhaustion {	max = 200 }
 		pc_we_have_too_many_wars { max = 100; at_war_base = 0; per_additional_war = 30 }
 		pc_too_many_global_wars { max = 50; num_wars = 15 }
@@ -261,11 +313,12 @@ def PC_Peace : ProsAndCons
 		pc_we_hate_our_alliance_leader { max = 30 }
 		pc_we_are_leader_and_they_are_big_enemy_supporter { max = 40; per_province = 5 }
 		pc_we_share_same_liege = 30
-		pc_they_hold_our_king = 100
-		pc_they_hold_our_prince = 20
+		pc_they_hold_our_king = 90
+		pc_they_hold_our_prince = 30
 		pc_they_are_player_and_game_just_began { value = (pdv(120, 100, 80, 60)); linear = true }
 		pc_they_control_the_pope = 30
-		they_are_ai = 5
+		pc_we_have_common_enemies = 10
+		pc_we_have_common_allies = 5
 	}
 
 	cons = 10
@@ -276,7 +329,6 @@ def PC_Peace : ProsAndCons
 		pc_we_are_X_times_larger = 10 {	X = 1.5 ; added_realms = 2}
 		pc_we_are_X_times_larger = 10 {	X = 2 ; added_realms = 2}
 		pc_we_are_X_times_larger = 10 {	X = 3 ; added_realms = 2}
-		pc_our_army_is_stronger { max = 10 }
 		pc_they_are_excommunicated_and_we_are_catholic = 20
 		pc_we_want_to_liberate_rome = 50
 		pc_they_hold_our_holy_cities_and_we_are_Sunni {	shia_control = 10; other_religion_control = 50 }
@@ -285,14 +337,22 @@ def PC_Peace : ProsAndCons
 		pc_they_fight_our_friends { max = 20; per_kingdom = 5; threshold = 300 }
 		pc_they_have_rebels	{ max = 15; per_rebel = 3 }
 		pc_they_have_different_religion = 5
-		pc_war_just_started { max = 60; minutes = 15; pow = 4 }		
+		pc_war_just_started { max = 60; minutes = 15; pow = 5 }		
 		pc_we_have_supporters { per_supporter = 10 }
 		pc_they_have_too_many_wars { at_war_base = 0; per_additional_war = 10; max = 30}
 		pc_we_didnt_really_fight_yet { max = 80; time_flat = 1200; time_fade_out = 600; points = 10 }
 		pc_we_are_supporting_our_liege = 40
+		pc_our_army_is_stronger { max = 5 }
+		pc_we_both_have_under_X_towns = 10 { X = 2 }
 		pc_we_both_have_under_X_towns = 10 { X = 3 }
+		pc_they_are_player_by_difficulty
+		{
+			easy = 0
+			normal = 0
+			hard = 5
+			very_hard = 10
+		}
 	}
-
 
 	thresholds
 	{
@@ -301,3 +361,11 @@ def PC_Peace : ProsAndCons
 	}
 }
 
+def PC_PeaceDemandTribute : PC_Peace
+{
+	thresholds
+	{
+		accept = "accept_peace"
+		propose = "offer_peace"
+	}
+}

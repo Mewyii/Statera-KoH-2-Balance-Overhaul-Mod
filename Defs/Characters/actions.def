@@ -44,6 +44,9 @@ ReligiousMissionAction.cost.gold = (ceil((150 * kingdom_income_cost_modifier - a
 ReligiousMissionAction.cost.piety = (ceil((300 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
 ReligiousMissionAction.cost.levy = (ceil((25 * kingdom_income_cost_modifier - agent_level_upkeep_modifier), 5))
 
+ArrangePeaceAction.cost.gold = (ceil((250 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+ArrangePeaceAction.cost.piety = (ceil((500 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+
 def ClericPreachAction : ReligionSpecificAction
 {
 	name = "Preach"
@@ -51,7 +54,7 @@ def ClericPreachAction : ReligionSpecificAction
 	icon = "Assets/UI/Elements/Actions/Icon_CharacterAction_Study.tga:Icon_CharacterAction_Study#2" //GUID:a2202d72f02c90d49a2b109513e13942
 	success_voice_line = "action_succeeded"
 	
-	float piety_income = (ceil((100 + (agent_level_cost_modifier * 0.5)), 5))
+	float piety_income = (ceil((100 + (agent_level_cost_modifier)), 5))
 	cost
 	{
 		gold = (ceil((100 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
@@ -155,25 +158,25 @@ def ImprovingRelationsStatus : CharacterStatus
 	}
 }
 
-def ImproveOpinionsAction : CharacterAction
-{
-    upkeep 
-    {
-        gold = ImprovingOpinionsStatus.upkeep.gold
-    }
-}
-def ImprovingOpinionsStatus : CharacterAction
-{
-    cost
-	{
-		gold = (ceil((100 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
-	}
-
-    upkeep
-    {
-        gold = (ceil((5 * kingdom_income_upkeep_modifier - agent_level_upkeep_modifier - (100 * own_character.cs_diplomat_actions_upkeep_reduction_perc)), 1))
-    }
-}
+// def ImproveOpinionsAction : CharacterAction
+// {
+//     upkeep 
+//     {
+//         gold = ImprovingOpinionsStatus.upkeep.gold
+//     }
+// }
+// def ImprovingOpinionsStatus : CharacterAction
+// {
+//     cost
+// 	{
+// 		gold = (ceil((100 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+// 	}
+// 
+//     upkeep
+//     {
+//         gold = (ceil((5 * kingdom_income_upkeep_modifier - agent_level_upkeep_modifier - (100 * own_character.cs_diplomat_actions_upkeep_reduction_perc)), 1))
+//     }
+// }
 
 BolsterInfluenceAction.cost.gold = (ceil((200 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
 BolsterInfluenceAction.cost.books = (ceil((200 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
@@ -189,7 +192,7 @@ def DiplomatTeachAction : CharacterAction
 	icon = "Assets/UI/Elements/Actions/Icon_CharacterAction_SearchForHelpWithRebels.tga:Icon_CharacterAction_SearchForHelpWithRebels#2" //GUID:ce0bece2f9450264894a60ae0b7094c7
 	success_voice_line = "action_succeeded"
 	
-	float book_income = (ceil((100 + (agent_level_cost_modifier * 0.5)), 5))
+	float book_income = (ceil((100 + (agent_level_cost_modifier)), 5))
 	cost
 	{
 		gold = (ceil((100 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
@@ -250,6 +253,33 @@ InfiltrateKingdomAction.cost.books = (ceil((50 * kingdom_income_cost_modifier - 
 WitchHuntAction.cost.gold = (ceil((400 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
 WitchHuntAction.cost.levy = (ceil((400 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
 
+
+// InfilrationActions
+ProvokeWarAction.cost.gold = (ceil((1000 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+RuinRelationsAction.cost.gold = (ceil((250 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+RuinRelationsAction.gold_upkeep = (ceil((15 * kingdom_income_upkeep_modifier - agent_level_upkeep_modifier), 1))
+SowDissentAction.cost.gold = (ceil((500 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+SowDissentAction.gold_upkeep = (ceil((30 * kingdom_income_upkeep_modifier - agent_level_upkeep_modifier), 1))
+
+SpyMurderAction.cost.gold = (ceil((300 * kingdom_income_cost_modifier + target.class_level * 50 - agent_level_cost_modifier), 5))
+HuntingIncidentAction.cost.gold = (ceil((300 * kingdom_income_cost_modifier + target.class_level * 50 - agent_level_cost_modifier), 5))
+FrameAction.cost.gold = (ceil((100 * kingdom_income_cost_modifier + target.class_level * 25 - agent_level_cost_modifier), 5))
+BribeNobleAction.cost.gold = (ceil(((200 * kingdom_income_cost_modifier + target.class_level * 50 - agent_level_cost_modifier) * ratio), 5))
+
+InspireRebellion.cost.gold = (ceil((750 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+InspireRebellion.cost.levy = (ceil((250 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+InciteLoyalistRebellionAction.cost.gold = (ceil((500 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+InciteLoyalistRebellionAction.cost.books = (ceil((500 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+
+BurnFoodStorageAction.cost.gold = (ceil((100 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+OpenTheGatesAction.cost.gold = (ceil((300 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+
+PlotHelpOurPrisonersEscapeAction.cost.gold = (ceil((100 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+HelpFriendlyPrisonersEscape.cost.gold = (ceil((100 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+InstigateDungeonRiot.cost.gold = (ceil((500 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+
+TurnRebelIntoLoyalist.cost.gold = (ceil((500 * kingdom_income_cost_modifier + target.class_level * 25 - agent_level_cost_modifier), 5))
+
 def SpyHuntCorruptionAction : CharacterAction
 {
 	name = "Hunt for Corruption"
@@ -257,7 +287,7 @@ def SpyHuntCorruptionAction : CharacterAction
 	icon = "Assets/UI/Elements/Actions/Icon_Opportunity_RebelAttackOther.tga:Icon_Opportunity_RebelAttackOther#2" //GUID:19a24f555e7db7d4ba1c2753c1c255e4
 	success_voice_line = "action_succeeded"
 	
-	float gold_income = (ceil((300 + (agent_level_cost_modifier * 0.5)), 5))
+	float gold_income = (ceil((300 + (agent_level_cost_modifier)), 5))
 	cost
 	{
 		levy = (ceil((150 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))

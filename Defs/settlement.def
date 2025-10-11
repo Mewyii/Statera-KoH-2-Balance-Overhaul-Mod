@@ -1,5 +1,3 @@
-Castle.no_governor_penalty = 30
-
 // Settlement numbers on map are also limited by settlements.def in /maps
 
 Settlement.max_identical_settlement_per_realm = 3 // Limit for all settlements
@@ -11,6 +9,9 @@ Settlement.settlement_repeating_chance_mul = 1.4 // relevant only for base settl
 
 def Castle : Settlement
 {
+	no_governor_penalty = 30
+	production = "3g 3f 1b 1p 8h 4WorkerSlots"
+
 	enable_feature
 	{
 		AmberDeposits

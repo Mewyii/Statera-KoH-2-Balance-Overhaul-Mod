@@ -1,6 +1,6 @@
 def ChangeReligionAction
 {
-	cost = "2000g 1000b 500 levy"
+	cost = "1000b 1000p 500 levy"
 	prepare_duration = 180
 	
 	float min_same_religion_realms_perc = 30
