@@ -9,6 +9,13 @@ KingdomStats.ks_prod_piety_flat = 5
 KingdomStats.ks_max_levy = 2000
 KingdomStats.ks_books_per_cleric = 1
 
+RealmStats.rs_max_food = 300
+
 Prestige.max = 2000
 
 CharacterStats.cs_imprison_in_battle_chance = 50
+CharacterStats.no_supplies = (army.no_supplies * (army.is_home * -10 + !army.is_home * -25)) { text mod_name = "Ran out of supplies" } // -10 at home, else -25 
+CharacterStats.cs_army_speed_world_perc.mod out_of_supplies = (army.no_supplies * (army.is_home * -25 + !army.is_home * -50))
+
+BattleSimulation.morale_factors.no_food = (is_starving * -10)
+BattleViewSimulation.morale_factors.no_food = (is_starving * -10)

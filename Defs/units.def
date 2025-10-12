@@ -18,10 +18,10 @@ FoodWagon.progressive_cost.1 = "250g 50f"
 FoodWagon.progressive_cost.2 = "300g 50f"
 FoodWagon.progressive_cost.3 = "350g 50f"
 FoodWagon.progressive_cost.4 = "400g 50f"
-FoodWagon.progressive_upkeep.1 = "2g"
-FoodWagon.progressive_upkeep.2 = "3g"
-FoodWagon.progressive_upkeep.3 = "4g"
-FoodWagon.progressive_upkeep.4 = "5g"
+FoodWagon.progressive_upkeep.1 = "3g"
+FoodWagon.progressive_upkeep.2 = "4g"
+FoodWagon.progressive_upkeep.3 = "5g"
+FoodWagon.progressive_upkeep.4 = "6g"
 
 AdditionalTroops.food_upkeep_per_unit = 0
 AdditionalTroops.add_squad_size_perc = 10

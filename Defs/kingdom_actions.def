@@ -8,7 +8,7 @@ def ChangeReligionAction
 	float sf_liege_same_religion = -30
 	float sf_liege_diff_religion = -10
 	float sf_liege_target_religion = 10
-	float success_base_chance = 10
+	float success_base_chance = 20
 	
 	confirmation_message = ChangeReligionConfirmMessage
 	
