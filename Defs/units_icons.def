@@ -1,0 +1,5 @@
+
+def SquadTypeIconSettings
+{
+	// sprite Levy_Ranged = "Assets/UI/BattleView/Elements/UnitIcons/LightArchers_28.png:LightArchers_28#1" //GUID:7bca20fa199a9e448bb23971f39ae462
+}

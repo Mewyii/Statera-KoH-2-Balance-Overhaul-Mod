@@ -1,0 +1,603 @@
+// MILITARY
+def ArcheryRange : Upgrade
+{
+	name = "Archery Range"
+	flavor = "Dedicated grounds for bowmen to practice accuracy and volleys under the watch of instructors."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Fletcher.tga:UI_Structure_Icon_Fletcher#2" //GUID:c1b35e3e7d66cba43823afc781c63285
+}
+
+def MilitiaDrills : Upgrade
+{
+	name = "Militia Drills"
+	flavor = "Regularly organized exercises that turn commoners into a coordinated defensive force."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_TownGuardsQuarters.tga:UI_Structure_Icon_TownGuardsQuarters#2" //GUID:aad5edb51f1398f4fb75c0a35fccd4ce
+}
+
+def KnightlyTrainingGrounds : Upgrade
+{
+	name = "Knightly Training Grounds"
+	flavor = "Specialized areas where nobles hone their horsemanship, lancework, and combat techniques."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_CastleGuards.tga:UI_Structure_Icon_CastleGuards#2" //GUID:38c0caaaf283f9340b3e7b3ae563cef2
+}
+
+def Farrier : Upgrade
+{
+	name = "Farriers"
+	flavor = "A craftsman, specialized in trimming and balancing horses' hooves, as well as placing shoes when necessary."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Farrier.tga:UI_Structure_Icon_Farrier#2" //GUID:b4d952b7238f7e148a1858ffd314cfa9
+}
+
+def MessengerService : Upgrade
+{
+	name = "Messenger Service"
+	flavor = "A relay network of riders ensuring rapid communication between castles and towns."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_TranslatorsChambers_Christian.tga:UI_Structure_Icon_TranslatorsChambers_Christian#2" //GUID:05ac8eaad77ef524dbcb7b5f93b1ccf7
+}
+
+def KnightlyStables : Upgrade
+{
+	name = "Knightly Stables"
+	flavor = "Reserved quarters for trained warhorses, tended by squires and master grooms."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_WarStables.tga:UI_Structure_Icon_WarStables#2" //GUID:4614b122faea18e4582c4fdd671c9e5a
+}
+
+def MilitiaBarracks : Upgrade
+{
+	name = "Militia Barracks"
+	flavor = "Permanent quarters that keep the city’s defenders ready for rapid mobilization."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_TownWatch.tga:UI_Structure_Icon_TownWatch#2" //GUID:1a6e044b6de38554087fc06118a5bc99
+}
+
+def CrossbowManufactoring : Upgrade
+{
+	name = "Crossbow Manufactoring"
+	flavor = "Workshops producing precise ranged weapons for trained watchmen and militias."
+	icon = "Assets/Icons/Buildings/CrossbowManufactoring.png:CrossbowManufactoring#1"
+}
+
+def AlarmBells : Upgrade
+{
+	name = "Alarm Bells"
+	flavor = "Warning systems installed across the city to signal danger or summon aid in times of unrest."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_WatchTowers.tga:UI_Structure_Icon_WatchTowers#2" //GUID:f0ab4cb600cc3c6449f4769c892d57bd
+}
+
+def WatchRotations : Upgrade
+{
+	name = "Watch Rotations"
+	flavor = "Scheduled patrol shifts ensuring constant vigilance day and night."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_MountainPassGuards.tga:UI_Structure_Icon_MountainPassGuards#2" //GUID:4db8cfeb5d63bfa4b97e9b1232dab538
+}
+
+def HeraldsPavilion : Upgrade
+{
+	name = "Heralds’ Pavilion"
+	flavor = "A command tent where heralds and officers organize banners, ranks, and orders of battle."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_ScribesOffice.tga:UI_Structure_Icon_ScribesOffice#2" //GUID:ab3dc5b23bf99a640b72192498cf76f5
+}
+
+def LogisticsDepot : Upgrade
+{
+	name = "Logistics Depot"
+	flavor = "Stores provisions, equipment, and transport gear vital for sustained military campaigns."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Fiefs.tga:UI_Structure_Icon_Fiefs#2" //GUID:6304b7fdaa6660b4da0056f269f95e6e
+}
+
+def FieldForges : Upgrade
+{
+	name = "Field Forges"
+	flavor = "Mobile smithing setups allowing armor and weapons to be maintained near the front lines."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_MasterWeaponsmith.tga:UI_Structure_Icon_MasterWeaponsmith#2" //GUID:c1c628dc6ccb2bd439baa798109964e4
+}
+
+def TrebuchetAssemblyYard : Upgrade
+{
+	name = "Trebuchet Assembly Yard"
+	flavor = "Dedicated grounds equipped to construct massive counterweight trebuchets for long-range bombardment."
+	icon = "Assets/Icons/Buildings/TrebuchetAssemblyYard.png:TrebuchetAssemblyYard#1"
+}
+
+def GunpowderStorage : Upgrade
+{
+	name = "Gunpowder Storage"
+	flavor = "Secure magazines for storing volatile black powder, marking the dawn of explosive warfare."
+	icon = "Assets/Icons/Buildings/GunpowderStorage.png:GunpowderStorage#1"
+}
+
+def CannonFoundry : Upgrade
+{
+	name = "Cannon Foundry"
+	flavor = "Workshops casting early bronze or iron bombards, heralding the age of artillery."
+	icon = "Assets/Icons/Buildings/CannonFoundry.png:CannonFoundry#1"
+}
+
+def DrillInstructors : Upgrade
+{
+	name = "Drill Instructors"
+	flavor = "Veteran soldiers appointed to instill discipline and tactical precision in the ranks."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_TownWatch.tga:UI_Structure_Icon_TownWatch#2" //GUID:1a6e044b6de38554087fc06118a5bc99
+}
+
+def StandardizedArmament : Upgrade
+{
+	name = "Standardized Armament"
+	flavor = "Uniform issue of weapons and armor, ensuring consistency and coordination among troops."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_ShoemakersShop.tga:UI_Structure_Icon_ShoemakersShop#2" //GUID:76d2b91679ac2fe4587cba83dc565d53
+}
+
+def OfficerMess : Upgrade
+{
+	name = "Officer Mess"
+	flavor = "Dedicated quarters where officers plan, coordinate, and uphold military hierarchy and morale."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_MilitiaQuarter.tga:UI_Structure_Icon_MilitiaQuarter#2" //GUID:40a2bee7da8053144bb5cc07af4d59af
+}
+
+def InfantryFormations : Upgrade
+{
+	name = "Infantry Formations"
+	flavor = "Advanced tactical training in tight formations, improving defense and cohesion on the battlefield."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_CastleGuards.tga:UI_Structure_Icon_CastleGuards#2" //GUID:38c0caaaf283f9340b3e7b3ae563cef2
+}
+
+def CombinedArmsDoctrine : Upgrade
+{
+	name = "Combined Arms Doctrine"
+	flavor = "Coordinated use of infantry, cavalry, and siege support, reflecting the evolution of medieval warfare into organized strategy."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_CastleGuards.tga:UI_Structure_Icon_CastleGuards#2" //GUID:38c0caaaf283f9340b3e7b3ae563cef2
+}
+
+// RELIGION
+
+def PriestlyEducation : Upgrade
+{
+	name = "Priestly Education"
+	flavor = "Training clergy in scripture, liturgy, and Latin to ensure doctrinal unity and learned preaching."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_School.tga:UI_Structure_Icon_School#2" //GUID:20b12f2617600e5428a7f1129c8d2558
+}
+
+def Processions : Upgrade
+{
+	name = "Processions"
+	flavor = "Public displays of faith and penance that reinforce communal identity and piety."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Ceremonies_Christian.tga:UI_Structure_Icon_Ceremonies_Christian#2" //GUID:44b8eb3c5c9d4fe479f6c7d25fe0ceb7
+}
+
+def MonasticSchooling : Upgrade
+{
+	name = "Monastic Schooling"
+	flavor = "Collaboration with nearby monasteries to provide basic education for novices and clerks."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Orphanage.tga:UI_Structure_Icon_Orphanage#2" //GUID:0a88027edc9065f43aa3b4e60c65b75b
+}
+
+def FestiveCalendar : Upgrade
+{
+	name = "Festive Calendar"
+	flavor = "Organization of holy days and saints’ feasts, structuring the rhythm of life around the liturgical year."
+	icon = "Assets/Icons/Buildings/FestiveCalendar.png:FestiveCalendar#1"
+}
+
+def ProperBells : Upgrade
+{
+	name = "Proper Bells"
+	flavor = "Installation of tuned church bells to summon the faithful and mark the hours of devotion."
+	icon = "Assets/Icons/Buildings/ProperBells.png:ProperBells#1"
+}
+
+def Cemetries : Upgrade
+{
+	name = "Cemetries"
+	flavor = "Consecrated burial grounds adjoining the church, granting rest to the dead within sacred soil."
+	icon = "Assets/Icons/Buildings/Cemetry.png:Cemetry#1"
+}
+
+def HerbGrowing : Upgrade
+{
+	name = "HerbGrowing"
+	flavor = "Cultivation of medicinal plants for healing and apothecary use within and beyond the cloister walls."
+	icon = "Assets/Icons/Buildings/HerbGrowing.png:HerbGrowing#1"
+}
+
+def Scriptorium : Upgrade
+{
+	name = "Scriptorium"
+	flavor = "Quiet chambers where monks laboriously copy manuscripts, preserving sacred and classical texts alike."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_ScribesOffice.tga:UI_Structure_Icon_ScribesOffice#2" //GUID:ab3dc5b23bf99a640b72192498cf76f5
+}
+
+def IlluminatorsAtelier : Upgrade
+{
+	name = "Illuminators’ Atelier"
+	flavor = "Workshops producing richly decorated manuscripts that reflect divine beauty through art and color."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_ArtSchool.tga:UI_Structure_Icon_ArtSchool#2" //GUID:0f87d18486d8e2c44ac9fd51893ab403
+}
+
+def Hospital : Upgrade
+{
+	name = "Hospital"
+	flavor = "Monastic infirmaries offering care to the sick and poor, guided by the ideals of charity and compassion."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Hospital.tga:UI_Structure_Icon_Hospital#2" //GUID:c654cc32eb9f489429550e17125c688c
+}
+
+def CistercianDiscipline : Upgrade
+{
+	name = "Cistercian Discipline"
+	flavor = "Reform emphasizing manual labor, austerity, and self-sufficiency, spreading across Europe’s monastic world."
+	icon = "Assets/Icons/Buildings/CistercianDiscipline.png:CistercianDiscipline#1"
+}
+
+def Hospitium : Upgrade
+{
+	name = "Hospitium"
+	flavor = "A guesthouse for pilgrims and travelers, extending hospitality as a sacred duty of the monastic order."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Tavern.tga:UI_Structure_Icon_Tavern#2" //GUID:969f5551d319bb946a6126d111e03dbf
+}
+
+def InquisitorialChamber : Upgrade
+{
+	name = "Inquisitorial Chamber"
+	flavor = "A specialized office tasked with investigating heresy and enforcing doctrinal conformity through sanctioned inquiry."
+	icon = "Assets/Icons/Buildings/InquisitorialChamber.png:InquisitorialChamber#1"
+}
+
+def DiocesanAdministration : Upgrade
+{
+	name = "Diocesan Administration"
+	flavor = "Offices coordinating tithes, appointments, and the management of Church lands across the region."
+	icon = "Assets/Icons/Buildings/DiocesanAdministration.png:DiocesanAdministration#1"
+}
+
+def EpiscopalChancery : Upgrade
+{
+	name = "Episcopal Chancery"
+	flavor = "The bishop’s writing office, producing sealed documents, decrees, and correspondence for ecclesiastical affairs."
+	icon = "Assets/Icons/Buildings/EpiscopalChancery.png:EpiscopalChancery#1"
+}
+
+def SynodalCourts : Upgrade
+{
+	name = "Synodal Courts"
+	flavor = "Assemblies of clergy convened to deliberate on doctrine, discipline, and disputes within the diocesan realm."
+	icon = "Assets/Icons/Buildings/SynodalCourts.png:SynodalCourts#1"
+}
+
+def ChoralLiturgy : Upgrade
+{
+	name = "Choral Liturgy"
+	flavor = "The establishment of trained choirs elevates ceremonies into majestic spectacles of harmony and devotion."
+	icon = "Assets/Icons/Buildings/ChoralLiturgy.png:ChoralLiturgy#1"
+}
+
+def GothicTechniques : Upgrade
+{
+	name = "Gothic Techniques"
+	flavor = "Master builders adopt pointed arches, ribbed vaults, and flying buttresses, allowing unprecedented height and light."
+	icon = "Assets/Icons/Buildings/GothicTechniques.png:GothicTechniques#1"
+}
+
+def StainedGlassWorkshops : Upgrade
+{
+	name = "Stained Glass Workshops"
+	flavor = "Artisans craft radiant glass windows telling sacred stories through light and color."
+	icon = "Assets/Icons/Buildings/StainedGlassWorkshops.png:StainedGlassWorkshops#1"
+}
+
+def Cloister : Upgrade
+{
+	name = "Cloister"
+	flavor = "A serene, enclosed courtyard fostering contemplation and scholarly exchange among the clergy."
+	icon = "Assets/Icons/Buildings/Cloister.png:Cloister#1"
+}
+
+// FARMING
+
+def HorseHarnessing : Upgrade
+{
+	name = "Horse Harnessing"
+	flavor = "Introduction of the horse collar and improved harnesses, greatly enhancing plowing efficiency and field work."
+	icon = "Assets/Icons/Buildings/HorseHarnessing.png:HorseHarnessing#1"
+}
+
+def FlaxFarming : Upgrade
+{
+	name = "Flax Growing"
+	flavor = "Cultivation of flax plants for linen, rope, and sailcloth, providing a valuable textile resource."
+	icon = "Assets/Icons/Buildings/FlaxGrowing.png:FlaxGrowing#1"
+}
+
+def Breweries : Upgrade
+{
+	name = "Breweries"
+	flavor = "Facilities brewing beer and ale, vital both as nourishment and as a safe, preserved drink."
+	icon = "Assets/Icons/Buildings/Breweries.png:Breweries#1"
+}
+
+def SpinningWheels : Upgrade
+{
+	name = "Spinnin gWheels"
+	flavor = "Standardized weaving and dyeing processes producing consistent, trade-worthy fabric."
+	icon = "Assets/Icons/Buildings/SpinningWheels.png:SpinningWheels#1"
+}
+
+def ClothManufacturing : Upgrade
+{
+	name = "Cloth Manufacturing"
+	flavor = "Standardized weaving and dyeing processes producing consistent, trade-worthy fabric."
+	icon = "Assets/Icons/Buildings/ClothManufacturing.png:ClothManufacturing#1"
+}
+
+def ArmorWeaving : Upgrade
+{
+	name = "Armor Weaving"
+	flavor = "Reinforced textile layering used in gambesons and padded armors for soldiers."
+	icon = "Assets/Icons/Buildings/ArmorWeaving.png:ArmorWeaving#1"
+}
+
+def FullingMills : Upgrade
+{
+	name = "Fulling Mills"
+	flavor = "Water-powered mills cleansing and thickening woven cloth, improving its strength and quality."
+	icon = "Assets/Icons/Buildings/FullingMills.png:FullingMills#1"
+}
+
+// TRADING
+
+def AnnualFairs : Upgrade
+{
+	name = "Annual Fairs"
+	flavor = "Grand seasonal events drawing distant traders, boosting commerce and cultural exchange across regions."
+	icon = "Assets/Icons/Buildings/AnnualFairs.png:AnnualFairs#1"
+}
+def DiplomaticOffices : Upgrade
+{
+	name = "Diplomatic Offices"
+	flavor = "Chambers where merchant envoys and foreign traders negotiate treaties and commercial rights."
+	icon = "Assets/Icons/Buildings/FullingMills.png:FullingMills#1"
+}
+
+def StandardizationOffices : Upgrade
+{
+	name = "Standardization Offices"
+	flavor = "Inspectors and weighmasters ensuring fair measures, consistent coinage, and quality control."
+	icon = "Assets/Icons/Buildings/FullingMills.png:FullingMills#1"
+}
+
+// CRAFTING
+
+def Toolmaking : Upgrade
+{
+	name = "Toolmaking"
+	flavor = "Production of basic implements for farming, carpentry, and daily labor, supporting every craft in the town."
+	icon = "Assets/Icons/Buildings/Toolmaking.png:Toolmaking#1"
+}
+
+def Stonemasons : Upgrade
+{
+	name = "Stonemasons"
+	flavor = "Skilled builders shaping stone for walls, churches, and fortifications, laying the foundation of lasting architecture."
+	icon = "Assets/Icons/Buildings/Stonemasons.png:Stonemasons#1"
+}
+
+def Craftsmen : Upgrade
+{
+	name = "Craftsmen"
+	flavor = "Independent artisans creating everything from pottery to furniture, forming the backbone of the town’s economy."
+	icon = "Assets/Icons/Buildings/Craftsmen.png:Craftsmen#1"
+}
+
+def SimpleWeaponsmithing : Upgrade
+{
+	name = "Simple Weaponsmithing"
+	flavor = "Production of basic swords, spears, and axes to arm militias and guards."
+	icon = "Assets/Icons/Buildings/SimpleWeaponsmithing.png:SimpleWeaponsmithing#1"
+
+	ai_eval = 50000
+}
+
+def SimpleArmorsmithing : Upgrade
+{
+	name = "Simple Armorsmithing"
+	flavor = "Crafting of helmets, chainmail, and shields to protect warriors in the field."
+	icon = "Assets/Icons/Buildings/SimpleArmorsmithing.png:SimpleArmorsmithing#1"
+
+	ai_eval = 50000
+}
+
+def Toolsmithing : Upgrade
+{
+	name = "Toolsmithing"
+	flavor = "Forging durable ploughshares, hammers, and nails essential for craftsmen and farmers alike."
+	icon = "Assets/Icons/Buildings/Toolsmithing.png:Toolsmithing#1"
+}
+
+def ForgeBellows : Upgrade
+{
+	name = "Forge Bellows"
+	flavor = "Installation of improved air bellows to reach higher temperatures and refine the quality of ironwork."
+	icon = "Assets/Icons/Buildings/FullingMills.png:FullingMills#1"
+}
+
+def ImprovedTanningLiquors : Upgrade
+{
+	name = "Improved Tanning Liquors"
+	flavor = "Use of refined mixtures of bark and lime to speed up curing and improve leather strength."
+	icon = "Assets/Icons/Buildings/ImprovedTanningLiquors.png:ImprovedTanningLiquors#1"
+}
+
+def Leatherworking : Upgrade
+{
+	name = "Leatherworking"
+	flavor = "Crafting of finished goods such as belts, saddles, pouches, and light armor from tanned hides."
+	icon = "Assets/Icons/Buildings/Leatherworking.png:Leatherworking#1"
+}
+
+def Glassmaking : Upgrade
+{
+	name = "Glassmaking"
+	flavor = "Skilled artisans master the fusion of sand and fire, producing glass for windows, vessels, and ornaments."
+	icon = "Assets/Icons/Buildings/Glassmaking.png:Glassmaking#1"
+}
+
+def AdvancedWeaponsmithing : Upgrade
+{
+	name = "Advanced Weaponsmithing"
+	flavor = "Refinement in forging techniques yields stronger, sharper blades and finely balanced arms."
+	icon = "Assets/Icons/Buildings/AdvancedWeaponsmithing.png:AdvancedWeaponsmithing#1"
+
+	ai_eval = 50000
+}
+
+def AdvancedArmorsmithing : Upgrade
+{
+	name = "Advanced Armorsmithing"
+	flavor = "Improved metallurgy and design produce superior plate and chain armor, granting better protection in battle."
+	icon = "Assets/Icons/Buildings/AdvancedArmorsmithing.png:AdvancedArmorsmithing#1"
+
+	ai_eval = 50000
+}
+
+// RIVER
+
+def WaterWheels : Upgrade
+{
+	name = "Water Wheels"
+	flavor = "Ingenious rotary devices lift and channel water, powering mills and improving field irrigation."
+	icon = "Assets/Icons/Buildings/WaterWheels.png:WaterWheels#1"
+}
+
+def CanalNetworks : Upgrade
+{
+	name = "Canal Networks"
+	flavor = "A system of ditches and channels distributes water efficiently across fields, boosting fertility and crop yields."
+	icon = "Assets/Icons/Buildings/CanalNetworks.png:CanalNetworks#1"
+}
+
+// EDUCATION
+
+def EarlyScholasticism : Upgrade
+{
+	name = "Early Scholasticism"
+	flavor = "The pursuit of reasoned faith emerges, blending theology and philosophy in the tradition of Abelard and Anselm."
+	icon = "Assets/Icons/Buildings/EarlyScholasticism.png:EarlyScholasticism#1"
+}
+
+def TriviumCurriculum : Upgrade
+{
+	name = "Trivium Curriculum"
+	flavor = "Grammar, rhetoric, and logic form the core of education, shaping disciplined and articulate minds."
+	icon = "Assets/Icons/Buildings/TriviumCurriculum.png:TriviumCurriculum#1"
+}
+
+def TranslationWorkshops : Upgrade
+{
+	name = "Translation Workshops"
+	flavor = "Scholars labor to render Greek and Arabic texts into Latin, reviving lost wisdom of antiquity."
+	icon = "Assets/Icons/Buildings/TranslationWorkshops.png:TranslationWorkshops#1"
+}
+
+def ArchiveRoom : Upgrade
+{
+	name = "Archive Room"
+	flavor = "Records, charters, and chronicles are preserved under controlled conditions for posterity."
+	icon = "Assets/Icons/Buildings/ArchiveRoom.png:ArchiveRoom#1"
+}
+
+def Cataloguing : Upgrade
+{
+	name = "Cataloguing"
+	flavor = "The development of systematic classification enables faster access to knowledge and learning."
+	icon = "Assets/Icons/Buildings/Cataloguing.png:Cataloguing#1"
+}
+
+def AcademicCharter : Upgrade
+{
+	name = "Academic Charter"
+	flavor = "The granting of privileges by pope or king establishes the university’s autonomy and authority."
+	icon = "Assets/Icons/Buildings/AcademicCharter.png:AcademicCharter#1"
+}
+
+def HighScholasticism : Upgrade
+{
+	name = "High Scholasticism"
+	flavor = "Faith and reason reach new heights through rigorous dialectic and the synthesis of classical philosophy with theology."
+	icon = "Assets/Icons/Buildings/HighScholasticism.png:HighScholasticism#1"
+}
+
+def FacultyTheology : Upgrade
+{
+	name = "Faculty of Theology"
+	flavor = "The most esteemed discipline, training clerics and scholars to interpret divine truth."
+	icon = "Assets/Icons/Buildings/FacultyTheology.png:FacultyTheology#1"
+}
+
+def FacultyLaw : Upgrade
+{
+	name = "Faculty of Law"
+	flavor = "Jurists codify canon and civil law, shaping governance and justice across medieval Europe."
+	icon = "Assets/Icons/Buildings/FacultyLaw.png:FacultyLaw#1"
+}
+
+def FacultyMedicine : Upgrade
+{
+	name = "Faculty of Medicine"
+	flavor = "Heirs to Galen and Avicenna, physicians study anatomy, astrology, and the humors that govern health."
+	icon = "Assets/Icons/Buildings/FacultyMedicine.png:FacultyMedicine#1"
+}
+
+// PUNISHMENT
+
+def ExecutionersSquare : Upgrade
+{
+	name = "Executioner's Square"
+	flavor = "A public space where justice is carried out for all to see, serving both order and deterrence."
+	icon = "Assets/Icons/Buildings/ExecutionersSquare.png:ExecutionersSquare#1"
+}
+
+def TortureChamber : Upgrade
+{
+	name = "Torture Chamber"
+	flavor = "Dark rooms where confession is extracted and the will of authority enforced through fear and pain."
+	icon = "Assets/Icons/Buildings/TortureChamber.png:TortureChamber#1"
+}
+
+def JudgesBench : Upgrade
+{
+	name = "Judges’ Bench"
+	flavor = "A raised platform symbolizing impartial rule and the solemn weight of judgment."
+	icon = "Assets/Icons/Buildings/Cataloguing.png:Cataloguing#1"
+}
+
+def RecordsArchive : Upgrade
+{
+	name = "Records Archive"
+	flavor = "Stone chambers preserving charters, verdicts, and contracts that shape the memory of the realm."
+	icon = "Assets/Icons/Buildings/RecordsArchive.png:RecordsArchive#1"
+}
+
+def TownHeralds : Upgrade
+{
+	name = "Town Heralds"
+	flavor = "Messengers and announcers who proclaim new laws, decrees, and royal mandates to the populace."
+	icon = "Assets/Icons/Buildings/Cataloguing.png:Cataloguing#1"
+}
+
+def GuardBarracks : Upgrade
+{
+	name = "Guard Barracks"
+	flavor = "Quarters for the wardens who maintain order and security within the prison walls."
+	icon = "Assets/Icons/Buildings/Cataloguing.png:Cataloguing#1"
+}
+
+def PublicPunishments : Upgrade
+{
+	name = "Public Punishments"
+	flavor = "Designated areas where transgressors are shamed before the townsfolk to enforce moral discipline."
+	icon = "Assets/Icons/Buildings/Cataloguing.png:Cataloguing#1"
+}
+
+def Cataloguing : Upgrade
+{
+	name = "Cataloguing"
+	flavor = "The development of systematic classification enables faster access to knowledge and learning."
+	icon = "Assets/Icons/Buildings/Cataloguing.png:Cataloguing#1"
+}
+

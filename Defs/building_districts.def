@@ -1,0 +1,232 @@
+def District
+{
+	float panels_spacing = 2 // spacing between districts
+	panel_min_width = 120
+	icon_size = 110,100
+	panel_padding = 8
+}
+
+extend CommonDistrict
+{
+    delete buildings
+	buildings
+	{	
+		HillFort
+		PirateHaven { prerequisites { Harbor } }
+		Viticulture
+		SheepFarming
+		CattleFarming
+		HorseBreeding
+		Woodworking
+		Stoneworking
+		Metalworking
+	}
+}
+
+def PFDistrict : District
+{
+	delete buildings
+	buildings
+	{
+		LimeTrade { prerequisites { Stoneworking; MarketSquare } }
+
+		LodestoneTrade { prerequisites { Metalworking; MarketSquare } }
+		SilverSmelting { prerequisites { Metalworking; MarketSquare } }
+		GoldSmelting { prerequisites { Metalworking; MarketSquare } }
+
+		AmberTrade { prerequisites { MarketSquare } } //next to jewels
+		MineralsTrade { prerequisites { MarketSquare } }
+		
+		CamelsTrade { prerequisites { MarketSquare } }
+		FurTrade { prerequisites { MarketSquare } }
+
+		SaltTrade { prerequisites { MarketSquare } }
+		SaltpeterTrade { prerequisites { MarketSquare } }		
+		SulfurTrade { prerequisites { MarketSquare } }
+
+		TemplarCommandery
+		HospitallerPriory
+		TeutonicBailiwick			
+	}
+}
+
+def MonasteriesDistrict : District
+{
+	delete buildings
+	buildings
+	{
+		Church = 1,1
+		Masjid = 1,1
+		Temple = 1,1
+
+		CityMonastery = 2,1
+
+		Cathedral = 1,2 { prerequisites { Church } }
+		GreatMosque = 1.5,2 { prerequisites { Masjid } }	
+
+		EcclesiasticalCourt = 2,2 { prerequisites { Church; Dungeon } }
+		EpiscopalPalace = 1.5,3 { prerequisites { StonemasonsGuild; Cathedral; EcclesiasticalCourt } }
+	}
+}
+
+extend CropFarmsDistrict
+{
+    delete buildings
+	buildings
+	{
+		CropFarming = 1,1
+
+		WeavingMill = 1,2 { prerequisites { CropFarming } }
+
+		Windmill = 1,3 { prerequisites { CropFarming } }
+	}
+}
+
+def VillagesDistrict : District
+{
+	delete buildings
+	buildings
+	{
+		MarketSquare = 1,1
+
+		MerchantHall = 1,2 { prerequisites { MarketSquare } }
+
+		MerchantsGuild = 1,3 { prerequisites { MerchantHall } }
+	}
+}
+
+def CastlesDistrict : District
+{
+	delete buildings
+	buildings
+	{
+		TrainingField = 1,1
+		Stables = 2,1
+
+		SiegeWorkshop = 1,2
+		CityWatch = 2,2 { prerequisites { TrainingField } }
+
+		Armory = 1,3 { prerequisites { TrainingField; Blacksmith } }
+		Barracks = 2,3 { prerequisites { Armory } }
+	}
+}
+
+
+def SeaShoreDistrict : District
+{
+	name = "Sea"
+	color = "#3F5B6ACC"
+	
+	requires { Coastal }
+
+	caption_count = (coastal_settlements_count)
+	delete buildings
+	buildings
+	{
+		FishingDocks = 2,1
+		Harbor = 1,1
+
+		TradePort = 1,2 { prerequisites { Harbor } }
+		Shipyard = 2,2 { prerequisites { Harbor } }
+		
+		ItalianTraderQuarters = 1,3 { prerequisites { TradePort } }	
+		Admiralty = 2,3 { prerequisites { StonemasonsGuild; Shipyard } }
+	}
+	
+	backgroud = "Assets/UI/Elements/BuildingSlots/Element_BuildingSlot_District_SeaShore.png:Element_BuildingSlot_District_SeaShore#2" //GUID:aaaa3cdb5696fbe4f8714a25d6792b07
+	border = "Assets/UI/Elements/BuildingSlots/Element_BuildingSlot_DistrictCirlce_SeaShore.png:Element_BuildingSlot_DistrictCirlce_SeaShore#2" //GUID:6d754f25da00eb440a6c0c8542bfea7e
+}
+
+def RiverDistrict : District
+{
+	name = "River"
+	color = "#3F5B6ACC"
+	
+	requires { Rivers }
+	caption_count = (farms_count)
+
+	buildings
+	{
+		RiverDocks = 1,1
+
+		Irrigation = 1,2 { prerequisites { CropFarming } }
+	}
+	
+	backgroud = "Assets/UI/Elements/BuildingSlots/Element_BuildingSlot_District_SeaShore.png:Element_BuildingSlot_District_SeaShore#2" //GUID:aaaa3cdb5696fbe4f8714a25d6792b07
+	border = "Assets/UI/Elements/BuildingSlots/Element_BuildingSlot_DistrictCirlce_SeaShore.png:Element_BuildingSlot_DistrictCirlce_SeaShore#2" //GUID:6d754f25da00eb440a6c0c8542bfea7e
+}
+
+def CraftingDistrict: District
+{
+	name = "Crafting"
+	color = "#9a821fcc"
+	
+	caption_count = (villages_count)
+
+	buildings
+	{
+		Workshop = 1,1
+		Blacksmith = 2,1
+		Tannery = 3,1
+
+		StonemasonsGuild = 1,2 { prerequisites { Workshop } }
+		CraftsmensGuild = 2,2 { prerequisites { Workshop } }
+		BlacksmithsGuild = 3,2 { prerequisites { Blacksmith } }
+		
+		MasterWorkshop = 1,3 { prerequisites { CraftsmensGuild } }
+		Foundry = 2,3 { prerequisites { BlacksmithsGuild } }
+	}
+}
+
+def EducationDistrict : District
+{
+	name = "Education"
+	color = "#185a9dcc"
+	
+	caption_count = (villages_count)
+	
+	buildings
+	{
+		School = 1,1
+
+		Library = 1,2 { prerequisites { School } }
+
+		University = 1,3 { prerequisites { Library } }
+		Madrasah = 1,3 { prerequisites { Library } }
+	}
+}
+
+def CultureDistrict : District
+{
+	name = "Culture"
+	color = "#2b9088cc"
+	
+	caption_count = (villages_count)
+
+	buildings
+	{
+		TownHall = 1,1 { prerequisites { MarketSquare } }
+
+		TournamentGrounds = 1,2 { prerequisites { Armory } }
+		Bathhouse = 1,2
+
+		Theater = 1,3 { prerequisites { StonemasonsGuild } }
+	}
+}
+
+def PunishmentDistrict : District
+{
+	name = "Punishment"
+	color = "#a10505cc"
+	
+	caption_count = (keeps_count)
+
+	buildings
+	{
+		Dungeon = 1,1
+
+		CourtHall = 1,2 { prerequisites { Dungeon } }
+
+		CityPrison = 1,3 { prerequisites { CourtHall } }
+	}
+}

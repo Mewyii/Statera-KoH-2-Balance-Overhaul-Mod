@@ -138,27 +138,27 @@ def CampaignVars {
 		delete options
 		options
 		{
-			4 // max_unlockable_tiers
+			2 // max_unlockable_tiers
 			{
 				text name = "8 Buildings"
 				text description = "You can build up to 8 Buildings in a realm"
 			}
-			default 6
+			4
 			{
 				text name = "10 Buildings"
 				text description = "You can build up to 10 Buildings in a realm"
 			}
-			8
+			default 6
 			{
 				text name = "12 Buildings"
 				text description = "You can build up to 12 Buildings in a realm"
 			}
-			11
+			9
 			{
 				text name = "15 Buildings"
 				text description = "You can build up to 12 Buildings in a realm"
 			}
-			14
+			12
 			{
 				text name = "18 Buildings"
 				text description = "You can build up to 18 Buildings in a realm"
@@ -266,27 +266,27 @@ def SinglePlayerCampaignVars
 		delete options
 		options
 		{
-			4 // max_unlockable_tiers
+			2 // max_unlockable_tiers
 			{
 				text name = "8 Buildings"
 				text description = "You can build up to 8 Buildings in a realm"
 			}
-			default 6
+			4
 			{
 				text name = "10 Buildings"
 				text description = "You can build up to 10 Buildings in a realm"
 			}
-			8
+			default 6
 			{
 				text name = "12 Buildings"
 				text description = "You can build up to 12 Buildings in a realm"
 			}
-			11
+			9
 			{
 				text name = "15 Buildings"
 				text description = "You can build up to 12 Buildings in a realm"
 			}
-			14
+			12
 			{
 				text name = "18 Buildings"
 				text description = "You can build up to 18 Buildings in a realm"

@@ -1,15 +1,79 @@
 extend *,BasedOn,GoldCost,HammersCost,BooksCost,PietyCost,GoldUpkeep,Bonuses,Requires
-Harbor,Building,1000,800,,,,"1 Gold in Town
-1 Food in Town
-2 Trade in Town",
-Shipyard,Building,5000,3000,,,,"2 Gold in Town
-4 Trade in Town",
-MarketSquare,Building,500,800,,,,"1 Gold in Town
-1 Trade in Town
-2 rs_happiness",
-FlaxGrowing,Building,500,1000,,,,"2 Trade in Farm
-1 Trade in Farm
-2 rs_happiness",
-HerbGardening,Building,500,1000,,,,"2 Gold in Farm
-1 Gold in Farm
-10 rs_growth_rate_perc",
+Church,Building,700,1000,,50,,2 Piety in Town 1 Piety in Monastery 2 rs_happiness if ChristianRealmOtherKingdom,Christian Stonemasons
+Masjid,Building,700,1000,,,,"1 Books in Town
+2 Piety in Town
+1 Piety in Mosque
+2 rs_happiness if MuslimRealmOtherKingdom",Muslim Stonemasons
+Temple,Building,700,1000,,,,"1 Piety in Town
+1 Piety in Shrine
+1 Books in Town
+1 rs_happiness if PaganRealmOtherKingdom",Pagan
+CityMonastery,Building,400,800,,50,,"1 Books in Town 1 Piety in Town 1 Books in Monastery ",Christian Stonemasons
+Cathedral,Building,3500,4500,,500,,"4 Piety in Town
+2 Piety in Monastery
+4 rs_happiness
+50 rs_fame_buildings_bonus if ClericGovernor
+20 ks_culture_from_buildings if ClericGovernor",Christian Stonemasons
+GreatMosque,Building,3500,5000,,500,,"4 Piety in Town
+2 Piety in Mosque
+4 rs_happiness
+50 rs_fame_buildings_bonus if ClericGovernor
+20 ks_culture_from_buildings if ClericGovernor",Muslim Stonemasons
+EcclesiasticalCourt,Building,1500,2500,,,,4 rs_stability_buildings,Christian Stonemasons
+EpiscopalPalace,Building,4000,5000,,,,"2 Piety in Town 1 Piety in All 30 rs_fame_buildings_bonus if ClericGovernor 10 ks_culture_from_buildings if ClericGovernor ",Christian
+TemplarCommandery,Building,1200,1800,,1000,,1 Piety in Town 1 Books in Town,Monastery Catholic Stonemasons
+HospitallerPriory,Building,1200,1800,,1000,,1 Piety in Town 1 Books in Town,Monastery Catholic Stonemasons
+TeutonicBailiwick,Building,1200,1800,,1000,,1 Piety in Town 1 Books in Town,Monastery Catholic Stonemasons
+School,Building,300,500,200,,,1 Books in Town 1 Books in Village,Craftsmen
+Library,Building,1000,1500,1000,,,2 Books in Town 1 Books in Village 100 ks_max_books if Governed,Stonemasons
+University,Building,3000,3500,1500,,,"2 Books in Town
+1 Books in All 20 rs_fame_buildings_bonus if Governed
+10 ks_culture_from_buildings if Governed",Christian Stonemasons
+Madrasah,Building,8000,8000,1500,,,"2 Books in Town
+1 Books in All 20 rs_fame_buildings_bonus if Governed
+10 ks_culture_from_buildings if Governed",Muslim
+CropFarming,Building,200,1000,,,,"1 Food in Town
+1 Food in Farm
+50 rs_max_food",
+Irrigation,Building,1000,2000,,,,"1 Food in Town
+1 Food in Farm",Rivers
+Windmill,Building,600,1000,,,,"1 Trade in Town 1 Food in Town 1 Trade in Farm
+1 Food in Farm
+50 rs_max_food",Craftsmen
+MarketSquare,Building,500,800,,,,1 Gold in Town 1 Gold in Village,
+MerchantHall,Building,1200,2000,,,,2 Gold in Town 1 Gold in Village 20 rs_growth_rate_perc,Craftsmen
+MerchantsGuild,Building,2000,2500,,,,2 Gold in Town 1 Gold in All 10 rs_growth_rate_perc,Stonemasons
+Workshop,Building,200,400,,,,1 Hammers in Town 1 WorkerSlots in Town 5 ks_build_cost_discount_perc,
+Blacksmith,Building,600,1000,,,,2 Trade in Town 1 Trade in Village 1 WorkerSlots in Town,
+Tannery,Building,400,800,,,,1 Trade in Town 1 Trade in Village 1 WorkerSlots in Town,
+WeavingMill,Building,800,1200,,,,3 Trade in Town 1 Trade in Farm 1 WorkerSlots in Town,Craftsmen
+StonemasonsGuild,Building,2000,2800,,,,2 Hammers in Town 2 Trade in Town 2 WorkerSlots in Town,
+CraftsmensGuild,Building,1500,2200,,,,2 Hammers in Town 2 Trade in Town 2 WorkerSlots in Town,
+BlacksmithsGuild,Building,1800,2600,,,,2 Trade in Town 2 WorkerSlots in Town,
+MasterWorkshop,Building,500,500,,,,2 Hammers in Town 2 WorkerSlots in Town,
+Foundry,Building,500,500,,,,1 Piety in Town,
+GlassmakersHall,Building,500,500,,,,1 Piety in Town,
+TrainingField,Building,300,500,,,,1 Levy in Town 1 Levy in Keep,
+Stables,Building,600,900,,,,,Toolmaking Craftsmen
+CityWatch,Building,900,1200,,,,2 rs_stability_buildings 2 TownGuards in Town,Stonemasons
+Armory,Building,1500,2000,,,,100 rs_siege_defense,Craftsmen
+SiegeWorkshop,Building,1200,1600,,,,10 rs_siege_defense 10 rs_attrition_damage,Toolmaking Craftsmen
+Barracks,Building,2500,3000,,,,2 Levy in Town 1 Levy in All 40 rs_siege_defense 100 ks_max_levy if Governed,Stonemasons
+Dungeon,Building,600,900,,,,2 rs_stability_buildings,Craftsmen
+CourtHall,Building,1100,1500,,,,4 rs_stability_buildings,Stonemasons
+CityPrison,Building,2000,2600,,,,6 rs_stability_buildings,Stonemasons
+TownHall,Building,500,700,100,,,2 rs_happiness 10 rs_growth_rate_perc 5 ks_culture_from_buildings,
+TournamentGrounds,Building,2000,2000,250,,,1 Levy in Town 1 Levy in Keep 4 rs_happiness 10 ks_hire_knight_cost_discount_perc if KingGovernor 10 ks_knight_wage_discount_perc if KingGovernor 10 rs_fame_buildings_bonus if Governed  20 ks_culture_from_buildings if Governed,Catholic
+Theater,Building,2500,3500,500,,,1 Books in Town 1 Books in Village 4 rs_happiness 10 rs_fame_buildings_bonus if Governed 20 ks_culture_from_buildings if Governed,Catholic
+Bathhouse,Building,2500,3500,,,,20 rs_fame_buildings_bonus if DiplomatGovernor 10 ks_culture_from_buildings if Governed,Orthodox
+Harbor,Building,1000,1400,,,,2 Gold in Town 1 Gold in CoastalSettlement,
+FishingDocks,Building,600,600,,,,"1 Food in Town
+1 Trade in Town 1 Food in CoastalSettlement",Craftsmen
+TradePort,Building,2500,3500,,,,4 Gold in Town 1 Gold in CoastalSettlement 10 rs_growth_rate_perc,Craftsmen
+Shipyard,Building,2000,3000,,,,6 Trade in Town 20 rs_siege_defense,Stonemasons
+Admiralty,Building,4000,5000,,,,"50 rs_siege_defense
+20 rs_fame_buildings_bonus if Governed
+15 ks_profit_from_colonies_perc if Governed
+1 ks_has_admiralty if Governed",
+ItalianTraderQuarters,Building,1500,2000,,,,"10 Gold in Town 20 rs_growth_rate_perc -5 rs_happiness ",Stonemasons
+RiverDocks,Building,800,1000,,,,1 Gold in Town 1 Food in Town 1 Gold in Village 10 rs_growth_rate_perc,
