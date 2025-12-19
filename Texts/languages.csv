@@ -115,8 +115,25 @@ Moray.description,"The Kingdom of Moray was a powerful northern Scottish realm c
 ChangeReligionAction.success_fail.sf_king_religion_ability.name,Our king's religion ability (x3),Aptitude à la religion de notre roi (x2),Religionsgeschick unseres Königs (x2),Competencia de religión de nuestro rey (x2),Zdolności religijne naszego władcy (x2),Способность нашего короля «Религия» (х2),자국 국왕의 종교 능력 (x2),自国の王の宗教能力 (x2),我们国王的宗教能力（x2）,我方國王的宗教能力（x2）,Kralımızın din becerisi (x2),हमारे राजा की धर्म से संबंधित क्षमता (x2),Kemampuan agama raja kita (x2)
 ChangeReligionAction.success_fail.sf_king_diplomacyn_ability.name,Our King's diplomacy ability (x2),Aptitude à la diplomatie de notre roi,Diplomatiegeschick unseres Königs,Competencia de diplomacia de nuestro rey,Zdolności dyplomatyczne naszego władcy,Способность нашего короля «Дипломатия»,자국 국왕의 외교 능력,自国の外交能力,我们国王的外交能力,我方國王的外交能力,Kralımızın diplomasi becerisi,हमारे राजा की कूटनीतिक योग्यता,Kemampuan diplomasi Raja kita
 ChangeReligionAction.success_fail.sf_num_neighbors_following_old_religion.name,"Our neighbors, following {own_kingdom.religion:ism} (x5)",Nos voisins pratiquant {own_kingdom.religion:ismdef} (x10),"Unsere Nachbarn, die {own_kingdom.religion:ismprepto} gehören (x10)",Nuestros vecinos que siguen el {own_kingdom.religion:ism} (x10),Nasi sąsiedzi wyznający {own_kingdom.religion} (x10),"Наши соседи, исповедующие {own_kingdom.religion:ism} (х10)",이웃 왕국들의 종교가 {own_kingdom.religion:ism}일 경우 (x10),{own_kingdom.religion:ism}を信仰中の隣国 (x10),信奉{own_kingdom.religion:ism}的近邻（x10）,我方鄰國，信奉{own_kingdom.religion:ism}（x10）,"Komşularımız, {own_kingdom.religion:ism} inancını benimsiyor (x10)","हमारे पड़ोसी, जो {own_kingdom.religion} को मानते हैं.","Tetangga kita, menganut {own_kingdom.religion:ism} (x10)"
-VillagesDistrict.name,"Trading"
+VillagesDistrict.name,Trading
 CampaignVars.max_unlockable_tiers.options.6.name,12 Buildings,,,,,,,,,,,,
 CampaignVars.max_unlockable_tiers.options.6.description,You can build up to 12 Buildings in a province,,,,,,,,,,,,
 CampaignVars.max_unlockable_tiers.options.4.name,10 Buildings,,,,,,,,,,,,
 CampaignVars.max_unlockable_tiers.options.4.description,You can build up to 10 Buildings in a province,,,,,,,,,,,,
+Militia_CE.name,Levied Peasants,,,,,,,,,,,,
+Light_Infantry_CE.name,Levy Swordsmen,,,,,,,,,,,,
+Light_Spearman_CE.name,Levy Spearmen,,,,,,,,,,,,
+Light_Cavalry_CE.name,Levy Cavalry,,,,,,,,,,,,
+Light_Archer_CE.name,Levy Archers,,,,,,,,,,,,
+Marshal_CE.name,Marshal's Retinue,,,,,,,,,,,,
+Heavy_Cavalry_CE.name,Heavy Cavalry,,,,,,,,,,,,
+Levy_Axemen.name,Levy Axemen,,,,,,,,,,,,
+AdvancedMilitia_CE.name,City Militia,,,,,,,,,,,,
+Noble_Knights.name,Noble Knights,,,,,,,,,,,,
+Norman_Special.name,Norman Knights,,,,,,,,,,,,
+Noble_Knights_Dismounted.name,Noble Knights (Dismounted),,,,,,,,,,,,
+Feudal_Knights_Dismounted.name,Feudal Knights (Dismounted),,,,,,,,,,,,
+Sword_Militia_CE.name,Sword Militia,,,,,,,,,,,,
+Viking_Special.name,Drengir,,,,,,,,,,,,
+Longbowman_Special.name,English Longbowmen,,,,,,,,,,,,
+Welsh_Longbowman_Special.name,Welsh Longbowmen,,,,,,,,,,,,

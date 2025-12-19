@@ -10,8 +10,8 @@ CrownAuthority.requirementGoldBaseAmounts = [100, 100, 100, 100, 150, 200, 250, 
 CrownAuthority.requirementPietyAmounts = [600, 600, 600, 600, 700, 800, 900, 1000, 1100, 1200]
 
 Tradition.per_adopted_cost_piety = 0
-Tradition.tier_cost_piety = [100,200,300,400]
+Tradition.tier_cost_piety = [200,300,400,500]
 Tradition.adopt_cost.piety = (per_adopted_cost_piety * adopted_num + tier_cost_piety[tier])
-Tradition.tier_cost_books = [300,400,500,600]
+Tradition.tier_cost_books = [200,300,400,500]
 
 WarExhaustionModifier.time_period_increase = 175

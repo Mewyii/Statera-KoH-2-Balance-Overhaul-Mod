@@ -1,2 +1,49 @@
 River.retreat_damage_mod = 25 { perc = true }
 OceanCoast.retreat_damage_mod = 50 { perc = true }
+
+def Plunder : Battle
+{
+	preparation_time_base = 0
+	duration = 120
+	float resume_plunder_progress_mod = 0.5 // when defenders die, plunder progress *= resume_plunder_progress_mod
+	float plunder_gold_base = 200
+	float plunder_per_gold_production = 0
+	float plunder_gold_per_gold = 100
+	float plunder_gold_per_book = 50
+	float plunder_books_per_book = 50
+	float plunder_gold_per_piety = 50
+	float plunder_gold_per_levy = 10
+	float plunder_gold_per_hammer = 50
+	float plunder_gold_per_worker = 10
+	float plunder_gold_per_commerce = 75
+	float plunder_supplies_per_food = 30
+	float plunder_supplies_per_levy = 10
+	float plunder_supplies_per_worker = 15
+	float plunder_supplies_base = 10
+	float plunder_per_supporter = 0
+	float plunder_supplies_per_supporter = 0.5
+	
+	float interrupt_province_ratio = 0.01
+	float interrupt_settlement_ratio = 0.05
+}
+
+def Siege : Battle
+{
+	preparation_time_base = 0
+	float attrition_tick = 10
+	int req_melee_attrition_troops = 500 //divides attack of melee - high value = less damage
+	int req_ranged_attrition_troops = 100 //divides attack of ranged - high value = less damage
+	int req_equipment_attrition_troops = 100 //divides attack of siege - high value = less damage
+
+	int efficient_siege_squads = 12
+	float penalty_per_squad = 2
+	float surrender_ratio = 1.5
+	float levy_resilience = 15
+	float resilience_damage_mod = 2.0 // TODO: Test Resilience Changes
+	float keep_initial_resil_mod = 0.5
+	float keep_resil_damage_mod = 1
+	float keep_initial_siege_defense_mod = 0.5
+	float keep_siege_defense_damage_mod = 1
+	float resilience_defense_flat_mod = 0.5
+	float base_siege_damage = 5
+}

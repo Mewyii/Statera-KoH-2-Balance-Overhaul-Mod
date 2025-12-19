@@ -1,4 +1,37 @@
 def CampaignVars {
+	string start_period
+	{
+		bool show_in_rules = true
+		bool changeable_after_start = false
+		bool changeable_after_copy = true
+		bool copy_when_reverting_victory_condition_from_save = true
+		bool set_in_thq = true
+		text name = "Starting period"
+		text description = "Starting period of the campaign, determining what kingdoms are on the map and some of their properties like royal families, religion and units"
+		sprite icon = "Assets/UI/Elements/MultiplayerCampaings/RuleIcons/Icon_MultiplayerCampaign_StartPeriod_Early.png:Icon_MultiplayerCampaign_StartPeriod_Early#2"
+		options
+		{
+			default early
+			{
+				text name = "1110 AD"
+				text description = "Starting political landscape based around year 1110"
+				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_StartPeriod_Early.png:Icon_MultiplayerCampaign_StartPeriod_Early#2"
+			}
+			mid
+			{
+				text name = "1224 AD"
+				text description = "Starting political landscape based around year 1224"
+				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_StartPeriod_Mid.png:Icon_MultiplayerCampaign_StartPeriod_Mid#2"
+			}
+			late
+			{
+				text name = "1360 AD"
+				text description = "Starting political landscape based around year 1360"
+				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_StartPeriod_Late.png:Icon_MultiplayerCampaign_StartPeriod_Late#2"
+			}
+		}
+	}
+
 	string ai_difficulty
 	{
 		delete options
@@ -224,6 +257,35 @@ def SinglePlayerCampaignVars
 				text name = "Very hard"
 				text description = "Recommended for experienced players of the campaign, ready to face stronger and competitive enemies.{p}AI kingdoms will be significantly stronger and player kingdoms are likely to have domestic or foreign problems immediately after starting the campaign."
 				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_AIDifficulty_Impossible.png:Icon_MultiplayerCampaign_AIDifficulty_Impossible#2" //GUID:51293efe90e5cf6429471b7bbaa8cd0f
+			}
+		}
+	}
+
+	int start_period
+	{
+		bool show_in_rules = true
+		text name = "Starting period"
+		text description = "Starting period of the campaign, determining what kingdoms are on the map and some of their properties like royal families, religion and units"
+		sprite icon = "Assets/UI/Elements/MultiplayerCampaings/RuleIcons/Icon_MultiplayerCampaign_StartPeriod_Early.png:Icon_MultiplayerCampaign_StartPeriod_Early#2"
+		options
+		{
+			default early
+			{
+				text name = "1110 AD"
+				text description = "Starting political landscape based around year 1110"
+				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_StartPeriod_Early.png:Icon_MultiplayerCampaign_StartPeriod_Early#2" //GUID:f67ef47fedf4ade44aaec6d6b958e115
+			}
+			mid
+			{
+				text name = "1224 AD"
+				text description = "Starting political landscape based around year 1224"
+				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_StartPeriod_Mid.png:Icon_MultiplayerCampaign_StartPeriod_Mid#2" //GUID:91711d53fae59a546896f470c423a941
+			}
+			late
+			{
+				text name = "1360 AD"
+				text description = "Starting political landscape based around year 1360"
+				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_StartPeriod_Late.png:Icon_MultiplayerCampaign_StartPeriod_Late#2" //GUID:0e30b53142427c1439644be4b5229aa2
 			}
 		}
 	}

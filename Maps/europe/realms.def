@@ -21,10 +21,3 @@ Realms.europe.Dumyat.has_river_city = true
 Realms.europe.Hamburg.has_coastal_city = true
 Realms.europe.Bremen.has_coastal_city = true
 Realms.europe.Hordaland.has_coastal_city = true
-
-extend Realms
-{
-	europe
-	{
-	}
-}

@@ -45,18 +45,35 @@ def DefaultUnitSet : AvailableUnits
 	}
 }
 
+delete EuropeanUnitSet
 def EuropeanUnitSet : AvailableUnits
 {
+	// Levy
 	Militia_CE
-	AdvancedMilitia_CE
-	Light_Infantry_CE
+	Levy_Axemen
 	Light_Spearman_CE
 	Light_Archer_CE
 	Light_Cavalry_CE
+
+	// Militia
+	AdvancedMilitia_CE
+	Sword_Militia_CE
+	Spear_Militia_CE
+	Crossbow_Militia_CE
+	Cavalry_Militia_CE
+
+	// Professional
 	Heavy_Swordman_CE
 	Heavy_Spearman_CE
 	Heavy_Archer_CE
 	Heavy_Cavalry_CE
+
+	// Knights
+	Noble_Knights_Dismounted
+	Noble_Knights
+	Feudal_Knights_Dismounted
+	Feudal_Knight_Special
+
 	town_guards
 	{
 		TownGuard_CE
@@ -72,45 +89,35 @@ def EuropeanUnitSet : AvailableUnits
 	}
 }
 
+delete WesternUnitSet
 def WesternUnitSet : AvailableUnits
 {
+	// Levy
 	Militia_CE
-	AdvancedMilitia_CE
-	Light_Infantry_CE
+	Levy_Axemen
 	Light_Spearman_CE
 	Light_Archer_CE
 	Light_Cavalry_CE
-	Man_At_Arms_Special
-	Heavy_Spearman_CE
-	Heavy_Archer_CE
-	Feudal_Knight_Special
-	town_guards
-	{
-		TownGuard_CE
-		EliteGuard_CE
-		RoyalGuard_CE
-	}
-	marshals
-	{
-		marshal = Marshal_CE
-		marshal_guard = Marshal_Guard_CE
-		rebel_marshal = Marshal_Rebel_CE
-		rebel_marshal_guard = Marshal_Guard_Rebel_CE
-	}
-}
 
-def SpanishUnitSet : AvailableUnits
-{
-	Militia_CE
+	// Militia
 	AdvancedMilitia_CE
-	Light_Infantry_CE
-	Light_Spearman_CE
-	Light_Archer_CE
-	Jinetes_Special
+	Sword_Militia_CE
+	Spear_Militia_CE
+	Crossbow_Militia_CE
+	Cavalry_Militia_CE
+
+	// Professional
 	Heavy_Swordman_CE
 	Heavy_Spearman_CE
 	Heavy_Archer_CE
 	Heavy_Cavalry_CE
+
+	// Knights
+	Noble_Knights_Dismounted
+	Noble_Knights
+	Feudal_Knights_Dismounted
+	Feudal_Knight_Special
+	
 	town_guards
 	{
 		TownGuard_CE
@@ -126,18 +133,211 @@ def SpanishUnitSet : AvailableUnits
 	}
 }
 
-def NormanUnitSet : AvailableUnits
+delete NordicUnitSet
+def NordicUnitSet : AvailableUnits
 {
-	Militia_CE
-	AdvancedMilitia_CE
-	Light_Infantry_CE
+	// Levy
+	Militia_Nord
+	Levy_Axemen
 	Light_Spearman_CE
 	Light_Archer_CE
 	Light_Cavalry_CE
+
+	// Militia
+	AdvancedMilitia_Nord
+	Sword_Militia_CE
+	Spear_Militia_CE
+	Crossbow_Militia_CE
+	Cavalry_Militia_CE
+
+	// Professional
 	Heavy_Swordman_CE
 	Heavy_Spearman_CE
 	Heavy_Archer_CE
+	Heavy_Cavalry_CE
+
+	// Knights
+	Hirdmen_Special
+	Early_Knights
+	Feudal_Knights_Dismounted
+	Feudal_Knight_Special
+	
+	town_guards
+	{
+		TownGuard_Nord
+		EliteGuard_Nord
+		RoyalGuard_Nord
+	}
+	marshals
+	{
+		marshal = Marshal_Nord
+		marshal_guard = Marshal_Guard_Nord
+		rebel_marshal = Marshal_Rebel_Nord
+		rebel_marshal_guard = Marshal_Guard_Rebel_Nord
+	}
+}
+
+delete SpanishUnitSet
+def SpanishUnitSet : AvailableUnits
+{
+	// Levy
+	Militia_CE
+	Levy_Axemen
+	Light_Spearman_CE
+	Light_Archer_CE
+	Light_Cavalry_CE
+
+	// Militia
+	AdvancedMilitia_CE
+	Sword_Militia_CE
+	Spear_Militia_CE
+	Crossbow_Militia_CE
+	Cavalry_Militia_CE
+
+	// Professional
+	Heavy_Swordman_CE
+	Heavy_Spearman_CE
+	Heavy_Archer_CE
+	Heavy_Cavalry_CE
+
+	// Knights
+	Noble_Knights_Dismounted
+	Noble_Knights
+	Feudal_Knights_Dismounted
+	Feudal_Knight_Special
+
+	town_guards
+	{
+		TownGuard_CE
+		EliteGuard_CE
+		RoyalGuard_CE
+	}
+	marshals
+	{
+		marshal = Marshal_CE
+		marshal_guard = Marshal_Guard_CE
+		rebel_marshal = Marshal_Rebel_CE
+		rebel_marshal_guard = Marshal_Guard_Rebel_CE
+	}
+}
+
+delete EnglishUnitSet
+def EnglishUnitSet : AvailableUnits
+{
+	// Levy
+	Militia_CE
+	Levy_Axemen
+	Light_Spearman_CE
+	Light_Archer_CE
+	Light_Cavalry_CE
+
+	// Militia
+	AdvancedMilitia_CE
+	Sword_Militia_CE
+	Spear_Militia_CE
+	Crossbow_Militia_CE
+	Cavalry_Militia_CE
+
+	// Professional
+	Heavy_Swordman_CE
+	Heavy_Spearman_CE
+	Longbowman_Special
+	Heavy_Cavalry_CE
+
+	// Knights
+	Noble_Knights_Dismounted
 	Norman_Special
+	Feudal_Knights_Dismounted
+	Feudal_Knight_Special
+
+	town_guards
+	{
+		TownGuard_CE
+		EliteGuard_CE
+		RoyalGuard_CE
+	}
+	marshals
+	{
+		marshal = Marshal_CE
+		marshal_guard = Marshal_Guard_CE
+		rebel_marshal = Marshal_Rebel_CE
+		rebel_marshal_guard = Marshal_Guard_Rebel_CE
+	}
+}
+
+def CelticUnitSet : AvailableUnits
+{
+	// Levy
+	Militia_CE
+	Levy_Axemen
+	Light_Spearman_CE
+	Light_Archer_CE
+	Light_Cavalry_CE
+
+	// Militia
+	AdvancedMilitia_CE
+	Sword_Militia_CE
+	Spear_Militia_CE
+	Crossbow_Militia_CE
+	Cavalry_Militia_CE
+
+	// Professional
+	Heavy_Swordman_CE
+	Heavy_Spearman_CE
+	Heavy_Archer_CE
+	Heavy_Cavalry_CE
+
+	// Knights
+	Early_Knights_Dismounted
+	Early_Knights
+	Feudal_Knights_Dismounted
+	Feudal_Knight_Special
+
+	town_guards
+	{
+		TownGuard_CE
+		EliteGuard_CE
+		RoyalGuard_CE
+	}
+	marshals
+	{
+		marshal = Marshal_CE
+		marshal_guard = Marshal_Guard_CE
+		rebel_marshal = Marshal_Rebel_CE
+		rebel_marshal_guard = Marshal_Guard_Rebel_CE
+	}
+}
+
+
+delete NormanUnitSet
+def NormanUnitSet : AvailableUnits
+{
+	// Levy
+	Militia_CE
+	Levy_Axemen
+	Light_Spearman_CE
+	Light_Archer_CE
+	Light_Cavalry_CE
+
+	// Militia
+	AdvancedMilitia_CE
+	Sword_Militia_CE
+	Spear_Militia_CE
+	Crossbow_Militia_CE
+	Cavalry_Militia_CE
+
+	// Professional
+	Heavy_Swordman_CE
+	Heavy_Spearman_CE
+	Heavy_Archer_CE
+	Heavy_Cavalry_CE
+
+	// Knights
+	Noble_Knights_Dismounted
+	Norman_Special
+	Feudal_Knights_Dismounted
+	Feudal_Knight_Special
+
 	town_guards
 	{
 		TownGuard_CE
@@ -155,17 +355,32 @@ def NormanUnitSet : AvailableUnits
 
 def CrusaderUnitSet : AvailableUnits
 {
+	// Levy
 	Militia_CE
-	AdvancedMilitia_CE
-	Light_Infantry_CE
+	Levy_Axemen
 	Light_Spearman_CE
 	Light_Archer_CE
 	Light_Cavalry_CE
-	Templar_Knight_Special
+
+	// Militia
+	AdvancedMilitia_CE
+	Sword_Militia_CE
+	Spear_Militia_CE
+	Crossbow_Militia_CE
+	Cavalry_Militia_CE
+
+	// Professional
+	Heavy_Swordman_CE
 	Heavy_Spearman_CE
 	Heavy_Archer_CE
-	Templar_Special
-	Horse_Archer_CE
+	Heavy_Cavalry_CE
+
+	// Knights
+	Noble_Knights_Dismounted
+	Noble_Knights
+	Feudal_Knights_Dismounted
+	Feudal_Knight_Special
+	
 	town_guards
 	{
 		TownGuard_CE
@@ -206,33 +421,6 @@ def TeutonicUnitSet : AvailableUnits
 		marshal_guard = Marshal_Guard_CE
 		rebel_marshal = Marshal_Rebel_CE
 		rebel_marshal_guard = Marshal_Guard_Rebel_CE
-	}
-}
-
-def NordicUnitSet : AvailableUnits
-{
-	Militia_Nord
-	AdvancedMilitia_Nord
-	Light_Infantry_CE
-	Light_Spearman_CE
-	Light_Archer_CE
-	Light_Cavalry_CE
-	Heavy_Swordman_CE
-	Heavy_Spearman_CE
-	Heavy_Archer_CE
-	Heavy_Cavalry_CE
-	town_guards
-	{
-		TownGuard_Nord
-		EliteGuard_Nord
-		RoyalGuard_Nord
-	}
-	marshals
-	{
-		marshal = Marshal_Nord
-		marshal_guard = Marshal_Guard_Nord
-		rebel_marshal = Marshal_Rebel_Nord
-		rebel_marshal_guard = Marshal_Guard_Rebel_Nord
 	}
 }
 
@@ -555,31 +743,5 @@ def AfricanUnitSet : AvailableUnits
 		marshal_guard = Marshal_Guard_African //!!! new model needed to become African
 		rebel_marshal = Marshal_Rebel_African //!!! new model needed to become African
 		rebel_marshal_guard = Marshal_Guard_Rebel_African //!!! new model needed to become African
-	}
-}
-
-def CrusadeUnitSet : AvailableUnits
-{
-	Light_Infantry_CE
-	Light_Spearman_CE
-	Light_Archer_CE
-	Man_At_Arms_Special
-	Teutonic_Knight_Special
-	Templar_Knight_Special
-	Crossbowman_Special
-	Halberdier_Special
-	Heavy_Swordman_CE
-	Heavy_Spearman_CE
-	Heavy_Archer_CE
-	Heavy_Cavalry_CE
-	Horse_Archer_CE
-	Norman_Special
-	Feudal_Knight_Special
-	Templar_Special
-	Teutonic_Knight_Mounted_Special
-	marshals
-	{
-		marshal = Marshal_CE
-		marshal_guard = Marshal_Guard_CE
 	}
 }

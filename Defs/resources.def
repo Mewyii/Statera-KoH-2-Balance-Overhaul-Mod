@@ -1,0 +1,345 @@
+delete Ale
+def Ale : Resource
+{
+	name = "Ale"
+	tooltip = "A hearthy drink fit for noblemen and peasants alike."
+	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Ale.png:Icon_Resource_Ale#2" //GUID:64a6fc20c81a2a746a5dcc2fb185cbe7
+	category = "Base"
+	import_commerce = 6
+	import_gold = 6
+	
+	mod ks_happiness = 1
+	mod ks_gold_from_goods = 4
+	mod ks_population_growth_perc = 4
+}
+
+delete Pastries
+def Pastries : Resource
+{
+	name = "Pastries"
+	tooltip = "Various delicious baked goods made from delicate dough."
+	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Pastries.png:Icon_Resource_Pastries#2" //GUID:886d69992bbae9c4fbd09442574bb058
+	category = "Base"
+	import_commerce = 4
+	import_gold = 4
+
+	mod ks_happiness = 2
+	mod ks_max_food_in_towns = 50
+	mod ks_population_growth_perc = 6
+}
+
+delete Oils
+def Oils : Resource
+{
+	name = "Oils"
+	tooltip = "Extracted by flaxseed and commonly used as food, oils are necessary for the work of many craftsmen and even artists. Oil is also important for mechanisms and improves the effect of blade sharpening."
+	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Oils.png:Icon_Resource_Oils#2" //GUID:a1e7efb0ce62d6a409750ef2f6677604
+	category = "Base"
+	import_commerce = 8
+	import_gold = 8
+
+	mod ks_melee_CTH_perc = 5
+	mod ks_siege_equipment_cth_perc = 30
+	mod ks_siege_equipment_siege_damage_perc = 30
+}
+
+def Craftsmen : Resource
+{
+	name = "Craftsmen"
+	tooltip = "Craftsmen."
+	icon = "Assets/Icons/Buildings/Craftsmen.png:Craftsmen#1"
+	category = "Base"
+	import_commerce = 5
+	import_gold = 5
+
+	mod ks_hammers_in_provinces_perc = 10
+}
+
+def Stonemasons : Resource
+{
+	name = "Stonemasons"
+	tooltip = "Stonemasons."
+	icon = "Assets/Icons/Buildings/Stonemasons.png:Stonemasons#1"
+	category = "Base"
+	import_commerce = 5
+	import_gold = 5
+
+	mod ks_hammers_in_provinces_perc = 10
+}
+
+def BasicTools : Resource
+{
+	name = "Basic Tools"
+	tooltip = "Basic Tools."
+	icon = "Assets/Icons/Buildings/Toolmaking.png:Toolmaking#1"
+	category = "Base"
+	import_commerce = 3
+	import_gold = 3
+
+	mod ks_hammers_in_provinces_perc = 5
+}
+
+def IronTools : Resource
+{
+	name = "Iron Tools"
+	tooltip = "Iron Tools."
+	icon = "Assets/Icons/Buildings/Toolmaking.png:Toolmaking#1"
+	category = "Base"
+	import_commerce = 3
+	import_gold = 3
+
+	mod ks_hammers_in_provinces_perc = 10
+}
+
+delete Leather
+def Leather : Resource
+{
+	name = "Leather"
+	tooltip = "The animal skin can be turned into a sturdy material, used for shoemaking and armor crafting."
+	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Leather.png:Icon_Resource_Leather#2" //GUID:8f8fa7f456a0a5940aeeda2e8de3fc34
+	category = "Base"
+	import_commerce = 6
+	import_gold = 6
+
+	mod ks_defense_flat = 8
+}
+
+def VariedCrops : Resource
+{
+	name = "Varied Crops"
+	tooltip = "Varied Crops."
+	icon = "Assets/Icons/Buildings/CanalNetworks.png:CanalNetworks#1"
+	category = "Base"
+	import_commerce = 6
+	import_gold = 6
+
+	mod ks_population_growth_perc = 5
+}
+
+def Flax : Resource
+{
+	name = "Flax"
+	tooltip = "Flax."
+	icon = "Assets/Icons/Buildings/FlaxGrowing.png:FlaxGrowing#1"
+	category = "Base"
+	import_commerce = 4
+	import_gold = 4
+
+	mod ks_commerce_goods = 4
+}
+
+delete Linen
+def Linen : Resource
+{
+	name = "Linen"
+	tooltip = "Linen is strong and absorbent textile made from flax and due to its good properties, it is very suitable for the making of comfortable clothing."
+	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Linen.png:Icon_Resource_Linen#2" //GUID:1949efd636e7e714cafd1c98c7a28a45
+	category = "Base"
+	import_commerce = 8
+	import_gold = 8
+
+	mod ks_commerce_goods = 2
+	mod ks_gold_from_goods = 2
+}
+
+def Clothes : Resource
+{
+	name = "Clothes"
+	tooltip = "Clothes."
+	icon = "Assets/Icons/Buildings/ClothManufacturing.png:ClothManufacturing#1"
+	category = "Base"
+	import_commerce = 10
+	import_gold = 10
+
+	mod ks_commerce_goods = 4
+	mod ks_gold_from_goods = 4
+}
+
+def Gambeson : Resource
+{
+	name = "Gambeson"
+	tooltip = "Gambeson."
+	icon = "Assets/UI/Elements/Common/Icons/RealmResources/ArmorWeaving.png:ArmorWeaving#2"
+	category = "Base"
+	import_commerce = 12
+	import_gold = 12
+
+	mod ks_defense_flat = 15
+}
+
+def StandardizedWeights : Resource
+{
+	name = "Standardized Weights"
+	tooltip = "Standardized Weights."
+	icon = "Assets/Icons/Buildings/StandardizationOffices.png:StandardizationOffices#1"
+	category = "Base"
+	import_commerce = 10
+	import_gold = 10
+
+	mod ks_corruption = -10
+	mod ks_culture_from_goods = 5
+}
+
+delete Herbs
+def Herbs : Resource
+{
+	name = "Herbs"
+	tooltip = "The dried leaves and pettles of many wild and domestic plants can be used for healing and well being."
+	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Herbs.png:Icon_Resource_Herbs#2" //GUID:befab961bb1cbee4192175bd946b7f2d
+	category = "Base"
+	import_commerce = 4
+	import_gold = 4
+
+	mod ks_population_growth_perc = 7
+}
+
+def EducationalBooks : Resource
+{
+	name = "Educational Books"
+	tooltip = "Educational Books."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_School.tga:UI_Structure_Icon_School#2"
+	category = "Base"
+	import_commerce = 6
+	import_gold = 6
+
+	mod ks_prod_books_goods = 2
+	mod ks_culture_from_goods = 5
+}
+
+delete IllustratedBooks
+def IllustratedBooks : Resource
+{
+	name = "Illustrated books"
+	tooltip = "It takes years to turn a simple batch of parchments into selection of illuminated texts, inhoused in beautiful leather covers."
+	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_IllustratedBooks.png:Icon_Resource_IllustratedBooks#2" //GUID:bb97198f930762c478e530a83d11cae3
+	category = "Base"
+	import_commerce = 10
+	import_gold = 10
+
+	mod ks_prod_piety_religion_perc = 1
+	mod ks_culture_from_goods = 10
+}
+
+delete Merchants
+def Merchants : Resource
+{
+	name = "Guild Merchants"
+	tooltip = "Those businessmen have been using their skills in bargain and finance for as long as commerce and trade have existed."
+	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Merchants.png:Icon_Resource_Merchants#2" //GUID:da237cf62b65a6c4e98c817ec13c1ad5
+	category = "Society"
+
+	mod ks_trade_income_perc = 5
+}
+
+delete Clergy
+def Clergy : Resource
+{
+	name = "Clergy"
+	tooltip = "The religious leaders of the communities and societies around the world."
+	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Clergy.png:Icon_Resource_Clergy#2" //GUID:f2136f7a25768df49a7ae33b1f94cf30
+	category = "Society"
+
+	mod ks_influence_from_goods = 12
+	mod ks_convert_religion_duration_reduction_perc = 12
+	mod ks_adopt_tradition_discount_perc = 7
+}
+
+def CatholicChoirs : Resource
+{
+	name = "Catholic Choirs"
+	tooltip = "Those businessmen have been using their skills in bargain and finance for as long as commerce and trade have existed."
+	icon = "Assets/Icons/Buildings/ChoralLiturgy.png:ChoralLiturgy#1"
+	category = "Society"
+
+	mod ks_culture_from_goods = 12
+	mod ks_army_morale = 3
+	mod ks_army_morale_vs_other_religion = 3
+}
+
+def Inquisitors : Resource
+{
+	name = "Inquisitors"
+	tooltip = "Those businessmen have been using their skills in bargain and finance for as long as commerce and trade have existed."
+	icon = "Assets/Icons/Buildings/EcclesiasticalCourt.png:EcclesiasticalCourt#1"
+	category = "Society"
+
+	mod ks_prod_books_flat = -7
+	mod ks_corruption = -12
+	mod ks_witch_hunt_efficiency_perc = 12
+}
+
+def ReligiousAdministration : Resource
+{
+	name = "Religious Administration"
+	tooltip = "Offices coordinating tithes, appointments, and the management of Church lands across the region."
+	icon = "Assets/Icons/Buildings/DiocesanAdministration.png:DiocesanAdministration#1"
+	category = "Society"
+
+	mod ks_vassal_tax_perc  = 5
+}
+
+delete Gunpowder
+def Gunpowder : Resource
+{
+	name = "Gunpowder"
+	tooltip = "An explosive mixture of saltpeter, sulfur and carbon, initially used for cannons and other heavy artillery guns."
+	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Gunpowder.png:Icon_Resource_Gunpowder#2" //GUID:453fd23940ba6fb41aee0c472f0479af
+	category = "Base"
+	import_commerce = 20
+	import_gold = 20
+
+	mod ks_base_siege_damage_perc = 20
+}
+
+delete Cannons
+def Cannons : Resource
+{
+	name = "Cannons"
+	tooltip = "Heavy large artillery guns, capable if firing heavy projectile over a long distance, powerful in sieges and naval warfare."
+	category = "Base"
+	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Cannons.png:Icon_Resource_Cannons#2" //GUID:a7fd2fedd03a4934e861533b507c4d0f
+	import_commerce = 30
+	import_gold = 30
+
+	mod ks_naval_CTH = 10
+	mod ks_attrition_bonus = 20
+	mod ks_base_siege_damage_perc = 30
+}
+
+def ArmyOfficers : Resource
+{
+	name = "Army Officers"
+	tooltip = "Trained army officers that plan, strategize and uphold military discipline."
+	category = "Base"
+	icon = "Assets/Icons/Buildings/PlanningRoom.png:PlanningRoom#1"
+	import_commerce = 35
+	import_gold = 35
+
+	mod ks_army_speed_world_perc = 10
+	mod ks_squad_size_perc = 10
+}
+
+def MilitaryHeraldry : Resource
+{
+	name = "Military Heraldry"
+	tooltip = "Banner carriers that travel with the army, holding up the coat of arms of the ruling houses."
+	category = "Base"
+	icon = "Assets/Icons/Buildings/HeraldryChambers.png:HeraldryChambers#1"
+	import_commerce = 25
+	import_gold = 25
+
+	mod ks_army_morale = 5
+	mod ks_character_experience_perc = 10
+}
+
+def MercenaryRecruiters : Resource
+{
+	name = "Mercenary Recruiters"
+	tooltip = "Professional recruiters to attract, negotiate and hire mercenaries."
+	category = "Base"
+	icon = "Assets/Icons/Buildings/RecruitmentChambers.png:RecruitmentChambers#1"
+	import_commerce = 20
+	import_gold = 20
+
+	mod ks_mercenary_price_reduction_perc = -25
+}

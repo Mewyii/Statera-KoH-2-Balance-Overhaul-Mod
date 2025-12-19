@@ -14,7 +14,7 @@ def Crusade
 	float crusadePlayerKingdomsPerc = 30
 	float sackGoldMultiplier = 50
 	
-	int max_peasants = 4 //num guaranteed peasant squads in the army, reduced by 1 for each hour ingame time
+	int max_peasants = 5 //num guaranteed peasant squads in the army, reduced by 1 for each hour ingame time
 	
 	int supplies_consumption_rate_mod = 0.1
 	

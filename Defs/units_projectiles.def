@@ -1,0 +1,23 @@
+extend ArrowSalvo
+{
+	min_shoot_range = 10
+	max_shoot_range = 45 
+}
+
+extend CrossboltSalvo
+{
+	min_shoot_range = 10
+	max_shoot_range = 60 
+}
+
+extend LongbowSalvo
+{
+	min_shoot_range = 15
+	max_shoot_range = 80 
+}
+
+def JavelinSalvo : ArrowSalvo
+{
+	min_shoot_range = 5
+	max_shoot_range = 20 
+}

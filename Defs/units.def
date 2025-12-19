@@ -63,7 +63,8 @@ def Battering_Ram : SiegeEquipment
 
     require
 	{
-        Barracks
+        Workshop
+		Craftsmen
 	}
 	
 	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_InvetoryItem_BatteringRam.png:Icon_InvetoryItem_BatteringRam#1" //GUID:d96e15c9cc15fe04f8232c46aa5cfd53
@@ -103,7 +104,6 @@ def Heavy_Siege_Ram : SiegeEquipment
 
     require
 	{
-        Barracks
         SiegeWorkshop
 	}
 	
@@ -153,9 +153,8 @@ def Heavy_Trebuchet : SiegeEquipment
 	
 	require
 	{
-        Barracks
-        RoyalArmory
         SiegeWorkshop
+		TrebuchetAssemblyYard
 	}
 	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_InvetoryItem_Trebuchet.png:Icon_InvetoryItem_Trebuchet#2" //GUID:bfe320789668afc4c80cb8355db68093
 	
@@ -186,3 +185,869 @@ def Heavy_Trebuchet : SiegeEquipment
 SquadTypeIconSettings.Battering_Ram = "Assets/UI/BattleView/Elements/UnitIcons/BatteringRam_28.png:BatteringRam_28#2" //GUID:d08b3289df0bfe64d943767e55019f1d
 SquadTypeIconSettings.Heavy_Siege_Ram = "Assets/UI/BattleView/Elements/UnitIcons/BatteringRam_28.png:BatteringRam_28#2" //GUID:d08b3289df0bfe64d943767e55019f1d
 SquadTypeIconSettings.Heavy_Trebuchet = "Assets/UI/BattleView/Elements/UnitIcons/Trebuchet_28.png:Trebuchet_28#2" //GUID:7305e4c184bb70d4088110a02ffc02ab
+
+
+
+extend Infantry
+{
+	delete require
+	require
+	{
+		TrainingField
+		SimpleWeaponsmithing
+		SimpleArmorsmithing
+	}
+}
+
+extend Defense
+{
+	delete require
+	require
+	{
+		TrainingField
+		SimpleWeaponsmithing
+	}
+}
+
+extend Cavalry
+{
+	delete require
+	require
+	{
+		TrainingField
+		Stables
+		SimpleWeaponsmithing
+		SimpleArmorsmithing
+	}
+}
+
+extend Ranged
+{
+	delete require
+	require
+	{
+		TrainingField
+		ArcheryRange
+	}
+}
+
+extend RangedCavalry
+{
+	delete require
+	require
+	{
+		TrainingField
+		Stables
+		ArcheryRange
+	}
+}
+
+
+extend HeavyInfantry
+{
+	delete require
+	require
+	{
+		InfantryFormations
+		AdvancedWeaponsmithing
+		AdvancedArmorsmithing
+	}
+}
+extend HeavyDefense
+{
+	delete require
+	require
+	{
+		InfantryFormations
+		SimpleWeaponsmithing
+		AdvancedArmorsmithing
+	}
+}
+extend HeavyCavalry
+{
+	delete require
+	require
+	{
+		ArmyBarracks
+		Stables
+		AdvancedWeaponsmithing
+		AdvancedArmorsmithing
+	}
+}
+extend HeavyRanged
+{
+	delete require
+	require
+	{
+		InfantryFormations
+		ArcheryRange
+		AdvancedArmorsmithing
+	}
+}
+extend AdvancedMilitia
+{
+	delete require
+	require
+	{
+		CityWatch
+		MilitiaBarracks
+	}
+}
+extend Highlander_Special
+{
+	delete require
+	require
+	{
+		SimpleWeaponsmithing
+	}
+}
+extend Saracen_Special
+{
+	delete require
+	require
+	{
+		SimpleWeaponsmithing
+		SimpleArmorsmithing
+	}
+}
+extend Varangian_Guard_Special
+{
+	delete require
+	require
+	{
+		TrainingField
+		SimpleWeaponsmithing
+		SimpleArmorsmithing
+	}
+}
+extend Roman_Infantry_Special
+{
+	delete require
+	require
+	{
+		ArmyBarracks
+		SimpleWeaponsmithing
+		SimpleArmorsmithing
+	}
+}
+
+extend Man_At_Arms_Special
+{
+	delete require
+	require
+	{
+		ArmyBarracks
+		AdvancedWeaponsmithing
+		AdvancedArmorsmithing
+	}
+}
+
+extend Halberdier_Special
+{
+	delete require
+	require
+	{
+		InfantryFormations
+		AdvancedWeaponsmithing
+		AdvancedArmorsmithing
+	}
+}
+
+extend Flemish_Pikeman_Special
+{
+	delete require
+	require
+	{
+		InfantryFormations
+		InfantryFormations
+		AdvancedWeaponsmithing
+	}
+}
+
+extend Jenissary_Special
+{
+	delete require
+	require
+	{
+		InfantryFormations
+		InfantryFormations
+		AdvancedWeaponsmithing
+	}
+}
+
+extend Crossbowman_Special
+{
+	delete require
+	require
+	{
+		CityWatch
+		CrossbowManufactoring
+	}
+}
+
+extend Pavise_Crossbowman_Special
+{
+	delete require
+	require
+	{
+		TrainingField
+		CrossbowManufactoring
+		AdvancedArmorsmithing
+	}
+}
+
+extend Horse_Archer_CE
+{
+	delete require
+	require
+	{
+		TrainingField
+		ArcheryRange
+		Stables
+	}
+}
+
+extend Horse_Archer_Arab
+{
+	delete require
+	require
+	{
+		TrainingField
+		ArcheryRange
+		Stables
+	}
+}
+
+extend Light_Horse_Archer_Steppe
+{
+	delete require
+	require
+	{
+		TrainingField
+		ArcheryRange
+		Stables
+	}
+}
+
+extend Camel_Archer_Special
+{
+	delete require
+	require
+	{
+		TrainingField
+		ArcheryRange
+	}
+}
+
+extend Mamluk_Special
+{
+	delete require
+	require
+	{
+		TrainingField
+		ArcheryRange
+		Stables
+		KnightlyStables
+		AdvancedWeaponsmithing
+		AdvancedArmorsmithing
+	}
+}
+
+extend Mongol_Cavalry_Special
+{
+	delete require
+	require
+	{
+		TrainingField
+		ArcheryRange
+		Stables
+		KnightlyStables
+	}
+}
+
+extend Heavy_Horse_Archer_Steppe
+{
+	delete require
+	require
+	{
+		TrainingField
+		ArcheryRange
+		Stables
+		KnightlyStables
+		AdvancedArmorsmithing
+	}
+}
+
+extend Camel_Rider_Special
+{
+	delete require
+	require
+	{
+		TrainingField
+		SimpleWeaponsmithing
+		Stables
+	}
+}
+
+extend Mongol_Heavy_Lancers_Special
+{
+	delete require
+	require
+	{
+		TrainingField
+		Stables
+		KnightlyStables
+		AdvancedWeaponsmithing
+		AdvancedArmorsmithing
+	}
+}
+
+extend Sipahi_Special
+{
+	delete require
+	require
+	{
+		TrainingField
+		Stables
+		KnightlyStables
+		AdvancedArmorsmithing
+	}
+}
+
+extend Boyar_Special
+{
+	delete require
+	require
+	{
+		TrainingField
+		Stables
+		KnightlyStables
+		AdvancedWeaponsmithing
+		AdvancedArmorsmithing
+	}
+}
+
+extend Cataphract_Special
+{
+	delete require
+	require
+	{
+		TrainingField
+		Stables
+		KnightlyStables
+		SimpleArmorsmithing
+	}
+}
+
+extend Ghulam_Cavalry_Special
+{
+	delete require
+	require
+	{
+		TrainingField
+		Stables
+		KnightlyStables
+		AdvancedArmorsmithing
+	}
+}
+
+extend Pronoia_Special
+{
+	delete require
+	require
+	{
+		TrainingField
+		Stables
+		KnightlyStables
+		AdvancedWeaponsmithing
+		AdvancedArmorsmithing
+	}
+}
+
+extend Light_Cavalry_African
+{
+	delete require
+	require
+	{
+		
+		Stables
+		SimpleWeaponsmithing
+	}
+}
+
+extend Heavy_Cavalry_Slav
+{
+	delete require
+	require
+	{
+		
+		Stables
+		AdvancedArmorsmithing
+	}
+}
+
+// NEW UNITS
+// LEVY
+
+def Levy_Axemen : Infantry
+{
+	model = ["Assets/Units/Axeman_Slavic_Special/Axeman_Slavic_Special.prefab"]
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Axeman_Special.tga:Icon_Unit_Axeman_Special#2"
+
+	require
+	{
+		TrainingField
+	}
+
+	hide_in_wiki = false
+}
+
+// KNIGHTS
+
+def Early_Knights_Dismounted : HeavyInfantry
+{
+	description = "Early heavily armored dismounted knights representing a switch from the earlier northern fighting tradition towards the central european knighthood."
+	model = "Assets/Units/Man_At_Arms_Special_01/Man_At_Arms_Special_01.prefab"
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_ManAtArms_Special.tga:Icon_Unit_ManAtArms_Special#2"
+	
+	max_acceleration = 4
+	max_deceleration = 4
+	
+	require
+	{
+		KnightlyTrainingGrounds
+		SimpleWeaponsmithing
+		SimpleArmorsmithing
+	}
+
+	hide_in_wiki = false
+}
+
+def Early_Knights : HeavyCavalry
+{
+	description = "Early heavily armored mounted knights representing a switch from the northern infantry fighting tradition towards the central european knighthood."
+	model = "Assets/Units/Heavy_Cavalry_CE_01/Heavy_Cavalry_CE_01.prefab" //GUID:fe0549b7561b18a4382ff700e57beae9
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Heavy_Cavalry_CE.tga:Icon_Unit_Heavy_Cavalry_CE#2" //GUID:de937a70321dde04ea51552d6f23648d
+
+	require
+	{
+		KnightlyTrainingGrounds
+		KnightlyStables
+		SimpleWeaponsmithing
+		SimpleArmorsmithing
+	}
+
+	hide_in_wiki = false
+}
+
+def Noble_Knights_Dismounted : HeavyInfantry
+{
+	description = "Well trained and heavily armoured soldiers, skilled both in attack and defense when it comes to close combat."
+	model = "Assets/Units/Man_At_Arms_Special_01/Man_At_Arms_Special_01.prefab"
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_ManAtArms_Special.tga:Icon_Unit_ManAtArms_Special#2"
+	
+	max_acceleration = 4
+	max_deceleration = 4
+	
+	require
+	{
+		KnightlyTrainingGrounds
+		SimpleWeaponsmithing
+		SimpleArmorsmithing
+	}
+
+	hide_in_wiki = false
+}
+
+def Noble_Knights : HeavyCavalry
+{
+	model = "Assets/Units/Heavy_Cavalry_CE_01/Heavy_Cavalry_CE_01.prefab" //GUID:fe0549b7561b18a4382ff700e57beae9
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Heavy_Cavalry_CE.tga:Icon_Unit_Heavy_Cavalry_CE#2" //GUID:de937a70321dde04ea51552d6f23648d
+
+	require
+	{
+		KnightlyTrainingGrounds
+		KnightlyStables
+		SimpleWeaponsmithing
+		SimpleArmorsmithing
+	}
+
+	hide_in_wiki = false
+}
+
+extend Norman_Special
+{
+	delete require
+	require
+	{
+		KnightlyTrainingGrounds
+		KnightlyStables
+		SimpleWeaponsmithing
+		SimpleArmorsmithing
+	}
+}
+
+def Feudal_Knights_Dismounted : HeavyInfantry
+{
+	description = "Well trained and heavily armoured soldiers, skilled both in attack and defense when it comes to close combat."
+	model = "Assets/Units/Man_At_Arms_Special_01/Man_At_Arms_Special_01.prefab"
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_ManAtArms_Special.tga:Icon_Unit_ManAtArms_Special#2"
+	
+	max_acceleration = 4
+	max_deceleration = 4
+	
+	bonuses
+	{
+		defense_flat = "cs_elite_unit_defense_flat"
+	}
+	require
+	{
+		KnightlyTrainingGrounds
+		AdvancedWeaponsmithing
+		AdvancedArmorsmithing
+	}
+
+	hide_in_wiki = false
+}
+
+extend Feudal_Knight_Special
+{
+	delete require
+	require
+	{
+		KnightlyTrainingGrounds
+		KnightlyStables
+		AdvancedWeaponsmithing
+		AdvancedArmorsmithing
+	}
+}
+
+// MILITIA
+
+def AdvancedMilitia_CE : AdvancedMilitia
+{
+	model = "Assets/Units/Militia_CE_03/Militia_CE_03.prefab" //GUID:5de2656d1a8e6614f9d9175e7db57cfc
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Advanced_Militia_CE.tga:Icon_Unit_Advanced_Militia_CE#1" //GUID:828791f53491d5b46846fe7b8fb1d294
+}
+
+def Sword_Militia_CE : Infantry
+{
+	model = [
+		"Assets/Units/Light_Infantry_CE_01/Light_Infantry_CE_01.prefab", //GUID:3322d18ace7e12947804fab1707a02d2
+		"Assets/Units/Light_Infantry_CE_02/Light_Infantry_CE_02.prefab", //GUID:14abf40aa16232847937de6140eb4002
+		"Assets/Units/Light_Infantry_CE_03/Light_Infantry_CE_03.prefab" //GUID:de8931c475298d347996de954bbf8387
+	]
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Light_Infantry_CE.tga:Icon_Unit_Light_Infantry_CE#2" //GUID:e4d22df4ab829e74d95d37675a0d8bc6
+
+	require
+	{
+		MilitiaBarracks
+		SimpleWeaponsmithing
+		SimpleArmorsmithing
+	}
+
+	hide_in_wiki = false
+}
+
+def Spear_Militia_CE : Defense
+{
+	model = "Assets/Units/Light_Spearman_CE_01/Light_Spearman_CE_01.prefab" //GUID:3924f21e679e83f49858d1a6cd9d116a
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Light_Spearman_CE.tga:Icon_Unit_Light_Spearman_CE#2" //GUID:94e24f717e3708d42b38b97e9ab3934d
+
+	require
+	{
+		MilitiaBarracks
+		SimpleWeaponsmithing
+	}
+	hide_in_wiki = false
+}
+
+def Crossbow_Militia_CE : Ranged
+{
+	name = "Crossbow Militia"
+	description = "Archers which require only minimal training. They can shoot at a long distance, but only a few bolts per minute."
+	model = "Assets/Units/Crossbowman_Special_01/Crossbowman_Special_01.prefab" //GUID:0c20f0b0e1eafdb45849cd5646d8655c
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Crossbowman.tga:Icon_Unit_Crossbowman#2" //GUID:9f2d71efe0ba41140a62781472c5a925
+	
+	max_acceleration = 2
+	max_deceleration = 2
+	
+	require
+	{
+		MilitiaBarracks
+		CrossbowManufactoring
+	}
+
+	hide_in_wiki = false
+}
+
+def Cavalry_Militia_CE : HorseCavalry
+{
+	model = "Assets/Units/Light_Cavalry_CE_01/Light_Cavalry_CE_01.prefab" //GUID:d78af08f7e176f24e9070901fec14e3c
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Light_Cavalry_CE.tga:Icon_Unit_Light_Cavalry_CE#2" //GUID:7a9c1911b30b2de40bf593d83b83cb8e
+
+	require
+	{
+		MilitiaBarracks
+		Stables
+		SimpleWeaponsmithing
+		SimpleArmorsmithing
+	}
+
+	hide_in_wiki = false
+}
+
+// PROFESSIONAL
+
+def Heavy_Cavalry_CE : HeavyCavalry
+{
+	model = "Assets/Units/Heavy_Cavalry_CE_01/Heavy_Cavalry_CE_01.prefab" //GUID:fe0549b7561b18a4382ff700e57beae9
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Heavy_Cavalry_CE.tga:Icon_Unit_Heavy_Cavalry_CE#2" //GUID:de937a70321dde04ea51552d6f23648d
+
+	require
+	{
+		ArmyBarracks
+		Stables
+		AdvancedWeaponsmithing
+		AdvancedArmorsmithing
+	}
+
+	hide_in_wiki = false
+}
+
+// SPECIAL
+
+extend Viking_Special
+{
+	delete require
+	require
+	{
+		TrainingField
+	}
+}
+
+def Almogavars_Special : Infantry
+{
+	description = "Lightly clad, quick-moving frontiersmen and foot-soldiers, formed by farmers and shepherds originating from the countryside, woods and frontier mountain areas."
+	special = true
+	model = [
+		"Assets/Units/Light_Infantry_CE_01/Light_Infantry_CE_01.prefab", //GUID:3322d18ace7e12947804fab1707a02d2
+		"Assets/Units/Light_Infantry_CE_02/Light_Infantry_CE_02.prefab", //GUID:14abf40aa16232847937de6140eb4002
+		"Assets/Units/Light_Infantry_CE_03/Light_Infantry_CE_03.prefab" //GUID:de8931c475298d347996de954bbf8387
+	]
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Light_Infantry_CE.tga:Icon_Unit_Light_Infantry_CE#2" //GUID:e4d22df4ab829e74d95d37675a0d8bc6
+
+	require
+	{
+		TrainingField
+		SimpleWeaponsmithing
+	}
+
+	kingdom_religion = Catholic
+
+	hide_in_wiki = false
+}
+
+def Hirdmen_Special : HeavyInfantry
+{
+	description = "Professional soldiers in the household of a Viking prince or king (“hird”) and an elite unit of the Viking armies."
+	special = true
+	model = [
+		"Assets/Units/Viking_Special_01/Viking_Special_01.prefab", //GUID:2c0e4a4b9bae92544a48928547552f4d
+		"Assets/Units/Viking_Special_02/Viking_Special_02.prefab", //GUID:a36703be32aa97e4c999a9a567e38adf
+		"Assets/Units/Viking_Special_03/Viking_Special_03.prefab" //GUID:94c100e0bbf8893429f3d976476a6823
+	]
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Viking_Special.tga:Icon_Unit_Viking_Special#2" //GUID:180ce42f7e9f003408b3871feb763665
+	
+	require
+	{
+		TrainingField
+		SimpleWeaponsmithing
+		SimpleArmorsmithing
+	}
+
+	hide_in_wiki = false
+}
+
+def Hobelar_Special : HorseCavalry
+{
+	special = true
+	
+	delete require
+	require
+	{
+		TrainingField
+		SimpleWeaponsmithing
+		Stables
+	}
+	
+	hide_in_wiki = false
+}
+
+def Jinetes_Special : RangedHorseCavalry
+{
+	description = "Light horsemen of Christian Iberia, perfect for harrasment of the enemy with their hit and run tactics."
+	special = true
+	model = "Assets/Units/Horse_Archer_CE_01/Horse_Archer_CE_01.prefab" //GUID:64e552fb207019245b105075aa9f25aa
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Jinetes_Special.tga:Icon_Unit_Jinetes_Special#2" //GUID:7b3f460cda735d8469c2748a4409aed6
+
+	max_acceleration = 7
+	max_deceleration = 10
+	
+	delete require
+	require
+	{
+		TrainingField
+		SimpleWeaponsmithing
+		Stables
+	}
+
+	kingdom_religion = Catholic
+
+	hide_in_wiki = false
+}
+
+extend Longbowman_Special
+{
+	delete require
+	require
+	{
+		ArcheryRange
+		AdvancedArmorsmithing
+	}
+}
+
+def Welsh_Longbowman_Special : HeavyRanged
+{
+	description = "Highly trained archers, armed with a powerful wooden bow, effective even against armoured enemies. Welsh longbowmen are lighter and faster than english longbowmen."
+	special = true
+	model = "Assets/Units/Longbowman_Special_01/Longbowman_Special_01.prefab" //GUID:6c4795eb33cec7a4bb030d00ed411feb
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Longbowman_Special.tga:Icon_Unit_Longbowman_Special#2" //GUID:0b3efb2eefce00247b717606dee3c795
+	
+	max_acceleration = 3
+	max_deceleration = 3
+
+	require
+	{
+		ArcheryRange
+		Leatherworking
+	}
+
+	hide_in_wiki = false
+}
+
+extend Templar_Knight_Special
+{
+	delete require
+	require
+	{
+		TrainingField
+		CistercianDiscipline
+		SimpleWeaponsmithing
+		SimpleArmorsmithing
+	}
+
+	kingdom_religion = Catholic
+}
+
+extend Templar_Special
+{
+	delete require
+	require
+	{
+		TrainingField
+		CistercianDiscipline
+		Stables
+		SimpleWeaponsmithing
+		SimpleArmorsmithing
+	}
+	
+	kingdom_religion = Catholic
+}
+
+extend Teutonic_Knight_Special
+{
+	delete require
+	require
+	{
+		TrainingField
+		Hospital
+		SimpleWeaponsmithing
+		AdvancedArmorsmithing
+	}
+	
+	kingdom_religion = Catholic
+}
+
+extend Teutonic_Knight_Mounted_Special
+{
+	delete require
+	require
+	{
+		TrainingField
+		Hospital
+		Stables
+		SimpleWeaponsmithing
+		AdvancedArmorsmithing
+	}
+	
+	kingdom_religion = Catholic
+}
+
+def Hospitaller_Dismounted_Special : HeavyInfantry
+{
+	description = "Superbly armored and trained heavy infantry troops that would rather die than surrender against the enemies of Christ."
+	special = true
+	model = "Assets/Units/Templar_Infantry_Special_01/Templar_Infantry_Special_01.prefab" //GUID:15884ae98fef66442a5ee85ee3b4c430
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Templar_Knight_Special.tga:Icon_Unit_Templar_Knight_Special#2" //GUID:e306b193628fb7b4298528466cdc0a90
+	
+	max_acceleration = 4
+	max_deceleration = 4
+
+	bonuses
+	{
+		defense_flat = "cs_elite_unit_defense_flat"
+	}
+	
+	require
+	{
+		TrainingField
+		Hospital
+		SimpleWeaponsmithing
+		SimpleArmorsmithing
+	}
+
+	
+	kingdom_religion = Catholic
+
+	hide_in_wiki = false
+}
+
+def Hospitaller_Special : HeavyCavalry
+{
+	description = "The most elite warriors even among knights, a symbol of purity and chastity. They are heavily armoured and supported in conquest by three-four horses and few squires."
+	special = true
+	model = "Assets/Units/Templar_Special_01/Templar_Special_01.prefab" //GUID:2fc04b23b15884d429eb1c9775c849fd
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Templar_Knight__Mounted_Special.tga:Icon_Unit_Templar_Knight__Mounted_Special#2" //GUID:9d86a225d0a843e4d9e7745a29a151d9
+	
+	max_acceleration = 4.5
+	max_deceleration = 10
+	
+	bonuses
+	{
+		defense_flat = "cs_elite_unit_defense_flat"
+	}
+	
+	require
+	{
+		TrainingField
+		Hospital
+		Stables
+		SimpleWeaponsmithing
+		SimpleArmorsmithing
+	}
+	
+	kingdom_religion = Catholic
+
+	hide_in_wiki = false
+}

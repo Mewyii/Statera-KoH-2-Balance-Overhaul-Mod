@@ -1,3 +1,10 @@
+def Fortifications
+{
+	Resources cost = ["1g 1h", "300g 200 Levy 1000h", "900g 400 Levy 2500h", "2000g 1000 Levy 6000h"]
+	int reqiured_citadel_level = [0,0,0,0] //[0,1,2,3]
+	mod rs_siege_defense = 0/50/150/300
+}
+
 // Settlement numbers on map are also limited by settlements.def in /maps
 
 Settlement.max_identical_settlement_per_realm = 3 // Limit for all settlements
@@ -9,7 +16,7 @@ Settlement.settlement_repeating_chance_mul = 1.4 // relevant only for base settl
 
 def Castle : Settlement
 {
-	no_governor_penalty = 30
+	no_governor_penalty = 25
 	production = "3g 3f 1b 1p 8h 4WorkerSlots"
 
 	enable_feature

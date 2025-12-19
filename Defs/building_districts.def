@@ -43,10 +43,6 @@ def PFDistrict : District
 		SaltTrade { prerequisites { MarketSquare } }
 		SaltpeterTrade { prerequisites { MarketSquare } }		
 		SulfurTrade { prerequisites { MarketSquare } }
-
-		TemplarCommandery
-		HospitallerPriory
-		TeutonicBailiwick			
 	}
 }
 
@@ -76,7 +72,7 @@ extend CropFarmsDistrict
 	{
 		CropFarming = 1,1
 
-		WeavingMill = 1,2 { prerequisites { CropFarming } }
+		WeavingMill = 1,2
 
 		Windmill = 1,3 { prerequisites { CropFarming } }
 	}
@@ -103,11 +99,11 @@ def CastlesDistrict : District
 		TrainingField = 1,1
 		Stables = 2,1
 
-		SiegeWorkshop = 1,2
-		CityWatch = 2,2 { prerequisites { TrainingField } }
+		CityWatch = 1,2 { prerequisites { TrainingField; Blacksmith } }
+		SiegeWorkshop = 2,2
 
 		Armory = 1,3 { prerequisites { TrainingField; Blacksmith } }
-		Barracks = 2,3 { prerequisites { Armory } }
+		ArmyBarracks = 2,3 { prerequisites { TrainingField; School } }
 	}
 }
 
@@ -167,7 +163,7 @@ def CraftingDistrict: District
 	{
 		Workshop = 1,1
 		Blacksmith = 2,1
-		Tannery = 3,1
+		Tanneries = 3,1
 
 		StonemasonsGuild = 1,2 { prerequisites { Workshop } }
 		CraftsmensGuild = 2,2 { prerequisites { Workshop } }
@@ -230,3 +226,89 @@ def PunishmentDistrict : District
 		CityPrison = 1,3 { prerequisites { CourtHall } }
 	}
 }
+
+
+// Housekeeping
+// Upgrades
+delete ShoemakersShop
+delete JewellersShop
+delete TailorsShop
+delete RugsWeaver
+delete FlaxWeaver
+delete Ropewalk
+delete Alehouse
+delete Fletcher_Barracks
+delete Swordsmith
+delete Spearmaker
+delete MasterWeaponsmith
+delete HeavyArmorsmith
+delete WarStables
+delete MasterArmorer
+delete Artillery_Castles
+delete LargeKeeps
+delete Fiefs
+delete GreatHall
+delete GrainTrade
+delete GreatLibrary_Christian
+delete TranslatorsChambers_Christian
+delete ChristianDecoration
+delete ArtsSchool_Christian
+delete Schools_Christian
+delete Hospital_Christian
+delete Docks_RiverTrade
+delete TownWatch
+delete Courthouse
+delete ScribesOffice
+delete TownsCharter
+delete QueensChambers
+delete CastleGuards
+delete HerbalistShacks
+delete SpiceShop
+delete InkMaker_Christian
+delete SmallLibrary_Christian
+delete Apothecary_Christian
+delete ManurePits
+delete AuctionMarket_Christian
+delete AuctionMarket_Muslim
+delete RoyalGuardQuarters
+delete WatchTowers_Castles
+delete TownGuardsQuarters
+delete PublicBaths
+delete LargeHouses
+
+
+// Might be Interesting to use in some way
+delete DyeWorkshop
+delete CandleMaker
+delete Apiary
+delete Orphanage_Christian
+delete AlchemistLab_Christian
+delete TaxCollector
+delete SeatOfPower
+delete Brothels
+delete Aqueduct
+delete EnclosedGardens
+delete Harem
+delete Muhtasib
+
+
+// Buildings
+extend BuildingTooltipHT
+{
+	delete preview
+}
+delete Housings
+delete RoyalArmory
+delete LordsCastles
+delete RoyalPalace
+delete VillageMilitia
+delete RiverTrade
+delete Artisans
+delete FoodMarket
+delete FlaxGrowing
+delete HerbGardening
+delete TrainingGrounds
+// delete Barracks
+
+
+

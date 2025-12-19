@@ -1,0 +1,45 @@
+def InviteExileToCourtAction : PrisonAction
+{
+	cost
+	{
+		gold = (map(target.class_level, 0, 15, 100, 1000))
+	}
+}
+
+def HireLoyalistAction : PrisonAction
+{
+	cost
+	{
+		gold = (round((SSum(own_kingdom, 0.5) * (1 + target.class_level * 0.1) *(1 + target.kingdom.is_regular * (2 + target.is_prince))),100))
+	}
+	
+	float become_famous_chance = (target.GetClassLevel() * 3 - 30)
+
+	success_fail
+	{
+		sf_base = (65)
+		{
+			text name = "Base chance"
+		}
+		sf_knight_level = (-1 * target.class_level)
+		{
+			text name = "Knight's level"
+		}
+		sf_knight_is_prince = (-15 * target.is_prince)
+		{
+			text name = "Knight is prince"
+		}
+		sf_king_stars = (own_kingdom.king_espionage_ability * 2)
+		{
+			text name = "Our King's Espionage ability (x2)"
+		}
+		sf_positive_crown_authority = (MapCA(own_kingdom,0,0,10))
+		{
+			text name = "Our positive crown authority (x2)"
+		}
+		perc sf_negative_crown_authority = (MapCA(own_kingdom,-15,0,0))
+		{
+			text name = "Our negative crown authority (x3)"
+		}
+	}
+}
