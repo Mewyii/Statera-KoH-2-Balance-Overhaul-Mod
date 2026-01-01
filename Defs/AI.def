@@ -291,40 +291,39 @@ def PC_Crusade : ProsAndCons
 	delete pros
 	pros
 	{
-        pc_they_have_different_religion = 20
-        pc_they_hold_Rome = 30
-		pc_they_usurp_jerusalem = 30
-        pc_they_have_caliphate = 20
-        pc_they_are_excommunicated_and_we_are_catholic = 10
-        pc_they_have_many_trade_centers = 10
-		pc_they_have_high_taxes = 5
 		pc_they_fight_catolics { max = 50; per_war = 25 }
+        pc_they_have_different_religion = 20
+		pc_they_are_X_times_larger = 20 { X = 2; added_realms = 1 }
+        pc_they_hold_Rome = 40
+		pc_they_usurp_jerusalem = 40
+		pc_they_are_at_war_with_papacy = 20
+		pc_they_hold_many_christian_provinces { max = 15; per_province = 3; constantinople = 5 }
+        pc_they_have_caliphate = 10
+        pc_they_are_excommunicated_and_we_are_catholic = 10
+		pc_they_fight_our_friends { max = 10; per_kingdom = 3; threshold = 300 }
+        pc_they_have_many_trade_centers = 10
         pc_we_are_their_vassal = 10
-		pc_they_are_at_war_with_papacy = 30
         pc_they_recently_disobeyed_papacy  { max = 5; pow = 1 }
-		pc_we_have_bad_relation	{ max = 10;	pow = 1 }
-		pc_they_hold_many_christian_provinces { max = 10; per_province = 2; constantinople = 5 }
+		pc_we_have_bad_relation	{ max = 5;	pow = 1 }
         pc_they_have_war_exhaustion	{ max = 5 }
 		pc_they_have_rebels	{ max = 5; per_rebel = 2 }
-		pc_we_can_gain_sea_outlet = 10
-		pc_they_fight_our_friends { max = 10; per_kingdom = 3; threshold = 300 }
-		pc_they_are_X_times_larger = 5 { X = 1.5; added_realms = 1 }
+		pc_we_can_gain_sea_outlet = 5
 	}
 
 	delete cons
 	cons
 	{
-        pc_we_share_same_religion = 10
-		pc_they_are_our_vassal = 20
-		pc_they_are_loved_by_catholics = 25 { threshold = 250 }
-		pc_we_have_trade = 5
-		pc_we_have_good_relation{ base = 2;	max = 10; pow = 0.5	}
-		pc_we_are_allies = 20
-		pc_they_recently_aided_papacy {	max = 5; pow = 1 }
-		pc_they_control_the_pope = 30
-        pc_we_have_common_enemies {	max = 10; per_enemy = 5	}
         pc_they_are_papacy = 100
-		pc_they_are_active_against_our_enemies = 20 { percent_active = 70; max_minutes = 15 }
+		pc_they_control_the_pope = 30
+		pc_they_are_our_vassal = 20
+		pc_we_are_allies = 20
+        pc_we_share_same_religion = 20
+        pc_we_have_common_enemies {	max = 15; per_enemy = 5	}
+		pc_they_are_active_against_our_enemies = 15 { percent_active = 70; max_minutes = 15 }
+		pc_they_are_loved_by_catholics = 10 { threshold = 250 }
+		pc_we_have_trade = 5
+		pc_we_have_good_relation{ base = 2;	max = 5; pow = 0.5	}
+		pc_they_recently_aided_papacy {	max = 5; pow = 1 }
 		pc_they_are_player_by_difficulty
 		{
 			easy = 20
@@ -548,7 +547,7 @@ def PC_Propose_DeclareWar : ProsAndCons
 		pc_we_both_have_under_X_towns = 10 { X = 3 } 
 		pc_there_are_our_loyalists = 20 
 		pc_they_fight_our_friends { max = 30; per_kingdom = 5; threshold = 300 }
-		pc_they_have_rebels	{ max = 15; per_rebel = 3 }
+		pc_they_have_rebels	{ max = 20; per_rebel = 4 }
 		pc_they_have_too_many_wars { at_war_base = 10; per_additional_war = 5; max = 15 }
 		pc_they_have_different_religion = 10
 		pc_they_have_different_culture = 10

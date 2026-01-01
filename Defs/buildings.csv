@@ -1,14 +1,14 @@
 extend *,BasedOn,GoldCost,HammersCost,BooksCost,PietyCost,GoldUpkeep,Bonuses,Requires
-Church,Building,700,1000,,,,3 Piety in Town,Christian Stonemasons
-Masjid,Building,700,1000,,,,"1 Books in Town
+Church,Building,700,900,,,,3 Piety in Town,Christian
+Masjid,Building,700,900,,,,"1 Books in Town
 2 Piety in Town
 1 Piety in Mosque
-2 rs_happiness if MuslimRealmOtherKingdom",Muslim Stonemasons
-Temple,Building,700,1000,,,,"1 Piety in Town
+2 rs_happiness if MuslimRealmOtherKingdom",Muslim
+Temple,Building,700,900,,,,"1 Piety in Town
 1 Piety in Shrine
 1 Books in Town
 1 rs_happiness if PaganRealmOtherKingdom",Pagan
-CityMonastery,Building,400,800,,,,1 Piety in Town 1 Books in Town,Christian Stonemasons
+CityMonastery,Building,500,1100,,,,1 Piety in Town 1 Books in Town,Christian
 Cathedral,Building,3500,4500,,,,"3 Piety in Town
 1 Piety in Monastery 1 Piety in Village 10 rs_fame_buildings_bonus if Governed 20 ks_culture_from_buildings",Christian Stonemasons
 GreatMosque,Building,3500,5000,,,,"4 Piety in Town
@@ -29,8 +29,7 @@ Madrasah,Building,8000,8000,,,,"2 Books in Town
 CropFarming,Building,200,1000,,,,"1 Food in Town
 1 Food in Farm
 50 rs_max_food",
-Irrigation,Building,1000,2000,,,,"2 Food in Town,BasicTools
-2 Food in Farm",Rivers
+Irrigation,Building,1000,2000,,,,2 Food in Town 2 Food in Farm,Rivers BasicTools
 Windmill,Building,600,1000,,,,"1 Trade in Town 1 Food in Town 1 Trade in Farm
 1 Food in Farm
 50 rs_max_food",Craftsmen
@@ -41,17 +40,17 @@ Workshop,Building,200,400,,,,1 Hammers in Town 1 WorkerSlots in Town 5 rs_build_
 Blacksmith,Building,600,1000,,,,1 Trade in Town 1 Trade in Village 1 WorkerSlots in Town,
 Tanneries,Building,400,800,,,,2 Trade in Town 1 WorkerSlots in Town,
 WeavingMill,Building,800,1200,,,,1 Trade in Town 1 Trade in Farm 1 WorkerSlots in Town produces Linen,Craftsmen Flax
-StonemasonsGuild,Building,2200,3000,,,,2 Hammers in Town 2 Trade in Town 2 WorkerSlots in Town,
-CraftsmensGuild,Building,1800,2500,,,,2 Hammers in Town 2 Trade in Town 2 WorkerSlots in Town,
-BlacksmithsGuild,Building,2400,3500,,,,2 Trade in Town 2 WorkerSlots in Town,
+StonemasonsGuild,Building,2400,3000,,,,2 Hammers in Town 2 Trade in Town 2 WorkerSlots in Town 1 WorkerSlots in Village,
+CraftsmensGuild,Building,2000,2500,,,,2 Hammers in Town 2 Trade in Town 2 WorkerSlots in Town 1 WorkerSlots in Village,
+BlacksmithsGuild,Building,2600,3500,,,,2 Trade in Town 2 WorkerSlots in Town 1 WorkerSlots in Village,
 MasterWorkshop,Building,500,500,,,,2 Hammers in Town 2 WorkerSlots in Town,
 Foundry,Building,500,500,,,,1 Piety in Town,
 GlassmakersHall,Building,500,500,,,,1 Piety in Town,
-TrainingField,Building,300,500,,,,2 Levy in Town,
-Stables,Building,600,900,,,,1 WorkerSlots in Town,BasicTools
+TrainingField,Building,300,500,,,,3 Levy in Town,
+ArmyStables,Building,600,900,,,,1 Levy in Town 1 WorkerSlots in Town,BasicTools
 CityWatch,Building,900,1200,,,,2 rs_stability_buildings 2 TownGuards in Town,
 Armory,Building,1500,2000,,,,50 rs_siege_defense 10 rs_light_discount_perc 10 rs_heavy_discount_perc,Craftsmen
-SiegeWorkshop,Building,1200,1600,,,,10 rs_siege_defense 5 rs_attrition_damage,Craftsmen
+ArmySiegeWorkshop,Building,1200,1600,,,,10 rs_siege_defense 5 rs_attrition_damage,Craftsmen
 ArmyBarracks,Building,3000,3000,,,,2 Levy in Town 1 Levy in All 40 rs_siege_defense 100 ks_max_levy if Governed,Stonemasons
 Dungeon,Building,600,900,,,,2 rs_stability_buildings,Craftsmen
 CourtHall,Building,1100,1500,,,,4 rs_stability_buildings,Stonemasons
@@ -91,11 +90,12 @@ MessengerService,Upgrade,900,1200,50,,,5 ks_knight_wage_discount_perc
 KnightlyStables,Upgrade,2000,1700,,,,3 ks_horse_cavalry_discount_perc 5 rs_fame_buildings_bonus if Governed
 MilitiaBarracks,Upgrade,1000,1000,,,,2 WorkerSlots in Town
 CrossbowManufactoring,Upgrade,600,800,100,,,1 Trade in Town,Craftsmen
-AlarmBells,Upgrade,400,600,,,,2 rs_stability_buildings 10 rs_siege_resilience 10 rs_siege_defense
+AlarmBells,Upgrade,400,600,,,,2 rs_stability_buildings 10 rs_siege_resilience 10 rs_siege_defense,IronTools
 WatchRotations,Upgrade,800,1000,100,,,2 TownGuards in Town -2 ks_corruption
 HeraldryChambers,Upgrade,1500,1500,,,,5 rs_morale_in_province produces MilitaryHeraldry,Canvas
 PlanningRoom,Upgrade,500,500,,,,10 rs_siege_defense 5 rs_attrition_damage
-RecruitmentChambers,Upgrade,1000,1500,,,,2 Levy in Town produces MercenaryRecruiters
+RecruitmentOffices,Upgrade,1500,2000,,,,2 Levy in Town 1 Levy in Keep 1 Levy in Village
+MercenaryHiringOffice,Upgrade,1000,1250,,,,produces MercenaryRecruiters
 TrebuchetAssemblyYard,Upgrade,750,1500,500,,,5 rs_attrition_damage,IronTools
 GunpowderStorage,Upgrade,1000,1000,1000,,,3 Trade in Town produces Gunpowder,Saltpeter Sulfur IronTools
 CannonFoundry,Upgrade,2500,3500,1500,,,3 Trade in Town produces Cannons,Gunpowder
@@ -122,7 +122,7 @@ SynodalCourts,Upgrade,3500,3000,500,,,12 ks_convert_chance_after_siege_perc 12 k
 ChristianCeremonies,Upgrade,1000,1500,50,,,1 Piety in Village produces Clergy,
 ChoralLiturgy,Upgrade,1400,1400,100,,,1 Piety in Town 10 ks_culture_from_buildings 1 rs_morale_in_province produces CatholicChoirs
 GothicTechniques,Upgrade,3000,4000,500,,,4 Gold in Town 2 WorkerSlots in Town 20 rs_fame_buildings_bonus if Governed
-StainedGlassWorkshops,Upgrade,2000,1000,200,,,2 Gold in Town 2 WorkerSlots in Town 10 rs_fame_buildings_bonus if Governed,Glass
+StainedGlassWorkshops,Upgrade,2000,1000,200,,,2 Gold in Town 1 WorkerSlots in Town 10 rs_fame_buildings_bonus if Governed 1 WorkerSlots in Village,Glass
 Cloister,Upgrade,1200,1600,50,,,1 ks_books_per_cleric 1 ks_piety_per_cleric 1 ks_influence 2 ks_catholic_influence
 HorseHarnessing,Upgrade,750,800,50,,,1 Food in Town 1 Food in Farm,BasicTools
 HeavyPloughsWorkshop,Upgrade,1250,1500,100,,,1 Food in Town 1 WorkerSlots in Town,IronTools

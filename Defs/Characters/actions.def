@@ -177,16 +177,26 @@ def ImprovingRelationsStatus : CharacterStatus
 // 
 //     upkeep
 //     {
-//         gold = (ceil((5 * kingdom_income_upkeep_modifier - agent_level_upkeep_modifier - (100 * own_character.cs_diplomat_actions_upkeep_reduction_perc)), 1))
+//         gold = (ceil((5 * kingdom_income_upkeep_modifier - agent_level_upkeep_modifier * (1 - (own_character.cs_diplomat_actions_upkeep_reduction_perc / 100))), 1))
 //     }
 // }
 
 BolsterInfluenceAction.cost.gold = (ceil((200 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
 BolsterInfluenceAction.cost.books = (ceil((200 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
 BolsterInfluenceAction.cost.levy = (ceil((25 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
-BolsterInfluenceAction.gold_upkeep = (ceil((20 * kingdom_income_upkeep_modifier - agent_level_upkeep_modifier - (100 * own_character.cs_diplomat_actions_upkeep_reduction_perc)), 1))
+BolsterInfluenceAction.gold_upkeep = (ceil((20 * kingdom_income_upkeep_modifier - agent_level_upkeep_modifier * (1 - (own_character.cs_diplomat_actions_upkeep_reduction_perc / 100))), 1))
 
-PeaceTalksStatus.upkeep.gold = (ceil((10 * kingdom_income_upkeep_modifier - agent_level_upkeep_modifier - (100 * own_character.cs_diplomat_actions_upkeep_reduction_perc)), 1))
+PeaceTalksStatus.upkeep.gold = (ceil((10 * kingdom_income_upkeep_modifier - agent_level_upkeep_modifier * (1 - (own_character.cs_diplomat_actions_upkeep_reduction_perc / 100))), 1))
+
+CreateDefensivePactAction.cost.gold = (ceil((200 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+CreateDefensivePactAction.gold_upkeep = HoldingADefensivePactStatus.upkeep.gold
+
+HoldingADefensivePactStatus.upkeep.gold = (ceil((8 * kingdom_income_upkeep_modifier - agent_level_upkeep_modifier * (1 - ((own_character.cs_diplomat_actions_upkeep_reduction_perc + own_character.cs_defpact_invplan_cost_and_upkeep_reduction_perc) / 100))), 1))
+CreateDefensivePactAction.cost.gold = (ceil((250 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+
+HoldingAnInvasionPlanStatus.upkeep.gold = (ceil((15 * kingdom_income_upkeep_modifier - agent_level_upkeep_modifier * (1 - ((own_character.cs_diplomat_actions_upkeep_reduction_perc + own_character.cs_defpact_invplan_cost_and_upkeep_reduction_perc) / 100))), 1))
+CreateOffensivePactAction.cost.gold = (ceil((500 * kingdom_income_cost_modifier - agent_level_cost_modifier), 5))
+
 
 def DiplomatTeachAction : CharacterAction
 {

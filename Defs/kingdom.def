@@ -1,17 +1,50 @@
-Kingdom.tax_rates = 30
-Kingdom.royal_court_slots = 9
-Kingdom.wage_thresholds = [5, 20, 50, 100, 200, 300, 400, 500]
-Kingdom.trade_route_profit_exclusive_mod = 1.1
-Kingdom.trade_route_profit_relation_mod = 1.2
-Kingdom.trade_route_capacity_mod = 0.25
+extend Kingdom {
+    tax_rates = 30
+    royal_court_slots = 9
+    wage_thresholds = [5, 20, 50, 100, 200, 300, 400, 500]
+    trade_route_profit_exclusive_mod = 1.1
+    trade_route_profit_relation_mod = 1.2
+    trade_route_capacity_mod = 0.25
+
+    resources starting_resources
+	{
+		gold = (1000 + (100 * (num_realms -1)))
+		books = (200 + (10 * (num_realms -1)))
+		levy = (200 + (20 * (num_realms -1)))
+		piety = (200 + (10 * (num_realms -1)))
+	}
+
+    // % from max treasury, used to calculate possible gold amounts in diplomatic negotiations, i.e. S1 .. S5
+	diplomatic_gold_perc = 10/20/40/60/80
+}
 
 
-CrownAuthority.requirementGoldBaseAmounts = [100, 100, 100, 100, 150, 200, 250, 300, 350, 400]
-CrownAuthority.requirementPietyAmounts = [600, 600, 600, 600, 700, 800, 900, 1000, 1100, 1200]
 
-Tradition.per_adopted_cost_piety = 0
-Tradition.tier_cost_piety = [200,300,400,500]
-Tradition.adopt_cost.piety = (per_adopted_cost_piety * adopted_num + tier_cost_piety[tier])
-Tradition.tier_cost_books = [200,300,400,500]
+
+extend Tradition {
+    float per_adopted_cost_gold = 0
+	float per_adopted_cost_books = 0
+    float per_adopted_cost_piety = 0
+
+	float tier_cost_gold = [1000,2000,3000,4000]
+	float tier_cost_books = [200,300,400,500]
+	float tier_cost_piety = [200,300,400,500]
+
+    float kingdom_size_modifier = (1 + (0.05 * (kingdom.realms_count - 1)))
+
+    resources adopt_cost
+	{
+		gold = (tier_cost_gold[tier] * kingdom_size_modifier)
+		books = (tier_cost_books[tier] * kingdom_size_modifier)
+        piety = (tier_cost_piety[tier] * kingdom_size_modifier)
+	}
+}
+
+extend CrownAuthority {
+    // Sadly kingdom size modifier doesnt work here. kingdom, own_kingdom or num_realms dont work
+    requirementGoldBaseAmounts = [100, 100, 100, 100, 150, 200, 250, 300, 350, 400]
+    requirementPietyAmounts = [600, 600, 600, 600, 700, 800, 900, 1000, 1100, 1200]
+}
+
 
 WarExhaustionModifier.time_period_increase = 175

@@ -104,7 +104,7 @@ def Heavy_Siege_Ram : SiegeEquipment
 
     require
 	{
-        SiegeWorkshop
+        ArmySiegeWorkshop
 	}
 	
 	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_InvetoryItem_BatteringRam.png:Icon_InvetoryItem_BatteringRam#1" //GUID:d96e15c9cc15fe04f8232c46aa5cfd53
@@ -153,7 +153,7 @@ def Heavy_Trebuchet : SiegeEquipment
 	
 	require
 	{
-        SiegeWorkshop
+        ArmySiegeWorkshop
 		TrebuchetAssemblyYard
 	}
 	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_InvetoryItem_Trebuchet.png:Icon_InvetoryItem_Trebuchet#2" //GUID:bfe320789668afc4c80cb8355db68093
@@ -215,7 +215,7 @@ extend Cavalry
 	require
 	{
 		TrainingField
-		Stables
+		ArmyStables
 		SimpleWeaponsmithing
 		SimpleArmorsmithing
 	}
@@ -237,7 +237,7 @@ extend RangedCavalry
 	require
 	{
 		TrainingField
-		Stables
+		ArmyStables
 		ArcheryRange
 	}
 }
@@ -269,7 +269,7 @@ extend HeavyCavalry
 	require
 	{
 		ArmyBarracks
-		Stables
+		ArmyStables
 		AdvancedWeaponsmithing
 		AdvancedArmorsmithing
 	}
@@ -403,7 +403,7 @@ extend Horse_Archer_CE
 	{
 		TrainingField
 		ArcheryRange
-		Stables
+		ArmyStables
 	}
 }
 
@@ -414,7 +414,7 @@ extend Horse_Archer_Arab
 	{
 		TrainingField
 		ArcheryRange
-		Stables
+		ArmyStables
 	}
 }
 
@@ -425,7 +425,7 @@ extend Light_Horse_Archer_Steppe
 	{
 		TrainingField
 		ArcheryRange
-		Stables
+		ArmyStables
 	}
 }
 
@@ -446,7 +446,7 @@ extend Mamluk_Special
 	{
 		TrainingField
 		ArcheryRange
-		Stables
+		ArmyStables
 		KnightlyStables
 		AdvancedWeaponsmithing
 		AdvancedArmorsmithing
@@ -460,7 +460,7 @@ extend Mongol_Cavalry_Special
 	{
 		TrainingField
 		ArcheryRange
-		Stables
+		ArmyStables
 		KnightlyStables
 	}
 }
@@ -472,7 +472,7 @@ extend Heavy_Horse_Archer_Steppe
 	{
 		TrainingField
 		ArcheryRange
-		Stables
+		ArmyStables
 		KnightlyStables
 		AdvancedArmorsmithing
 	}
@@ -485,7 +485,7 @@ extend Camel_Rider_Special
 	{
 		TrainingField
 		SimpleWeaponsmithing
-		Stables
+		ArmyStables
 	}
 }
 
@@ -495,7 +495,7 @@ extend Mongol_Heavy_Lancers_Special
 	require
 	{
 		TrainingField
-		Stables
+		ArmyStables
 		KnightlyStables
 		AdvancedWeaponsmithing
 		AdvancedArmorsmithing
@@ -508,7 +508,7 @@ extend Sipahi_Special
 	require
 	{
 		TrainingField
-		Stables
+		ArmyStables
 		KnightlyStables
 		AdvancedArmorsmithing
 	}
@@ -520,7 +520,7 @@ extend Boyar_Special
 	require
 	{
 		TrainingField
-		Stables
+		ArmyStables
 		KnightlyStables
 		AdvancedWeaponsmithing
 		AdvancedArmorsmithing
@@ -533,7 +533,7 @@ extend Cataphract_Special
 	require
 	{
 		TrainingField
-		Stables
+		ArmyStables
 		KnightlyStables
 		SimpleArmorsmithing
 	}
@@ -545,7 +545,7 @@ extend Ghulam_Cavalry_Special
 	require
 	{
 		TrainingField
-		Stables
+		ArmyStables
 		KnightlyStables
 		AdvancedArmorsmithing
 	}
@@ -557,7 +557,7 @@ extend Pronoia_Special
 	require
 	{
 		TrainingField
-		Stables
+		ArmyStables
 		KnightlyStables
 		AdvancedWeaponsmithing
 		AdvancedArmorsmithing
@@ -570,7 +570,7 @@ extend Light_Cavalry_African
 	require
 	{
 		
-		Stables
+		ArmyStables
 		SimpleWeaponsmithing
 	}
 }
@@ -581,7 +581,7 @@ extend Heavy_Cavalry_Slav
 	require
 	{
 		
-		Stables
+		ArmyStables
 		AdvancedArmorsmithing
 	}
 }
@@ -789,7 +789,7 @@ def Cavalry_Militia_CE : HorseCavalry
 	require
 	{
 		MilitiaBarracks
-		Stables
+		ArmyStables
 		SimpleWeaponsmithing
 		SimpleArmorsmithing
 	}
@@ -807,7 +807,7 @@ def Heavy_Cavalry_CE : HeavyCavalry
 	require
 	{
 		ArmyBarracks
-		Stables
+		ArmyStables
 		AdvancedWeaponsmithing
 		AdvancedArmorsmithing
 	}
@@ -878,7 +878,7 @@ def Hobelar_Special : HorseCavalry
 	{
 		TrainingField
 		SimpleWeaponsmithing
-		Stables
+		ArmyStables
 	}
 	
 	hide_in_wiki = false
@@ -899,7 +899,7 @@ def Jinetes_Special : RangedHorseCavalry
 	{
 		TrainingField
 		SimpleWeaponsmithing
-		Stables
+		ArmyStables
 	}
 
 	kingdom_religion = Catholic
@@ -957,7 +957,7 @@ extend Templar_Special
 	{
 		TrainingField
 		CistercianDiscipline
-		Stables
+		ArmyStables
 		SimpleWeaponsmithing
 		SimpleArmorsmithing
 	}
@@ -986,7 +986,7 @@ extend Teutonic_Knight_Mounted_Special
 	{
 		TrainingField
 		Hospital
-		Stables
+		ArmyStables
 		SimpleWeaponsmithing
 		AdvancedArmorsmithing
 	}
@@ -1042,7 +1042,7 @@ def Hospitaller_Special : HeavyCavalry
 	{
 		TrainingField
 		Hospital
-		Stables
+		ArmyStables
 		SimpleWeaponsmithing
 		SimpleArmorsmithing
 	}

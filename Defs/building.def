@@ -1,6 +1,6 @@
 extend Building
 {
-	slots_base = 6
+	slots_base = 7
 	slots_expand_cost.gold = (250 + 250 * (realm_tier))
 
 	float base_ai_eval = 250
@@ -176,7 +176,7 @@ def MarketSquare : Building
 	icon = "Assets/Icons/Buildings/MarketSquare.png:MarketSquare#1"
 	illustration = "Assets/Icons/Buildings/MarketSquare.png:MarketSquare#1"
 
-	ai_eval = (base_ai_eval + 1000)
+	ai_eval = (base_ai_eval + 500)
 }
 
 def MerchantHall : Building
@@ -311,7 +311,7 @@ def Blacksmith : Building
 	icon = "Assets/Icons/Buildings/Blacksmith.png:Blacksmith#1"
 	illustration = "Assets/Icons/Buildings/Blacksmith.png:Blacksmith#1"
 
-	ai_eval = (base_ai_eval + (!kingdom.Blacksmith and 10000))
+	ai_eval = ((castle.TrainingField or 0) * ((2000) / (kingdom.Blacksmith or 1)))
 	ai_category = "Military"
 }
 
@@ -424,15 +424,16 @@ def TrainingField : Building
 	illustration = "Assets/Icons/Buildings/TrainingField.png:TrainingField#1"
 
 	ai_category = "Military"
-	ai_eval = (500 + max(0, ((kingdom.realms_count + 1) / 2) - (kingdom.TrainingField or 0)) * 10000)
+	ai_eval = (500 + max(0, ((kingdom.realms_count + 2) / 3) - (kingdom.TrainingField or 0)) * 5000)
 	ai_urgent = (!kingdom.TrainingField)
 }
 
-def Stables : Building
+def ArmyStables : Building
 {
+	type = "Building"
+
 	name = "Stables"
 	flavor = "Essential facilities for breeding, housing, and maintaining the horses that serve both farm and battlefield."
-	delete add_tooltip
 	add_tooltip = "{blt} Required for recruiting {clr:enables_color}cavalry units{/clr}"
 	upgrades
 	{
@@ -448,8 +449,7 @@ def Stables : Building
 	illustration = "Assets/Icons/Buildings/Stables.png:Stables#1"
 
 	ai_category = "Military"
-	ai_eval = (500 + max(0, (kingdom.realms_count + 2 / 3) - (kingdom.Stables or 0)) * 7500)
-	ai_urgent = (!kingdom.Stables)
+	ai_eval = ((castle.TrainingField or 0.5) * (castle.Blacksmith or 0.5) * ((base_ai_eval + max(0, (kingdom.realms_count + 4 / 5) - (kingdom.ArmyStables or 0)) * 2000)))
 }
 
 def CityWatch : Building
@@ -461,8 +461,10 @@ def CityWatch : Building
 		buildings
 		{
 			MilitiaBarracks = 1,1
-			CrossbowManufactoring = 1,2
 			AlarmBells = 2,1
+			MercenaryHiringOffice = 3,1
+			
+			CrossbowManufactoring = 1,2
 			WatchRotations = 2,2
 		}
 	}
@@ -481,7 +483,7 @@ def Armory : Building
 	{
 		buildings
 		{
-			RecruitmentChambers = 1,1
+			RecruitmentOffices = 1,1
 			HeraldryChambers = 2,1
 			PlanningRoom = 3,1
 		}
@@ -490,7 +492,7 @@ def Armory : Building
 	illustration = "Assets/Icons/Buildings/Armory.png:Armory#1"
 }
 
-def SiegeWorkshop : Building
+def ArmySiegeWorkshop : Building
 {
 	name = "Siege Workshop"
 	flavor = "A specialized complex where engineers and craftsmen design, build, and maintain engines of war for siege and defense."
@@ -509,7 +511,7 @@ def SiegeWorkshop : Building
 	illustration = "Assets/Icons/Buildings/SiegeWorkshop.png:SiegeWorkshop#1"
 	
 	ai_category = "Military"
-	ai_urgent = (!kingdom.SiegeWorkshop)
+	ai_eval = (!kingdom.ArmySiegeWorkshop and kingdom.Blacksmith and 2000)
 }
 
 def ArmyBarracks : Building

@@ -17,7 +17,7 @@ Settlement.settlement_repeating_chance_mul = 1.4 // relevant only for base settl
 def Castle : Settlement
 {
 	no_governor_penalty = 25
-	production = "3g 3f 1b 1p 8h 4WorkerSlots"
+	production = "2g 3f 1b 1p 8h 4WorkerSlots"
 
 	enable_feature
 	{
@@ -33,6 +33,8 @@ def Castle : Settlement
 		SlaveTradersRussia
 		SpiceTraders
 	}
+
+	Worker.Gold = 0.75
 }
 
 def SettlementsRandomizationWeights = 3 // Same settlement type limit for normal settlements

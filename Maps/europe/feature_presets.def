@@ -282,13 +282,32 @@ extend RealmFeaturesPresets
 			}
 		}
 
+		def CityStatesRealmSet : RealmFeaturesPreset 
+		{
+			occurances = 7
+			required_settlements
+			{
+				Village = 2
+			}
+			desired_in_realms = 100
+			{
+				Veneto
+				Liguria
+				Lombardy
+				Tuscany
+				Novgorod
+				Gotland
+				Catalonia
+			}
+		}
+
 
 		def TradersRealmSet : RealmFeaturesPreset //best for trade center
 		{
 			occurances = 10 //the sum of all chances down should be around this value, multiplied by 80-90, preferably less than 1000
 			required_settlements
 			{
-				Village = 2
+				Village = 1
 			}
 			features
 			{
@@ -298,7 +317,6 @@ extend RealmFeaturesPresets
 			delete desired_in_realms
 			desired_in_realms = 20
 			{
-				//Constantinopolis, Baghdad - cannot be here, they are religious centers
 				Cordoba = 100
 				Sicily = 100 
 				Veneto = 75

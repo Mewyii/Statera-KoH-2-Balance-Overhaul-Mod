@@ -97,10 +97,10 @@ def CastlesDistrict : District
 	buildings
 	{
 		TrainingField = 1,1
-		Stables = 2,1
+		ArmyStables = 2,1
 
-		CityWatch = 1,2 { prerequisites { TrainingField; Blacksmith } }
-		SiegeWorkshop = 2,2
+		CityWatch = 1,2 { prerequisites { TrainingField } }
+		ArmySiegeWorkshop = 2,2
 
 		Armory = 1,3 { prerequisites { TrainingField; Blacksmith } }
 		ArmyBarracks = 2,3 { prerequisites { TrainingField; School } }
@@ -201,7 +201,7 @@ def CultureDistrict : District
 
 	buildings
 	{
-		TownHall = 1,1 { prerequisites { MarketSquare } }
+		TownHall = 1,1 { prerequisites { MarketSquare; School } }
 
 		TournamentGrounds = 1,2 { prerequisites { Armory } }
 		Bathhouse = 1,2
@@ -309,6 +309,7 @@ delete FlaxGrowing
 delete HerbGardening
 delete TrainingGrounds
 // delete Barracks
-
+delete SiegeWorkshop
+delete Stables
 
 

@@ -4,8 +4,10 @@ def Action
     float food_upkeep = 0
     float levy_upkeep = 0
     float piety_upkeep = 0
-    float kingdom_income_cost_modifier = (1 + 0.0003 * own_kingdom.S1)
-    float kingdom_income_upkeep_modifier = (1 + 0.0003 * own_kingdom.S1)
+    float kingdom_size_modifier = (1 + (0.05 * (kingdom.realms_count - 1)))
+
+    float kingdom_income_cost_modifier = ((1 + (0.00015 * own_kingdom.S1)) * kingdom_size_modifier)
+    float kingdom_income_upkeep_modifier = ((1 + (0.00015 * own_kingdom.S1)) * kingdom_size_modifier)
     float agent_level_cost_modifier = (owner.class_level * 5)
     float agent_level_upkeep_modifier = (owner.class_level * 1)
 
@@ -17,4 +19,14 @@ def Action
         levy = (levy_upkeep)
         piety = (piety_upkeep)
 	}
+}
+
+def Status 
+{
+    float kingdom_size_modifier = (1 + (0.05 * (kingdom.realms_count - 1)))
+
+    float kingdom_income_cost_modifier = ((1 + (0.00015 * own_kingdom.S1)) * kingdom_size_modifier)
+    float kingdom_income_upkeep_modifier = ((1 + (0.00015 * own_kingdom.S1)) * kingdom_size_modifier)
+    float agent_level_cost_modifier = (owner.class_level * 5)
+    float agent_level_upkeep_modifier = (owner.class_level * 1)
 }

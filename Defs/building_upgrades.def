@@ -29,7 +29,7 @@ def KnightlyTrainingGrounds : Upgrade
 	add_tooltip = "{blt} Required for recruiting {clr:enables_color}knight units{/clr}"
 
 	ai_category = "Military"
-	ai_eval = 10000
+	ai_eval = 5000
 }
 
 def Farrier : Upgrade
@@ -56,7 +56,7 @@ def KnightlyStables : Upgrade
 	add_tooltip = "{blt} Required for recruiting {clr:enables_color}knight units{/clr}"
 
 	ai_category = "Military"
-	ai_eval = 10000
+	ai_eval = 5000
 }
 
 def MilitiaBarracks : Upgrade
@@ -67,7 +67,7 @@ def MilitiaBarracks : Upgrade
 	add_tooltip = "{blt} Required for recruiting {clr:enables_color}militia units{/clr}"
 
 	ai_category = "Military"
-	ai_eval = 5000
+	ai_eval = 2500
 }
 
 def CrossbowManufactoring : Upgrade
@@ -108,11 +108,18 @@ def PlanningRoom : Upgrade
 	icon = "Assets/Icons/Buildings/PlanningRoom.png:PlanningRoom#1"
 }
 
-def RecruitmentChambers : Upgrade
+def RecruitmentOffices : Upgrade
 {
-	name = "Recruitment Chambers"
-	flavor = "Chambers to professionally organize the recruitment of levies as well as mercenaries."
+	name = "Recruitment Offices"
+	flavor = "Chambers to professionally organize the recruitment of levies troughout the province."
 	icon = "Assets/Icons/Buildings/RecruitmentChambers.png:RecruitmentChambers#1"
+}
+
+def MercenaryHiringOffice : Upgrade
+{
+	name = "Mercenary Hiring Office"
+	flavor = "Chambers to professionally organize the recruitment of mercenaries troughout kingdom."
+	icon = "Assets/Icons/Buildings/MercenaryHiringOffice.png:MercenaryHiringOffice#1"
 }
 
 def TrebuchetAssemblyYard : Upgrade
@@ -431,7 +438,7 @@ def Toolmaking : Upgrade
 	flavor = "Production of basic implements for farming, carpentry, and daily labor, supporting every craft in the town."
 	icon = "Assets/Icons/Buildings/Toolmaking.png:Toolmaking#1"
 
-	ai_eval = 10000
+	ai_eval = 7500
 }
 
 def Stonemasonry : Upgrade
@@ -441,7 +448,6 @@ def Stonemasonry : Upgrade
 	icon = "Assets/Icons/Buildings/Stonemasons.png:Stonemasons#1"
 
 	ai_eval = 7500
-	ai_urgent = true
 }
 
 def Craftsmenship : Upgrade
@@ -451,7 +457,6 @@ def Craftsmenship : Upgrade
 	icon = "Assets/Icons/Buildings/Craftsmen.png:Craftsmen#1"
 
 	ai_eval = 10000
-	ai_urgent = true
 }
 
 def SimpleWeaponsmithing : Upgrade
@@ -460,7 +465,7 @@ def SimpleWeaponsmithing : Upgrade
 	flavor = "Production of basic swords, spears, and axes to arm militias and guards."
 	icon = "Assets/Icons/Buildings/SimpleWeaponsmithing.png:SimpleWeaponsmithing#1"
 
-	ai_eval = 10000
+	ai_eval = 15000
 	ai_category = "Military"
 }
 
@@ -480,7 +485,7 @@ def Toolsmithing : Upgrade
 	flavor = "Forging durable ploughshares, hammers, and nails essential for craftsmen and farmers alike."
 	icon = "Assets/Icons/Buildings/Toolsmithing.png:Toolsmithing#1"
 	
-	ai_eval = 7500
+	ai_eval = 5000
 }
 
 def ForgeBellows : Upgrade
