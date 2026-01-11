@@ -230,6 +230,10 @@ extend Skill.effects
 			// }
 			
 			governed_realm_mod rs_governor_town_guards = 2
+			// This doesn't work sadly
+			// {
+			// 	condition = (kingdom.culture_group_name == "Germanic")
+			// }
 
 			governed_realm_mod rs_governor_max_population = 3
 			
@@ -251,7 +255,7 @@ extend Skill.effects
 	{
 		Default
 		{
-			mod cs_crusader_squad_size_perc = 33
+			mod cs_crusader_squad_size_perc = 40
 			{
 				text mod_name = "Leader is crusader"
 			}

@@ -1,6 +1,14 @@
 def ChangeReligionAction
 {
-	cost = "1000b 1000p 500 levy"
+	float kingdom_size_modifier = (1 + (0.05 * (own_kingdom.realms_count - 1)))
+
+	delete cost
+	resources cost
+	{
+		piety = (ceil((500 * kingdom_size_modifier), 50))
+		books = (ceil((500 * kingdom_size_modifier), 50))
+		levy =  (ceil((250 * kingdom_size_modifier), 50))
+	}
 	prepare_duration = 180
 	
 	float min_same_religion_realms_perc = 30
@@ -8,7 +16,7 @@ def ChangeReligionAction
 	float sf_liege_same_religion = -30
 	float sf_liege_diff_religion = -10
 	float sf_liege_target_religion = 10
-	float success_base_chance = 20
+	float success_base_chance = 25
 	
 	confirmation_message = ChangeReligionConfirmMessage
 	
@@ -28,50 +36,50 @@ def ChangeReligionAction
 		{
 			text name = "Base chance"
 		}
-		sf_num_realms_following_new_religion = (5 * GetProvincesNumWithReligion(own_kingdom, target_religion))
+		sf_num_realms_following_new_religion = (6 * GetProvincesNumWithReligion(own_kingdom, target_religion))
 		{
-			text name = "Our provinces, following {target_religion:ism} (x5)"
+			text name = "Our provinces, following {target_religion:ism} (x6)"
 		}
-		sf_king_religion_ability = (3 * own_kingdom.king_religion_ability)
+		sf_king_religion_ability = (5 * own_kingdom.king_religion_ability)
 		{
-			text name = "Our king's religion ability (x3)"
+			text name = "Our king's religion ability (x5)"
 		}
-		sf_king_diplomacyn_ability = (2 * own_kingdom.king_diplomacy_ability)
+		sf_king_diplomacyn_ability = (3 * own_kingdom.king_diplomacy_ability)
 		{
-			text name = "Our King's diplomacy ability (x2)"
+			text name = "Our King's diplomacy ability (x3)"
 		}
-		sf_crown_authority = 0/10
+		sf_crown_authority = 0/25
 		{
-			text name = "Our crown authority (x2)"
+			text name = "Our crown authority (x5)"
 		}
-		sf_num_neighbors_following_new_religion = (5 * GetNeighborsNumWithReligion(own_kingdom, target_religion))
+		sf_num_neighbors_following_new_religion = (10 * GetNeighborsNumWithReligion(own_kingdom, target_religion))
 		{
-			text name = "Our neighbors, following {target_religion:ism} (x5)"
+			text name = "Our neighbors, following {target_religion:ism} (x10)"
 		}
-		sf_we_are_pagans = (20 * own_kingdom.is_pagan)
+		sf_we_are_pagans = (10 * own_kingdom.is_pagan)
 		{
 			text name = "We are pagans"
 		}
-		perc sf_king_leadership_skill = (25 * (GetSkillRank(own_kingdom.king, "Leadership") != 0))
+		perc sf_king_leadership_skill = (20 * (GetSkillRank(own_kingdom.king, "Leadership") != 0))
 		{
 			text name = "Our king's Leadership skill"
 		}
-		perc sf_king_theology_skill = (25 * (GetSkillRank(own_kingdom.king, "Theology") != 0))
+		perc sf_king_theology_skill = (20 * (GetSkillRank(own_kingdom.king, "Theology") != 0))
 		{
 			text name = "Our King's Theology skill"
 		}
-		perc sf_writing_tradition = ( 35 * HasTradition(own_kingdom, "WritingTradition"))
+		perc sf_writing_tradition = ( 25 * HasTradition(own_kingdom, "WritingTradition"))
 		{
 			text name = "Writing tradition"
 		}
-		perc sf_learning_tradition = ( 15 * HasTradition(own_kingdom, "LearningTradition"))
+		perc sf_learning_tradition = ( 10 * HasTradition(own_kingdom, "LearningTradition"))
 		{
 			text name = "Learning tradition"
 		}
 		
-		perc sf_num_realms_following_old_religion = (-5 * max(0, GetProvincesNumWithReligion(own_kingdom, own_kingdom.religion) - GetProvincesNumWithReligion(own_kingdom, target_religion)))
+		perc sf_num_realms_following_old_religion = (-4 * max(0, GetProvincesNumWithReligion(own_kingdom, own_kingdom.religion) - GetProvincesNumWithReligion(own_kingdom, target_religion)))
 		{
-			text name = "Our provinces, following {own_kingdom.religion:ism}"
+			text name = "Our provinces, following {own_kingdom.religion:ism} (x4)"
 		}
 		perc sf_num_disloyal_realms = -5 // per province
 		{
@@ -97,11 +105,10 @@ def ChangeReligionAction
 		{
 			text name = "Negative nobility opinion (x3)"
 		}
-		perc sf_num_neighbors_following_old_religion = (-5 * GetNeighborsNumWithReligion(own_kingdom, own_kingdom.religion))
+		perc sf_num_neighbors_following_old_religion = (-2 * GetNeighborsNumWithReligion(own_kingdom, own_kingdom.religion))
 		{
-			text name = "Our neighbors, following {own_kingdom.religion:ism} (x5)"
+			text name = "Our neighbors, following {own_kingdom.religion:ism} (x2)"
 		}
-		
 	}
 	
 	// what happens with the kingdom when religion is changed
@@ -147,6 +154,8 @@ def ChangeReligionAction
 			
 		}
 	}
+
+	ai_validate = ((success_chance > 80) and (GetNeighborsNumWithReligion(own_kingdom, target_religion) > 1) and (GetNeighborsNumWithReligion(own_kingdom, own_kingdom.religion) < 2))
 }
 
 def BecomeJewishAction : ChangeReligionAction

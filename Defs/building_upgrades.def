@@ -67,7 +67,7 @@ def MilitiaBarracks : Upgrade
 	add_tooltip = "{blt} Required for recruiting {clr:enables_color}militia units{/clr}"
 
 	ai_category = "Military"
-	ai_eval = 2500
+	ai_eval = 3000
 }
 
 def CrossbowManufactoring : Upgrade
@@ -78,6 +78,7 @@ def CrossbowManufactoring : Upgrade
 	add_tooltip = "{blt} Required for recruiting {clr:enables_color}crossbow units{/clr}"
 
 	ai_category = "Military"
+	ai_eval = 2000
 }
 
 def AlarmBells : Upgrade
@@ -438,7 +439,7 @@ def Toolmaking : Upgrade
 	flavor = "Production of basic implements for farming, carpentry, and daily labor, supporting every craft in the town."
 	icon = "Assets/Icons/Buildings/Toolmaking.png:Toolmaking#1"
 
-	ai_eval = 7500
+	ai_eval = 10000
 }
 
 def Stonemasonry : Upgrade
@@ -447,7 +448,7 @@ def Stonemasonry : Upgrade
 	flavor = "Skilled builders shaping stone for walls, churches, and fortifications, laying the foundation of lasting architecture."
 	icon = "Assets/Icons/Buildings/Stonemasons.png:Stonemasons#1"
 
-	ai_eval = 7500
+	ai_eval = 5000
 }
 
 def Craftsmenship : Upgrade
@@ -456,7 +457,7 @@ def Craftsmenship : Upgrade
 	flavor = "Independent artisans creating everything from pottery to furniture, forming the backbone of the town’s economy."
 	icon = "Assets/Icons/Buildings/Craftsmen.png:Craftsmen#1"
 
-	ai_eval = 10000
+	ai_eval = 7500
 }
 
 def SimpleWeaponsmithing : Upgrade
@@ -493,6 +494,9 @@ def ForgeBellows : Upgrade
 	name = "Forge Bellows"
 	flavor = "Installation of improved air bellows to reach higher temperatures and refine the quality of ironwork."
 	icon = "Assets/Icons/Buildings/FullingMills.png:FullingMills#1"
+
+	ai_eval = 10000
+	ai_category = "Military"
 }
 
 def ImprovedTanningLiquors : Upgrade
@@ -540,6 +544,13 @@ def AdvancedArmorsmithing : Upgrade
 
 	ai_eval = 10000
 	ai_category = "Military"
+}
+
+def Sculpting : Upgrade
+{
+	name = "Sculpting"
+	flavor = "Improved metallurgy and design produce superior plate and chain armor, granting better protection in battle."
+	icon = "Assets/Icons/Buildings/AdvancedArmorsmithing.png:AdvancedArmorsmithing#1"
 }
 
 // RIVER
@@ -609,10 +620,10 @@ def FacultyTheology : Upgrade
 	icon = "Assets/Icons/Buildings/FacultyTheology.png:FacultyTheology#1"
 }
 
-def FacultyLaw : Upgrade
+def FacultyArts : Upgrade
 {
-	name = "Faculty of Law"
-	flavor = "Jurists codify canon and civil law, shaping governance and justice across medieval Europe."
+	name = "Faculty of Arts"
+	flavor = "TODO"
 	icon = "Assets/Icons/Buildings/FacultyLaw.png:FacultyLaw#1"
 }
 

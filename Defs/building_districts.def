@@ -201,7 +201,7 @@ def CultureDistrict : District
 
 	buildings
 	{
-		TownHall = 1,1 { prerequisites { MarketSquare; School } }
+		TownHall = 1,1 { prerequisites { MarketSquare } }
 
 		TournamentGrounds = 1,2 { prerequisites { Armory } }
 		Bathhouse = 1,2

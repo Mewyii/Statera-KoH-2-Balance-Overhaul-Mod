@@ -1,6 +1,13 @@
 def Army
 {
-	max_units = 8
+	max_units = 9
+	{
+		int marshal = 9
+		int shaman = 9
+		int crusader = 9
+		int king = 9
+	}
+
 	int max_inventory = 2
 	{
 		marshal = 3
@@ -29,9 +36,9 @@ AdditionalTroops.progressive_cost.1 = "250g 5 workers 250 Levy"
 AdditionalTroops.progressive_cost.2 = "300g 6 workers 300 Levy"
 AdditionalTroops.progressive_cost.3 = "350g 7 workers 350 Levy"
 AdditionalTroops.progressive_cost.4 = "400g 8 workers 400 Levy"
-AdditionalTroops.progressive_upkeep.1 = "4g 4f"
-AdditionalTroops.progressive_upkeep.2 = "5g 5f"
-AdditionalTroops.progressive_upkeep.3 = "6g 6f"
+AdditionalTroops.progressive_upkeep.1 = "5g 5f"
+AdditionalTroops.progressive_upkeep.2 = "6g 6f"
+AdditionalTroops.progressive_upkeep.3 = "7g 7f"
 AdditionalTroops.progressive_upkeep.4 = "7g 7f"
 
 Siege_Ram.available = false

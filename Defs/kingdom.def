@@ -41,10 +41,74 @@ extend Tradition {
 }
 
 extend CrownAuthority {
+    corruptionMods = [25, 20, 15, 10, 5, 0, -2, -4, -6, -8, -10]
+
     // Sadly kingdom size modifier doesnt work here. kingdom, own_kingdom or num_realms dont work
     requirementGoldBaseAmounts = [100, 100, 100, 100, 150, 200, 250, 300, 350, 400]
     requirementPietyAmounts = [600, 600, 600, 600, 700, 800, 900, 1000, 1100, 1200]
+
+    float ca_positive_stability_multiplier = 1.5
+	float ca_negative_stability_multiplier = 1.5
+	
+    // Positive
+    int stopped_crusade_against_us = 1
+
+    // Negative
+    int kingDeath = -1 
+	int noSuccessor = -1
+    int knightDesertion = -1
+
+    int establish_order = -1
+
+    int warLost = -1
+    int vassalBecome = -1
+    int DeclinedVassalDefend = -1
+
+    int religionChangeSuccess = -1
+	int religionChangeFail = -2
+    int stopPromotingPaganBelief = -1
+
+    // Neutral
+    int change_heir = 0
+
+	int warWon = 0
+	int vassalGet = 1
+	int payGold = 1
+	int breakTrade = -1
+	int breakNAP = -2
+	int breakAlliance = -1
+	int rebelOccupation = -1
+	
+
+	
+	// TODO
+	int denounced_rebel = -1
+	int denounced_famous_rebel = -2
+	int torture = 0 // this should have heavy relations drop
+	int executePrisoner = -1
+	int ChangePaganTraditionsActionFail = -2
+	int AutocephalyActionFail = -3
+	int ClaimCaliphateActionSuccess = 3
+	int ClaimCaliphateActionFail = -3
+	int AbandonCaliphateActionSuccess = -3
+	int claimThroneFail = -5 // placeholder (if vote for emperor of the world was failed)
+	int restorationQuestCompleted = 3 // Placeholder
+	int uniteQuestCompleted = 5 // Placeholder
+	int failed_spawn_loyalist = -1 //obsolete - we might want to use this later?
+	int realm_annex = -1
+	
+	int reject_being_emperor_of_the_world = -5
+	int reject_ai_emperor_of_the_world = -5 //SP only
+	int pretender_emperor_of_the_world = -5
+	int end_jihad = -1
+	
+	int release_non_court_rebel = -1
+	int forgive_court_rebel = (round(map(target.class_level, 0, 15, -1, -3)))
+	int execute_rebel = 1
+	
+	int bankruptcy = -3
+	int ClaimIndependenceFail = -1
 }
 
 
-WarExhaustionModifier.time_period_increase = 175
+WarExhaustionModifier.time_period_increase = 170

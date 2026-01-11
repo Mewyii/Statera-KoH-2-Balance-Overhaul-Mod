@@ -37,6 +37,12 @@ def Castle : Settlement
 	Worker.Gold = 0.75
 }
 
+extend KeepEffects
+{
+	min_distance = 1
+	max_distance = 25
+}
+
 def SettlementsRandomizationWeights = 3 // Same settlement type limit for normal settlements
 {
 	float Village = 30
@@ -163,4 +169,3 @@ def SpiceTraders : ProvinceFeature
 	area = [0.65, 0, 1, 0.45]
 	spawn_chance = 4
 }
-

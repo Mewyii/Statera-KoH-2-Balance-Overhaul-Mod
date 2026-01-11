@@ -21,3 +21,89 @@ Realms.europe.Dumyat.has_river_city = true
 Realms.europe.Hamburg.has_coastal_city = true
 Realms.europe.Bremen.has_coastal_city = true
 Realms.europe.Hordaland.has_coastal_city = true
+
+
+extend Realms
+{
+	europe
+	{
+        def Toulouse : Realm
+		{
+			map_color = "113,138,150" //718A96FF
+
+            delete neighbors
+			neighbors
+			{
+				Catalonia
+				Aquitaine
+				Auvergne
+				Provence
+				Balearic_Sea
+			}
+
+            delete neighbors_through_sea
+			neighbors_through_sea
+			{
+				Zaragoza
+				Mallorca
+				Catalonia
+				Aquitaine
+				Auvergne
+				Provence
+			}
+		}
+
+        def Navarra : Realm
+		{
+			map_color = "109,200,123" //6DC87BFF
+
+            delete neighbors
+			neighbors
+			{
+				Zaragoza
+				Burgos
+				Leon
+				Asturia
+				Bay_Of_Biscay
+				Aquitaine
+				Catalonia
+			}
+
+            delete neighbors_through_sea
+			neighbors_through_sea
+			{
+				Poitou
+				Zaragoza
+				Burgos
+				Leon
+				Asturia
+				Aquitaine
+				Catalonia
+			}
+		}
+
+        def Valencia : Realm
+		{
+			map_color = "234,116,170" //EA74AAFF
+			neighbors
+			{
+				Alboran_Sea
+				Murcia
+				Toledo
+				Zaragoza
+				Balearic_Sea
+			}
+
+            delete neighbors_through_sea
+			neighbors_through_sea
+			{
+				Mallorca
+				Catalonia
+				Granada
+				Murcia
+				Toledo
+				Zaragoza
+			}
+		}
+	}
+}

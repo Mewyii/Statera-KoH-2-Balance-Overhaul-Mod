@@ -1,19 +1,21 @@
 KingdomStats.ks_max_piety = 2000
 KingdomStats.ks_max_books = 2000
 KingdomStats.ks_vassal_tax_perc = 12.5
-KingdomStats.ks_base_gold_income = 40
+KingdomStats.ks_base_gold_income = 50
 KingdomStats.ks_base_commerce = 10
 KingdomStats.ks_base_levy_income = 10
 KingdomStats.ks_prod_books_flat = 5
 KingdomStats.ks_prod_piety_flat = 5
 KingdomStats.ks_max_levy = 2000
 KingdomStats.ks_books_per_cleric = 1
-KingdomStats.ks_corruption = 10
+KingdomStats.ks_corruption = 20
 
 extend RealmStats {
     rs_max_food = 300
     rs_attrition_damage = 5
     rs_siege_resilience = 80
+
+    rs_gold_income_perc = 0
 }
 
 

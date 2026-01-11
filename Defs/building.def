@@ -3,6 +3,12 @@ extend Building
 	slots_base = 7
 	slots_expand_cost.gold = (250 + 250 * (realm_tier))
 
+	// Cost increase for upgrades (in percent of upgrade costs) per building of the same type that would benefit from it
+	progressive_gold_cost_for_upgrades = 20
+
+	// Cost increase for buildings (in percent of building costs) per upgrade for that building
+	progressive_gold_cost_for_building = 35
+
 	float base_ai_eval = 250
 	ai_eval = base_ai_eval
 }
@@ -114,7 +120,7 @@ def School : Building
 		buildings
 		{
 			EarlyScholasticism = 1,1
-			TriviumCurriculum = 2,1
+			TriviumCurriculum = 1,2 { prerequisites { EarlyScholasticism } }
 		}
 	}
 	icon = "Assets/Icons/Buildings/School.png:School#1"
@@ -131,9 +137,10 @@ def Library : Building
 	{
 		buildings
 		{
-			TranslationWorkshops = 1,1
-			ArchiveRoom = 2,1
-			Cataloguing = 2,2 { prerequisites { ArchiveRoom } }
+			Cataloguing = 1,1
+			TranslationWorkshops = 2,1
+
+			ArchiveRoom = 1,2 { prerequisites { Cataloguing } }
 		}
 	}
 	icon = "Assets/Icons/Buildings/Library.png:Library#1"
@@ -149,7 +156,7 @@ def University : Building
 		{
 			FacultyTheology = 1,1
 			FacultyMedicine = 2,1
-			FacultyLaw = 3,1
+			FacultyArts = 3,1
 			HighScholasticism = 1,2
 			AcademicCharter = 2,2
 			Observatory_Christian = 3,2
@@ -311,7 +318,7 @@ def Blacksmith : Building
 	icon = "Assets/Icons/Buildings/Blacksmith.png:Blacksmith#1"
 	illustration = "Assets/Icons/Buildings/Blacksmith.png:Blacksmith#1"
 
-	ai_eval = ((castle.TrainingField or 0) * ((2000) / (kingdom.Blacksmith or 1)))
+	ai_eval = ((castle.TrainingField or 0) * ((2500) / (kingdom.Blacksmith or 1)))
 	ai_category = "Military"
 }
 
@@ -330,7 +337,7 @@ def Tanneries : Building
 	icon = "Assets/Icons/Buildings/Tannery.png:Tannery#1"
 	illustration = "Assets/Icons/Buildings/Tannery.png:Tannery#1"
 
-	ai_eval = (base_ai_eval + (!kingdom.Tanneries and 2000))
+	ai_eval = (base_ai_eval + (!kingdom.Tanneries and 1000))
 }
 
 def StonemasonsGuild : Building
@@ -341,6 +348,7 @@ def StonemasonsGuild : Building
 	{
 		buildings
 		{
+			Sculpting = 1,1
 		}
 	}
 	icon = "Assets/Icons/Buildings/StonemasonsGuild.png:StonemasonsGuild#1"
@@ -463,7 +471,7 @@ def CityWatch : Building
 			MilitiaBarracks = 1,1
 			AlarmBells = 2,1
 			MercenaryHiringOffice = 3,1
-			
+
 			CrossbowManufactoring = 1,2
 			WatchRotations = 2,2
 		}
@@ -472,7 +480,7 @@ def CityWatch : Building
 	illustration = "Assets/Icons/Buildings/CityWatch.png:CityWatch#1"
 
 	ai_category = "Military"
-	ai_eval = (500 + max(0, (kingdom.realms_count + 2 / 3) - (kingdom.CityWatch or 0)) * 5000)
+	ai_eval = ((castle.worker_slots > 10) or 0.25) * (500 + (max(0, (kingdom.realms_count + 4 / 5) - (kingdom.CityWatch or 0)) * 5000))
 }
 
 def Armory : Building
@@ -490,6 +498,9 @@ def Armory : Building
 	}
 	icon = "Assets/Icons/Buildings/Armory.png:Armory#1"
 	illustration = "Assets/Icons/Buildings/Armory.png:Armory#1"
+	
+	ai_category = "Military"
+	ai_eval = (base_ai_eval + 500)
 }
 
 def ArmySiegeWorkshop : Building

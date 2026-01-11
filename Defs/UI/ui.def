@@ -1,0 +1,682 @@
+def BuildWindowSettings : UIWindow
+{
+	relation_highlights
+	{
+		color none = white
+		color this = yellow
+		color selected = "e5b615"
+		color requires = "102, 255, 94"
+		color requires_indirect = "102, 209, 96"
+		color enables = "255, 79, 79"
+		color enables_indirect = "196, 79, 79"
+		color will_be_destroyed = red
+	}
+}
+
+
+def BuildingSlot : UIComponent
+{
+	window_prefab = "Assets/UI/Settlements/UIP_BuildingSlot.prefab" //GUID:fab752e68a370ba4ba283188dc63f84f
+	casle_slot_empty
+	{
+		sprite normal = "Assets/UI/Elements/BuildingSlots/Building/Empty_Slot_Buildings.png:Empty_Slot_Buildings#1" //GUID:1c312d6061a03704da2c6fdd25888cf1
+		sprite over = "Assets/UI/Elements/BuildingSlots/Building/Empty_Slot_Buildings_Hover.png:Empty_Slot_Buildings_Hover#2" //GUID:2d378695510672d4d8ffa7e8d7c8665b
+	}
+	casle_slot_unlock
+	{
+		sprite normal = "Assets/UI/Elements/BuildingSlots/Building/Empty_Slot_Buildings_Coins.png:Empty_Slot_Buildings_Coins#2" //GUID:6bb18f4c584309f45925a581f7064799
+		sprite over = "Assets/UI/Elements/BuildingSlots/Building/Empty_Slot_Buildings_Coins_Hover.png:Empty_Slot_Buildings_Coins_Hover#2" //GUID:8919d9c9f4dde934fbc0eb9016d0157d
+	}
+	template State
+	{
+		sprite icon // icon override, e.g. the "+" icon
+		
+		color icon_color = "239,239,220,63" // icon color (tint), RGBA
+		{
+			string effect_type = "HardLight" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			stirng mask_channel = "Green" { enum { Red; Green; Blue; Alpha } }
+			color tint = "221,221,221" //DDDDDDFF
+		}
+		sprite border
+		color border_color = "137,137,70,31" //787878FF
+		{
+			string effect_type = "ColorizeWithDarken" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			stirng mask_channel = "Red" { enum { Red; Green; Blue; Alpha } }
+			color tint = "64,64,64" //404040FF
+		}
+		sprite status_icon // check mark, "!", "?", etc.
+		color status_icon_color = "255,255,255" //FFFFFFFF
+		color status_frame_color = "255,255,255"
+		color status_background_color = "255,255,255"
+		sprite hover_sprite = "Assets/UI/Elements/BuildingSlots/Building/Element_BuildingSlot_Hover.png:Element_BuildingSlot_Hover#1" //GUID:a4db761b48ab930438dfe5ff997c7585
+		color hover_color = "255,255,254,127" // hover sprite tint
+		{
+			string effect_type = "Overlay" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			stirng mask_channel = "Alpha" { enum { Red; Green; Blue; Alpha } }
+			color tint = "255,255,255" //FFFFFFFF
+		}
+		sprite edge_sprite // edge light effect sprite
+		color edge_color = "187,187,240,127" // edge light effect tint
+		color inner_frame_color = "187,187,240,127"
+		{
+			string effect_type = "Overlay" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			stirng mask_channel = "Alpha" { enum { Red; Green; Blue; Alpha } }
+			color tint = "128,128,128,255"
+		}
+		color label_color = "233,193,125,255" //3E2A1EFF
+		color label_background_color = "255,255,255,255" //3E2A1EFF
+		color district_type_color = "255,255,255,101"
+		bool show_border = true
+		bool show_status_icon = false
+		bool show_remove_button = false
+		bool show_build_progress = false
+		bool show_def_name = false
+		bool show_edge_light = false
+		bool show_inner_frame = false
+		bool show_hosted_building = false
+		bool allow_open_build_window = true
+		bool show_nameplate = true
+		bool show_district_type = false
+		bool show_unavailabale = false
+	}
+    CanBuild : BuildingSlot.State // construction can start at this moment 
+	{
+		icon_color = "255,255,135,190"
+		{
+			effect_type = "Multiply" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Red" { enum { Red; Green; Blue; Alpha } }
+			tint = "150,150,150"
+		}
+		label_background_color = "255,255,255,101"
+		show_border = true
+		show_status_icon = false
+		show_remove_button = false
+		show_build_progress = false
+		show_def_name = false
+		show_edge_light = false
+		border_color = "137,137,233,31" //787878FF
+		{
+			effect_type = "ColorizeWithDarken" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Alpha" { enum { Red; Green; Blue; Alpha } }
+			tint = "64,64,64" //404040FF
+		}
+		label_color = "153,153,153" //999999FF
+	}
+    CanNotBuild : BuildingSlot.State // can not be built at the moment (prerequisite not built)
+	{
+		icon_color = "110,110,146,50"
+		{
+			effect_type = "ColorizeWithDarken" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Green" { enum { Red; Green; Blue; Alpha } }
+			tint = "50,50,50"
+		}
+		status_icon = "Assets/UI/Elements/Common/Icons/Icon_ExclamationMark.png:Icon_ExclamationMark#1" //GUID:c4c8bc9942552724a96a0917756634b5
+		label_background_color = "255,255,255,101"
+		show_border = false
+		show_status_icon = false
+		show_remove_button = false
+		show_build_progress = false
+		show_def_name = false
+		show_edge_light = true
+		border_color = "137,137,70,31" //787878FF
+		{
+			effect_type = "ColorizeWithDarken" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Red" { enum { Red; Green; Blue; Alpha } }
+			tint = "64,64,64" //404040FF
+		}
+		edge_color = "190,34,9" //BE230AFF
+		label_color = "153,153,153" //999999FF
+	}
+    CanNotBuildPrerequisites : BuildingSlot.State // can not be built at the moment (prerequisites missing)
+	{
+		icon_color = "110,110,146,50"
+		{
+			effect_type = "ColorizeWithDarken" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Green" { enum { Red; Green; Blue; Alpha } }
+			tint = "50,50,50"
+		}
+		status_icon = "Assets/UI/Elements/Common/Icons/Icon_ExclamationMark.png:Icon_ExclamationMark#1" //GUID:c4c8bc9942552724a96a0917756634b5
+		label_background_color = "255,255,255,101"
+		show_border = false
+		show_status_icon = false
+		show_remove_button = false
+		show_build_progress = false
+		show_def_name = false
+		show_edge_light = true
+		border_color = "137,137,233,31" //787878FF
+		{
+			effect_type = "ColorizeWithDarken" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Alpha" { enum { Red; Green; Blue; Alpha } }
+			tint = "64,64,64" //414040FF
+		}
+		edge_color = "190,34,9" //BE230AFF
+		label_color = "153,153,153" //999999FF
+	}
+	CanNotBuildPrerequisitesGoods : BuildingSlot.State // can not be built at the moment (prerequisites missing and no goods)
+	{
+		icon_color = "110,110,146,50"
+		{
+			effect_type = "ColorizeWithDarken" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Green" { enum { Red; Green; Blue; Alpha } }
+			tint = "50,50,50"
+		}
+		status_icon = "Assets/UI/Elements/Common/Icons/Icon_ExclamationMark.png:Icon_ExclamationMark#1" //GUID:c4c8bc9942552724a96a0917756634b5
+		label_background_color = "255,255,255,101"
+		show_border = false
+		show_status_icon = false
+		show_remove_button = false
+		show_build_progress = false
+		show_def_name = false
+		show_edge_light = true
+		border_color = "137,137,70,31" //787878FF
+		{
+			effect_type = "ColorizeWithDarken" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Red" { enum { Red; Green; Blue; Alpha } }
+			tint = "64,64,64" //404040FF
+		}
+		edge_color = "190,34,9" //BE230AFF
+		label_color = "153,153,153" //999999FF
+	}
+	CanNotBuildCost : BuildingSlot.State // can not be built at the moment (no gold, piety, ect)
+	{
+		icon_color = "97,103,149,31"
+		{
+			effect_type = "ColorizeWithDarken" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Green" { enum { Red; Green; Blue; Alpha } }
+			tint = "31,35,55" //202437FF
+		}
+		status_icon = "Assets/UI/Elements/BuildingSlots/Building/Icon_BuildingSlot_Status_Gold.png:Icon_BuildingSlot_Status_Gold#2" //GUID:9af89865cde5315438e6dfb8c94466b8
+		label_background_color = "255,255,255,101"
+		show_border = true
+		show_status_icon = true
+		show_remove_button = false
+		show_build_progress = false
+		show_def_name = false
+		show_edge_light = true
+		border_color = "137,137,233,31" //787878FF
+		{
+			effect_type = "ColorizeWithDarken" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Alpha" { enum { Red; Green; Blue; Alpha } }
+			tint = "64,64,64" //404040FF
+		}
+		edge_color = "190,34,9" //BE230AFF
+		label_color = "153,153,153" //999999FF
+	}
+	Invalid : BuildingSlot.State // unknown def_id, missing data, not initialized, etc.
+	{
+		icon = "Assets/UI/Elements/Common/WindowElements/UI_Square_RoundedConrners_Solid.png" //GUID:fda72d8fe53880741af550bbe0dda9a1
+		icon_color = "161,62,226,63" // icon color (tint), RGBA
+		{
+			effect_type = "HardLight" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Alpha" { enum { Red; Green; Blue; Alpha } }
+			tint = "91,12,12" //5B0D0DFF
+		}
+		label_background_color = "255,255,255,101"
+		show_border = true
+		show_status_icon = false
+		show_remove_button = false
+		show_build_progress = false
+		show_def_name = true
+		show_edge_light = false
+		show_nameplate = false
+		show_district_type = false
+	}
+	Empty : BuildingSlot.State // empty slot, may or may not have "+" icon or something else
+	{
+		icon = "Assets/UI/Elements/BuildingSlots/Building/Element_BuildingSlot_Empty.png:Element_BuildingSlot_Empty#2" //GUID:563982c596d758c44951dca2896e8c16
+		icon_color = "209,209,244,127"
+		{
+			effect_type = "Overlay" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Alpha" { enum { Red; Green; Blue; Alpha } }
+			tint = "163,163,163" //A4A4A4FF
+		}
+		show_border = true
+		show_status_icon = false
+		show_remove_button = false
+		show_build_progress = false
+		show_def_name = false
+		show_edge_light = false
+		show_nameplate = false
+		show_district_type = false
+		border_color = "130,130,232,31" //787878FF
+		{
+			effect_type = "ColorizeWithDarken" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Alpha" { enum { Red; Green; Blue; Alpha } }
+			tint = "57,57,57" //3A3A3AFF
+		}
+		hover_color = "255,255,254,127"
+		{
+			effect_type
+			mask_channel
+		}
+		icon_effects
+		{
+			effect_type = "ColorizeIgnoreAlpha"
+			mask_channel = "Green"
+		}
+		allow_open_build_window = true
+	}
+	EmptyOccupied : BuildingSlot.State // empty slot, may or may not have "+" icon or something else
+	{
+		icon = "Assets/UI/Elements/BuildingSlots/Building/Element_BuildingSlot_Empty.png:Element_BuildingSlot_Empty#2" //GUID:563982c596d758c44951dca2896e8c16
+		icon_color = "255,255,254,127"
+		{
+			effect_type = "Overlay" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Alpha" { enum { Red; Green; Blue; Alpha } }
+			tint = "255,255,255" //FFFFFFFF
+		}
+		show_border = true
+		show_status_icon = false
+		show_remove_button = false
+		show_build_progress = false
+		show_def_name = false
+		show_edge_light = false
+		show_nameplate = false
+		show_district_type = false
+		border_color = "176,176,238,31" //787878FF
+		{
+			effect_type = "ColorizeWithDarken" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Alpha" { enum { Red; Green; Blue; Alpha } }
+			tint = "112,112,112" //707070FF
+		}
+		hover_color = "255,255,254,127"
+		{
+			effect_type
+			mask_channel
+		}
+		icon_effects
+		{
+			effect_type = "ColorizeIgnoreAlpha"
+			mask_channel = "Green"
+		}
+		allow_open_build_window = true
+	}
+	Unbuildabe : BuildingSlot.State // can not be built ever (requirements will be never met)
+	{
+		icon_color = "105,82,142,9"
+		{
+			effect_type = "ColorizeWithDarken" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Green" { enum { Red; Green; Blue; Alpha } }
+			tint = "36,21,21,74" //2416164A
+		}
+		status_icon = "Assets/UI/Elements/Common/Icons/Icon_ExclamationMark.png:Icon_ExclamationMark#1" //GUID:c4c8bc9942552724a96a0917756634b5
+		label_color = "94,94,94" //5E5E5EFF
+		label_background_color = "255,255,255,101"
+		show_border = false
+		show_status_icon = false
+		show_remove_button = false
+		show_build_progress = false
+		show_def_name = false
+		show_edge_light = false
+		show_unavailabale = false
+		show_district_type = false
+	}
+	CanNotBuildSlots : BuildingSlot.State // can not be built at the moment because all slots are full
+	{
+		icon_color = "97,103,149,31"
+		{
+			effect_type = "ColorizeWithDarken" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Green" { enum { Red; Green; Blue; Alpha } }
+			tint = "31,35,55" //202437FF
+		}
+		status_icon = "Assets/UI/Elements/Common/Icons/Icon_ExclamationMark.png:Icon_ExclamationMark#1" //GUID:c4c8bc9942552724a96a0917756634b5
+		label_background_color = "255,255,255,101"
+		show_border = true
+		show_status_icon = false
+		show_remove_button = false
+		show_build_progress = false
+		show_def_name = false
+		show_edge_light = true
+		border_color = "137,137,233,31" //787878FF
+		{
+			effect_type = "ColorizeWithDarken" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Alpha" { enum { Red; Green; Blue; Alpha } }
+			tint = "64,64,64" //404040FF
+		}
+		edge_color = "190,34,9" //BE230AFF
+		label_color = "153,153,153" //999999FF
+	}
+	Planned : BuildingSlot.State // in the "wish list", a.ka. "city plan"
+	{
+		icon_color = "110,110,146,31"
+		{
+			effect_type = "ColorizeWithDarken" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Green" { enum { Red; Green; Blue; Alpha } }
+			tint = "40,40,40" //282828FF
+		}
+		status_icon = "Assets/UI/Elements/BuildingSlots/Building/Icon_BuildingSlot_Status_Planned.png:Icon_BuildingSlot_Status_Planned#2" //GUID:51afb7343c6ccdd4fbbd0c8a43b9b01a
+		label_background_color = "255,255,255,101"
+		show_border = false
+		show_status_icon = true
+		show_remove_button = true
+		show_build_progress = false
+		show_def_name = false
+		show_edge_light = false
+		label_color = "153,153,153" //999999FF
+	}
+	PlannedCanBuild : BuildingSlot.State // in the "wish list", a.ka. "city plan" and can be built
+	{
+		icon_color = "125,125,149,63"
+		{
+			effect_type = "HardLight" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Green" { enum { Red; Green; Blue; Alpha } }
+			tint = "52,52,52" //353535FF
+		}
+		status_icon = "Assets/UI/Elements/BuildingSlots/Building/Icon_BuildingSlot_Status_Planned.png:Icon_BuildingSlot_Status_Planned#2" //GUID:51afb7343c6ccdd4fbbd0c8a43b9b01a
+		show_border = true
+		show_status_icon = true
+		show_remove_button = true
+		show_build_progress = false
+		show_def_name = false
+		show_edge_light = false
+		label_color = "153,153,153" //999999FF
+	}
+	Building : BuildingSlot.State // under construction
+	{
+		icon_color = "255,255,135,191"
+		{
+			effect_type = "Multiply" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Red" { enum { Red; Green; Blue; Alpha } }
+			tint = "160,160,160" //FFFFFFFF
+		}
+		border_color = "137,137,233,31" //787878FF
+		{
+			effect_type = "ColorizeWithDarken" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Alpha" { enum { Red; Green; Blue; Alpha } }
+			tint = "64,64,64" //404040FF
+		}
+		label_background_color = "255,255,255,101"
+		show_border = true
+		show_status_icon = false
+		show_remove_button = false
+		show_build_progress = true
+		show_def_name = false
+		show_edge_light = false
+		label_color = "153,153,153" //999999FF
+	}
+	UpgradingElsewhere : BuildingSlot.State // under construction
+	{
+		icon_color = "125,125,149,63"
+		{
+			effect_type = "HardLight" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Green" { enum { Red; Green; Blue; Alpha } }
+			tint = "52,52,52" //353535FF
+		}
+		border_color = "137,137,233,31" //787878FF
+		{
+			effect_type = "ColorizeWithDarken" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Alpha" { enum { Red; Green; Blue; Alpha } }
+			tint = "64,64,64" //404040FF
+		}
+		label_background_color = "255,255,255,101"
+		show_border = true
+		show_status_icon = false
+		show_remove_button = false
+		show_build_progress = true
+		show_def_name = false
+		show_edge_light = false
+		label_color = "153,153,153" //999999FF
+	}
+	BuildingOccupied : BuildingSlot.State // under construction
+	{
+		icon_color = "187,187,164,87"
+		{
+			effect_type = "ColorizeIgnoreAlpha" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Green" { enum { Red; Green; Blue; Alpha } }
+			tint = "127,127,127,191" //7F7F7FBF
+		}
+		border_color = "206,206,244,23" //787878FF
+		{
+			effect_type = "ColorizeWithDarken" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Alpha" { enum { Red; Green; Blue; Alpha } }
+			tint = "158,158,158,188" //9E9E9EBC
+		}
+		label_background_color = "255,255,255,101"
+		show_border = true
+		show_status_icon = true
+		show_remove_button = false
+		show_build_progress = true
+		show_def_name = false
+		show_edge_light = false
+		status_icon = "Assets/UI/Elements/Common/Icons/Icon_Pause.png:Icon_Pause#2" //GUID:38330b7097ec460448510f9bb7afb7f5
+		status_icon_color = "255,0,0" //FF0000FF
+		label_color = "153,153,153" //999999FF
+	}
+	Damaged : BuildingSlot.State // sacked castle
+	{
+		status_icon = "Assets/UI/Elements/Common/Icons/UI_BuildingSLot_Status_Icon_Destroyed.png:UI_BuildingSLot_Status_Icon_Destroyed#1" //GUID:07c9a9f2c062ede45a9494d9e555c64a
+		show_border = true
+		icon_color = "198,114,144,63"
+		{
+			tint = "144,43,33" //902C21FF
+		}
+		border_color = "255,255,254,127" //787878FF
+		{
+			effect_type = "Overlay" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Alpha" { enum { Red; Green; Blue; Alpha } }
+			tint = "255,255,255" //FFFFFFFF
+		}
+		district_type_color = "255,255,255,255"
+		show_status_icon = true
+		show_remove_button = false
+		show_build_progress = false
+		show_def_name = false
+		show_edge_light = false
+		edge_color = "255,0,0" //FF0000FF
+	}
+	Repairing : BuildingSlot.State // repairing from Damaged state
+	{
+		show_border = true
+		icon_color = "194,194,166,127" //FFFFFF56
+		{
+			effect_type = "Overlay" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Green" { enum { Red; Green; Blue; Alpha } }
+			tint = "139,139,139" //8C8C8CFF
+		}
+		border_color = "255,255,254,127" //787878FF
+		{
+			effect_type = "Overlay" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Alpha" { enum { Red; Green; Blue; Alpha } }
+			tint = "255,255,255" //FFFFFFFF
+		}
+		district_type_color = "255,255,255,255"
+		show_status_icon = false
+		show_remove_button = false
+		show_build_progress = false
+		show_def_name = false
+		show_edge_light = false
+		edge_color = "182,76,76" //B74D4DFF
+		status_icon_color = "255,255,255" //FFFFFFFF
+		status_background_color = "117,0,0" //760000FF
+		status_icon = "Assets/Europe/icons_ui.PNG:hammers#1" //GUID:af589d60a2b25d24884e86173fb3111e
+	}
+	
+	Abandoned : BuildingSlot.State // prerequisites are not built (or also abandoned) in any district, may be "garbage collected" later
+	{
+		show_border = true
+		status_icon = "Assets/UI/Elements/Common/Icons/Icon_ExclamationMark.png:Icon_ExclamationMark#1" //GUID:c4c8bc9942552724a96a0917756634b5
+		icon_color = "151,118,147,63" //FFFFFF56
+		{
+			effect_type = "HardLight" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Green" { enum { Red; Green; Blue; Alpha } }
+			tint = "79,47,47" //4F3030FF
+		}
+		border_color = "255,255,254,127" //787878FF
+		{
+			effect_type = "Overlay" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Alpha" { enum { Red; Green; Blue; Alpha } }
+			tint = "255,255,255" //FFFFFFFF
+		}
+		district_type_color = "255,255,255,255"
+		show_status_icon = false
+		show_remove_button = true
+		show_build_progress = false
+		show_def_name = false
+		show_edge_light = true
+		edge_color = "190,34,9" //BE230AFF
+		status_icon_color = "230,172,35" //E7AC24FF
+		status_background_color = "117,0,0" //760000FF
+	}
+	Stalled : BuildingSlot.State // built, but not working because requirements are not met
+	{
+		status_icon = "Assets/UI/Elements/Common/Icons/Icon_ExclamationMark.png:Icon_ExclamationMark#1" //GUID:c4c8bc9942552724a96a0917756634b5
+		show_border = true
+		show_status_icon = false
+		show_remove_button = true
+		show_build_progress = false
+		show_def_name = false
+		show_edge_light = true
+		status_background_color
+		status_icon_color = "255,239,155" //FFF09BFF
+		edge_color = "197,79,79" //C54F4FFF
+		icon_color = "151,118,147,63" //84815F3D
+		{
+			effect_type = "HardLight" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Green" { enum { Red; Green; Blue; Alpha } }
+			tint = "79,47,47" //4F3030FF
+		}
+		border_color = "255,255,254,127" //787878FF
+		{
+			effect_type = "Overlay" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Alpha" { enum { Red; Green; Blue; Alpha } }
+			tint = "255,255,255" //FFFFFFFF
+		}
+		district_type_color = "255,255,255,255"
+	}
+	StalledOccupied : BuildingSlot.State // built, but not working because requirements are not met
+	{
+		status_icon = "Assets/UI/Elements/Common/WindowElements/UI_Check.png:UI_Check#2" //GUID:9d40666003a4c864586e530e032cb9c1
+		status_icon_color = "9,255,0" //09FF00FF
+		status_frame_color = "15,108,0" //0F6C00FF
+		icon_color = "255,255,186,191"
+		{
+			effect_type = "Multiply" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Green" { enum { Red; Green; Blue; Alpha } }
+			tint = "255,255,255" //FFFFFFFF
+		}
+		border_color = "255,255,254,127" //787878FF
+		{
+			effect_type = "Overlay" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Alpha" { enum { Red; Green; Blue; Alpha } }
+			tint = "255,255,255" //FFFFFFFF
+		}
+		district_type_color = "255,255,255,255"
+		show_border = true
+		show_status_icon = false
+		show_remove_button = false
+		show_build_progress = false
+		show_def_name = false
+		show_edge_light = false
+		allow_open_build_window = false
+	}
+	Working : BuildingSlot.State // up and running
+	{
+		icon_color = "255,255,135,191"
+		{
+			effect_type = "Multiply" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Red" { enum { Red; Green; Blue; Alpha } }
+			tint = "255,255,255" //FFFFFFFF
+		}
+		border_color = "223,223,118,127" //787878FF
+		{
+			effect_type = "Overlay" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Red" { enum { Red; Green; Blue; Alpha } }
+			tint = "190,189,189" //BEBEBDFF
+		}
+		district_type_color = "255,255,255,255"
+		show_border = true
+		show_status_icon = false
+		show_remove_button = true
+		show_build_progress = false
+		show_def_name = false
+		show_edge_light = false
+	}
+	WorkingComplated : BuildingSlot.State // up and running and all upgrades are unlocked
+	{
+		status_icon_color = "9,255,0" //09FF00FF
+		status_frame_color = "15,108,0" //0F6C00FF
+		icon_color = "255,255,135,191"
+		{
+			effect_type = "Multiply" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Red" { enum { Red; Green; Blue; Alpha } }
+			tint = "255,255,255" //FFFFFFFF
+		}
+		border_color = "230,230,249,127" //787878FF
+		{
+			effect_type = "Overlay" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Alpha" { enum { Red; Green; Blue; Alpha } }
+			tint = "202,202,202" //CACACAFF
+		}
+		district_type_color = "255,255,255,255"
+		show_border = true
+		show_status_icon = false
+		show_remove_button = true
+		show_build_progress = false
+		show_def_name = false
+		show_edge_light = false
+	}
+	WillBeDestroyed : BuildingSlot.State // relation idication - depencacy building 
+	{
+		status_icon_color = "7,194,0" //08C300FF
+		status_frame_color = "15,108,0" //106C00FF
+		icon_color = "219,122,148,95"
+		{
+			effect_type = "ColorizeIgnoreAlpha" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Green" { enum { Red; Green; Blue; Alpha } }
+			tint = "182,50,50" //B73333FF
+		}
+		border_color = "176,176,238,31" //787878FF
+		{
+			effect_type = "ColorizeWithDarken" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Alpha" { enum { Red; Green; Blue; Alpha } }
+			tint = "112,112,112" //707070FF
+		}
+		district_type_color = "255,255,255,255"
+		show_border = true
+		show_status_icon = false
+		show_remove_button = false
+		show_build_progress = false
+		show_def_name = false
+		show_edge_light = true
+		edge_color = "190,34,9" //BE230AFF
+	}
+	Locked : BuildingSlot.State // manualy locked
+	{
+		show_border = false
+		icon = "Assets/UI/Elements/Common/Icons/Structures/UI_Building_LockedSlot.png:UI_Building_LockedSlot#2" //GUID:3ecef4f6bb07d7242aba94fa6c85b87a
+		icon_color = "255,255,254,127"
+		{
+			effect_type = "Overlay" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Alpha" { enum { Red; Green; Blue; Alpha } }
+			tint = "255,255,255" //FFFFFFFF
+		}
+		border_color = "176,176,93,31" //787878FF
+		{
+			effect_type = "ColorizeWithDarken" { enum { ColorizeWithDarken; HardLight; ColorizeIgnoreAlpha; Overlay; Screen; Multiply } }
+			mask_channel = "Red" { enum { Red; Green; Blue; Alpha } }
+			tint = "112,112,112" //707070FF
+		}
+		hover_color = "255,255,254,127"
+		{
+			effect_type
+			mask_channel
+		}
+		icon_effects
+		{
+			effect_type = "ColorizeIgnoreAlpha"
+			mask_channel = "Green"
+		}
+		district_type_color = "255,255,255,255"
+		show_status_icon = false
+		show_remove_button = false
+		show_build_progress = false
+		show_def_name = false
+		show_edge_light = false
+		edge_color = "190,34,9" //BE230AFF
+		status_icon_color = "230,172,35" //E7AC24FF
+		status_background_color = "117,0,0" //760000FF
+		show_nameplate = false
+		show_district_type = false
+		allow_open_build_window = false
+	}
+}

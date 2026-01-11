@@ -80,6 +80,8 @@ def ClericPreachAction : ReligionSpecificAction
             also give_piety = piety_income
 		}
 	}
+
+	// ai_validate = true
 }
 def Cleric : CharacterClass
 {
@@ -231,6 +233,8 @@ def DiplomatTeachAction : CharacterAction
             also give_books = book_income
 		}
 	}
+	
+	// ai_validate = true
 }
 
 def Diplomat : CharacterClass

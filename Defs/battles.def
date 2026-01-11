@@ -4,21 +4,21 @@ OceanCoast.retreat_damage_mod = 50 { perc = true }
 def Plunder : Battle
 {
 	preparation_time_base = 0
-	duration = 120
+	duration = 90
 	float resume_plunder_progress_mod = 0.5 // when defenders die, plunder progress *= resume_plunder_progress_mod
-	float plunder_gold_base = 200
+	float plunder_gold_base = 250
 	float plunder_per_gold_production = 0
 	float plunder_gold_per_gold = 100
 	float plunder_gold_per_book = 50
-	float plunder_books_per_book = 50
-	float plunder_gold_per_piety = 50
+	float plunder_books_per_book = 75
+	float plunder_gold_per_piety = 75
 	float plunder_gold_per_levy = 10
 	float plunder_gold_per_hammer = 50
-	float plunder_gold_per_worker = 10
+	float plunder_gold_per_worker = 15
 	float plunder_gold_per_commerce = 75
-	float plunder_supplies_per_food = 30
-	float plunder_supplies_per_levy = 10
-	float plunder_supplies_per_worker = 15
+	float plunder_supplies_per_food = 10
+	float plunder_supplies_per_levy = 20
+	float plunder_supplies_per_worker = 5
 	float plunder_supplies_base = 10
 	float plunder_per_supporter = 0
 	float plunder_supplies_per_supporter = 0.5
