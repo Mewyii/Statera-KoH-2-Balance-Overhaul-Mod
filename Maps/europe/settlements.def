@@ -77,6 +77,27 @@ extend Settlements
 		delete 957
 		delete 1721
 		delete 1510
+		delete 1502
+		delete 1793
+		delete 1399
+		delete 1082
+		delete 1399
+		delete 1540
+		delete 1279
+		delete 1146
+		delete 878
+		delete 691
+		delete 1327
+		delete 1108
+		delete 1652
+		delete 710
+		delete 869
+		delete 567
+		delete 1265
+		delete 632
+		delete 1195
+		delete 2101
+		delete 797
 
 
 		def 465 : Castle
@@ -1362,6 +1383,145 @@ extend Settlements
 			}
 		}
 
+		def 2024 : Castle
+		{
+			name = "Acre"
+			position = 2934.85, 631.57
+			forest = true
+			rotation = 133.262
+			citadel = -1.464, -5.958
+			{
+				architecture = "Arab"
+				rotation = 15.285
+			}
+			houses = "Arab"
+			{
+				1 = 13.597, -1.331
+				{
+					rotation = 0
+				}
+				2 = 1.079, -6.528
+				{
+					rotation = 60
+				}
+				3 = 5.711, -5.168
+				{
+					rotation = 172.748
+				}
+				4 = 4.694, -3.015
+				{
+					rotation = 112.748
+				}
+				5 = -3.687, -10.313
+				{
+					type = "Fillers"
+					rotation = 54.091
+				}
+				6 = 2.79, -3.188
+				{
+					type = "Fillers"
+					rotation = 294.091
+				}
+				7 = 8.73, -0.178
+				{
+					type = "Fillers"
+					rotation = 218.345
+				}
+				8 = 9.489, -4.801
+				{
+					type = "Fillers"
+					rotation = 294.091
+				}
+				9 = -4.144, -6.061
+				{
+					type = "Fillers"
+					rotation = 338.345
+				}
+				10 = 0.764, -3.757
+				{
+					type = "Fillers"
+					rotation = 354.091
+				}
+				11 = 0.249, -1.14
+				{
+					rotation = 258
+				}
+				12 = 6.232, -0.932
+				{
+					rotation = 175
+				}
+				13 = 3.302, -5.406
+				{
+					rotation = 360
+				}
+				14 = -2.078, -3.191
+				{
+					rotation = 163
+				}
+				15 = 2.594, -0.786
+				{
+					rotation = 250
+				}
+				16 = -4.702, -3.394
+				{
+					rotation = 265
+				}
+				17 = -1.616, -8.936
+				{
+					rotation = 150
+				}
+				18 = -5.757, -0.886
+				{
+					rotation = 298
+				}
+				19 = -2.433, -0.917
+				{
+					rotation = 228
+				}
+				20 = 3.791, 1.371
+				{
+					rotation = 269
+				}
+				21 = 8.901, -2.746
+				{
+					rotation = 130
+				}
+				22 = 6.924, 2.054
+				{
+					rotation = 246
+				}
+			}
+			wall = 0, 0
+			{
+				towers_architecture = "Arab"
+				segments_architecture = "Arab"
+				level = 4
+				curveness = 0.5
+				corners
+				{
+					1 = 11.768, -6.18
+					{
+						height_ofs = 0.055
+					}
+					2 = 11.203, -1.938
+					3 = 8.586, 5.46
+					4 = 3.27, 3.933
+					5 = 0.314, 1.945
+					6 = -2.471, 0.943
+					7 = -5.436, 0.935
+					8 = -8.655, 0.51
+					9 = -6.594, -3.588
+					10 = -6.129, -5.927
+					11 = -5.651, -9.01
+					12 = -4.905, -12.362
+					13 = -0.557, -11.459
+					14 = 0.953, -8.489
+					15 = 3.949, -6.857
+					16 = 7.515, -6.071
+				}
+			}
+		}
+
 		def 83 : Castle
 		{
 			name = "Antiochia"
@@ -2452,7 +2612,7 @@ extend Settlements
 
 		def 2127 : Settlement
 		{
-			position = 2990.25, 812.54
+			position = 2986.25, 817.54
 			forest = false
 			houses = "Roman"
 		}
@@ -2742,6 +2902,125 @@ extend Settlements
 			position = 952.6, 611.8
 			forest = false
 			houses = "Arab"
+		}
+		
+		def 2169 : Settlement
+		{
+			position = 2975, 629
+			forest = false
+			houses = "Roman"
+		}
+		
+		def 2170 : Settlement
+		{
+			position = 3035, 600
+			forest = false
+			houses = "Arab"
+		}
+		
+		def 2171 : Settlement
+		{
+			position = 2643, 2470
+			forest = false
+			houses = "Roman"
+		}
+		
+		def 2172 : Settlement
+		{
+			position = 1570, 1366
+			forest = false
+			houses = "West"
+		}
+		
+		def 2173 : Settlement
+		{
+			position = 1618, 1432
+			forest = false
+			houses = "West"
+		}
+		
+		def 2174 : Settlement
+		{
+			position = 1814, 1248
+			forest = false
+			houses = "Roman"
+		}
+		
+		def 2175 : Settlement
+		{
+			position = 1201, 1269
+			forest = false
+			houses = "West"
+		}
+		
+		def 2176 : Settlement
+		{
+			position = 1415, 1475
+			forest = false
+			houses = "West"
+		}
+		
+		def 2177 : Settlement
+		{
+			position = 2317, 1111
+			forest = false
+			houses = "Roman"
+		}
+		
+		def 2178 : Settlement
+		{
+			position = 2463, 1118
+			forest = false
+			houses = "Roman"
+		}
+		
+		def 2179 : Settlement
+		{
+			position = 2467, 1151
+			forest = false
+			houses = "Roman"
+		}
+		
+		def 2180: Settlement
+		{
+			position = 2829, 884
+			forest = false
+			houses = "Roman"
+		}
+		
+		def 2181: Settlement
+		{
+			position = 3159, 961
+			forest = false
+			houses = "Roman"
+		}
+		
+		def 2182: Settlement
+		{
+			position = 2998, 799
+			forest = false
+			houses = "Roman"
+		}
+		
+		def 2183: Settlement
+		{
+			position = 971, 1900
+			forest = false
+			houses = "West"
+		}
+		
+		def 2184: Settlement
+		{
+			position = 1182, 1150
+			forest = false
+			houses = "Spanish"
+		}
+		
+		def 2185: Settlement
+		{
+			position = 2721, 878
+			forest = false
+			houses = "Roman"
 		}
 	}
 }
