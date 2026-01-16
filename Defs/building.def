@@ -447,10 +447,9 @@ def ArmyStables : Building
 	{
 		buildings
 		{
-			Farrier = 1,1
-			MessengerService = 2,1
-
-			KnightlyStables = 1,2 { prerequisites { Farrier } }
+			MessengerService = 1,1
+			KnightlyStables = 2,1
+			Farrier = 3,1
 		}
 	}
 	icon = "Assets/Icons/Buildings/Stables.png:Stables#1"
@@ -670,10 +669,24 @@ def Bathhouse : Building
 	illustration = "Assets/UI/Elements/Buildings/Illustrations/UI_Structure_Illustration_GreatMosque.tga:UI_Structure_Illustration_GreatMosque#2" //GUID:31a9869e48615554984de6221874459d
 }
 
+delete Harbor
 def Harbor : Building
 {
+	name = "Harbor"
+	flavor = "An advanced hub for maritime affairs, both civil and military."
+
 	icon = "Assets/Icons/Buildings/Harbor.png:Harbor#1"
 	illustration = "Assets/Icons/Buildings/Harbor.png:Harbor#1"
+	upgrades
+	{
+		buildings
+		{
+			Warehouse_Harbor = 1,1
+			Boatwright_Harbor = 1,2
+			HarborChains = 2,1
+			BeaconTowers = 2,2
+		}
+	}
 }
 
 def Shipyard : Building

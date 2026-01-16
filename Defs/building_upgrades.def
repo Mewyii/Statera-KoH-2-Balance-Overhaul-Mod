@@ -562,6 +562,29 @@ def WaterWheels : Upgrade
 	icon = "Assets/Icons/Buildings/WaterWheels.png:WaterWheels#1"
 }
 
+// SEA
+
+def Boatwright_Harbor : Upgrade
+{
+	name = "Boatwrights"
+	flavor = "Artisans, skilled in making traditional wooden boats, suitable for fishing, river trade and transportation."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Boatwright.tga:UI_Structure_Icon_Boatwright#2" //GUID:1d8cc853c74c3e841819762aac0b7f59
+}
+
+def HarborChains : Upgrade
+{
+	name = "Harbor Chains"
+	flavor = "Heavy iron chains stretched across the harbor entrance, raised in times of danger to block enemy ships and protect the port."
+	icon = "Assets/Icons/Buildings/HarborChains.png:HarborChains#1"
+}
+
+def BeaconTowers : Upgrade
+{
+	name = "Beacon Towers"
+	flavor = "Tall signal towers using fire and smoke to relay warnings and messages across great distances with remarkable speed."
+	icon = "Assets/Icons/Buildings/BeaconTower.png:BeaconTower#1"
+}
+
 // EDUCATION
 
 def EarlyScholasticism : Upgrade

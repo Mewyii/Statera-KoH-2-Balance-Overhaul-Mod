@@ -85,8 +85,8 @@ def IronTools : Resource
 	tooltip = "Iron Tools."
 	icon = "Assets/Icons/Buildings/Toolmaking.png:Toolmaking#1"
 	category = "Base"
-	import_commerce = 3
-	import_gold = 3
+	import_commerce = 4
+	import_gold = 4
 
 	mod ks_hammers_in_provinces_perc = 10
 }
@@ -103,6 +103,19 @@ def Leather : Resource
 
 	mod ks_defense_flat = 8
 }
+
+def Horseshoes : Resource
+{
+	name = "Horseshoes"
+	tooltip = "The animal skin can be turned into a sturdy material, used for shoemaking and armor crafting."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Farrier.tga:UI_Structure_Icon_Farrier#2" //GUID:b4d952b7238f7e148a1858ffd314cfa9
+	category = "Base"
+	import_commerce = 4
+	import_gold = 4
+
+	mod ks_horse_cavalry_CTH_perc = 10
+}
+
 
 def VariedCrops : Resource
 {
@@ -138,7 +151,7 @@ def DriedGrain : Resource
 	import_commerce = 5
 	import_gold = 5
 
-	mod ks_resupply_price_gold_reduction_perc = 10
+	mod ks_resupply_price_gold_reduction_perc = 15
 }
 
 delete Linen
@@ -279,7 +292,7 @@ def Inquisitors : Resource
 	mod ks_prod_books_flat = -5
 	mod ks_corruption = -5
 	mod ks_witch_hunt_efficiency_perc = 20
-	mod ks_heresy_susceptibility_perc = -20
+	mod ks_heresy_susceptibility_perc = -25
 }
 
 def ReligiousAdministration : Resource

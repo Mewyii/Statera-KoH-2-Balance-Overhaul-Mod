@@ -13,32 +13,49 @@ There are no radical solutions in this mod that just elimiate aspects of the gam
 
 
 [h3][b]Changes[/b][/h3] 
-[b]Characters[/b]
-[list]
-[*] Updated agents skills and abilities so not only marshals and merchants are relevant
-[*] Added knight aging
-[/list]
-
 [b]Map[/b]
 [list]
-[*] Reworked all factions and starting positions for 1110 to be more historically accurate, added some new ones
-[*] Reworked resources and features - Historical Locations, distributions, added some types
-[*] Updated settlement visuals to better represent historical sizes
-[/list]
-
-[b]Settlement[/b]
-[list]
-[*] TODO: Rework building chains to give more strategic options and be more historically accurate
+[*] Reworked all factions and starting positions for 1110 to be more historically accurate
+[*] Reworked all resources and features - Historical Locations, distributions, resources types
+[*] Updated settlement locations so populated regions or large cities have more settlements, less populated regions have less
+[*] Updated city visuals to better represent historical sizes
 [/list]
 
 [b]Army[/b]
 [list]
-[*] TODO: Rework faction rosters to be more diverse and historically accurate
+[*] Reworked all faction rosters to be more diverse and historically accurate
+[*] All units now are either: Levy, militia, knight, professional or mercenary with different stats and costs
+[/list]
+
+[b]Cities[/b]
+[list]
+[*] Reworked all building chains to give more strategic options and be more historically accurate
+[*] Reworked all upgrades to give more strategic options and be more historically accurate
+[*] Cities now start with 7 building slots, go up to 14 (250g costs per unlock)
+[/list]
+
+[b]Characters[/b]
+[list]
+[*] Updated agents skills and abilities so not only marshals and merchants are relevant
+[*] Character action costs are now tied to income and kingdom size instead of income only
+[*] Added character aging for all characters
+[/list]
+
+[b]Traditions[/b]
+[list]
+[*] Now cost more books and piety, scales with kingdom size
 [/list]
 
 [b]AI[/b]
 [list]
 [*] WIP: Make AI smarter
+[/list]
+
+[b]Other[/b]
+[list]
+[*] Rebalanced crown authority costs
+[*] Change religion ability is now cheaper, has a higher success chance and is usable by the AI
+[*] Minor UI improvements
 [/list]
 
 

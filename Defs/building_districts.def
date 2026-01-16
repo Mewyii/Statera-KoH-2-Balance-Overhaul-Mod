@@ -275,6 +275,7 @@ delete WatchTowers_Castles
 delete TownGuardsQuarters
 delete PublicBaths
 delete LargeHouses
+delete FishMarket
 
 
 // Might be Interesting to use in some way
