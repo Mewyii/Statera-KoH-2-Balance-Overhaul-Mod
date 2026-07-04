@@ -117,6 +117,26 @@ def Orthodox : Christian
     mod ks_max_population = 3
     mod ks_culture = -10
 
+	mod ks_prod_gold_perc
+	{
+		category = "Religion"
+		independent = 5
+		ecumenical_patriarch = 5
+	}
+	mod ks_fame_ecumenical_patriarch_bonus
+	{
+		ecumenical_patriarch = 200
+	}
+	mod ks_fame_autocephaly_bonus
+	{
+		independent = 100
+		ecumenical_patriarch = 0
+	}
+	mod ks_stability_religion = 0
+	{
+		ecumenical_patriarch = -5
+	}
+
     religious_tension
 	{
 		float Catholic = 5
@@ -153,6 +173,26 @@ def Shia : Muslim
     mod ks_hammers_in_provinces_perc = 5
     mod ks_corruption = 5
 
+	ks_caliphate_books_per_piety
+	{
+		category = "Religion"
+		caliphate = 0
+	}
+	mod ks_prod_gold_perc = 0
+	{
+		category = "Religion"
+		caliphate = 10
+	}
+	mod ks_prod_piety_religion_perc = 0
+	{
+		category = "Religion"
+		caliphate = 5
+	}
+	mod ks_stability_religion = 0
+	{
+		caliphate = -5
+	}
+
     religious_tension
 	{
 		float Catholic = 15
@@ -166,10 +206,31 @@ def Shia : Muslim
 
 def Sunni : Muslim
 {
+
     mod ks_prod_piety_flat = 5
     mod ks_hammers_in_provinces_perc = 5
     mod ks_max_population = 3
     mod ks_corruption = 5
+
+	ks_caliphate_books_per_piety
+	{
+		category = "Religion"
+		caliphate = 0
+	}
+	mod ks_prod_gold_perc = 0
+	{
+		category = "Religion"
+		caliphate = 5
+	}
+	mod ks_prod_piety_religion_perc = 0
+	{
+		category = "Religion"
+		caliphate = 10
+	}
+	mod ks_stability_religion = 0
+	{
+		caliphate = -5
+	}
 
     religious_tension
 	{
@@ -195,12 +256,6 @@ Orthodox.ks_army_morale.independent = 0
 
 Pagan.ks_prod_gold_perc = 0
 Pagan.ks_prod_books_religion_perc = 0
-
-Shia.ks_prod_gold_perc = 0
-Shia.ks_prod_piety_religion_perc = 0
-
-Sunni.ks_prod_piety_religion_perc = 0
-Sunni.ks_stability_religion = 0
 
 
 // Judaism

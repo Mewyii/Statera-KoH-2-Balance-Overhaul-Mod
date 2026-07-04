@@ -18,6 +18,88 @@ def Army
 	supplies_consumption_interval = 4
 }
 
+def Infantry
+{
+	delete counter
+	delete countered
+	counter = []
+	countered = ["HeavyCavalry","Ranged","HeavyRanged","RangedCavalry","HeavyRangedCavalry"]
+}
+
+def HeavyInfantry
+{
+	delete counter
+	delete countered
+	counter = ["Infantry","Defense"]
+	countered = ["HeavyCavalry","HeavyRanged"]
+}
+
+def Defense
+{
+	delete counter
+	delete countered
+	counter = ["Cavalry"]
+	countered = ["HeavyInfantry"]
+}
+
+def HeavyDefense
+{
+	delete counter
+	delete countered
+	counter = ["Cavalry","HeavyCavalry"]
+	countered = ["HeavyInfantry","HeavyRanged"]
+}
+
+def Cavalry
+{
+	delete counter
+	delete countered
+	counter = ["Ranged"]
+	countered = ["Defense","HeavyCavalry"]
+}
+
+def HeavyCavalry
+{
+	delete counter
+	delete countered
+	counter = ["Infantry","HeavyInfantry","Cavalry","Ranged","HeavyRanged"]
+	countered = ["HeavyDefense"]
+}
+
+def Ranged
+{
+	delete counter
+	delete countered
+	counter = ["Infantry","RangedCavalry"]
+	countered = ["Cavalry","HeavyCavalry","HeavyRangedCavalry"]
+}
+
+def HeavyRanged
+{
+	delete counter
+	delete countered
+	counter = ["Infantry","HeavyInfantry","HeavyDefense","RangedCavalry","HeavyRangedCavalry"]
+	countered = ["HeavyCavalry"]
+}
+
+def RangedCavalry
+{
+	delete counter
+	delete countered
+	counter = ["Infantry"]
+	countered = ["Ranged","HeavyRanged"]
+}
+
+def HeavyRangedCavalry
+{
+	delete counter
+	delete countered
+	counter = ["Infantry","Ranged"]
+	countered = ["HeavyRanged"]
+}
+
+
+
 Unit.retreat_damage_mod = 5
 
 FoodWagon.add_supplies = 50
@@ -234,7 +316,6 @@ extend Ranged
 	require
 	{
 		TrainingField
-		ArcheryRange
 	}
 }
 
@@ -804,6 +885,152 @@ def Cavalry_Militia_CE : HorseCavalry
 	hide_in_wiki = false
 }
 
+def AdvancedMilitia_IT : AdvancedMilitia
+{
+	model = "Assets/Units/Militia_CE_03/Militia_CE_03.prefab" //GUID:5de2656d1a8e6614f9d9175e7db57cfc
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Advanced_Militia_CE.tga:Icon_Unit_Advanced_Militia_CE#1" //GUID:828791f53491d5b46846fe7b8fb1d294
+}
+
+def Sword_Militia_IT : Infantry
+{
+	model = [
+		"Assets/Units/Light_Infantry_CE_01/Light_Infantry_CE_01.prefab", //GUID:3322d18ace7e12947804fab1707a02d2
+		"Assets/Units/Light_Infantry_CE_02/Light_Infantry_CE_02.prefab", //GUID:14abf40aa16232847937de6140eb4002
+		"Assets/Units/Light_Infantry_CE_03/Light_Infantry_CE_03.prefab" //GUID:de8931c475298d347996de954bbf8387
+	]
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Light_Infantry_CE.tga:Icon_Unit_Light_Infantry_CE#2" //GUID:e4d22df4ab829e74d95d37675a0d8bc6
+
+	require
+	{
+		MilitiaBarracks
+		SimpleWeaponsmithing
+		SimpleArmorsmithing
+	}
+
+	hide_in_wiki = false
+}
+
+def Spear_Militia_IT : Defense
+{
+	model = "Assets/Units/Light_Spearman_CE_01/Light_Spearman_CE_01.prefab" //GUID:3924f21e679e83f49858d1a6cd9d116a
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Light_Spearman_CE.tga:Icon_Unit_Light_Spearman_CE#2" //GUID:94e24f717e3708d42b38b97e9ab3934d
+
+	require
+	{
+		MilitiaBarracks
+		SimpleWeaponsmithing
+	}
+	hide_in_wiki = false
+}
+
+def Crossbow_Militia_IT : Ranged
+{
+	name = "Crossbow Militia"
+	description = "Archers which require only minimal training. They can shoot at a long distance, but only a few bolts per minute."
+	model = "Assets/Units/Crossbowman_Special_01/Crossbowman_Special_01.prefab" //GUID:0c20f0b0e1eafdb45849cd5646d8655c
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Crossbowman.tga:Icon_Unit_Crossbowman#2" //GUID:9f2d71efe0ba41140a62781472c5a925
+	
+	max_acceleration = 2
+	max_deceleration = 2
+	
+	require
+	{
+		MilitiaBarracks
+		CrossbowManufactoring
+	}
+
+	hide_in_wiki = false
+}
+
+def Cavalry_Militia_IT : HorseCavalry
+{
+	model = "Assets/Units/Light_Cavalry_CE_01/Light_Cavalry_CE_01.prefab" //GUID:d78af08f7e176f24e9070901fec14e3c
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Light_Cavalry_CE.tga:Icon_Unit_Light_Cavalry_CE#2" //GUID:7a9c1911b30b2de40bf593d83b83cb8e
+
+	require
+	{
+		MilitiaBarracks
+		ArmyStables
+		SimpleWeaponsmithing
+		SimpleArmorsmithing
+	}
+
+	hide_in_wiki = false
+}
+
+def AdvancedMilitia_Cuman : AdvancedMilitia
+{
+	model = "Assets/Units/Militia_CE_03/Militia_CE_03.prefab" //GUID:5de2656d1a8e6614f9d9175e7db57cfc
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Advanced_Militia_CE.tga:Icon_Unit_Advanced_Militia_CE#1" //GUID:828791f53491d5b46846fe7b8fb1d294
+}
+
+def Sword_Militia_Cuman : Infantry
+{
+	model = [
+		"Assets/Units/Light_Infantry_CE_01/Light_Infantry_CE_01.prefab", //GUID:3322d18ace7e12947804fab1707a02d2
+		"Assets/Units/Light_Infantry_CE_02/Light_Infantry_CE_02.prefab", //GUID:14abf40aa16232847937de6140eb4002
+		"Assets/Units/Light_Infantry_CE_03/Light_Infantry_CE_03.prefab" //GUID:de8931c475298d347996de954bbf8387
+	]
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Light_Infantry_CE.tga:Icon_Unit_Light_Infantry_CE#2" //GUID:e4d22df4ab829e74d95d37675a0d8bc6
+
+	require
+	{
+		MilitiaBarracks
+		SimpleWeaponsmithing
+		SimpleArmorsmithing
+	}
+
+	hide_in_wiki = false
+}
+
+def Spear_Militia_Cuman : Defense
+{
+	model = "Assets/Units/Light_Spearman_CE_01/Light_Spearman_CE_01.prefab" //GUID:3924f21e679e83f49858d1a6cd9d116a
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Light_Spearman_CE.tga:Icon_Unit_Light_Spearman_CE#2" //GUID:94e24f717e3708d42b38b97e9ab3934d
+
+	require
+	{
+		MilitiaBarracks
+		SimpleWeaponsmithing
+	}
+	hide_in_wiki = false
+}
+
+def Crossbow_Militia_Cuman : Ranged
+{
+	name = "Crossbow Militia"
+	description = "Archers which require only minimal training. They can shoot at a long distance, but only a few bolts per minute."
+	model = "Assets/Units/Crossbowman_Special_01/Crossbowman_Special_01.prefab" //GUID:0c20f0b0e1eafdb45849cd5646d8655c
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Crossbowman.tga:Icon_Unit_Crossbowman#2" //GUID:9f2d71efe0ba41140a62781472c5a925
+	
+	max_acceleration = 2
+	max_deceleration = 2
+	
+	require
+	{
+		MilitiaBarracks
+		CrossbowManufactoring
+	}
+
+	hide_in_wiki = false
+}
+
+def Cavalry_Militia_Cuman : HorseCavalry
+{
+	model = "Assets/Units/Light_Cavalry_CE_01/Light_Cavalry_CE_01.prefab" //GUID:d78af08f7e176f24e9070901fec14e3c
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Light_Cavalry_CE.tga:Icon_Unit_Light_Cavalry_CE#2" //GUID:7a9c1911b30b2de40bf593d83b83cb8e
+
+	require
+	{
+		MilitiaBarracks
+		ArmyStables
+		SimpleWeaponsmithing
+		SimpleArmorsmithing
+	}
+
+	hide_in_wiki = false
+}
+
 // PROFESSIONAL
 
 def Heavy_Cavalry_CE : HeavyCavalry
@@ -817,6 +1044,143 @@ def Heavy_Cavalry_CE : HeavyCavalry
 		ArmyStables
 		AdvancedWeaponsmithing
 		AdvancedArmorsmithing
+	}
+
+	hide_in_wiki = false
+}
+
+// TRIBAL
+
+
+def Light_Archers_Cuman : Ranged
+{
+	model = "Assets/Units/Light_Archer_Steppe/Light_Archer_Steppe.prefab" //GUID:a98e3ff726d7ada4bb30505169386d9a
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Light_Archer_Steppe.tga:Icon_Unit_Light_Archer_Steppe#2" //GUID:e4eb4a05170703046bdcea0c1cc35ef0
+
+	hide_in_wiki = false
+}
+
+def Light_Horse_Archers_Cuman : RangedHorseCavalry
+{
+	description = "Eastern warriors, unmatched in the skill of mounted archery and capable to wreak havoc in the enemy lines while avoiding close combat."
+	model = "Assets/Units/Steppe_Cavalry_Special_01/Steppe_Cavalry_Special_01.prefab" //GUID:35dd6c75d144fb846bb8481a536f5d75
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Horse_Archer_Steppe.tga:Icon_Unit_Horse_Archer_Steppe#2" //GUID:3ae80d84bb1cc9b4296c560c56ec6273
+	
+	require
+	{
+	}
+
+	hide_in_wiki = false
+}
+
+def Light_Cavalry_Cuman : HorseCavalry
+{
+	model = "Assets/Units/Light_Cavalry_Steppe/Light_Cavalry_Steppe.prefab" //GUID:bf7427dc147a7d74fb922aa649e192ec
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Light_Cavalry_Steppe.tga:Icon_Unit_Light_Cavalry_Steppe#2" //GUID:8b40a529af66a704b9ecd846bd2611f7
+
+	require
+	{
+	}
+	
+	hide_in_wiki = false
+}
+
+def Veteran_Horse_Archers_Cuman : RangedHorseCavalry
+{
+	description = "Eastern warriors, unmatched in the skill of mounted archery and capable to wreak havoc in the enemy lines while avoiding close combat."
+	model = "Assets/Units/Mongol_Cavalry_Special_01/Mongol_Cavalry_Special_01.prefab" //GUID:4594ffa380f4f0747ab493e15dce73f6
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Mongol_Cavalry.tga:Icon_Unit_Mongol_Cavalry#2" //GUID:8cf36d70512183d40af85815fffcee95
+	
+	require
+	{
+		FightingGrounds
+	}
+
+	hide_in_wiki = false
+}
+
+def Lancers_Cuman : HorseCavalry
+{
+	model = "Assets/Units/Light_Cavalry_Steppe/Light_Cavalry_Steppe.prefab" //GUID:bf7427dc147a7d74fb922aa649e192ec
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Light_Cavalry_Steppe.tga:Icon_Unit_Light_Cavalry_Steppe#2" //GUID:8b40a529af66a704b9ecd846bd2611f7
+
+	require
+	{
+		FightingGrounds
+	}
+
+	hide_in_wiki = false
+}
+
+def Heavy_Spearman_Cuman : HeavyDefense
+{
+	model = "Assets/Units/Heavy_Spearman_Arab_01/Heavy_Spearman_Arab_01.prefab" //GUID:98b6cc94a244e9f4a9ecc1b3311367d3
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Heavy_Spearman_Arab.tga:Icon_Unit_Heavy_Spearman_Arab#2" //GUID:85744d3b82a2a0140b4cfdbc9ac2b125
+
+	hide_in_wiki = false
+
+	require
+	{
+		FightingGrounds
+		SimpleWeaponsmithing
+		SimpleArmorsmithing
+	}
+	
+}
+
+def Heavy_Archer_Cuman : HeavyRanged
+{
+	model = "Assets/Units/Heavy_Archer_Arab_01/Heavy_Archer_Arab_01.prefab" //GUID:d05bd4d8a89b80840a0d989f8a575d47
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Heavy_Archer_Arab.tga:Icon_Unit_Heavy_Archer_Arab#2" //GUID:785db09d267ffa742af8ae0ce17ad951
+
+	
+	require
+	{
+		FightingGrounds
+		SimpleWeaponsmithing
+		SimpleArmorsmithing
+	}
+	
+	hide_in_wiki = false
+}
+
+def Heavy_Horse_Archers_Cuman : HeavyRangedHorseCavalry
+{
+	description = "Heavily armored cavalrymen, capable to charge through their enemies' lines, but to shoot few volleys of arrows before that as well."
+	model = "Assets/Units/Steppe_Heavy_Horse_Archer/Steppe_Heavy_Horse_Archer.prefab" //GUID:b6a57654d36254e40ab9f7d6f84b7b85
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Heavy_Horse_Archer_Steppe.tga:Icon_Unit_Heavy_Horse_Archer_Steppe#2" //GUID:eeb5832b6e60d3949a70a4142e5b60b5
+	
+	bonuses
+	{
+		defense_flat = "cs_elite_unit_defense_flat"
+	}
+	
+	require
+	{
+		FightingGrounds
+		SimpleWeaponsmithing
+		SimpleArmorsmithing
+	}
+
+	hide_in_wiki = false
+}
+
+def Heavy_Lancers_Cuman : HeavyRangedHorseCavalry
+{
+	description = "Though a bit less armored than European heavy cavalry, mongol lancers are armed with bows as well and surpass them in speed, manoeuvrability and stamina, which are especially valuable qualities in the vast grassland plains."
+	model = "Assets/Units/Mongol_Heavy_Lancer_Special/Mongol_Heavy_Lancer_Special.prefab" //GUID:a3c248220b027e04f94e5e8aae84d196
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Mongol_Heavy_Lancers_Special.tga:Icon_Unit_Mongol_Heavy_Lancers_Special#2" //GUID:848597a249428574c88c40e1ffe2e86d
+	
+	bonuses
+	{
+		defense_flat = "cs_elite_unit_defense_flat"
+	}
+	
+	require
+	{
+		FightingGrounds
+		SimpleWeaponsmithing
+		SimpleArmorsmithing
 	}
 
 	hide_in_wiki = false
@@ -1055,6 +1419,25 @@ def Hospitaller_Special : HeavyCavalry
 	}
 	
 	kingdom_religion = Catholic
+
+	hide_in_wiki = false
+}
+
+def Pechenegs_Special : HeavyRangedHorseCavalry
+{
+	description = "Elite mounted archers, able to shoot from a long distance and also having some armour for close combat, once it becomes unavoidable."
+	special = true
+	model = "Assets/Units/Mongol_Cavalry_Special_01/Mongol_Cavalry_Special_01.prefab" //GUID:4594ffa380f4f0747ab493e15dce73f6
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Mongol_Cavalry.tga:Icon_Unit_Mongol_Cavalry#2" //GUID:8cf36d70512183d40af85815fffcee95
+
+	bonuses
+	{
+		defense_flat = "cs_elite_unit_defense_flat"
+	}
+	
+	require
+	{
+	}
 
 	hide_in_wiki = false
 }

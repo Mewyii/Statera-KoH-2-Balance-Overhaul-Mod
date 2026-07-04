@@ -213,41 +213,69 @@ extend Skill.effects
 			governed_realm_mod rs_governor_commerce_per_settlement = 2
 		}
 
+		delete King
 		tag King
 		{
 			governed_realm_mod rs_governor_king_gold_per_settlement = 1
 			
 			governed_realm_mod rs_governor_king_commerce_per_settlement = 1
-			
-			governed_realm_mod rs_governor_food_per_farm = 1
 
-			governed_realm_mod rs_governor_piety = 1
-			
-			// governed_realm_mod rs_governor_local_authority_in_realm_and_neighbors = (ceil(class_level / 3))
-			// {
-			// 	per_level_value = true
-			// 	recalc_on { skills_changed }
-			// }
-			
-			governed_realm_mod rs_governor_town_guards = 2
-			// This doesn't work sadly
-			// {
-			// 	condition = (kingdom.culture_group_name == "Germanic")
-			// }
+			governed_realm_mod rs_governor_prod_food_flat = 4
 
-			governed_realm_mod rs_governor_max_population = 3
-			
-			governed_realm_mod rs_siege_defense = (5 + 5 * class_level)
+			governed_realm_mod rs_governor_max_population = 2
+
+			governed_realm_mod rs_governor_town_guards = (2 + (ceil(class_level / 5)))
+
+			governed_realm_mod rs_governor_local_authority_from_CL = (10 + (ceil(class_level / 3)))
 			{
 				per_level_value = true
 				recalc_on { skills_changed }
 			}
 
-			governed_realm_mod rs_governor_local_authority_from_CL = (ceil(class_level / 3))
+			// Culture Dependent
+			governed_realm_mod rs_governor_workers_per_village = 1
 			{
-				per_level_value = true
-				recalc_on { skills_changed }
+				condition = (kingdom.culture_group == "Italian")
 			}
+			governed_realm_mod rs_governor_commerce_per_good = 1
+			{
+				condition = (kingdom.culture_group == "Italian")
+			}
+
+			governed_realm_mod rs_governor_levy_per_settlement = 1
+			{
+				condition = (kingdom.culture_group == "Iberian")
+			}
+
+			governed_realm_mod rs_governor_piety = 2
+			{
+				condition = (kingdom.culture_group == "Iberian")
+			}
+
+			// TODO
+			// Germanic
+			// WestGermanic
+			// WestSlavic
+			// EastSlavic
+			// SouthSlavic
+			// FinnoUgric
+			// Frankish
+			// English
+			// Turkic
+			// Steppe
+			// ArabicNomadic
+			// African
+			// Baltic
+			// Berber
+			// Caucasian
+			// Celtic
+			// Greek
+			// Iranic
+			// Magyar
+			// Mongolic
+			// Semitic
+			// Nordic
+			// Wallachian
 		}
 	}
 

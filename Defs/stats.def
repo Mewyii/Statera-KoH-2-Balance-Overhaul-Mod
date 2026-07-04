@@ -9,6 +9,8 @@ KingdomStats.ks_prod_piety_flat = 5
 KingdomStats.ks_max_levy = 2000
 KingdomStats.ks_books_per_cleric = 1
 KingdomStats.ks_corruption = 20
+KingdomStats.ks_stability = -10
+
 
 extend RealmStats {
     rs_max_food = 300

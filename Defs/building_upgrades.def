@@ -6,10 +6,9 @@ def ArcheryRange : Upgrade
 	name = "Archery Range"
 	flavor = "Dedicated grounds for bowmen to practice accuracy and volleys under the watch of instructors."
 	icon = "Assets/Icons/Buildings/ArcheryRange.png:ArcheryRange#1"
-	add_tooltip = "{blt} Required for recruiting {clr:enables_color}archer units{/clr}"
 
 	ai_category = "Military"
-	ai_eval = 10000
+	ai_eval = 2500
 }
 
 def MilitiaDrills : Upgrade
@@ -327,6 +326,139 @@ def Cloister : Upgrade
 	icon = "Assets/Icons/Buildings/Cloister.png:Cloister#1"
 }
 
+def TeachingCircles : Upgrade
+{
+	name = "Halaqa Teaching Circles"
+	flavor = "Formalized study circles transforming the mosque into a hub of learning and intellectual exchange."
+	icon = "Assets/Icons/Buildings/Cloister.png:Cloister#1"
+}
+
+def Kuttab : Upgrade
+{
+	name = "Kuttab"
+	flavor = "A basic elementary school where children learn reading, writing, and the foundations of faith."
+	icon = "Assets/Icons/Buildings/Cloister.png:Cloister#1"
+}
+
+def RuralKuttabs : Upgrade
+{
+	name = "Rural Kuttabs"
+	flavor = "Bringing elementary school knowledge like reading and writing to remote settlements or nomadic communities."
+	icon = "Assets/Icons/Buildings/Cloister.png:Cloister#1"
+}
+
+def ReligiousOrthodoxy : Upgrade
+{
+	name = "Religious Orthodoxy"
+	flavor = "Clear doctrines and accepted interpretations define belief, narrowing faith into a disciplined communal path."
+	icon = "Assets/Icons/Buildings/Cloister.png:Cloister#1"
+}
+
+def MysticalTraditions : Upgrade
+{
+	name = "Mystical Traditions"
+	flavor = "Quiet devotion and inward reflection shape faith through poetry, ritual, and personal spiritual experience."
+	icon = "Assets/Icons/Buildings/Cloister.png:Cloister#1"
+}
+
+def AblutionCourtyard : Upgrade
+{
+	name = "Ablution Courtyard"
+	flavor = "A sunlit courtyard with flowing water prepares worshippers in ritual purity before prayer."
+	icon = "Assets/Icons/Buildings/Cloister.png:Cloister#1"
+}
+
+def Minbar : Upgrade
+{
+	name = "Minbar"
+	flavor = "A raised wooden pulpit gives the imam’s words authority as sermons guide the moral life of the faithful."
+	icon = "Assets/Icons/Buildings/Cloister.png:Cloister#1"
+}
+
+def Khutba : Upgrade
+{
+	name = "Khutba"
+	flavor = "The formal sermon held on fridays proclaims faith and authority alike, linking religious devotion to worldly rule."
+	icon = "Assets/Icons/Buildings/Cloister.png:Cloister#1"
+}
+
+def AdvancedTheology : Upgrade
+{
+	name = "Advanced Theology"
+	flavor = "Learned scholars debate doctrine and divine nature, refining belief through systematic reasoning and exegesis."
+	icon = "Assets/Icons/Buildings/Cloister.png:Cloister#1"
+}
+
+def DomedSanctuary : Upgrade
+{
+	name = "Domed Sanctuary"
+	flavor = "A vast domed hall gathers the faithful beneath a single soaring space of prayer and unity."
+	icon = "Assets/Icons/Buildings/MosqueDome.png:MosqueDome#1"
+}
+
+def MonumentalMinaret : Upgrade
+{
+	name = "Monumental Minaret"
+	flavor = "A towering minaret dominates the skyline, projecting the call to prayer across city and countryside."
+	icon = "Assets/Icons/Buildings/Minaret.png:Minaret#1"
+}
+
+def GeometricTilework : Upgrade
+{
+	name = "Geometric Tilework"
+	flavor = "Endless geometric patterns reflect divine order through color, symmetry, and repetition."
+	icon = "Assets/Icons/Buildings/Cloister.png:Cloister#1"
+}
+
+def FatwaCouncil : Upgrade
+{
+	name = "Fatwa Council"
+	flavor = "A circle of learned jurists advises on difficult religious and legal questions, shaping verdicts with theological authority."
+	icon = "Assets/Icons/Buildings/Cloister.png:Cloister#1"
+}
+
+def MoralOversight : Upgrade
+{
+	name = "Moral Oversight"
+	flavor = "Inspectors enforce social and religious norms in marketplaces and streets, promoting order and piety among citizens."
+	icon = "Assets/Icons/Buildings/Cloister.png:Cloister#1"
+}
+
+def RoyalDecreesOffice : Upgrade
+{
+	name = "Royal Decrees Office"
+	flavor = "Official decrees are drafted, sealed, and archived here, giving the ruler’s word legal force across the realm."
+	icon = "Assets/Icons/Buildings/Cloister.png:Cloister#1"
+}
+
+def CentralizationReforms : Upgrade
+{
+	name = "Centralization Reforms"
+	flavor = "Administrative changes consolidate power at the center, streamlining governance and reducing local autonomy."
+	icon = "Assets/Icons/Buildings/Cloister.png:Cloister#1"
+}
+
+def ViziersOffices : Upgrade
+{
+	name = "Vizier's Offices"
+	flavor = "Detailed ledgers track land, taxes, and obligations, turning scattered revenues into a coherent financial system."
+	icon = "Assets/Icons/Buildings/Cloister.png:Cloister#1"
+}
+
+def CourtScribes : Upgrade
+{
+	name = "Court Scribes"
+	flavor = "Rows of diligent scribes copy rulings, contracts, and records, ensuring every judgment is carefully preserved."
+	icon = "Assets/Icons/Buildings/Cloister.png:Cloister#1"
+}
+
+def DisputeMediationOffice : Upgrade
+{
+	name = "Dispute Mediation Office"
+	flavor = "Trained mediators bring conflicting parties together, resolving local disputes before they escalate into unrest."
+	icon = "Assets/Icons/Buildings/Cloister.png:Cloister#1"
+}
+
 // FARMING
 
 def HorseHarnessing : Upgrade
@@ -427,6 +559,34 @@ def StandardizationOffices : Upgrade
 def Tavern : Upgrade
 {
 	icon = "Assets/Icons/Buildings/Tavern.png:Tavern#1"
+}
+
+def TradeFair : Upgrade
+{
+	name = "Trade Fairs"
+	flavor = "Where delicious food and beverages are abundant, fairs provide enjoyment for the common folk and more gold to be collected from taxes."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_TradeFair.tga:UI_Structure_Icon_TradeFair#2" //GUID:cd206de1574d3924db5bb29a778dee70
+}
+
+def Caravanserai : Upgrade
+{
+	name = "Caravanserai network"
+	flavor = "A network of caravanserais providing safe lodging, storage, and trade facilities for merchants traveling along regional trade routes."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Caravanserai.tga:UI_Structure_Icon_Caravanserai#2" //GUID:be0adee6b3adc8d409d9ef1f1c5f9e31
+}
+
+def MarketOffices : Upgrade
+{
+	name = "Hawala Offices"
+	flavor = "Specialized offices facilitating secure transfers of funds, standardized trade records, and official market oversight to support long-distance commerce."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Caravanserai.tga:UI_Structure_Icon_Caravanserai#2" //GUID:be0adee6b3adc8d409d9ef1f1c5f9e31
+}
+
+def MerchantBank : Upgrade
+{
+	name = "Merchant Banks"
+	flavor = "Merchants and bankers are eager to help funding expensive financial endevours like grain production and trade, distant expedions and others. For a small percentage of the profit, of course."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Bank.tga:UI_Structure_Icon_Bank#2" //GUID:f5699328036c94945ac67f553cc88a14
 }
 
 
@@ -553,6 +713,20 @@ def Sculpting : Upgrade
 	icon = "Assets/Icons/Buildings/AdvancedArmorsmithing.png:AdvancedArmorsmithing#1"
 }
 
+def Glassmaking_Muslim : Upgrade
+{
+	name = "Glassmaking"
+	flavor = "Skilled artisans master the fusion of sand and fire, producing glass for windows, vessels, and ornaments."
+	icon = "Assets/Icons/Buildings/Glassmaking.png:Glassmaking#1"
+}
+
+def Sculpting_Muslim : Upgrade
+{
+	name = "Sculpting"
+	flavor = "Improved metallurgy and design produce superior plate and chain armor, granting better protection in battle."
+	icon = "Assets/Icons/Buildings/AdvancedArmorsmithing.png:AdvancedArmorsmithing#1"
+}
+
 // RIVER
 
 def WaterWheels : Upgrade
@@ -655,6 +829,76 @@ def FacultyMedicine : Upgrade
 	name = "Faculty of Medicine"
 	flavor = "Heirs to Galen and Avicenna, physicians study anatomy, astrology, and the humors that govern health."
 	icon = "Assets/Icons/Buildings/FacultyMedicine.png:FacultyMedicine#1"
+}
+
+def QuranicStudies : Upgrade
+{
+	name = "Quranic Studies"
+	flavor = "Students learn the Quran, Hadith, and basic principles of Islamic law to form the foundation of their education."
+	icon = "Assets/Icons/Buildings/TriviumCurriculum.png:TriviumCurriculum#1"
+}
+
+def LogicPhilosophy : Upgrade
+{
+	name = "Logic and Philosophy"
+	flavor = "Lessons in logic and philosophy, including studies of Greek works translated into Arabic, develop critical thinking."
+	icon = "Assets/Icons/Buildings/TriviumCurriculum.png:TriviumCurriculum#1"
+}
+
+def EthicsStudies : Upgrade
+{
+	name = "Sufism and Ethics"
+	flavor = "Students explore ethical philosophy and spiritual teachings, cultivating moral understanding and personal discipline."
+	icon = "Assets/Icons/Buildings/TriviumCurriculum.png:TriviumCurriculum#1"
+}
+
+def WomensTeachingCircles : Upgrade
+{
+	name = "Women's Teaching Circles"
+	flavor = "Female scholars who transmit authoritative knowledge, strengthening social trust and scholarly continuity."
+	icon = "Assets/Icons/Buildings/TriviumCurriculum.png:TriviumCurriculum#1"
+}
+
+def Cataloguing_Muslim : Upgrade
+{
+	name = "Cataloguing"
+	flavor = "The development of systematic classification enables faster access to knowledge and learning."
+	icon = "Assets/Icons/Buildings/Cataloguing.png:Cataloguing#1"
+}
+
+def TranslationWorkshops_Muslim : Upgrade
+{
+	name = "Translation Workshops"
+	flavor = "Scholars labor to render Greek and Arabic texts into Latin, reviving lost wisdom of antiquity."
+	icon = "Assets/Icons/Buildings/TranslationWorkshops.png:TranslationWorkshops#1"
+}
+
+def ScientificNotation : Upgrade
+{
+	name = "Scientific Notation"
+	flavor = "Early mathematical, astronomical, and medical methods are developed and standardized for scholarly use."
+	icon = "Assets/Icons/Buildings/ArchiveRoom.png:ArchiveRoom#1"
+}
+
+def MedicinePharmacy : Upgrade
+{
+	name = "Medicine and Pharmacy"
+	flavor = "Medical knowledge is expanded, including anatomy, treatments, and the preparation of remedies."
+	icon = "Assets/Icons/Buildings/FacultyMedicine.png:FacultyMedicine#1"
+}
+
+def MathematicsEngineering : Upgrade
+{
+	name = "Mathematics and Engineering"
+	flavor = "Algebra, geometry, and applied engineering are studied to solve practical and theoretical problems."
+	icon = "Assets/Icons/Buildings/FacultyLaw.png:FacultyLaw#1"
+}
+
+def AdvancedPhilosophy : Upgrade
+{
+	name = "Advanced Philosophy"
+	flavor = "Scholars engage with high-level philosophical debates, synthesizing Aristotelian, Platonic, and Islamic thought."
+	icon = "Assets/Icons/Buildings/HighScholasticism.png:HighScholasticism#1"
 }
 
 // PUNISHMENT

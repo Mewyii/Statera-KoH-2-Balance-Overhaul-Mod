@@ -8,10 +8,10 @@ extend Kingdom {
 
     resources starting_resources
 	{
-		gold = (1000 + (100 * (num_realms -1)))
-		books = (200 + (10 * (num_realms -1)))
-		levy = (200 + (20 * (num_realms -1)))
-		piety = (200 + (10 * (num_realms -1)))
+		gold = (1200 + (120 * (num_realms -1)))
+		books = (300 + (20 * (num_realms -1)))
+		levy = (300 + (40 * (num_realms -1)))
+		piety = (300 + (20 * (num_realms -1)))
 	}
 
     // % from max treasury, used to calculate possible gold amounts in diplomatic negotiations, i.e. S1 .. S5
@@ -52,36 +52,34 @@ extend CrownAuthority {
 	
     // Positive
     int stopped_crusade_against_us = 1
+	int warWon = 1
+	int payGold = 1
+
+	// Neutral
+    int change_heir = 0
+	int vassalGet = 0
+	int execute_rebel = 0
+    int knightDesertion = 0
+	int breakTrade = 0
 
     // Negative
-    int kingDeath = -1 
+    int kingDeath = -2 
 	int noSuccessor = -1
-    int knightDesertion = -1
-
-    int establish_order = -1
-
+	int establish_order = -1
+	int realm_annex = -1
+	int rebelOccupation = -1
+	int religionChangeSuccess = -1
+	int religionChangeFail = -2
     int warLost = -1
     int vassalBecome = -1
-    int DeclinedVassalDefend = -1
-
-    int religionChangeSuccess = -1
-	int religionChangeFail = -2
-    int stopPromotingPaganBelief = -1
-
-    // Neutral
-    int change_heir = 0
-
-	int warWon = 0
-	int vassalGet = 1
-	int payGold = 1
-	int breakTrade = -1
 	int breakNAP = -2
-	int breakAlliance = -1
-	int rebelOccupation = -1
-	
+	int breakAlliance = -2
 
+    
 	
 	// TODO
+	int DeclinedVassalDefend = -1
+	int stopPromotingPaganBelief = -1
 	int denounced_rebel = -1
 	int denounced_famous_rebel = -2
 	int torture = 0 // this should have heavy relations drop
@@ -95,7 +93,6 @@ extend CrownAuthority {
 	int restorationQuestCompleted = 3 // Placeholder
 	int uniteQuestCompleted = 5 // Placeholder
 	int failed_spawn_loyalist = -1 //obsolete - we might want to use this later?
-	int realm_annex = -1
 	
 	int reject_being_emperor_of_the_world = -5
 	int reject_ai_emperor_of_the_world = -5 //SP only
@@ -104,7 +101,6 @@ extend CrownAuthority {
 	
 	int release_non_court_rebel = -1
 	int forgive_court_rebel = (round(map(target.class_level, 0, 15, -1, -3)))
-	int execute_rebel = 1
 	
 	int bankruptcy = -3
 	int ClaimIndependenceFail = -1

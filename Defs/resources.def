@@ -285,13 +285,37 @@ def CatholicChoirs : Resource
 def Inquisitors : Resource
 {
 	name = "Inquisitors"
-	tooltip = "Those businessmen have been using their skills in bargain and finance for as long as commerce and trade have existed."
+	tooltip = "Catholic inquisitors investigate and prosecute heresy, enforcing doctrinal conformity through interrogation, trial, and punishment in the name of the Church."
 	icon = "Assets/Icons/Buildings/EcclesiasticalCourt.png:EcclesiasticalCourt#1"
 	category = "Society"
 
 	mod ks_prod_books_flat = -5
 	mod ks_corruption = -5
 	mod ks_witch_hunt_efficiency_perc = 20
+	mod ks_heresy_susceptibility_perc = -25
+}
+
+def Muftis : Resource
+{
+	name = "Muftis"
+	tooltip = "Islamic muftis are learned jurists who issue legal opinions (fatwas), guiding judges and rulers by interpreting Islamic law."
+	icon = "Assets/Icons/Buildings/EcclesiasticalCourt.png:EcclesiasticalCourt#1"
+	category = "Society"
+
+	mod ks_stability_religion = 2
+	mod ks_piety_converted_to_books_perc = 5
+}
+
+def Muhtasibs : Resource
+{
+	name = "Muhtasibs"
+	tooltip = "A state-appointed urban inspector charged with enforcing public morality, market fairness, and proper conduct in streets and bazaars, embodying the principle of communal responsibility (hisba)."
+	icon = "Assets/Icons/Buildings/EcclesiasticalCourt.png:EcclesiasticalCourt#1"
+	category = "Society"
+
+	mod ks_prod_books_flat = -5
+	mod ks_corruption = -5
+	mod ks_vassal_tax_perc = 5
 	mod ks_heresy_susceptibility_perc = -25
 }
 
@@ -331,6 +355,18 @@ def Cannons : Resource
 	mod ks_naval_CTH = 10
 	mod ks_attrition_bonus = 20
 	mod ks_base_siege_damage_perc = 30
+}
+
+def TrainedArchers : Resource
+{
+	name = "Trained archers"
+	tooltip = "Trained archers that have a bigger arm strength and aiming accuracy than normal levies."
+	category = "Base"
+	icon = "Assets/Icons/Buildings/ArcheryRange.png:ArcheryRange#1"
+	import_commerce = 15
+	import_gold = 15
+
+	mod ks_ranged_CTH_perc = 10
 }
 
 def ArmyOfficers : Resource

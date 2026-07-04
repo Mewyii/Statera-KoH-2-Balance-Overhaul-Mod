@@ -308,6 +308,48 @@ def CelticUnitSet : AvailableUnits
 	}
 }
 
+def ItalianUnitSet : AvailableUnits
+{
+	// Levy
+	Militia_CE
+	Levy_Axemen
+	Light_Spearman_CE
+	Light_Archer_CE
+	Light_Cavalry_CE
+
+	// Militia
+	AdvancedMilitia_IT
+	Sword_Militia_IT
+	Spear_Militia_IT
+	Crossbow_Militia_IT
+	Cavalry_Militia_IT
+
+	// Professional
+	Heavy_Swordman_CE
+	Heavy_Spearman_CE
+	Heavy_Archer_CE
+	Heavy_Cavalry_CE
+
+	// Knights
+	Noble_Knights_Dismounted
+	Noble_Knights
+	Feudal_Knights_Dismounted
+	Feudal_Knight_Special
+	
+	town_guards
+	{
+		TownGuard_CE
+		EliteGuard_CE
+		RoyalGuard_CE
+	}
+	marshals
+	{
+		marshal = Marshal_CE
+		marshal_guard = Marshal_Guard_CE
+		rebel_marshal = Marshal_Rebel_CE
+		rebel_marshal_guard = Marshal_Guard_Rebel_CE
+	}
+}
 
 delete NormanUnitSet
 def NormanUnitSet : AvailableUnits
@@ -559,15 +601,27 @@ def EastSlavicUnitSet : AvailableUnits
 	}
 }
 
-def SteppeUnitSet : AvailableUnits
+def CumanUnitSet : AvailableUnits
 {
-	Militia_Steppe
-	AdvancedMilitia_Steppe
-	Light_Infantry_Steppe
-	Light_Archer_Steppe
-	Light_Cavalry_Steppe
-	Light_Horse_Archer_Steppe
-	Heavy_Horse_Archer_Steppe
+	// Militia
+	AdvancedMilitia_Cuman
+	Sword_Militia_Cuman
+	Spear_Militia_Cuman
+	Crossbow_Militia_Cuman
+	Cavalry_Militia_Cuman
+
+	// Tribal
+	Light_Archers_Cuman
+	Light_Horse_Archers_Cuman
+	Light_Cavalry_Cuman
+
+	Veteran_Horse_Archers_Cuman
+	Lancers_Cuman
+
+	Heavy_Spearman_Cuman
+	Heavy_Archer_Cuman
+	Heavy_Horse_Archers_Cuman
+	Heavy_Lancers_Cuman
 	town_guards
 	{
 		TownGuard_Steppe
@@ -577,7 +631,7 @@ def SteppeUnitSet : AvailableUnits
 	marshals
 	{
 		marshal = Marshal_Steppe
-		marshal_guard = Marshal_Guard_Steppe //!!! new model needed
+		marshal_guard = Marshal_Guard_Steppe
 		rebel_marshal = Marshal_Rebel_Steppe
 		rebel_marshal_guard = Marshal_Guard_Rebel_Steppe
 	}

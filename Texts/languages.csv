@@ -121,7 +121,7 @@ ChangeReligionAction.success_fail.sf_num_neighbors_following_old_religion.name,"
 ChangeReligionAction.success_fail.sf_num_realms_following_new_religion.name,"Our provinces, following {target_religion:ism} (x6)","Nos provinces pratiquant {target_religion:ismdef} (x5)","Unsere Provinzen, die {target_religion:ismprepto} gehören (x5)","Nuestras provincias que siguen el {target_religion:ism} (x5)","Nasze prowincje wyznające {target_religion:B} (x5)","Наши провинции, исповедующие {target_religion:ism} (x5)","자국 지역의 종교가 {target_religion:ism}일 경우 (x5)","{target_religion:ism}を信仰中の自国領地 (x5)","信奉{target_religion:ism}的行省（x5）","我方行省，信奉{target_religion:ism}（x5）","Bölgelerimiz, {target_religion:ism} inancını benimsiyor (x5)","{target_religion} को मानने वाले हमारे प्रांत (x5)","Provinsi kita, menganut {target_religion:ism} (x5)"
 ChangeReligionAction.success_fail.sf_num_realms_following_old_religion.name,"Our provinces, following {own_kingdom.religion:ism} (x4)","Nos provinces pratiquant {own_kingdom.religion:ismdef}","Unsere Provinzen, die {own_kingdom.religion:ismprepto} gehören","Nuestras provincias, que siguen el {own_kingdom.religion:ism}","Nasze prowincje wyznające: {own_kingdom.religion:ism}","Наши провинции, исповедующие {own_kingdom.religion:ism}","자국 지역의 종교가 {own_kingdom.religion:ism}일 경우","{own_kingdom.religion:ism}を信仰中の自国領地","信奉{own_kingdom.religion:ism}的行省","信奉{own_kingdom.religion:ism}的我方行省","Bölgelerimiz, {own_kingdom.religion:ism} inancını benimsiyor","हमारे प्रांत, {own_kingdom.religion:ism} के अनुयायी","Provinsi kita, menganut {own_kingdom.religion:ism}"
 VillagesDistrict.name,Trading
-"AnglersHuts.name","Fishing","Cabanes de pêcheurs","Anglerhütten","Chozas de pescadores","Chaty wędkarzy","Рыбацкие хижины","낚시꾼 오두막","釣り小屋","垂钓者小屋","釣客小屋","Balıkçı Kulübeleri","एंगलर्स के हट्स","Pondok Pemancing"
+AnglersHuts.name,"Fishing","Cabanes de pêcheurs","Anglerhütten","Chozas de pescadores","Chaty wędkarzy","Рыбацкие хижины","낚시꾼 오두막","釣り小屋","垂钓者小屋","釣客小屋","Balıkçı Kulübeleri","एंगलर्स के हट्स","Pondok Pemancing"
 CampaignVars.max_unlockable_tiers.options.3.name,10 Buildings,,,,,,,,,,,,
 CampaignVars.max_unlockable_tiers.options.3.description,You can build up to 10 Buildings in a province,,,,,,,,,,,,
 CampaignVars.max_unlockable_tiers.options.5.name,12 Buildings,,,,,,,,,,,,
@@ -140,7 +140,7 @@ Light_Archer_CE.name,Levy Archers,,,,,,,,,,,,
 Marshal_CE.name,Marshal's Retinue,,,,,,,,,,,,
 Heavy_Cavalry_CE.name,Heavy Cavalry,,,,,,,,,,,,
 Levy_Axemen.name,Levy Axemen,,,,,,,,,,,,
-AdvancedMilitia_CE.name,City Militia,,,,,,,,,,,,
+AdvancedMilitia_CE.name,Town Militia,,,,,,,,,,,,
 Noble_Knights.name,Noble Knights,,,,,,,,,,,,
 Norman_Special.name,Norman Knights,,,,,,,,,,,,
 Noble_Knights_Dismounted.name,Noble Knights (Dismounted),,,,,,,,,,,,
@@ -149,3 +149,5 @@ Sword_Militia_CE.name,Sword Militia,,,,,,,,,,,,
 Viking_Special.name,Drengir,,,,,,,,,,,,
 Longbowman_Special.name,English Longbowmen,,,,,,,,,,,,
 Welsh_Longbowman_Special.name,Welsh Longbowmen,,,,,,,,,,,,
+Masjid.flavor,"A Masjid serves as the local center of worship, community gathering, and religious instruction, reinforcing faith, social cohesion, and daily ritual life.","Un lieu de répit pieux et de prêches.","Ein Ort des frommen Rückzugs und für Predigten.","Un lugar para el descanso devoto y la oración.","Miejsce modlitwy, zadumy i świętych nauk.","Место для праведного отдыха и проповедей.","경건한 휴식과 설교를 위한 장소입니다.","信心深い人々の憩いの場で、説教を行う場所","虔敬人士休息和布道的地方。","虔誠休息、佈道的地方。","Dinle dolu bir mola ve vaazlar için bir yer.","पवित्र आराम और धार्मिक प्रवचन की जगह.","Tempat untuk peristirahatan saleh dan dakwah."
+GreatMosque.flavor,"A Great Mosque is the principal religious monument of the city, hosting Friday sermons, major gatherings, and scholarly activity while projecting spiritual and political authority.","Un lieu de répit pieux et de prêches.","Ein Ort des frommen Rückzugs und für Predigten.","Un lugar para el descanso devoto y la oración.","Miejsce modlitwy, zadumy i świętych nauk.","Место для праведного отдыха и проповедей.","경건한 휴식과 설교를 위한 장소입니다.","信心深い人々の憩いの場で、説教を行う場所","虔敬人士休息和布道的地方。","虔誠休息、佈道的地方。","Dinle dolu bir mola ve vaazlar için bir yer.","पवित्र आराम और धार्मिक प्रवचन की जगह.","Tempat untuk peristirahatan saleh dan dakwah."

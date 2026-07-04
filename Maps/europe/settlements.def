@@ -898,6 +898,179 @@ extend Settlements
 			}
 		}
 
+		def 236 : Castle
+		{
+			name = "Milan"
+			position = 1653.2, 1396.45
+			forest = true
+			rotation = 28.728
+			citadel = 0.185, 0.045
+			{
+				architecture = "Central"
+				rotation = 15.285
+			}
+			houses = "Central"
+			{
+				1 = 5.071, -4.518
+				{
+					rotation = 232.748
+				}
+				2 = 5.555, 4.012
+				{
+					rotation = 100.143
+				}
+				3 = 2.58, -4.044
+				{
+					rotation = 232.748
+				}
+				4 = -7.54, 1.72
+				{
+					rotation = 1.363
+				}
+				5 = 6.669, -1.494
+				{
+					type = "Fillers"
+					rotation = 354.091
+				}
+				6 = -7.75, -3.69
+				{
+					type = "Fillers"
+					rotation = 294.091
+				}
+				7 = -2.733, 0.681
+				{
+					type = "Fillers"
+					rotation = 218.345
+				}
+				8 = 4.93, 1.77
+				{
+					type = "Fillers"
+					rotation = 158.345
+				}
+				9 = -3.051, -1.216
+				{
+					type = "Fillers"
+					rotation = 54.091
+				}
+				10 = 7.33, -3.66
+				{
+					type = "Fillers"
+					rotation = 234.091
+				}
+				11 = 3.267, -1.174
+				{
+					rotation = 159
+				}
+				12 = 2.781, 2.208
+				{
+					rotation = 242
+				}
+				13 = 6.575, 0.696
+				{
+					rotation = 26
+				}
+				14 = 2.77, 5.453
+				{
+					rotation = 137
+				}
+				15 = -2.18, -3.305
+				{
+					rotation = 86
+				}
+				16 = -0.309, 2.853
+				{
+					rotation = 134
+				}
+				17 = -1.242, -7.409
+				{
+					rotation = 102
+				}
+				18 = 0.217, -2.789
+				{
+					rotation = 11
+				}
+				19 = 3.926, -7.37
+				{
+					rotation = 64
+				}
+				20 = 0.726, -5.589
+				{
+					rotation = 64
+				}
+				21 = 12.382, -3.762
+				{
+					rotation = 257
+				}
+				22 = 1.282, -8.477
+				{
+					rotation = 318
+				}
+				23 = 6.807, -7.217
+				{
+					rotation = 331
+				}
+				24 = -2.692, -12.252
+				{
+					rotation = 131
+				}
+				25 = -3.272, -5.785
+				{
+					rotation = 292
+				}
+				26 = 11.856, -5.818
+				{
+					rotation = 28
+				}
+			}
+			wall = 0, 0
+			{
+				towers_architecture = "Central"
+				segments_architecture = "Central"
+				level = 4
+				curveness = 0.5
+				corners
+				{
+					1 = -3.723, -8.653
+					{
+						height_ofs = -0.036
+					}
+					2 = -0.281, -10.376
+					{
+						straight = true
+						height_ofs = 0.167
+					}
+					3 = 3.486, -10.46
+					{
+						straight = true
+						height_ofs = -0.216
+					}
+					4 = 7.225, -9.52
+					5 = 9.278, -7.167
+					6 = 8.84, -1.55
+					{
+						height_ofs = 0.111
+					}
+					7 = 8.69, 2.86
+					{
+						straight = true
+					}
+					8 = 6.025, 5.706
+					9 = 2.955, 8.186
+					10 = 0.842, 6.488
+					11 = -1.456, 4.917
+					12 = -3.79, 1.99
+					{
+						straight = true
+						height_ofs = 0.039
+					}
+					13 = -5.248, -3.317
+					{
+						height_ofs = 0.204
+					}
+				}
+			}
+		}
+
 		def 158 : Castle
 		{
 			name = "Rome"

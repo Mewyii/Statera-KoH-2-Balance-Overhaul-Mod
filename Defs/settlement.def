@@ -34,7 +34,7 @@ def Castle : Settlement
 		SpiceTraders
 	}
 
-	Worker.Gold = 0.75
+	Worker.Gold = 1
 }
 
 extend KeepEffects
@@ -76,7 +76,8 @@ def SpecialSettlementsRandomizationWeights = 2 // Same settlement type limit for
 	float CattleFarm = 20
     float Vineyard = 15
 	float HorseFarm = 15
-	float OasisVillage = 20
+	float OasisVillage = 50
+	float SteppeSettlement = 50
 }
 
 Mine.max_allowed_features_per_settlement_type = 3
@@ -99,9 +100,7 @@ def OasisVillage : Settlement
 		multiple = "Oasis"
 	}
 	
-	description = $[
-	"Areas where shepherds guard and herd large flocks of sheep."]
-	//" These settlements allow the development of {SheepFarming}, where {Meat}, {Wool} and {Parchment} can be produced to satisfy the kingdom's various needs."]
+	description = $["An Oasis is an area in a desert that provides water, food and shelter."]
 	
 	enable_feature
 	{
@@ -110,15 +109,15 @@ def OasisVillage : Settlement
 	
 	production = "1f"
 	
-	icon = "Assets/UI/Elements/Settlements/Icons/UI_Settlement_Village.tga:UI_Settlement_Village#2" //GUID:227fb709071fd87449eb902c070c87e3
-	illustration = "Assets/UI/Elements/Common/Icons/Settlements/UI_Settlement_Village_Illustration.png:UI_Settlement_Village_Illustration#2" //GUID:d01e15f82b19c60488a434e8574b3967
-	selection_sound = "event:/sound_effects/interaction/select/settlement/village"
-	max_identical_settlement_per_realm = 1
+	icon = "Assets/Icons/Features/Oasis.png:Oasis#1"
+	illustration = "Assets/Icons/Features/Oasis.png:Oasis#1"
+	selection_sound = "event:/sound_effects/interaction/select/settlement/flax_field"
+	max_identical_settlement_per_realm = 2
 	
 	radius = 6
 
 	ai_eval_food = 1
-	ai_eval_trade = 3
+	ai_eval_trade = 2
 }
 
 def Oasis : ProvinceFeature
@@ -126,10 +125,50 @@ def Oasis : ProvinceFeature
 	name = "Oasis"
 	flavor = "Oasis description."
 	tooltip = "An Oasis is an area in a desert that provides water, food and shelter."
-	icon = "Assets/UI/Elements/Common/Icons/ProvinceFeatures/Icon_ProvinceFeature_Rivers.tga:Icon_ProvinceFeature_Rivers#2" //GUID:86f09521a72f4f84091ad110928d9d36
-	icon_big = "Assets/UI/Elements/Common/Icons/ProvinceFeatures/Icon_ProvinceFeature_Rivers_60x60.tga:Icon_ProvinceFeature_Rivers_60x60#2" //GUID:5ca7aa0246cccc24b92a7c0169e8bfa7
+	icon = "Assets/Icons/Features/Oasis.png:Oasis#1"
+	icon_big = "Assets/Icons/Features/Oasis.png:Oasis#1"
 	
-	area = [0.125, 0, 1, 0.175]
+	area = [0.125, 0, 0.95, 0.175]
+	spawn_chance = 100
+	special = true
+}
+
+def SteppeSettlement : Settlement
+{
+	name = "Steppe"
+	{
+		multiple = "Steppes"
+	}
+	
+	description = $["A vast, dry, grassy semi-arid plain."]
+	
+	enable_feature
+	{
+		default Steppe
+	}
+	
+	production = "1f 1Levy"
+	
+	icon = "Assets/Icons/Features/Steppe.png:Steppe#1"
+	illustration = "Assets/Icons/Features/Steppe.png:Steppe#1"
+	selection_sound = "event:/sound_effects/interaction/select/settlement/flax_field"
+	max_identical_settlement_per_realm = 3
+	
+	radius = 6
+
+	ai_eval_food = 1
+	ai_eval_military = 1
+}
+
+def Steppe : ProvinceFeature
+{
+	name = "Steppe"
+	flavor = "Steppe description."
+	tooltip = "A vast, dry, grassy semi-arid plain."
+	icon = "Assets/Icons/Features/Steppe.png:Steppe#1"
+	icon_big = "Assets/Icons/Features/Steppe.png:Steppe#1"
+	
+	area = [0.66, 0.5, 1, 0.68]
 	spawn_chance = 100
 	special = true
 }
@@ -139,8 +178,8 @@ def SlaveTradersAfrica : ProvinceFeature
 	name = "Slave Traders (Africa)"
 	flavor = "Slave Traders description."
 	tooltip = "Slave traders can be used to hunt and trade slaves in nearby provinces. Slaves might be used as soldiers, workers or servants."
-	icon_big = "Assets/UI/Elements/Common/Icons/ProvinceFeatures/Icon_ProvinceFeature_Pirates_60x60.tga:Icon_ProvinceFeature_Pirates_60x60#2" //GUID:17804d103ed73b24c8afee901aaed2ce
-	icon = "Assets/UI/Elements/Common/Icons/ProvinceFeatures/Icon_ProvinceFeature_Pirates.tga:Icon_ProvinceFeature_Pirates#2" //GUID:54c3be7b0914c64448465e8d0c8b91ad
+	icon = "Assets/Icons/Features/SlaveTraders.png:SlaveTraders#1"
+	icon_big = "Assets/Icons/Features/SlaveTraders.png:SlaveTraders#1"
 	
 	area = [0, 0, 0.9, 0.25]
 	spawn_chance = 5
@@ -151,8 +190,8 @@ def SlaveTradersRussia : ProvinceFeature
 	name = "Slave Traders (Caucasus and Ural)"
 	flavor = "Slave Traders description."
 	tooltip = "Slave traders can be used to hunt and trade slaves in nearby provinces. Slaves might be used as soldiers, workers or servants."
-	icon_big = "Assets/UI/Elements/Common/Icons/ProvinceFeatures/Icon_ProvinceFeature_Pirates_60x60.tga:Icon_ProvinceFeature_Pirates_60x60#2" //GUID:17804d103ed73b24c8afee901aaed2ce
-	icon = "Assets/UI/Elements/Common/Icons/ProvinceFeatures/Icon_ProvinceFeature_Pirates.tga:Icon_ProvinceFeature_Pirates#2" //GUID:54c3be7b0914c64448465e8d0c8b91ad
+	icon = "Assets/Icons/Features/SlaveTraders.png:SlaveTraders#1"
+	icon_big = "Assets/Icons/Features/SlaveTraders.png:SlaveTraders#1"
 	
 	area = [0.75, 0.35, 1, 0.75]
 	spawn_chance = 3
@@ -163,8 +202,8 @@ def SpiceTraders : ProvinceFeature
 	name = "Spice Traders"
 	flavor = "Spice Traders description."
 	tooltip = "This province is on a spice trade route where spice traders are active. This trade can be profitted from."
-	icon = "Assets/UI/Elements/Common/Icons/ProvinceFeatures/Icon_ProvinceFeature_Sulfur.tga:Icon_ProvinceFeature_Sulfur#2" //GUID:2308106aec45c8b48a208f130c1cea12
-	icon_big = "Assets/UI/Elements/Common/Icons/ProvinceFeatures/Icon_ProvinceFeature_Sulfur_60x60.tga:Icon_ProvinceFeature_Sulfur_60x60#2" //GUID:926e6bc2a61fb244890ec1170cdb1e2b
+	icon = "Assets/Icons/Features/SpiceTrader.png:SpiceTrader#1"
+	icon_big = "Assets/Icons/Features/SpiceTrader.png:SpiceTrader#1"
 	
 	area = [0.65, 0, 1, 0.45]
 	spawn_chance = 4

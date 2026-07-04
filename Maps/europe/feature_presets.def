@@ -340,6 +340,62 @@ extend RealmFeaturesPresets
 			}
 		}
 
+		def SteppesRealmSet : RealmFeaturesPreset 
+		{
+			occurances = 11
+			required_settlements
+			{
+				SteppeSettlement = 3
+			}
+			features
+			{
+				Steppe
+			}
+			desired_in_realms = 100
+			{
+				Samara
+				Al_Jadid
+				Al_Maqhrus
+				Astrakhan
+				Sarkel
+				Manych
+				Izyum
+				Ukek
+				Yedisan
+				Vinnytsia
+				Cherkasy
+			}
+		}
+
+		def DesertRealmSet : RealmFeaturesPreset 
+		{
+			occurances = 13
+			required_settlements
+			{
+				OasisVillage = 2
+			}
+			features
+			{
+				Oasis
+			}
+			desired_in_realms = 100
+			{
+				Siwa
+				Darfur
+				Kaouar
+				Ghat
+				Hoggar
+				Fezzan
+				Waddai
+				Taghaza
+				Ouargla
+				Transjordania
+				Hajrah
+				Al_Duwadimi
+				Homs
+			}
+		}
+
 		def ConstantinopleRealmSet : RealmFeaturesPreset
 		{
 			occurances = 1

@@ -11,7 +11,715 @@ extend Building
 
 	float base_ai_eval = 250
 	ai_eval = base_ai_eval
+
+	bonus_texts
+	{
+		realm
+		{
+			text bonus_row = "[{inactive:if}{clr:gray}]{bonus_text}[{optional_text}][{inactive:if}{/clr}]" //[{clr:gray} -> {final_value}{/clr}]"
+			
+			text All = "{bonus} per Settlement[ {clr:gray}(x{smul}){/clr}]"
+			text Town = "{bonus} in Town"
+			text CoastalSettlement = "{bonus} per Coastal Settlement[ {clr:gray}(x{smul}){/clr}]"
+			text CoastalVillage = "{bonus} per Coastal Village[ {clr:gray}(x{smul}){/clr}]"
+			text Village = "{bonus} per Village[ {clr:gray}(x{smul}){/clr}]"
+			text Farm = "{bonus} per Crop Farm[ {clr:gray}(x{smul}){/clr}]"
+			text ReligiousSettlement = "{bonus} per Monastery/Mosque/Shrine[ {clr:gray}(x{smul}){/clr}]"
+			text KingdomReligiousSettlement = "{bonus} per [{kingdom.religious_settlement_name}|Religious Settlement][ {clr:gray}(x{smul}){/clr}]"
+			text MonasteryOrMosque = "{bonus} per Monastery/Mosque[ {clr:gray}(x{smul}){/clr}]"
+			text Monastery = "{bonus} per Monastery[ {clr:gray}(x{smul}){/clr}]"
+			text Mosque = "{bonus} per Mosque[ {clr:gray}(x{smul}){/clr}]"
+			text Shrine = "{bonus} per Shrine[ {clr:gray}(x{smul}){/clr}]"
+			text Keep = "{bonus} per Castle[ {clr:gray}(x{smul}){/clr}]"
+			text Mine = "{bonus} in Mine"
+			text Quarry = "{bonus} in Quarry"
+			text CattleFarm = "{bonus} in Cattle Farm"
+			text SheepFarm = "{bonus} in Sheep Farm"
+			text HorseFarm = "{bonus} in Horse Farm"
+			text Vineyard = "{bonus} in Vineyard"
+			text HerbsGardens = "{bonus} in Herbs Garden"
+			text FlaxField = "{bonus} in Flax Field"
+			text LoggingCamp = "{bonus} in Logging Camp"
+			text OasisVillage = "{bonus} per Oasis[ {clr:gray}(x{smul}){/clr}]"
+			text SteppeSettlement = "{bonus} per Steppe[ {clr:gray}(x{smul}){/clr}]"
+		}
+		
+		region
+		{
+			text bonus_row = "[{inactive:if}{clr:gray}]{bonus_text} in neighboring provinces[ {clr:gray}(x{smul}){/clr}][{optional_text}][{inactive:if}{/clr}]" //[{clr:gray} -> {final_value}{/clr}]"
+			
+			text All = "{bonus} per Settlement"
+			text Town = "{bonus} per Town"
+			text CoastalSettlement = "{bonus} per Coastal Settlement"
+			text CoastalVillage = "{bonus} per Coastal Village"
+			text Village = "{bonus} per Village"
+			text Farm = "{bonus} per Farm"
+			text ReligiousSettlement = "{bonus} per Religious Settlement"
+			text KingdomReligiousSettlement = "{bonus} per [{kingdom.religious_settlement_name}|Religious Settlement]"
+			text MonasteryOrMosque = "{bonus} per Monastery/Mosque"
+			text Monastery = "{bonus} per Monastery"
+			text Mosque = "{bonus} per Mosque"
+			text Shrine = "{bonus} per Shrine"
+			text Keep = "{bonus} per Castle"
+			text Mine = "{bonus} per Mine"
+			text CattleFarm = "{bonus} per Cattle Farm"
+			text SheepFarm = "{bonus} per Sheep Farm"
+			text HorseFarm = "{bonus} per Horse Farm"
+			text Vineyard = "{bonus} per Vineyard"
+			text HerbsGardens = "{bonus} per Herb Garden"
+			text FlaxField = "{bonus} per Flax Field"
+			text LoggingCamp = "{bonus} per Logging Camp"
+			text OasisVillage = "{bonus} per Oasis"
+			text SteppeSettlement = "{bonus} per Steppe"
+		}
+		// To replace tooltip of a parametric bonus, use the following structure: mod ships_level = 1 { text tooltip = "Better ships" }
+		// To suppress its display in tooltip: kingdom_mod ships_CTH_perc = 20 { text tooltip = null }
+	}
+	
 }
+
+// Templates
+// Military
+def ArmyBarracks : Building
+{
+	name = "Barracks"
+	flavor = "A military facility in which troops receive professional combat training and preparation to march against the enemies of the kingdom."
+
+	icon = "Assets/Icons/Buildings/Barracks.png:Barracks#1"
+	illustration = "Assets/Icons/Buildings/Barracks.png:Barracks#1"
+
+	ai_category = "Military"
+	ai_eval = (!kingdom.ArmyBarracks and kingdom.BlacksmithsGuild and 5000)
+}
+
+// Trade
+
+// Farming
+
+// River
+
+// Sea
+
+// Crafting
+
+// Education
+
+// Culture
+
+// Punishment
+
+
+
+
+
+
+
+
+
+
+
+
+def HorseBreeding : Building
+{
+	name = "Horse Breeding"
+	flavor = "Horse farming and training, mainly for military purpase but with good trade potential as well."
+
+	delete upgrades
+	upgrades
+	{
+		buildings
+		{
+			HorseMarket = 1.5,1
+			
+			SaddlersShop { prerequisites { HorseMarket } }
+			
+			WarhorseBreed = 1.5,3 { prerequisites { Farrier; SaddlersShop } }
+		}
+	}
+
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_HorseBreeding.tga:UI_Structure_Icon_HorseBreeding#2" //GUID:ef7a83374df54c54ab493c9f414519a7
+	illustration = "Assets/UI/Elements/Buildings/Illustrations/UI_Structure_Illustration_HorseBreeding.tga:UI_Structure_Illustration_HorseBreeding#2" //GUID:ec4ffe488535acb45b656fb94fdb31c9
+
+	ai_eval = (!kingdom.HorseBreeding and kingdom.Stables and 1000 * kingdom.realms_count)
+}
+
+def Woodworking : Building
+{
+	name = "Woodworking"
+	flavor = "The woodworking industry provides a lot of raw resources like timber and tar, as well as furniture, forest glass and barrels."
+	upgrades
+	{
+		buildings
+		{
+			Sawmill
+			ColliersKiln
+			
+			CoopersShop = 1,2 { prerequisites { Sawmill } }
+			TarPit = 2,2 { prerequisites { ColliersKiln } }
+			
+			MasterJoiner = 1,2.8 { prerequisites { Sawmill } }
+			Glassworks = 2,2.8 { prerequisites { ColliersKiln } }
+		}
+	}
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Woodworking.tga:UI_Structure_Icon_Woodworking#2" //GUID:3ac344bae9497844d8631a3c9df5d4d0
+	illustration = "Assets/UI/Elements/Buildings/Illustrations/UI_Structure_Illustration_Woodworking.tga:UI_Structure_Illustration_Woodworking#2" //GUID:7e51197314f917b4ba4efe5425868475
+
+	ai_eval = (!kingdom.HorseBreeding and kingdom.CropFarming and 5000)
+}
+
+def Metalworking : Building
+{
+	name = "Metalworking"
+	flavor = "The processes and facilities for mining iron ore and smelting it, to produce wrought iron."
+	upgrades
+	{
+		buildings
+		{
+			Machinery_Mine
+			MinersShacks_Mine
+			
+			BlastFurnace = 1.5,2 { prerequisites { Machinery_Mine; MinersShacks_Mine } }
+		}
+	}
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Metalworking.tga:UI_Structure_Icon_Metalworking#2" //GUID:0dc17aa0a54ba844c815ce2c297509f1
+	illustration = "Assets/UI/Elements/Buildings/Illustrations/UI_Structure_Illustration_Metalworking.tga:UI_Structure_Illustration_Metalworking#2" //GUID:529b3cba887fd3b4d9e89a00e3fba367
+	
+	ai_eval = (kingdom.DeepForests and !kingdom.Metalworking and 500 * kingdom.realms_count)
+}
+
+def FightingGrounds : Building
+{
+	name = "Training Grounds"
+	flavor = "The processes and facilities for mining iron ore and smelting it, to produce wrought iron."
+	upgrades
+	{
+		buildings
+		{
+		}
+	}
+	icon = "Assets/Icons/Buildings/FightingGrounds.png:FightingGrounds#1"
+	illustration = "Assets/Icons/Buildings/FightingGrounds.png:FightingGrounds#1"
+}
+
+def HuntingGrounds : Building
+{
+	name = "Hunting Grounds"
+	flavor = "The processes and facilities for mining iron ore and smelting it, to produce wrought iron."
+	upgrades
+	{
+		buildings
+		{
+		}
+	}
+	icon = "Assets/Icons/Buildings/HuntingGrounds.png:HuntingGrounds#1"
+	illustration = "Assets/Icons/Buildings/HuntingGrounds.png:HuntingGrounds#1"
+}
+
+def BreedingGrounds : Building
+{
+	name = "Breeding Grounds"
+	flavor = "The processes and facilities for mining iron ore and smelting it, to produce wrought iron."
+	upgrades
+	{
+		buildings
+		{
+		}
+	}
+	icon = "Assets/Icons/Buildings/BreedingGrounds.png:BreedingGrounds#1"
+	illustration = "Assets/Icons/Buildings/BreedingGrounds.png:BreedingGrounds#1"
+}
+
+def SacredGrounds : Building
+{
+	name = "Sacred Grounds"
+	flavor = "The processes and facilities for mining iron ore and smelting it, to produce wrought iron."
+	upgrades
+	{
+		buildings
+		{
+		}
+	}
+	icon = "Assets/Icons/Buildings/SacredGrounds.png:SacredGrounds#1"
+	illustration = "Assets/Icons/Buildings/SacredGrounds.png:SacredGrounds#1"
+}
+
+def KhansTent : Building
+{
+	name = "Khan's Tent"
+	flavor = "The processes and facilities for mining iron ore and smelting it, to produce wrought iron."
+	upgrades
+	{
+		buildings
+		{
+		}
+	}
+	icon = "Assets/Icons/Buildings/SacredGrounds.png:SacredGrounds#1"
+	illustration = "Assets/Icons/Buildings/SacredGrounds.png:SacredGrounds#1"
+}
+
+def KhansCourt : Building
+{
+	name = "Khan's Court"
+	flavor = "The processes and facilities for mining iron ore and smelting it, to produce wrought iron."
+	upgrades
+	{
+		buildings
+		{
+		}
+	}
+	icon = "Assets/Icons/Buildings/SacredGrounds.png:SacredGrounds#1"
+	illustration = "Assets/Icons/Buildings/SacredGrounds.png:SacredGrounds#1"
+}
+
+
+// Common Buildings
+// Military
+
+def TrainingField : Building
+{
+	name = "Training Field"
+	flavor = "A field set aside for training peasants and knights, instilling discipline and martial skill in local levies."
+	add_tooltip = "{blt} Required for recruiting {clr:enables_color}trained levy units{/clr}"
+
+	upgrades
+	{
+		buildings
+		{
+			MilitiaDrills = 1,1
+			ArcheryRange = 2,1
+			KnightlyTrainingGrounds = 3,1
+		}
+	}
+	
+	icon = "Assets/Icons/Buildings/TrainingField.png:TrainingField#1"
+	illustration = "Assets/Icons/Buildings/TrainingField.png:TrainingField#1"
+
+	ai_category = "Military"
+	ai_eval = (500 + max(0, ((kingdom.realms_count + 2) / 3) - (kingdom.TrainingField or 0)) * 5000)
+	ai_urgent = (!kingdom.TrainingField)
+}
+
+def ArmyStables : Building
+{
+	type = "Building"
+
+	name = "Stables"
+	flavor = "Essential facilities for breeding, housing, and maintaining the horses that serve both farm and battlefield."
+	add_tooltip = "{blt} Required for recruiting {clr:enables_color}cavalry units{/clr}"
+
+	upgrades
+	{
+		buildings
+		{
+			MessengerService = 1,1
+			KnightlyStables = 2,1
+			Farrier = 3,1
+		}
+	}
+	
+	icon = "Assets/Icons/Buildings/Stables.png:Stables#1"
+	illustration = "Assets/Icons/Buildings/Stables.png:Stables#1"
+
+	ai_category = "Military"
+	ai_eval = ((castle.TrainingField or 0.5) * (castle.Blacksmith or 0.5) * ((base_ai_eval + max(0, (kingdom.realms_count + 4 / 5) - (kingdom.ArmyStables or 0)) * 2000)))
+}
+
+def CityWatch : Building
+{
+	name = "City Watch"
+	flavor = "An organized guard force tasked with maintaining order, patrolling walls, and responding to threats within the city."
+
+	upgrades
+	{
+		buildings
+		{
+			MilitiaBarracks = 1,1
+			AlarmBells = 2,1
+			MercenaryHiringOffice = 3,1
+
+			CrossbowManufactoring = 1,2
+			WatchRotations = 2,2
+		}
+	}
+	
+	icon = "Assets/Icons/Buildings/CityWatch.png:CityWatch#1"
+	illustration = "Assets/Icons/Buildings/CityWatch.png:CityWatch#1"
+
+	ai_category = "Military"
+	ai_eval = ((castle.worker_slots > 10) or 0.25) * (500 + (max(0, (kingdom.realms_count + 4 / 5) - (kingdom.CityWatch or 0)) * 5000))
+}
+
+def ArmySiegeWorkshop : Building
+{
+	name = "Siege Workshop"
+	flavor = "A specialized complex where engineers and craftsmen design, build, and maintain engines of war for siege and defense."
+	add_tooltip = "{blt} Enables constructing {clr:enables_color}siege equipment{/clr}"
+
+	upgrades
+	{
+		buildings
+		{
+			TrebuchetAssemblyYard = 1,1
+			GunpowderStorage = 2,1
+
+			CannonFoundry = 2,2 { prerequisites { GunpowderStorage } }
+		}
+	}
+	
+	icon = "Assets/Icons/Buildings/SiegeWorkshop.png:SiegeWorkshop#1"
+	illustration = "Assets/Icons/Buildings/SiegeWorkshop.png:SiegeWorkshop#1"
+	
+	ai_category = "Military"
+	ai_eval = (!kingdom.ArmySiegeWorkshop and kingdom.Blacksmith and 2000)
+}
+
+def Armory: Building {
+	name = "Armory"
+	flavor = "Central storage and workshop where weapons, armor, and supplies are crafted, repaired, and distributed to troops."
+
+	upgrades
+	{
+		buildings
+		{
+			RecruitmentOffices = 1,1
+			HeraldryChambers = 2,1
+			PlanningRoom = 3,1
+		}
+	}
+	
+	icon = "Assets/Icons/Buildings/Armory.png:Armory#1"
+	illustration = "Assets/Icons/Buildings/Armory.png:Armory#1"
+	
+	ai_category = "Military"
+	ai_eval = (base_ai_eval + 500)
+}
+
+// Trade
+
+def MarketSquare : Building
+{
+	delete upgrades
+	upgrades
+	{
+		buildings
+		{
+			Inns = 1,1
+			AnnualFairs = 2,1
+			GrainTrading = 1,2
+			LinenTrading = 2,2
+			ToolsTrading = 1,3
+		}
+	}
+
+	icon = "Assets/Icons/Buildings/MarketSquare.png:MarketSquare#1"
+	illustration = "Assets/Icons/Buildings/MarketSquare.png:MarketSquare#1"
+
+	ai_eval = (base_ai_eval + 500)
+}
+
+def MerchantHall : Building
+{
+	name = "Merchant Hall"
+	flavor = "A prestigious meeting house where leading merchants regulate trade, negotiate privileges, and shape the commercial fortunes of the city."
+
+	upgrades
+	{
+		buildings
+		{
+			Tavern = 1, 1
+			StandardizationOffices = 2,1
+			DiplomaticOffices = 3,1
+		}
+	}
+	
+	icon = "Assets/Icons/Buildings/MerchantHall.png:MerchantHall#1"
+	illustration = "Assets/Icons/Buildings/MerchantHall.png:MerchantHall#1"
+}
+
+// Farming
+
+def CropFarming : Building
+{
+	delete upgrades
+	upgrades
+	{
+		buildings
+		{
+			HorseHarnessing = 1,1
+			Granary = 2,1
+			FlaxFarming = 3,1
+
+			HeavyPloughsWorkshop = 1,2 { prerequisites { HorseHarnessing } }
+			DryingOvens = 2,2 { prerequisites { Granary } }
+
+			CropsRotation = 1,3 { prerequisites { HeavyPloughsWorkshop } }
+		}
+	}
+
+	icon = "Assets/Icons/Buildings/CropFarming.png:CropFarming#1"
+	illustration = "Assets/Icons/Buildings/CropFarming.png:CropFarming#1"
+}
+
+def WeavingMill : Building
+{
+	name = "Weaving Mill"
+	flavor = "Workshops where fibers from flax or wool are processed into cloth, forming the heart of the textile economy."
+
+	upgrades
+	{
+		buildings
+		{
+			SpinningWheels = 1,1
+			FullingMills = 2,1
+			CanvasMaker = 3,1
+			ClothManufacturing = 1,2 { prerequisites { SpinningWheels } }
+			ArmorWeaving = 2,2 { prerequisites { SpinningWheels; FullingMills } }
+		}
+	}
+	
+	icon = "Assets/Icons/Buildings/WeavingMill.png:WeavingMill#1"
+	illustration = "Assets/Icons/Buildings/WeavingMill.png:WeavingMill#1"
+
+	ai_eval = (base_ai_eval + 500)
+}
+
+def Windmill : Building
+{
+	flavor = "Centers of early mechanization, where grain and raw materials are processed using the steady force of water or wind."
+	delete upgrades
+	upgrades
+	{
+		buildings
+		{
+			Bakery = 1,1
+			Breweries = 2,1
+			OilPress = 3,1
+		}
+	}
+
+	icon = "Assets/Icons/Buildings/Windmill.png:Windmill#1"
+	illustration = "Assets/Icons/Buildings/Windmill.png:Windmill#1"
+}
+// River
+
+def RiverDocks : Building
+{
+	name = "River Docks"
+	flavor = "Wooden piers and quays lining the riverbank, enabling the steady movement of goods, people, and supplies along inland waterways."
+
+    upgrades
+	{
+		buildings
+		{
+			AnglersHuts = 1,1
+			Warehouse_RiverTrade = 1,2
+			Boatwright = 1, 3
+		}
+	}
+
+	icon = "Assets/Icons/Buildings/RiverDocks.png:RiverDocks#1"
+	illustration = "Assets/Icons/Buildings/RiverDocks.png:RiverDocks#1"
+}
+
+def Irrigation : Building
+{
+	name = "Irrigation"
+	flavor = "A system of canals, redirecting water from the rivers to agricultural lands near by. In result the yield is substantially increased."
+
+	upgrades
+	{
+		buildings
+		{
+			WaterWheels = 1,1
+		}
+	}
+
+	icon = "Assets/Icons/Buildings/Irrigation.png:Irrigation#1"
+	illustration = "Assets/Icons/Buildings/Irrigation.png:Irrigation#1"
+}
+
+// Sea
+
+delete Harbor
+def Harbor : Building
+{
+	name = "Harbor"
+	flavor = "A sheltered waterfront where ships anchor safely, serving as the gateway between the city and the open sea."
+
+	upgrades
+	{
+		buildings
+		{
+			Warehouse_Harbor = 1,1
+			Boatwright_Harbor = 1,2
+			HarborChains = 2,1
+			BeaconTowers = 2,2
+		}
+	}
+
+	icon = "Assets/Icons/Buildings/Harbor.png:Harbor#1"
+	illustration = "Assets/Icons/Buildings/Harbor.png:Harbor#1"
+}
+
+def FishingDocks : Building
+{
+	name = "Fishing Docks"
+	flavor = "Simple piers and sheds dedicated to fishing vessels, supplying the city with fresh catch and maritime livelihoods."
+
+	icon = "Assets/Icons/Buildings/FishingDocks.png:FishingDocks#1"
+	illustration = "Assets/Icons/Buildings/FishingDocks.png:FishingDocks#1"
+}
+
+def Shipyard : Building
+{
+	flavor = "A coastal workshop where ships are built, repaired, and refitted, combining timber, iron, and skilled labor into seaworthy vessels."
+    
+	icon = "Assets/Icons/Buildings/Shipyard.png:Shipyard#1"
+	illustration = "Assets/Icons/Buildings/Shipyard.png:Shipyard#1"
+}
+
+def TradePort : Building
+{
+	flavor = "An expanded harbor complex handling large volumes of cargo, customs duties, and long-distance maritime commerce."
+    
+	icon = "Assets/Icons/Buildings/TradePort.png:TradePort#1"
+	illustration = "Assets/Icons/Buildings/TradePort.png:TradePort#1"
+}
+
+// Crafting
+
+def Workshop : Building
+{
+	name = "Workshop"
+	flavor = "A communal workspace where skilled artisans produce tools, furnishings, and construction materials vital to urban growth."
+
+	upgrades
+	{
+		buildings
+		{
+			Toolmaking = 1,1
+			Craftsmenship = 2,1
+			Stonemasonry = 3,1
+		}
+	}
+
+	icon = "Assets/Icons/Buildings/Workshop.png:Workshop#1"
+	illustration = "Assets/Icons/Buildings/Workshop.png:Workshop#1"
+
+	ai_eval = (base_ai_eval + (!kingdom.Workshop and 10000))
+	ai_urgent = (!kingdom.Workshop)
+}
+
+def Blacksmith : Building
+{
+	name = "Blacksmith"
+	flavor = "The forge and anvil form the beating heart of any settlement, where iron is shaped into tools, weapons, and armor."
+
+	upgrades
+	{
+		buildings
+		{
+			SimpleWeaponsmithing = 1,1
+			SimpleArmorsmithing = 2,1
+
+			ForgeBellows = 1,2
+			Toolsmithing = 2,2 { prerequisites { ForgeBellows } }
+
+    		AdvancedWeaponsmithing = 1,3 { prerequisites { Toolsmithing; SimpleWeaponsmithing } }
+    		AdvancedArmorsmithing = 2,3 { prerequisites { Toolsmithing; SimpleArmorsmithing } }
+		}
+	}
+
+	icon = "Assets/Icons/Buildings/Blacksmith.png:Blacksmith#1"
+	illustration = "Assets/Icons/Buildings/Blacksmith.png:Blacksmith#1"
+
+	ai_eval = ((castle.TrainingField or 0) * ((castle.ArmyStables or castle.CityWatch) or 0.66) * ((base_ai_eval + max(0, (kingdom.realms_count + 4 / 5) - (kingdom.Blacksmith or 0)) * 2500)))
+	ai_category = "Military"
+}
+
+def Tanneries : Building
+{
+	name = "Tannery"
+	flavor = "Workshops where animal hides are processed into durable leather for armor, clothing, and trade goods."
+
+	upgrades
+	{
+		buildings
+		{
+			ImprovedTanningLiquors = 1,1
+			Leatherworking = 1,2 { prerequisites { ImprovedTanningLiquors } }
+		}
+	}
+
+	icon = "Assets/Icons/Buildings/Tannery.png:Tannery#1"
+	illustration = "Assets/Icons/Buildings/Tannery.png:Tannery#1"
+
+	ai_eval = (base_ai_eval + (!kingdom.Tanneries and 1000))
+}
+
+// Punishment
+
+def Dungeon : Building
+{
+	name = "Dungeon"
+	flavor = "A grim complex beneath the keep where prisoners await judgment or punishment under the watch of the lord’s men."
+
+	upgrades
+	{
+		buildings
+		{
+			ExecutionersSquare = 1,1
+			TortureChamber = 2,1
+		}
+	}
+
+	icon = "Assets/Icons/Buildings/Dungeon.png:Dungeon#1"
+	illustration = "Assets/Icons/Buildings/Dungeon.png:Dungeon#1"
+}
+
+def CourtHall : Building
+{
+	name = "Court Hall"
+	flavor = "The center of local justice, where disputes are settled, decrees proclaimed, and the authority of the realm upheld."
+
+	upgrades
+	{
+		buildings
+		{
+			JudgesBench = 1,1
+			RecordsArchive = 2,1
+			TownHeralds = 3,1
+
+			CourtScribes = 1,1
+			DisputeMediationOffice = 2,1
+		}
+	}
+
+	icon = "Assets/Icons/Buildings/CourtHall.png:CourtHall#1"
+	illustration = "Assets/Icons/Buildings/CourtHall.png:CourtHall#1"
+}
+
+def CityPrison : Building
+{
+	name = "City Prison"
+	flavor = "A fortified complex designed for the long-term confinement of criminals and political prisoners alike."
+
+	upgrades
+	{
+		buildings
+		{
+			GuardBarracks = 1,1
+			PublicPunishments = 2,1
+		}
+	}
+
+	icon = "Assets/Icons/Buildings/CityPrison.png:CityPrison#1"
+	illustration = "Assets/Icons/Buildings/CityPrison.png:CityPrison#1"
+}
+
+
+// Christian Buildings
+// Religious
 
 def Church : Building
 {
@@ -111,423 +819,9 @@ def EpiscopalPalace : Building
 	illustration = "Assets/Icons/Buildings/EpiscopalPalace.png:EpiscopalPalace#1"
 }
 
-def School : Building
-{
-	name = "School"
-	flavor = "A center of structured learning where monastic and secular scholars lay the foundations of medieval education."
-	upgrades
-	{
-		buildings
-		{
-			EarlyScholasticism = 1,1
-			TriviumCurriculum = 1,2 { prerequisites { EarlyScholasticism } }
-		}
-	}
-	icon = "Assets/Icons/Buildings/School.png:School#1"
-	illustration = "Assets/Icons/Buildings/School.png:School#1"
-
-	ai_eval = (base_ai_eval + 500)
-}
-
-def Library : Building
-{
-	name = "Library"
-	flavor = "A repository of precious manuscripts and knowledge, carefully maintained by the hands of learned monks."
-	upgrades
-	{
-		buildings
-		{
-			Cataloguing = 1,1
-			TranslationWorkshops = 2,1
-
-			ArchiveRoom = 1,2 { prerequisites { Cataloguing } }
-		}
-	}
-	icon = "Assets/Icons/Buildings/Library.png:Library#1"
-	illustration = "Assets/Icons/Buildings/Library.png:Library#1"
-}
-
-def University : Building
-{
-	delete upgrades
-	upgrades
-	{
-		buildings
-		{
-			FacultyTheology = 1,1
-			FacultyMedicine = 2,1
-			FacultyArts = 3,1
-			HighScholasticism = 1,2
-			AcademicCharter = 2,2
-			Observatory_Christian = 3,2
-		}
-	}
-	icon = "Assets/Icons/Buildings/University.png:University#1"
-	illustration = "Assets/Icons/Buildings/University.png:University#1"
-}
-
-def MarketSquare : Building
-{
-	delete upgrades
-	upgrades
-	{
-		buildings
-		{
-			Inns = 1,1
-			AnnualFairs = 2,1
-			GrainTrading = 1,2
-			LinenTrading = 2,2
-			ToolsTrading = 1,3
-		}
-	}
-	icon = "Assets/Icons/Buildings/MarketSquare.png:MarketSquare#1"
-	illustration = "Assets/Icons/Buildings/MarketSquare.png:MarketSquare#1"
-
-	ai_eval = (base_ai_eval + 500)
-}
-
-def MerchantHall : Building
-{
-	name = "Merchant Hall"
-	flavor = "An architectural marvel of great religious and cultural significance."
-	upgrades
-	{
-		buildings
-		{
-			Tavern = 1, 1
-			StandardizationOffices = 2,1
-			DiplomaticOffices = 3,1
-		}
-	}
-	icon = "Assets/Icons/Buildings/MerchantHall.png:MerchantHall#1"
-	illustration = "Assets/Icons/Buildings/MerchantHall.png:MerchantHall#1"
-}
-
-def MerchantsGuild : Building
-{
-	delete upgrades
-	upgrades
-	{
-		buildings
-		{
-			Bazaar = 1,1
-			TradeFair = 1,1
-			
-			MerchantBank = 2,1
-			Caravanserai = 2,1
-		}
-	}
-	icon = "Assets/Icons/Buildings/MerchantsGuild.png:MerchantsGuild#1"
-	illustration = "Assets/Icons/Buildings/MerchantsGuild.png:MerchantsGuild#1"
-}
-
-
-def CropFarming : Building
-{
-	delete upgrades
-	upgrades
-	{
-		buildings
-		{
-			HorseHarnessing = 1,1
-			Granary = 2,1
-			FlaxFarming = 3,1
-
-			HeavyPloughsWorkshop = 1,2 { prerequisites { HorseHarnessing } }
-			DryingOvens = 2,2 { prerequisites { Granary } }
-
-			CropsRotation = 1,3 { prerequisites { HeavyPloughsWorkshop } }
-		}
-	}
-	icon = "Assets/Icons/Buildings/CropFarming.png:CropFarming#1"
-	illustration = "Assets/Icons/Buildings/CropFarming.png:CropFarming#1"
-}
-
-def WeavingMill : Building
-{
-	name = "Weaving Mill"
-	flavor = "Workshops where fibers from flax or wool are processed into cloth, forming the heart of the textile economy."
-	upgrades
-	{
-		buildings
-		{
-			SpinningWheels = 1,1
-			FullingMills = 2,1
-			CanvasMaker = 3,1
-			ClothManufacturing = 1,2 { prerequisites { SpinningWheels } }
-			ArmorWeaving = 2,2 { prerequisites { SpinningWheels; FullingMills } }
-		}
-	}
-	icon = "Assets/Icons/Buildings/WeavingMill.png:WeavingMill#1"
-	illustration = "Assets/Icons/Buildings/WeavingMill.png:WeavingMill#1"
-
-	ai_eval = (base_ai_eval + 500)
-}
-
-def Windmill : Building
-{
-	flavor = "Centers of early mechanization, where grain and raw materials are processed using the steady force of water or wind."
-	delete upgrades
-	upgrades
-	{
-		buildings
-		{
-			Bakery = 1,1
-			Breweries = 2,1
-			OilPress = 3,1
-		}
-	}
-	icon = "Assets/Icons/Buildings/Windmill.png:Windmill#1"
-	illustration = "Assets/Icons/Buildings/Windmill.png:Windmill#1"
-}
-
-def Workshop : Building
-{
-	name = "Workshop"
-	flavor = "A communal workspace where skilled artisans produce tools, furnishings, and construction materials vital to urban growth."
-	upgrades
-	{
-		buildings
-		{
-			Toolmaking = 1,1
-			Craftsmenship = 2,1
-			Stonemasonry = 3,1
-		}
-	}
-	icon = "Assets/Icons/Buildings/Workshop.png:Workshop#1"
-	illustration = "Assets/Icons/Buildings/Workshop.png:Workshop#1"
-
-	ai_eval = (base_ai_eval + (!kingdom.Workshop and 10000))
-	ai_urgent = (!kingdom.Workshop)
-}
-
-def Blacksmith : Building
-{
-	name = "Blacksmith"
-	flavor = "The forge and anvil form the beating heart of any settlement, where iron is shaped into tools, weapons, and armor."
-	upgrades
-	{
-		buildings
-		{
-			ForgeBellows = 1,1
-			Toolsmithing = 1,2 { prerequisites { ForgeBellows } }
-			SimpleWeaponsmithing = 2,1
-			SimpleArmorsmithing = 2,2 { prerequisites { ForgeBellows } }
-		}
-	}
-	icon = "Assets/Icons/Buildings/Blacksmith.png:Blacksmith#1"
-	illustration = "Assets/Icons/Buildings/Blacksmith.png:Blacksmith#1"
-
-	ai_eval = ((castle.TrainingField or 0) * ((2500) / (kingdom.Blacksmith or 1)))
-	ai_category = "Military"
-}
-
-def Tanneries : Building
-{
-	name = "Tannery"
-	flavor = "Workshops where animal hides are processed into durable leather for armor, clothing, and trade goods."
-	upgrades
-	{
-		buildings
-		{
-			ImprovedTanningLiquors = 1,1
-			Leatherworking = 1,2 { prerequisites { ImprovedTanningLiquors } }
-		}
-	}
-	icon = "Assets/Icons/Buildings/Tannery.png:Tannery#1"
-	illustration = "Assets/Icons/Buildings/Tannery.png:Tannery#1"
-
-	ai_eval = (base_ai_eval + (!kingdom.Tanneries and 1000))
-}
-
-def StonemasonsGuild : Building
-{
-	name = "Stonemasons Guild"
-	flavor = "An architectural marvel of great religious and cultural significance."
-	upgrades
-	{
-		buildings
-		{
-			Sculpting = 1,1
-		}
-	}
-	icon = "Assets/Icons/Buildings/StonemasonsGuild.png:StonemasonsGuild#1"
-	illustration = "Assets/Icons/Buildings/StonemasonsGuild.png:StonemasonsGuild#1"
-}
-
-def CraftsmensGuild : Building
-{
-	name = "Craftsmens Guild"
-	flavor = "An architectural marvel of great religious and cultural significance."
-	upgrades
-	{
-		buildings
-		{
-		}
-	}
-	icon = "Assets/Icons/Buildings/CraftsmensGuild.png:CraftsmensGuild#1"
-	illustration = "Assets/Icons/Buildings/CraftsmensGuild.png:CraftsmensGuild#1"
-}
-
-def BlacksmithsGuild : Building
-{
-	name = "Blacksmiths Guild"
-	flavor = "An architectural marvel of great religious and cultural significance."
-	upgrades
-	{
-		buildings
-		{
-			Glassmaking
-    		AdvancedWeaponsmithing
-    		AdvancedArmorsmithing
-		}
-	}
-	icon = "Assets/Icons/Buildings/BlacksmithsGuild.png:BlacksmithsGuild#1"
-	illustration = "Assets/Icons/Buildings/BlacksmithsGuild.png:BlacksmithsGuild#1"
-}
-
-def MasterWorkshop : Building
-{
-	name = "Master Workshop"
-	flavor = "An architectural marvel of great religious and cultural significance."
-	upgrades
-	{
-		buildings
-		{
-		}
-	}
-	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_GreatMosque.tga:UI_Structure_Icon_GreatMosque#2" //GUID:b3dfec0ce310445439f83ef4f3b4ba5c
-	illustration = "Assets/UI/Elements/Buildings/Illustrations/UI_Structure_Illustration_GreatMosque.tga:UI_Structure_Illustration_GreatMosque#2" //GUID:31a9869e48615554984de6221874459d
-}
-
-def Foundry : Building
-{
-	name = "Foundry"
-	flavor = "An architectural marvel of great religious and cultural significance."
-	upgrades
-	{
-		buildings
-		{
-		}
-	}
-	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_GreatMosque.tga:UI_Structure_Icon_GreatMosque#2" //GUID:b3dfec0ce310445439f83ef4f3b4ba5c
-	illustration = "Assets/UI/Elements/Buildings/Illustrations/UI_Structure_Illustration_GreatMosque.tga:UI_Structure_Illustration_GreatMosque#2" //GUID:31a9869e48615554984de6221874459d
-}
-
-def TrainingField : Building
-{
-	name = "Training Field"
-	flavor = "A field set aside for training peasants and knights, instilling discipline and martial skill in local levies."
-	add_tooltip = "{blt} Required for recruiting {clr:enables_color}trained levy units{/clr}"
-	upgrades
-	{
-		buildings
-		{
-			ArcheryRange = 1,1
-			MilitiaDrills = 2,1
-			KnightlyTrainingGrounds = 3,1
-		}
-	}
-	icon = "Assets/Icons/Buildings/TrainingField.png:TrainingField#1"
-	illustration = "Assets/Icons/Buildings/TrainingField.png:TrainingField#1"
-
-	ai_category = "Military"
-	ai_eval = (500 + max(0, ((kingdom.realms_count + 2) / 3) - (kingdom.TrainingField or 0)) * 5000)
-	ai_urgent = (!kingdom.TrainingField)
-}
-
-def ArmyStables : Building
-{
-	type = "Building"
-
-	name = "Stables"
-	flavor = "Essential facilities for breeding, housing, and maintaining the horses that serve both farm and battlefield."
-	add_tooltip = "{blt} Required for recruiting {clr:enables_color}cavalry units{/clr}"
-	upgrades
-	{
-		buildings
-		{
-			MessengerService = 1,1
-			KnightlyStables = 2,1
-			Farrier = 3,1
-		}
-	}
-	icon = "Assets/Icons/Buildings/Stables.png:Stables#1"
-	illustration = "Assets/Icons/Buildings/Stables.png:Stables#1"
-
-	ai_category = "Military"
-	ai_eval = ((castle.TrainingField or 0.5) * (castle.Blacksmith or 0.5) * ((base_ai_eval + max(0, (kingdom.realms_count + 4 / 5) - (kingdom.ArmyStables or 0)) * 2000)))
-}
-
-def CityWatch : Building
-{
-	name = "City Watch"
-	flavor = "An organized guard force tasked with maintaining order, patrolling walls, and responding to threats within the city."
-	upgrades
-	{
-		buildings
-		{
-			MilitiaBarracks = 1,1
-			AlarmBells = 2,1
-			MercenaryHiringOffice = 3,1
-
-			CrossbowManufactoring = 1,2
-			WatchRotations = 2,2
-		}
-	}
-	icon = "Assets/Icons/Buildings/CityWatch.png:CityWatch#1"
-	illustration = "Assets/Icons/Buildings/CityWatch.png:CityWatch#1"
-
-	ai_category = "Military"
-	ai_eval = ((castle.worker_slots > 10) or 0.25) * (500 + (max(0, (kingdom.realms_count + 4 / 5) - (kingdom.CityWatch or 0)) * 5000))
-}
-
-def Armory : Building
-{
-	name = "Armory"
-	flavor = "Central storage and workshop where weapons, armor, and supplies are crafted, repaired, and distributed to troops."
-	upgrades
-	{
-		buildings
-		{
-			RecruitmentOffices = 1,1
-			HeraldryChambers = 2,1
-			PlanningRoom = 3,1
-		}
-	}
-	icon = "Assets/Icons/Buildings/Armory.png:Armory#1"
-	illustration = "Assets/Icons/Buildings/Armory.png:Armory#1"
-	
-	ai_category = "Military"
-	ai_eval = (base_ai_eval + 500)
-}
-
-def ArmySiegeWorkshop : Building
-{
-	name = "Siege Workshop"
-	flavor = "A specialized complex where engineers and craftsmen design, build, and maintain engines of war for siege and defense."
-	add_tooltip = "{blt} Enables constructing {clr:enables_color}siege equipment{/clr}"
-	upgrades
-	{
-		buildings
-		{
-			TrebuchetAssemblyYard = 1,1
-			GunpowderStorage = 2,1
-
-			CannonFoundry = 2,2 { prerequisites { GunpowderStorage } }
-		}
-	}
-	icon = "Assets/Icons/Buildings/SiegeWorkshop.png:SiegeWorkshop#1"
-	illustration = "Assets/Icons/Buildings/SiegeWorkshop.png:SiegeWorkshop#1"
-	
-	ai_category = "Military"
-	ai_eval = (!kingdom.ArmySiegeWorkshop and kingdom.Blacksmith and 2000)
-}
-
-def ArmyBarracks : Building
-{
+// Military
+def ArmyBarracks_Christian: ArmyBarracks {
 	name = "Barracks"
-	flavor = "A military facility in which troops receive professional combat training and preparation to march against the enemies of the kingdom."
 
 	upgrades
 	{
@@ -541,278 +835,537 @@ def ArmyBarracks : Building
 			CombinedArmsDoctrine = 2,2 { prerequisites { InfantryFormations } }
 		}
 	}
-	icon = "Assets/Icons/Buildings/Barracks.png:Barracks#1"
-	illustration = "Assets/Icons/Buildings/Barracks.png:Barracks#1"
-
-	ai_category = "Military"
-	ai_eval = (!kingdom.ArmyBarracks and kingdom.BlacksmithsGuild and 5000)
 }
 
-def ItalianTraderQuarters : Building
+// Trade
+def MerchantsGuild : Building
 {
-	name = "Italian Trader Quarters"
-	flavor = "An architectural marvel of great religious and cultural significance."
-	upgrades
-	{
-		buildings
-		{
-		}
-	}
-	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_GreatMosque.tga:UI_Structure_Icon_GreatMosque#2" //GUID:b3dfec0ce310445439f83ef4f3b4ba5c
-	illustration = "Assets/UI/Elements/Buildings/Illustrations/UI_Structure_Illustration_GreatMosque.tga:UI_Structure_Illustration_GreatMosque#2" //GUID:31a9869e48615554984de6221874459d
-}
-
-def Dungeon : Building
-{
-	name = "Dungeon"
-	flavor = "A grim complex beneath the keep where prisoners await judgment or punishment under the watch of the lord’s men."
-	upgrades
-	{
-		buildings
-		{
-			ExecutionersSquare = 1,1
-			TortureChamber = 2,1
-		}
-	}
-	icon = "Assets/Icons/Buildings/Dungeon.png:Dungeon#1"
-	illustration = "Assets/Icons/Buildings/Dungeon.png:Dungeon#1"
-}
-
-def CourtHall : Building
-{
-	name = "Court Hall"
-	flavor = "The center of local justice, where disputes are settled, decrees proclaimed, and the authority of the realm upheld."
-	upgrades
-	{
-		buildings
-		{
-			JudgesBench = 1,1
-			RecordsArchive = 2,1
-			TownHeralds = 3,1
-		}
-	}
-	icon = "Assets/Icons/Buildings/CourtHall.png:CourtHall#1"
-	illustration = "Assets/Icons/Buildings/CourtHall.png:CourtHall#1"
-}
-
-def CityPrison : Building
-{
-	name = "City Prison"
-	flavor = "A fortified complex designed for the long-term confinement of criminals and political prisoners alike."
-	upgrades
-	{
-		buildings
-		{
-			GuardBarracks = 1,1
-			PublicPunishments = 2,1
-		}
-	}
-	icon = "Assets/Icons/Buildings/CityPrison.png:CityPrison#1"
-	illustration = "Assets/Icons/Buildings/CityPrison.png:CityPrison#1"
-}
-
-def TownHall : Building
-{
-	name = "Town Hall"
-	flavor = "The heart of civic life, where the town’s magistrates deliberate and communal order is upheld."
-	upgrades
-	{
-		buildings
-		{
-		}
-	}
-	icon = "Assets/Icons/Buildings/TownHall.png:TownHall#1"
-	illustration = "Assets/Icons/Buildings/TownHall.png:TownHall#1"
-}
-
-def TournamentGrounds : Building
-{
-	name = "Tournament Grounds"
-	flavor = "Fields dedicated to martial display and noble sport, where knights test skill and honor before their peers."
-	upgrades
-	{
-		buildings
-		{
-		}
-	}
-	icon = "Assets/Icons/Buildings/TournamentGrounds.png:TournamentGrounds#1"
-	illustration = "Assets/Icons/Buildings/TournamentGrounds.png:TournamentGrounds#1"
-}
-
-def Theater : Building
-{
-	name = "Theater"
-	flavor = "A house of performance and wit where stories, morality plays, and comedies animate public imagination."
-	piety_type = "Catholic"
-    upgrades
-	{
-		buildings
-		{
-		}
-	}
-	icon = "Assets/Icons/Buildings/Theater.png:Theater#1"
-	illustration = "Assets/Icons/Buildings/Theater.png:Theater#1"
-}
-
-def Bathhouse : Building
-{
-	name = "Bathhouse"
-	flavor = "A social and sanitary institution where citizens gather to cleanse body and spirit in heated chambers and flowing water."
-	piety_type = "Orthodox"
-    upgrades
-	{
-		buildings
-		{
-		}
-	}
-	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_PublicBaths_Muslim.tga:UI_Structure_Icon_PublicBaths_Muslim#2" //GUID:5f673ce71c628bc4494b8953a930c28a
-	illustration = "Assets/UI/Elements/Buildings/Illustrations/UI_Structure_Illustration_GreatMosque.tga:UI_Structure_Illustration_GreatMosque#2" //GUID:31a9869e48615554984de6221874459d
-}
-
-delete Harbor
-def Harbor : Building
-{
-	name = "Harbor"
-	flavor = "An advanced hub for maritime affairs, both civil and military."
-
-	icon = "Assets/Icons/Buildings/Harbor.png:Harbor#1"
-	illustration = "Assets/Icons/Buildings/Harbor.png:Harbor#1"
-	upgrades
-	{
-		buildings
-		{
-			Warehouse_Harbor = 1,1
-			Boatwright_Harbor = 1,2
-			HarborChains = 2,1
-			BeaconTowers = 2,2
-		}
-	}
-}
-
-def Shipyard : Building
-{
-	icon = "Assets/Icons/Buildings/Shipyard.png:Shipyard#1"
-	illustration = "Assets/Icons/Buildings/Shipyard.png:Shipyard#1"
-}
-
-def TradePort : Building
-{
-	icon = "Assets/Icons/Buildings/TradePort.png:TradePort#1"
-	illustration = "Assets/Icons/Buildings/TradePort.png:TradePort#1"
-}
-
-def FishingDocks : Building
-{
-	name = "Fishing Docks"
-	flavor = "An architectural marvel of great religious and cultural significance."
-    upgrades
-	{
-		buildings
-		{
-		}
-	}
-	icon = "Assets/Icons/Buildings/FishingDocks.png:FishingDocks#1"
-	illustration = "Assets/Icons/Buildings/FishingDocks.png:FishingDocks#1"
-}
-
-def RiverDocks : Building
-{
-	name = "River Docks"
-	flavor = "An architectural marvel of great religious and cultural significance."
-    upgrades
-	{
-		buildings
-		{
-			AnglersHuts = 1,1
-			Warehouse_RiverTrade = 1,2
-			Boatwright = 1, 3
-		}
-	}
-	icon = "Assets/Icons/Buildings/RiverDocks.png:RiverDocks#1"
-	illustration = "Assets/Icons/Buildings/RiverDocks.png:RiverDocks#1"
-}
-
-def Irrigation : Building
-{
-	name = "Irrigation"
-	flavor = "A system of canals, redirecting water from the rivers to agricultural lands near by. In result the yield is substantially increased."
-	upgrades
-	{
-		buildings
-		{
-			WaterWheels = 1,1
-		}
-	}
-	icon = "Assets/Icons/Buildings/Irrigation.png:Irrigation#1"
-	illustration = "Assets/Icons/Buildings/Irrigation.png:Irrigation#1"
-}
-
-def HorseBreeding : Building
-{
-	name = "Horse Breeding"
-	flavor = "Horse farming and training, mainly for military purpase but with good trade potential as well."
+	name = "Merchant's Guild"
 
 	delete upgrades
 	upgrades
 	{
 		buildings
 		{
-			HorseMarket = 1.5,1
+			TradeFair = 1,1
 			
-			SaddlersShop { prerequisites { HorseMarket } }
-			
-			WarhorseBreed = 1.5,3 { prerequisites { Farrier; SaddlersShop } }
+			MerchantBank = 2,1
 		}
 	}
 
-	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_HorseBreeding.tga:UI_Structure_Icon_HorseBreeding#2" //GUID:ef7a83374df54c54ab493c9f414519a7
-	illustration = "Assets/UI/Elements/Buildings/Illustrations/UI_Structure_Illustration_HorseBreeding.tga:UI_Structure_Illustration_HorseBreeding#2" //GUID:ec4ffe488535acb45b656fb94fdb31c9
-
-	ai_eval = (!kingdom.HorseBreeding and kingdom.Stables and 1000 * kingdom.realms_count)
+	icon = "Assets/Icons/Buildings/MerchantsGuild.png:MerchantsGuild#1"
+	illustration = "Assets/Icons/Buildings/MerchantsGuild.png:MerchantsGuild#1"
 }
 
-def Woodworking : Building
+// Farming
+
+// River
+
+// Sea
+
+def ItalianTraderQuarters : Building
 {
-	name = "Woodworking"
-	flavor = "The woodworking industry provides a lot of raw resources like timber and tar, as well as furniture, forest glass and barrels."
+	name = "Italian Trader Quarters"
+	flavor = "A privileged district granted to foreign merchants, dominated by Italian trading houses, warehouses, and consulates."
+
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_GreatMosque.tga:UI_Structure_Icon_GreatMosque#2" //GUID:b3dfec0ce310445439f83ef4f3b4ba5c
+	illustration = "Assets/UI/Elements/Buildings/Illustrations/UI_Structure_Illustration_GreatMosque.tga:UI_Structure_Illustration_GreatMosque#2" //GUID:31a9869e48615554984de6221874459d
+}
+
+def Admiralty : Building
+{
+	name = "Admiralty"
+	flavor = "Well organized local naval fleet provides significant support in the defense of a province."
+	add_tooltip = "Enables 'Expedition' action for all merchants"
+
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Admiralty.tga:UI_Structure_Icon_Admiralty#2" //GUID:fbea120ccdc37cb42be1e9f09f8278ea
+	illustration = "Assets/UI/Elements/Buildings/Illustrations/UI_Structure_Illustration_Admiralty.tga:UI_Structure_Illustration_Admiralty#2" //GUID:5502fec1218157147a14a8e7163651fc
+}
+
+// Crafting
+def StonemasonsGuild : Building
+{
+	name = "Stonemasons Guild"
+	flavor = "A powerful brotherhood of master masons controlling stonework, construction standards, and monumental building projects."
+
 	upgrades
 	{
 		buildings
 		{
-			Sawmill
-			ColliersKiln
-			
-			CoopersShop = 1,2 { prerequisites { Sawmill } }
-			TarPit = 2,2 { prerequisites { ColliersKiln } }
-			
-			MasterJoiner = 1,2.8 { prerequisites { Sawmill } }
-			Glassworks = 2,2.8 { prerequisites { ColliersKiln } }
+			Sculpting = 1,1
 		}
 	}
-	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Woodworking.tga:UI_Structure_Icon_Woodworking#2" //GUID:3ac344bae9497844d8631a3c9df5d4d0
-	illustration = "Assets/UI/Elements/Buildings/Illustrations/UI_Structure_Illustration_Woodworking.tga:UI_Structure_Illustration_Woodworking#2" //GUID:7e51197314f917b4ba4efe5425868475
 
-	ai_eval = (!kingdom.HorseBreeding and kingdom.CropFarming and 5000)
+	icon = "Assets/Icons/Buildings/StonemasonsGuild.png:StonemasonsGuild#1"
+	illustration = "Assets/Icons/Buildings/StonemasonsGuild.png:StonemasonsGuild#1"
 }
 
-def Metalworking : Building
+def CraftsmensGuild : Building
 {
-	name = "Metalworking"
-	flavor = "The processes and facilities for mining iron ore and smelting it, to produce wrought iron."
+	name = "Craftsmens Guild"
+	flavor = "A civic organization uniting diverse artisans, protecting their rights, and upholding standards of skilled labor."
+
 	upgrades
 	{
 		buildings
 		{
-			Machinery_Mine
-			MinersShacks_Mine
-			
-			BlastFurnace = 1.5,2 { prerequisites { Machinery_Mine; MinersShacks_Mine } }
 		}
 	}
-	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Metalworking.tga:UI_Structure_Icon_Metalworking#2" //GUID:0dc17aa0a54ba844c815ce2c297509f1
-	illustration = "Assets/UI/Elements/Buildings/Illustrations/UI_Structure_Illustration_Metalworking.tga:UI_Structure_Illustration_Metalworking#2" //GUID:529b3cba887fd3b4d9e89a00e3fba367
-	
-	ai_eval = (kingdom.DeepForests and !kingdom.Metalworking and 500 * kingdom.realms_count)
+
+	icon = "Assets/Icons/Buildings/CraftsmensGuild.png:CraftsmensGuild#1"
+	illustration = "Assets/Icons/Buildings/CraftsmensGuild.png:CraftsmensGuild#1"
 }
 
+def BlacksmithsGuild : Building
+{
+	name = "Blacksmiths Guild"
+	flavor = "An influential association of smiths regulating metalworking, weapon forging, and the quality of iron goods."
 
+	upgrades
+	{
+		buildings
+		{
+			Glassmaking
+		}
+	}
+
+	icon = "Assets/Icons/Buildings/BlacksmithsGuild.png:BlacksmithsGuild#1"
+	illustration = "Assets/Icons/Buildings/BlacksmithsGuild.png:BlacksmithsGuild#1"
+}
+
+// Education
+
+def School_Christian : Building
+{
+	name = "School"
+	flavor = "A center of structured learning where monastic and secular scholars lay the foundations of medieval education."
+
+	upgrades
+	{
+		buildings
+		{
+			EarlyScholasticism = 1,1
+			TriviumCurriculum = 1,2 { prerequisites { EarlyScholasticism } }
+		}
+	}
+
+	icon = "Assets/Icons/Buildings/School.png:School#1"
+	illustration = "Assets/Icons/Buildings/School.png:School#1"
+
+	ai_eval = (base_ai_eval + 500)
+}
+
+def Library_Christian : Building
+{
+	name = "Library"
+	flavor = "A repository of precious manuscripts and knowledge, carefully maintained by the hands of learned monks."
+
+	upgrades
+	{
+		buildings
+		{
+			Cataloguing = 1,1
+			TranslationWorkshops = 2,1
+
+			ArchiveRoom = 1,2 { prerequisites { Cataloguing } }
+		}
+	}
+
+	icon = "Assets/Icons/Buildings/Library.png:Library#1"
+	illustration = "Assets/Icons/Buildings/Library.png:Library#1"
+}
+
+def University_Christian : Building
+{
+	name = "University"
+
+	upgrades
+	{
+		buildings
+		{
+			FacultyTheology = 1,1
+			FacultyMedicine = 2,1
+			FacultyArts = 3,1
+			HighScholasticism = 1,2
+			AcademicCharter = 2,2
+			Observatory_Christian = 3,2
+		}
+	}
+
+	icon = "Assets/Icons/Buildings/University.png:University#1"
+	illustration = "Assets/Icons/Buildings/University.png:University#1"
+}
+
+// Culture
+
+def TownHall_Christian : Building
+{
+	name = "Town Hall"
+	flavor = "The heart of civic life, where the town’s magistrates deliberate and communal order is upheld."
+
+	upgrades
+	{
+		buildings
+		{
+		}
+	}
+
+	icon = "Assets/Icons/Buildings/TownHall.png:TownHall#1"
+	illustration = "Assets/Icons/Buildings/TownHall.png:TownHall#1"
+}
+
+def TournamentGrounds_Christian : Building
+{
+	name = "Tournament Grounds"
+	flavor = "Fields dedicated to martial display and noble sport, where knights test skill and honor before their peers."
+
+	upgrades
+	{
+		buildings
+		{
+		}
+	}
+
+	icon = "Assets/Icons/Buildings/TournamentGrounds.png:TournamentGrounds#1"
+	illustration = "Assets/Icons/Buildings/TournamentGrounds.png:TournamentGrounds#1"
+}
+
+def Theater_Christian : Building
+{
+	name = "Theater"
+	flavor = "A house of performance and wit where stories, morality plays, and comedies animate public imagination."
+
+    upgrades
+	{
+		buildings
+		{
+		}
+	}
+
+	icon = "Assets/Icons/Buildings/Theater.png:Theater#1"
+	illustration = "Assets/Icons/Buildings/Theater.png:Theater#1"
+}
+
+// Punishment
+
+
+// Muslim Buildings
+// Religious
+
+def Masjid : Building
+{
+	name = "Masjid"
+	flavor = "A Masjid serves as the local center of worship, community gathering, and religious instruction, reinforcing faith, social cohesion, and daily ritual life."
+	piety_type = "Muslim"
+	delete upgrades
+	upgrades
+	{
+		buildings
+		{
+			TeachingCircles = 1,1
+			AblutionCourtyard = 2,1
+			Minbar = 3,1
+
+			Kuttab = 1,2 { prerequisites { TeachingCircles } }
+			MysticalTraditions = 2,2 { prerequisites { TeachingCircles } }
+
+			RuralKuttabs = 1,3 { prerequisites { Kuttab } }
+		}
+	}
+	icon = "Assets/Icons/Buildings/Masjid.png:Masjid#1"
+	illustration = "Assets/Icons/Buildings/Masjid.png:Masjid#1"
+}
+
+def GreatMosque : Building
+{
+	name = "Great Mosque"
+	flavor = "A Great Mosque is the principal religious monument of the city, hosting Friday sermons, major gatherings, and scholarly activity while projecting spiritual and political authority."
+	piety_type = "Muslim"
+	delete upgrades
+	upgrades
+	{
+		buildings
+		{
+			Khutba = 1,1
+			DomedSanctuary = 2,1
+			MonumentalMinaret = 3,1
+
+			AdvancedTheology = 1,2 { prerequisites { TeachingCircles } }
+			GeometricTilework = 2,2 { prerequisites { DomedSanctuary } }
+		}
+	}
+	icon = "Assets/Icons/Buildings/GreatMosque.png:GreatMosque#1"
+	illustration = "Assets/Icons/Buildings/GreatMosque.png:GreatMosque#1"
+}
+
+def ShariaCourt : Building
+{
+	name = "Sharia Court"
+	flavor = "A Sharia Court administers justice according to Islamic law, resolving civil, commercial, and moral disputes to ensure order, legitimacy, and stability."
+	piety_type = "Muslim"
+	upgrades
+	{
+		buildings
+		{
+			FatwaCouncil = 1,1
+			MoralOversight = 2,1
+		}
+	}
+	icon = "Assets/Icons/Buildings/ShariaCourt.png:ShariaCourt#1"
+	illustration = "Assets/Icons/Buildings/ShariaCourt.png:ShariaCourt#1"
+}
+
+def DarAlImara : Building
+{
+	name = "Dar Al Imara"
+	flavor = "A Dar al-Imara functions as the seat of the governor, coordinating administration, taxation, and military oversight on behalf of the ruling authority."
+	piety_type = "Muslim"
+	upgrades
+	{
+		buildings
+		{
+			RoyalDecreesOffice = 1,1
+			CentralizationReforms = 1,2 { prerequisites { RoyalDecreesOffice } }
+			ViziersOffices = 2,1
+		}
+	}
+	icon = "Assets/Icons/Buildings/DarAlImara.png:DarAlImara#1"
+	illustration = "Assets/Icons/Buildings/DarAlImara.png:DarAlImara#1"
+}
+
+// Military
+def ArmyBarracks_Muslim: ArmyBarracks {
+	name = "Barracks"
+
+	upgrades
+	{
+		buildings
+		{
+		}
+	}
+}
+
+// Trade
+def GreatBazaar : Building
+{
+	name = "Great Bazaar"
+
+	upgrades
+	{
+		buildings
+		{
+			MarketOffices = 1,1
+
+			Caravanserai = 2,1
+		}
+	}
+
+	icon = "Assets/Icons/Buildings/GreatBazaar.png:GreatBazaar#1"
+	illustration = "Assets/Icons/Buildings/GreatBazaar.png:GreatBazaar#1"
+}
+
+// Farming
+
+// River
+
+// Sea
+
+def ForeignTraderQuarters : Building
+{
+	name = "Foreign Trader Quarters"
+	flavor = "A privileged district granted to foreign merchants, dominated by Italian trading houses, warehouses, and consulates."
+
+	upgrades
+	{
+		buildings
+		{
+		}
+	}
+}
+
+def DiwanAlBahr : Building
+{
+	name = "Diwan al-Bahr"
+
+	flavor = "The Diwan al-Bahr oversees maritime affairs, managing ports, trade fleets, and naval logistics to ensure the smooth operation of the city’s coastal commerce."
+
+	upgrades
+	{
+		buildings
+		{
+		}
+	}
+
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Admiralty.tga:UI_Structure_Icon_Admiralty#2" //GUID:fbea120ccdc37cb42be1e9f09f8278ea
+	illustration = "Assets/UI/Elements/Buildings/Illustrations/UI_Structure_Illustration_Admiralty.tga:UI_Structure_Illustration_Admiralty#2" //GUID:5502fec1218157147a14a8e7163651fc
+}
+
+// Crafting
+def MasterStonemason : Building
+{
+	name = "Master Stonemason"
+	flavor = "A powerful brotherhood of master masons controlling stonework, construction standards, and monumental building projects."
+
+	upgrades
+	{
+		buildings
+		{
+			Sculpting_Muslim = 1,1
+		}
+	}
+
+	icon = "Assets/Icons/Buildings/StonemasonsGuild.png:StonemasonsGuild#1"
+	illustration = "Assets/Icons/Buildings/StonemasonsGuild.png:StonemasonsGuild#1"
+}
+
+def MasterWorkshop : Building
+{
+	name = "Master Workshop"
+	flavor = "A civic organization uniting diverse artisans, protecting their rights, and upholding standards of skilled labor."
+
+	upgrades
+	{
+		buildings
+		{
+		}
+	}
+
+	icon = "Assets/Icons/Buildings/CraftsmensGuild.png:CraftsmensGuild#1"
+	illustration = "Assets/Icons/Buildings/CraftsmensGuild.png:CraftsmensGuild#1"
+}
+
+def MasterBlacksmith : Building
+{
+	name = "Master Blacksmith"
+	flavor = "An influential association of smiths regulating metalworking, weapon forging, and the quality of iron goods."
+
+	upgrades
+	{
+		buildings
+		{
+			Glassmaking_Muslim = 1,1
+		}
+	}
+
+	icon = "Assets/Icons/Buildings/BlacksmithsGuild.png:BlacksmithsGuild#1"
+	illustration = "Assets/Icons/Buildings/BlacksmithsGuild.png:BlacksmithsGuild#1"
+}
+
+// Education
+def School_Muslim : Building
+{
+	name = "Madrasa"
+	flavor = "A center of higher learning dedicated to islamic law, theology, arithmetics and arabic literature."
+
+	upgrades
+	{
+		buildings
+		{
+			QuranicStudies = 1,1
+            LogicPhilosophy = 2,1
+			WomensTeachingCircles = 3,1
+
+			ReligiousOrthodoxy = 1,2 { prerequisites { QuranicStudies } }
+            EthicsStudies = 2,2 { prerequisites { LogicPhilosophy } }
+		}
+	}
+
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Madrasah.tga:UI_Structure_Icon_Madrasah#2" //GUID:3c34b847f091e0b48afe4155a08f9500
+	illustration = "Assets/UI/Elements/Buildings/Illustrations/UI_Structure_Illustration_Madrasah.tga:UI_Structure_Illustration_Madrasah#2" //GUID:be1912a8159ffa4418c87022f92898bd
+
+	ai_eval = (base_ai_eval + 500)
+}
+
+def Library_Muslim : Building
+{
+	name = "House of Books"
+	flavor = "A House of Books preserves and copies manuscripts, supporting literacy, learning, and the transmission of religious and secular knowledge."
+
+	upgrades
+	{
+		buildings
+		{
+			Cataloguing_Muslim = 1,1
+			TranslationWorkshops_Muslim = 2,1
+
+			ScientificNotation = 2,2 { prerequisites { TranslationWorkshops_Muslim } }
+		}
+	}
+
+	icon = "Assets/Icons/Buildings/Library.png:Library#1"
+	illustration = "Assets/Icons/Buildings/Library.png:Library#1"
+}
+
+def University_Muslim : Building
+{
+	name = "House of Wisdom"
+
+	flavor = "A House of Wisdom is a major center of scholarship and translation, where scholars study, translate, and advance knowledge in science, philosophy, and medicine."
+
+	upgrades
+	{
+		buildings
+		{
+			AdvancedPhilosophy = 1,1
+            Observatory_Muslim = 2,1
+            MedicinePharmacy = 2,2
+            MathematicsEngineering = 3,1
+		}
+	}
+
+	icon = "Assets/Icons/Buildings/University.png:University#1"
+	illustration = "Assets/Icons/Buildings/University.png:University#1"
+}
+
+// Culture
+
+def TownHall_Muslim : Building
+{
+	name = "Diwan"
+
+	flavor = "The Diwan serves as the administrative center of the city, coordinating governance, taxation, and civic management under the authority of the local ruler."
+
+	upgrades
+	{
+		buildings
+		{
+		}
+	}
+
+	icon = "Assets/Icons/Buildings/TownHall.png:TownHall#1"
+	illustration = "Assets/Icons/Buildings/TownHall.png:TownHall#1"
+}
+
+def Bathhouse_Muslim : Building
+{
+	name = "Bathhouse"
+	flavor = "A social and sanitary institution where citizens gather to cleanse body and spirit in heated chambers and flowing water."
+
+	upgrades
+	{
+		buildings
+		{
+		}
+	}
+
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_PublicBaths_Muslim.tga:UI_Structure_Icon_PublicBaths_Muslim#2" //GUID:5f673ce71c628bc4494b8953a930c28a
+	illustration = "Assets/UI/Elements/Buildings/Illustrations/UI_Structure_Illustration_GreatMosque.tga:UI_Structure_Illustration_GreatMosque#2" //GUID:31a9869e48615554984de6221874459d
+}
+
+def Bimaristan : Building
+{
+	name = "House of Healing"
+	flavor = "A House of Healing or Bimaristan is a sophisticated medical institution where theory and practice advance side by side."
+
+	upgrades
+	{
+		buildings
+		{
+		}
+	}
+
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_PublicBaths_Muslim.tga:UI_Structure_Icon_PublicBaths_Muslim#2" //GUID:5f673ce71c628bc4494b8953a930c28a
+	illustration = "Assets/UI/Elements/Buildings/Illustrations/UI_Structure_Illustration_GreatMosque.tga:UI_Structure_Illustration_GreatMosque#2" //GUID:31a9869e48615554984de6221874459d
+}
+
+// Punishment

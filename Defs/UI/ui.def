@@ -680,3 +680,52 @@ def BuildingSlot : UIComponent
 		allow_open_build_window = false
 	}
 }
+
+def CulturesView : PoliticalView
+{
+	name = "Cultures"
+	description = "Shows the distribution of cultures amongst all existing kingdoms. Selecting a culture shows its spread in the world."
+	
+	color defaultColor = 0, 0, 0, 0 // 000000FF
+	
+	bool useSelectionColor = false
+	color selectedColor = 255, 0, 255 // FF00FFFF
+	
+	float non_selection_desaturate_perc = 0
+	
+	//tint values, for when culture is selected
+	float color_map_min = 0.5
+	float color_map_max = 1.5
+	
+	colors_per_culture //these are culture groups
+	{
+		color Turkic = "#fb4242"
+		color WestGermanic = "#8B0000"
+		color Arberian = "#FF7F50"
+		color Iberian = "#FF4500"
+		color Latin = "#FFA500"
+		color Arabic = "#fad710"
+		color WestSlavic = "#BDB76B"
+		color Celtic = "#32CD32"
+		color SouthSlavic = "#2E8B57"
+		color Mongolic = "#008000"
+		color FinnoUgric = "#556B2F"
+		color African = "#6B8E23"
+		color Iranic = "#9ACD32"
+		color Nordic = "#004B87"
+		color Wallachian = "#00008B"
+		color Caucasian = "#5179f0"
+		color Gaelic = "#96c9f3"
+		color EastSlavic = "#3bd3f2"
+		color Greek = "#800080"
+		color Germanic = "#663399"
+		color Baltic = "#e14de1"
+		color Magyar = "#A52A2A"
+		color Berber = "#8B4513"
+		color English = "#b92424"
+		color Steppe = "#2d9626"
+		color ArabicNomadic = "#d8bb15"
+		color Italian = "#57bcd0"
+		color Frankish = "#0c39bd"
+	}
+}

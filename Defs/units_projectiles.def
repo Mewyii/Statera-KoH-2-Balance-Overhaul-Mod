@@ -21,3 +21,17 @@ def JavelinSalvo : ArrowSalvo
 	min_shoot_range = 5
 	max_shoot_range = 20 
 }
+
+def ShortbowSteppeSalvo : ArrowSalvo
+{
+	arrow_model = "Assets/Units/Arrow/Arrow_Steppe_Cavalry_01.prefab" //GUID:7614b20774c7cb1448c6068198d1459a
+	min_shoot_range = 10
+	max_shoot_range = 45
+}
+
+def CompositeBowSteppeSalvo : ArrowSalvo
+{
+	arrow_model = "Assets/Units/Arrow/Arrow_Steppe_Cavalry_01.prefab" //GUID:7614b20774c7cb1448c6068198d1459a
+	min_shoot_range = 10
+	max_shoot_range = 55
+}

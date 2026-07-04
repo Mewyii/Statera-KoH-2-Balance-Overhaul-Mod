@@ -20,6 +20,12 @@ extend CommonDistrict
 		Woodworking
 		Stoneworking
 		Metalworking
+		FightingGrounds
+		HuntingGrounds
+		BreedingGrounds
+		SacredGrounds
+		KhansTent
+		KhansCourt { prerequisites { KhansTent } }
 	}
 }
 
@@ -34,7 +40,7 @@ def PFDistrict : District
 		SilverSmelting { prerequisites { Metalworking; MarketSquare } }
 		GoldSmelting { prerequisites { Metalworking; MarketSquare } }
 
-		AmberTrade { prerequisites { MarketSquare } } //next to jewels
+		AmberTrade { prerequisites { MarketSquare } }
 		MineralsTrade { prerequisites { MarketSquare } }
 		
 		CamelsTrade { prerequisites { MarketSquare } }
@@ -43,51 +49,6 @@ def PFDistrict : District
 		SaltTrade { prerequisites { MarketSquare } }
 		SaltpeterTrade { prerequisites { MarketSquare } }		
 		SulfurTrade { prerequisites { MarketSquare } }
-	}
-}
-
-def MonasteriesDistrict : District
-{
-	delete buildings
-	buildings
-	{
-		Church = 1,1
-		Masjid = 1,1
-		Temple = 1,1
-
-		CityMonastery = 2,1
-
-		Cathedral = 1,2 { prerequisites { Church } }
-		GreatMosque = 1.5,2 { prerequisites { Masjid } }	
-
-		EcclesiasticalCourt = 2,2 { prerequisites { Church; Dungeon } }
-		EpiscopalPalace = 1.5,3 { prerequisites { StonemasonsGuild; Cathedral; EcclesiasticalCourt } }
-	}
-}
-
-extend CropFarmsDistrict
-{
-    delete buildings
-	buildings
-	{
-		CropFarming = 1,1
-
-		WeavingMill = 1,2
-
-		Windmill = 1,3 { prerequisites { CropFarming } }
-	}
-}
-
-def VillagesDistrict : District
-{
-	delete buildings
-	buildings
-	{
-		MarketSquare = 1,1
-
-		MerchantHall = 1,2 { prerequisites { MarketSquare } }
-
-		MerchantsGuild = 1,3 { prerequisites { MerchantHall } }
 	}
 }
 
@@ -103,34 +64,61 @@ def CastlesDistrict : District
 		ArmySiegeWorkshop = 2,2
 
 		Armory = 1,3 { prerequisites { TrainingField; Blacksmith } }
-		ArmyBarracks = 2,3 { prerequisites { TrainingField; School } }
+
+		ArmyBarracks_Christian = 2,3 { prerequisites { TrainingField; School_Christian } }
+
+		ArmyBarracks_Muslim = 2,3 { prerequisites { TrainingField; School_Muslim } }
 	}
 }
 
-
-def SeaShoreDistrict : District
+def VillagesDistrict : District
 {
-	name = "Sea"
-	color = "#3F5B6ACC"
-	
-	requires { Coastal }
-
-	caption_count = (coastal_settlements_count)
 	delete buildings
 	buildings
 	{
-		FishingDocks = 2,1
-		Harbor = 1,1
+		MarketSquare = 1,1
 
-		TradePort = 1,2 { prerequisites { Harbor } }
-		Shipyard = 2,2 { prerequisites { Harbor } }
-		
-		ItalianTraderQuarters = 1,3 { prerequisites { TradePort } }	
-		Admiralty = 2,3 { prerequisites { StonemasonsGuild; Shipyard } }
+		MerchantHall = 1,2 { prerequisites { MarketSquare } }
+
+		MerchantsGuild = 1,3 { prerequisites { MerchantHall } }
+
+		GreatBazaar = 1,3 { prerequisites { MerchantHall } }
 	}
-	
-	backgroud = "Assets/UI/Elements/BuildingSlots/Element_BuildingSlot_District_SeaShore.png:Element_BuildingSlot_District_SeaShore#2" //GUID:aaaa3cdb5696fbe4f8714a25d6792b07
-	border = "Assets/UI/Elements/BuildingSlots/Element_BuildingSlot_DistrictCirlce_SeaShore.png:Element_BuildingSlot_DistrictCirlce_SeaShore#2" //GUID:6d754f25da00eb440a6c0c8542bfea7e
+}
+
+def MonasteriesDistrict : District
+{
+	delete buildings
+	buildings
+	{
+		Church = 1,1
+		Temple = 1,1
+
+		CityMonastery = 2,1
+
+		Cathedral = 1,2 { prerequisites { Church } }
+
+		EcclesiasticalCourt = 2,2 { prerequisites { Church; Dungeon } }
+		EpiscopalPalace = 1.5,3 { prerequisites { StonemasonsGuild; Cathedral; EcclesiasticalCourt } }
+
+		Masjid = 1.5,1
+		GreatMosque = 1,2 { prerequisites { Masjid } }	
+		ShariaCourt = 2,2 { prerequisites { Masjid } }	
+		DarAlImara = 1.5,3 { prerequisites { GreatMosque } }	
+	}
+}
+
+extend CropFarmsDistrict
+{
+    delete buildings
+	buildings
+	{
+		CropFarming = 1,1
+
+		WeavingMill = 1,2
+
+		Windmill = 1,3 { prerequisites { CropFarming } }
+	}
 }
 
 def RiverDistrict : District
@@ -152,6 +140,35 @@ def RiverDistrict : District
 	border = "Assets/UI/Elements/BuildingSlots/Element_BuildingSlot_DistrictCirlce_SeaShore.png:Element_BuildingSlot_DistrictCirlce_SeaShore#2" //GUID:6d754f25da00eb440a6c0c8542bfea7e
 }
 
+def SeaShoreDistrict : District
+{
+	name = "Sea"
+	color = "#3F5B6ACC"
+	
+	requires { Coastal }
+
+	caption_count = (coastal_settlements_count)
+	delete buildings
+	buildings
+	{
+		FishingDocks = 2,1
+		Harbor = 1,1
+
+		TradePort = 1,2 { prerequisites { Harbor } }
+		Shipyard = 2,2 { prerequisites { Harbor } }
+		
+		ItalianTraderQuarters = 1,3 { prerequisites { TradePort } }	
+		Admiralty = 2,3 { prerequisites { StonemasonsGuild; Shipyard } }
+
+		ForeignTraderQuarters = 1,3 { prerequisites { TradePort } }	
+		DiwanAlBahr = 2,3 { prerequisites { StonemasonsGuild; Shipyard } }
+	}
+	
+	backgroud = "Assets/UI/Elements/BuildingSlots/Element_BuildingSlot_District_SeaShore.png:Element_BuildingSlot_District_SeaShore#2" //GUID:aaaa3cdb5696fbe4f8714a25d6792b07
+	border = "Assets/UI/Elements/BuildingSlots/Element_BuildingSlot_DistrictCirlce_SeaShore.png:Element_BuildingSlot_DistrictCirlce_SeaShore#2" //GUID:6d754f25da00eb440a6c0c8542bfea7e
+}
+
+
 def CraftingDistrict: District
 {
 	name = "Crafting"
@@ -168,9 +185,10 @@ def CraftingDistrict: District
 		StonemasonsGuild = 1,2 { prerequisites { Workshop } }
 		CraftsmensGuild = 2,2 { prerequisites { Workshop } }
 		BlacksmithsGuild = 3,2 { prerequisites { Blacksmith } }
-		
-		MasterWorkshop = 1,3 { prerequisites { CraftsmensGuild } }
-		Foundry = 2,3 { prerequisites { BlacksmithsGuild } }
+
+		MasterStonemason = 1,2 { prerequisites { Workshop} }
+		MasterWorkshop = 2,2 { prerequisites { Workshop } }
+		MasterBlacksmith = 3,2 { prerequisites { Blacksmith } }
 	}
 }
 
@@ -183,12 +201,17 @@ def EducationDistrict : District
 	
 	buildings
 	{
-		School = 1,1
+		School_Christian = 1,1
 
-		Library = 1,2 { prerequisites { School } }
+		Library_Christian = 1,2 { prerequisites { School_Christian } }
 
-		University = 1,3 { prerequisites { Library } }
-		Madrasah = 1,3 { prerequisites { Library } }
+		University_Christian = 1,3 { prerequisites { Library_Christian } }
+
+		School_Muslim = 1,1
+
+		Library_Muslim = 1,2 { prerequisites { School_Muslim } }
+
+		University_Muslim = 1,3 { prerequisites { Library_Muslim } }
 	}
 }
 
@@ -201,12 +224,17 @@ def CultureDistrict : District
 
 	buildings
 	{
-		TownHall = 1,1 { prerequisites { MarketSquare } }
+		TownHall_Christian = 1,1 { prerequisites { MarketSquare } }
 
-		TournamentGrounds = 1,2 { prerequisites { Armory } }
-		Bathhouse = 1,2
+		TournamentGrounds_Christian = 1,2 { prerequisites { Armory } }
 
-		Theater = 1,3 { prerequisites { StonemasonsGuild } }
+		Theater_Christian = 1,3 { prerequisites { StonemasonsGuild } }
+
+		TownHall_Muslim = 1,1 { prerequisites { MarketSquare } }
+
+		Bathhouse_Muslim = 1,2
+
+		Bimaristan = 1,3
 	}
 }
 
@@ -221,9 +249,9 @@ def PunishmentDistrict : District
 	{
 		Dungeon = 1,1
 
-		CourtHall = 1,2 { prerequisites { Dungeon } }
+		CityPrison = 1,2
 
-		CityPrison = 1,3 { prerequisites { CourtHall } }
+		CourtHall = 1,2 { prerequisites { CityPrison } }
 	}
 }
 
@@ -249,12 +277,10 @@ delete LargeKeeps
 delete Fiefs
 delete GreatHall
 delete GrainTrade
-delete GreatLibrary_Christian
-delete TranslatorsChambers_Christian
 delete ChristianDecoration
-delete ArtsSchool_Christian
 delete Schools_Christian
 delete Hospital_Christian
+delete MuslimCeremonies
 delete Docks_RiverTrade
 delete TownWatch
 delete Courthouse
@@ -276,6 +302,37 @@ delete TownGuardsQuarters
 delete PublicBaths
 delete LargeHouses
 delete FishMarket
+delete InkMaker_Muslim
+delete Orphanage_Muslim
+delete Schools_Muslim
+delete SmallLibrary_Muslim
+delete MuslimDecoration
+delete Apothecary_Muslim
+delete Hospital_Muslim
+delete Bazaar
+
+
+def ArtsSchool_Muslim: Building
+def ArtsSchool_Christian: Building
+delete ArtsSchool
+delete ArtsSchool_Muslim
+delete ArtsSchool_Christian
+def TranslatorsChambers_Christian: Building
+def TranslatorsChambers_Muslim: Building
+delete TranslatorsChambers_Christian
+delete TranslatorsChambers_Muslim
+delete TranslatorsChambers
+def GreatLibrary_Christian: Building
+def GreatLibrary_Muslim: Building
+delete GreatLibrary_Christian
+delete GreatLibrary_Muslim
+delete GreatLibrary
+def AlchemistLab_Christian: Building
+def AlchemistLab_Muslim: Building
+delete AlchemistLab_Christian
+delete AlchemistLab_Muslim
+delete AlchemistLab
+
 
 
 // Might be Interesting to use in some way
@@ -283,7 +340,6 @@ delete DyeWorkshop
 delete CandleMaker
 delete Apiary
 delete Orphanage_Christian
-delete AlchemistLab_Christian
 delete TaxCollector
 delete SeatOfPower
 delete Brothels
@@ -309,8 +365,9 @@ delete FoodMarket
 delete FlaxGrowing
 delete HerbGardening
 delete TrainingGrounds
-// delete Barracks
 delete SiegeWorkshop
 delete Stables
-
+delete University.upgrades
+delete Madrasah.upgrades
+delete Barracks.upgrades
 
