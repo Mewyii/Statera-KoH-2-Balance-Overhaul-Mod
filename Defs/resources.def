@@ -353,7 +353,7 @@ def Cannons : Resource
 	import_gold = 30
 
 	mod ks_naval_CTH = 10
-	mod ks_attrition_bonus = 20
+	mod ks_attrition_bonus = 30
 	mod ks_base_siege_damage_perc = 30
 }
 

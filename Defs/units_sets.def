@@ -62,17 +62,25 @@ def EuropeanUnitSet : AvailableUnits
 	Crossbow_Militia_CE
 	Cavalry_Militia_CE
 
-	// Professional
+	// Sergeants
 	Heavy_Swordman_CE
 	Heavy_Spearman_CE
 	Heavy_Archer_CE
 	Heavy_Cavalry_CE
 
+	// Trained Militia
+	Halberd_Militia
+	Pike_Militia
+	Heavy_Cavalry_Militia
+	Pavise_Crossbow_Militia
+
 	// Knights
-	Noble_Knights_Dismounted
-	Noble_Knights
-	Feudal_Knights_Dismounted
-	Feudal_Knight_Special
+	Early_Knights_Dismounted
+	Early_Knights
+	High_Knights_Dismounted
+	High_Knights
+	Late_Knights_Dismounted
+	Late_Knights
 
 	town_guards
 	{
@@ -106,17 +114,25 @@ def WesternUnitSet : AvailableUnits
 	Crossbow_Militia_CE
 	Cavalry_Militia_CE
 
-	// Professional
+	// Sergeants
 	Heavy_Swordman_CE
 	Heavy_Spearman_CE
 	Heavy_Archer_CE
 	Heavy_Cavalry_CE
 
+	// Trained Militia
+	Halberd_Militia
+	Pike_Militia
+	Heavy_Cavalry_Militia
+	Pavise_Crossbow_Militia
+
 	// Knights
-	Noble_Knights_Dismounted
-	Noble_Knights
-	Feudal_Knights_Dismounted
-	Feudal_Knight_Special
+	Early_Knights_Dismounted
+	Early_Knights
+	High_Knights_Dismounted
+	High_Knights
+	Late_Knights_Dismounted
+	Late_Knights
 	
 	town_guards
 	{
@@ -144,23 +160,31 @@ def NordicUnitSet : AvailableUnits
 	Light_Cavalry_CE
 
 	// Militia
-	AdvancedMilitia_Nord
+	AdvancedMilitia_CE
 	Sword_Militia_CE
 	Spear_Militia_CE
 	Crossbow_Militia_CE
 	Cavalry_Militia_CE
 
-	// Professional
+	// Sergeants
 	Heavy_Swordman_CE
 	Heavy_Spearman_CE
 	Heavy_Archer_CE
 	Heavy_Cavalry_CE
 
+	// Trained Militia
+	Halberd_Militia
+	Pike_Militia
+	Heavy_Cavalry_Militia
+	Pavise_Crossbow_Militia
+
 	// Knights
 	Hirdmen_Special
 	Early_Knights
-	Feudal_Knights_Dismounted
-	Feudal_Knight_Special
+	High_Knights_Dismounted
+	High_Knights
+	Late_Knights_Dismounted
+	Late_Knights
 	
 	town_guards
 	{
@@ -194,17 +218,25 @@ def SpanishUnitSet : AvailableUnits
 	Crossbow_Militia_CE
 	Cavalry_Militia_CE
 
-	// Professional
+	// Sergeants
 	Heavy_Swordman_CE
 	Heavy_Spearman_CE
 	Heavy_Archer_CE
 	Heavy_Cavalry_CE
 
+	// Trained Militia
+	Halberd_Militia
+	Pike_Militia
+	Heavy_Cavalry_Militia
+	Pavise_Crossbow_Militia
+
 	// Knights
-	Noble_Knights_Dismounted
-	Noble_Knights
-	Feudal_Knights_Dismounted
-	Feudal_Knight_Special
+	Early_Knights_Dismounted
+	Early_Knights
+	High_Knights_Dismounted
+	High_Knights
+	Late_Knights_Dismounted
+	Late_Knights
 
 	town_guards
 	{
@@ -238,17 +270,25 @@ def EnglishUnitSet : AvailableUnits
 	Crossbow_Militia_CE
 	Cavalry_Militia_CE
 
-	// Professional
+	// Sergeants
 	Heavy_Swordman_CE
 	Heavy_Spearman_CE
 	Longbowman_Special
 	Heavy_Cavalry_CE
 
+	// Trained Militia
+	Halberd_Militia
+	Pike_Militia
+	Heavy_Cavalry_Militia
+	Pavise_Crossbow_Militia
+
 	// Knights
-	Noble_Knights_Dismounted
+	Early_Knights_Dismounted
 	Norman_Special
-	Feudal_Knights_Dismounted
-	Feudal_Knight_Special
+	High_Knights_Dismounted
+	High_Knights
+	Late_Knights_Dismounted
+	Late_Knights
 
 	town_guards
 	{
@@ -265,6 +305,7 @@ def EnglishUnitSet : AvailableUnits
 	}
 }
 
+delete CelticUnitSet
 def CelticUnitSet : AvailableUnits
 {
 	// Levy
@@ -281,17 +322,25 @@ def CelticUnitSet : AvailableUnits
 	Crossbow_Militia_CE
 	Cavalry_Militia_CE
 
-	// Professional
+	// Sergeants
 	Heavy_Swordman_CE
 	Heavy_Spearman_CE
 	Heavy_Archer_CE
 	Heavy_Cavalry_CE
 
+	// Trained Militia
+	Halberd_Militia
+	Pike_Militia
+	Heavy_Cavalry_Militia
+	Pavise_Crossbow_Militia
+
 	// Knights
 	Early_Knights_Dismounted
 	Early_Knights
-	Feudal_Knights_Dismounted
-	Feudal_Knight_Special
+	High_Knights_Dismounted
+	High_Knights
+	Late_Knights_Dismounted
+	Late_Knights
 
 	town_guards
 	{
@@ -308,6 +357,7 @@ def CelticUnitSet : AvailableUnits
 	}
 }
 
+delete ItalianUnitSet
 def ItalianUnitSet : AvailableUnits
 {
 	// Levy
@@ -324,17 +374,25 @@ def ItalianUnitSet : AvailableUnits
 	Crossbow_Militia_IT
 	Cavalry_Militia_IT
 
-	// Professional
+	// Sergeants
 	Heavy_Swordman_CE
 	Heavy_Spearman_CE
 	Heavy_Archer_CE
 	Heavy_Cavalry_CE
 
+	// Trained Militia
+	Halberd_Militia
+	Pike_Militia
+	Heavy_Cavalry_Militia
+	Pavise_Crossbow_Militia
+
 	// Knights
-	Noble_Knights_Dismounted
-	Noble_Knights
-	Feudal_Knights_Dismounted
-	Feudal_Knight_Special
+	Early_Knights_Dismounted
+	Early_Knights
+	High_Knights_Dismounted
+	High_Knights
+	Late_Knights_Dismounted
+	Late_Knights
 	
 	town_guards
 	{
@@ -368,17 +426,25 @@ def NormanUnitSet : AvailableUnits
 	Crossbow_Militia_CE
 	Cavalry_Militia_CE
 
-	// Professional
+	// Sergeants
 	Heavy_Swordman_CE
 	Heavy_Spearman_CE
 	Heavy_Archer_CE
 	Heavy_Cavalry_CE
 
+	// Trained Militia
+	Halberd_Militia
+	Pike_Militia
+	Heavy_Cavalry_Militia
+	Pavise_Crossbow_Militia
+
 	// Knights
-	Noble_Knights_Dismounted
+	Early_Knights_Dismounted
 	Norman_Special
-	Feudal_Knights_Dismounted
-	Feudal_Knight_Special
+	High_Knights_Dismounted
+	High_Knights
+	Late_Knights_Dismounted
+	Late_Knights
 
 	town_guards
 	{
@@ -395,6 +461,7 @@ def NormanUnitSet : AvailableUnits
 	}
 }
 
+delete CrusaderUnitSet
 def CrusaderUnitSet : AvailableUnits
 {
 	// Levy
@@ -411,17 +478,25 @@ def CrusaderUnitSet : AvailableUnits
 	Crossbow_Militia_CE
 	Cavalry_Militia_CE
 
-	// Professional
+	// Sergeants
 	Heavy_Swordman_CE
 	Heavy_Spearman_CE
 	Heavy_Archer_CE
 	Heavy_Cavalry_CE
 
+	// Trained Militia
+	Halberd_Militia
+	Pike_Militia
+	Heavy_Cavalry_Militia
+	Pavise_Crossbow_Militia
+
 	// Knights
-	Noble_Knights_Dismounted
-	Noble_Knights
-	Feudal_Knights_Dismounted
-	Feudal_Knight_Special
+	Early_Knights_Dismounted
+	Early_Knights
+	High_Knights_Dismounted
+	High_Knights
+	Late_Knights_Dismounted
+	Late_Knights
 	
 	town_guards
 	{

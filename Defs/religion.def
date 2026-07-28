@@ -32,14 +32,14 @@ def Crusade
 		{
 			upScaleOptions = true //scale to sum(chances) instead to 100, to prevent no outcomes.
 			
-			option give_to_leader_kingdom = 30
+			option give_to_leader_kingdom = 15
 			{
-				king = 90
-				prince = 50
+				king = 25
+				prince = 20
 			}
-			option give_to_papacy = 30
-			option give_to_helping_kingdom = 30
-			option give_to_established_kingdom = 10
+			option give_to_papacy = 15
+			option give_to_helping_kingdom = 40
+			option give_to_established_kingdom = 20
 		}
 		option establish_new_kingdom //happens when it cant be given to any kingdom
 		{
@@ -57,7 +57,7 @@ def Crusade
 				king = 100
 				prince = 80
 			}
-			option vasal_of_papacy = 40
+			option vasal_of_papacy = 30
 		}
 	}
 	

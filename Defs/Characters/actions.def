@@ -154,7 +154,7 @@ def ImprovingRelationsStatus : CharacterStatus
 		gold = (ceil((10 * kingdom_income_upkeep_modifier - agent_level_upkeep_modifier - (100 * own_character.cs_diplomat_actions_upkeep_reduction_perc)), 1))
 	}
 
-    rel_change_amount = (25 + from_CL * royal_bonus) * nerf_if_papacy * stat_mod // roughly half an hour for ~500 relatioship?
+    rel_change_amount = (30 + from_CL * royal_bonus) * nerf_if_papacy * stat_mod // roughly half an hour for ~500 relatioship?
 	{
 		from_CL = (ceil(RndI(30, 60) * MapCL(owner, 1, 2)))
 		royal_bonus = (1 + owner.is_king  + owner.is_prince * 0.5)

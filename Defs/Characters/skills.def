@@ -56,13 +56,13 @@ extend Skill.effects
 			
 			governed_realm_mod rs_governor_levy_per_village = 1
 
-			governed_realm_mod rs_siege_defense = (5 + 5 * class_level)
+			governed_realm_mod rs_morale_in_province = (ceil((6 + class_level) / 4))
 			{
 				per_level_value = true
 				recalc_on { skills_changed }
 			}
 
-			governed_realm_mod rs_governor_enemy_attrition = (ceil((1 + class_level) / 2))
+			governed_realm_mod rs_governor_town_guards = (ceil((9 + class_level) / 6))
 			{
 				per_level_value = true
 				recalc_on { skills_changed }
@@ -81,8 +81,14 @@ extend Skill.effects
 			}
 
             governed_realm_mod rs_governor_commerce_per_village = 1
+
+			mod cs_base_trading_income = (ceil((3 + class_level) / 6))
+			{
+				per_level_value = true
+				recalc_on { skills_changed }
+			}
 			
-			governed_realm_mod rs_governor_gold_per_good = (ceil((1 + class_level) / 5))
+			governed_realm_mod rs_governor_gold_in_town_per_good = (ceil((1 + class_level) / 10))
 			{
 				per_level_value = true
 				recalc_on { skills_changed }
@@ -95,7 +101,7 @@ extend Skill.effects
 			delete rs_governor_max_population
 			delete rs_governor_food_per_settlement
 			
-			governed_realm_mod rs_growth_rate_perc = (5 + class_level)
+			governed_realm_mod rs_growth_rate_perc = (10 + class_level)
 			{
 				per_level_value = true
 				recalc_on { skills_changed }
@@ -107,13 +113,7 @@ extend Skill.effects
 				recalc_on { skills_changed }
 			}
 
-			governed_realm_mod rs_governor_books = (ceil((1 + class_level) / 3))
-			{
-				per_level_value = true
-				recalc_on { skills_changed }
-			}
-
-			governed_realm_mod rs_governor_food_per_farm = (ceil((1 + class_level) / 5))
+			governed_realm_mod rs_governor_books = (ceil((5 + class_level) / 4))
 			{
 				per_level_value = true
 				recalc_on { skills_changed }
@@ -128,7 +128,7 @@ extend Skill.effects
 			delete rs_governor_gold_per_village
 			delete rs_governor_levy_per_keep
 
-			governed_realm_mod rs_stability = (5 + class_level)
+			governed_realm_mod rs_stability = (6 + class_level)
 			{
 				per_level_value = true
 				recalc_on { skills_changed }
@@ -146,43 +146,61 @@ extend Skill.effects
 			{
 				per_level_value = true
 				recalc_on { skills_changed }
-			}			
+			}
+
+			governed_realm_mod rs_governor_enemy_attrition = (ceil((5 + class_level) / 2))
+			{
+				per_level_value = true
+				recalc_on { skills_changed }
+			}
+
+			governed_realm_mod rs_enemy_move_speed_reduction_perc = (ceil((5 + class_level) / 2))
+			{
+				per_level_value = true
+				recalc_on { skills_changed }
+			}
 		}
 
 		class Cleric
 		{
 			delete rs_governor_piety_per_shrine
 			delete rs_governor_books_per_religious_settlement
+			delete rs_governor_books
 
-			governed_realm_mod rs_governor_piety_from_cleric = (ceil((1 + class_level) / 3))
+			governed_realm_mod rs_governor_piety_from_cleric = (ceil((5 + class_level) / 4))
 			{
 				per_level_value = true
 				condition = (kingdom.is_christian && governed_castle.realm.is_same_k_religion)
 				recalc_on { skills_changed; kingdom_religion_changed; governed_realm_religion_changed }
 			}
-			governed_realm_mod rs_governor_piety_from_scholar = (ceil((1 + class_level) / 3))
+			governed_realm_mod rs_governor_piety_from_scholar = (ceil((5 + class_level) / 4))
 			{
 				per_level_value = true
 				condition = (kingdom.is_muslim && governed_castle.realm.is_same_k_religion)
 				recalc_on { skills_changed; kingdom_religion_changed; governed_realm_religion_changed }
 			}
-			governed_realm_mod rs_governor_piety_from_shaman = (ceil(1 + class_level / 3))
+			governed_realm_mod rs_governor_piety_from_shaman = (ceil((5 + class_level) / 4))
 			{
 				per_level_value = true
 				condition = (kingdom.is_pagan && governed_castle.realm.is_same_k_religion)
 				recalc_on { skills_changed; kingdom_religion_changed; governed_realm_religion_changed }
 			}
-			
-			governed_realm_mod rs_governor_books = (ceil((4 + class_level) / 3))
-			{
-				per_level_value = true
-				condition = (kingdom.is_christian || kingdom.is_muslim)
-				recalc_on { skills_changed; kingdom_religion_changed }
-			}
 
 			governed_realm_mod rs_governor_piety_per_religous_settlement = 1
+
+			mod cs_culture_per_governed_monastery = (ceil((5 + class_level) / 4))
+			{
+				per_level_value = true
+				recalc_on { skills_changed }
+			}
 			
-			governed_realm_mod rs_governor_happiness_from_CL = (ceil(1 + class_level / 3))
+			governed_realm_mod rs_governor_happiness_from_CL = (ceil((9 + class_level) / 6))
+			{
+				per_level_value = true
+				recalc_on { skills_changed }
+			}
+
+			governed_realm_mod rs_governor_food_per_settlement = 0.5
 			{
 				per_level_value = true
 				recalc_on { skills_changed }
@@ -201,7 +219,8 @@ extend Skill.effects
 
 		tag Patriarch
 		{
-			governed_realm_mod rs_governor_books_per_religious_settlement = (ceil(class_level / 5)) {
+			governed_realm_mod rs_governor_books_per_religious_settlement = (ceil(class_level / 5)) 
+			{
 				per_level_value = true
 				recalc_on { skills_changed }
 			}
@@ -220,13 +239,13 @@ extend Skill.effects
 			
 			governed_realm_mod rs_governor_king_commerce_per_settlement = 1
 
-			governed_realm_mod rs_governor_prod_food_flat = 4
+			governed_realm_mod rs_governor_food_per_settlement = 1
 
 			governed_realm_mod rs_governor_max_population = 2
 
 			governed_realm_mod rs_governor_town_guards = (2 + (ceil(class_level / 5)))
 
-			governed_realm_mod rs_governor_local_authority_from_CL = (10 + (ceil(class_level / 3)))
+			governed_realm_mod rs_governor_local_authority_from_CL = (10 + (ceil(class_level / 2)))
 			{
 				per_level_value = true
 				recalc_on { skills_changed }

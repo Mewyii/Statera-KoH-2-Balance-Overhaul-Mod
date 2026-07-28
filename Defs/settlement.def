@@ -1,6 +1,14 @@
-def Fortifications
+extend Settlement 
 {
-	Resources cost = ["1g 1h", "300g 200 Levy 1000h", "900g 400 Levy 2500h", "2000g 1000 Levy 6000h"]
+	garrison_squad_per_worker = 0.25
+	garrison_worker_excess_manpower_bonus = 1
+
+	attrition = [1,1,1]
+}
+
+extend Fortifications
+{
+	Resources cost = ["1g 1h", "250g 250 Levy 1000h", "1000g 500 Levy 2500h", "2000g 1000 Levy 6000h"]
 	int reqiured_citadel_level = [0,0,0,0] //[0,1,2,3]
 	mod rs_siege_defense = 0/50/150/300
 }
@@ -8,22 +16,27 @@ def Fortifications
 // Settlement numbers on map are also limited by settlements.def in /maps
 
 Settlement.max_identical_settlement_per_realm = 3 // Limit for all settlements
-Settlement.max_allowed_features_per_settlement_type = 3 // Features are not limited here anyways?
+Settlement.max_allowed_features_per_settlement_type = 5 // Features are not limited here anyways?
 Settlement.max_specal_settlements_per_realm = 3
 Settlement.min_restriction_settlements = 8
 Settlement.max_restriction_settlements = 12
 Settlement.settlement_repeating_chance_mul = 1.4 // relevant only for base settlements
 
-def Castle : Settlement
+RealmFeaturesPreset.preferred_min_distance = 1
+
+extend Castle : Settlement
 {
 	no_governor_penalty = 25
 	production = "2g 3f 1b 1p 8h 4WorkerSlots"
 
+	delete enable_feature
 	enable_feature
 	{
+		Grasslands
+		Forests
+		Swamps
+		Desert
 		AmberDeposits
-		Camels
-		MineralsDeposit
 		Pirates
 		RareGame
 		SaltDeposit
@@ -32,15 +45,26 @@ def Castle : Settlement
 		SlaveTradersAfrica
 		SlaveTradersRussia
 		SpiceTraders
+		Camels
+		DyeExtraction
+		IncenseCultivation
+		AlumDeposits
+		PilgrimageSiteChristian
+		PilgrimageSiteMuslim
 	}
 
 	Worker.Gold = 1
 }
 
+extend Keep: Settlement
+{
+	attrition = [5,5,5]
+}
+
 extend KeepEffects
 {
 	min_distance = 1
-	max_distance = 25
+	max_distance = 30
 }
 
 def SettlementsRandomizationWeights = 3 // Same settlement type limit for normal settlements
@@ -55,34 +79,29 @@ def SettlementsRandomizationWeights = 3 // Same settlement type limit for normal
     {
 		float has_mountains = 20
 	}
+	float OasisVillage = 0
+	float SteppeSettlement = 0
 }
 
 delete SpecialSettlementsRandomizationWeights
-def SpecialSettlementsRandomizationWeights = 2 // Same settlement type limit for special settlements
+def SpecialSettlementsRandomizationWeights = 1.5 // Same settlement type limit for special settlements
 {
-    float LoggingCamp = 50
-    {
-		float has_mountains = -15
-	}
+    
     float Mine = 0
 	{
-		float has_mountains = 60
+		float has_mountains = 50
 	}
-	float Quarry = 25
+	float Quarry = 40
     {
-		float has_mountains = 10
+		float has_mountains = 20
 	}
-    float SheepFarm = 20
-	float CattleFarm = 20
-    float Vineyard = 15
-	float HorseFarm = 15
-	float OasisVillage = 50
-	float SteppeSettlement = 50
+    float Vineyard = 25
+	float HorseFarm = 8
 }
 
-Mine.max_allowed_features_per_settlement_type = 3
-def Quarry : Settlement
+extend Quarry : Settlement
 {
+	delete enable_feature
 	enable_feature
 	{
 		default LimestoneDeposit
@@ -90,7 +109,17 @@ def Quarry : Settlement
 	}
 }
 
-
+extend Mine : Settlement
+{
+	delete enable_feature
+	enable_feature
+	{
+		default IronOre
+		secondary GoldOre
+		secondary SilverOre
+		secondary GemstoneDeposits
+	}
+}
 
 
 def OasisVillage : Settlement
@@ -120,19 +149,6 @@ def OasisVillage : Settlement
 	ai_eval_trade = 2
 }
 
-def Oasis : ProvinceFeature
-{
-	name = "Oasis"
-	flavor = "Oasis description."
-	tooltip = "An Oasis is an area in a desert that provides water, food and shelter."
-	icon = "Assets/Icons/Features/Oasis.png:Oasis#1"
-	icon_big = "Assets/Icons/Features/Oasis.png:Oasis#1"
-	
-	area = [0.125, 0, 0.95, 0.175]
-	spawn_chance = 100
-	special = true
-}
-
 def SteppeSettlement : Settlement
 {
 	name = "Steppe"
@@ -158,53 +174,4 @@ def SteppeSettlement : Settlement
 
 	ai_eval_food = 1
 	ai_eval_military = 1
-}
-
-def Steppe : ProvinceFeature
-{
-	name = "Steppe"
-	flavor = "Steppe description."
-	tooltip = "A vast, dry, grassy semi-arid plain."
-	icon = "Assets/Icons/Features/Steppe.png:Steppe#1"
-	icon_big = "Assets/Icons/Features/Steppe.png:Steppe#1"
-	
-	area = [0.66, 0.5, 1, 0.68]
-	spawn_chance = 100
-	special = true
-}
-
-def SlaveTradersAfrica : ProvinceFeature
-{
-	name = "Slave Traders (Africa)"
-	flavor = "Slave Traders description."
-	tooltip = "Slave traders can be used to hunt and trade slaves in nearby provinces. Slaves might be used as soldiers, workers or servants."
-	icon = "Assets/Icons/Features/SlaveTraders.png:SlaveTraders#1"
-	icon_big = "Assets/Icons/Features/SlaveTraders.png:SlaveTraders#1"
-	
-	area = [0, 0, 0.9, 0.25]
-	spawn_chance = 5
-}
-
-def SlaveTradersRussia : ProvinceFeature
-{
-	name = "Slave Traders (Caucasus and Ural)"
-	flavor = "Slave Traders description."
-	tooltip = "Slave traders can be used to hunt and trade slaves in nearby provinces. Slaves might be used as soldiers, workers or servants."
-	icon = "Assets/Icons/Features/SlaveTraders.png:SlaveTraders#1"
-	icon_big = "Assets/Icons/Features/SlaveTraders.png:SlaveTraders#1"
-	
-	area = [0.75, 0.35, 1, 0.75]
-	spawn_chance = 3
-}
-
-def SpiceTraders : ProvinceFeature
-{
-	name = "Spice Traders"
-	flavor = "Spice Traders description."
-	tooltip = "This province is on a spice trade route where spice traders are active. This trade can be profitted from."
-	icon = "Assets/Icons/Features/SpiceTrader.png:SpiceTrader#1"
-	icon_big = "Assets/Icons/Features/SpiceTrader.png:SpiceTrader#1"
-	
-	area = [0.65, 0, 1, 0.45]
-	spawn_chance = 4
 }

@@ -729,3 +729,19 @@ def CulturesView : PoliticalView
 		color Frankish = "#0c39bd"
 	}
 }
+
+def SettlementTooltipHT : TooltipHyperText
+{
+	preview
+	{
+		obj = Quarry
+	}
+}
+
+def ProvinceFeatureTooltipHT : TooltipHyperText
+{
+	preview
+	{
+		province_feature = Grasslands
+	}
+}

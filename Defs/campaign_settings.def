@@ -176,22 +176,17 @@ def CampaignVars {
 				text name = "10 Buildings"
 				text description = "You can build up to 8 Buildings in a realm"
 			}
-			5
+			6
 			{
 				text name = "12 Buildings"
 				text description = "You can build up to 10 Buildings in a realm"
-			}
-			default 7
-			{
-				text name = "14 Buildings"
-				text description = "You can build up to 12 Buildings in a realm"
 			}
 			9
 			{
 				text name = "16 Buildings"
 				text description = "You can build up to 12 Buildings in a realm"
 			}
-			11
+			default 12
 			{
 				text name = "18 Buildings"
 				text description = "You can build up to 18 Buildings in a realm"
@@ -333,22 +328,17 @@ def SinglePlayerCampaignVars
 				text name = "10 Buildings"
 				text description = "You can build up to 8 Buildings in a realm"
 			}
-			5
+			6
 			{
 				text name = "12 Buildings"
 				text description = "You can build up to 10 Buildings in a realm"
-			}
-			default 7
-			{
-				text name = "14 Buildings"
-				text description = "You can build up to 12 Buildings in a realm"
 			}
 			9
 			{
 				text name = "16 Buildings"
 				text description = "You can build up to 12 Buildings in a realm"
 			}
-			11
+			default 12
 			{
 				text name = "18 Buildings"
 				text description = "You can build up to 18 Buildings in a realm"

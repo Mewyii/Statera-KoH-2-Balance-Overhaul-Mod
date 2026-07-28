@@ -1,7 +1,4 @@
-Realms.europe.Ghadames.has_mountains = true
-Realms.europe.Bolghar.has_mountains = true
 Realms.europe.Damascus.has_mountains = true
-Realms.europe.Draa.has_mountains = true
 Realms.europe.Taron.has_mountains = true
 Realms.europe.Gwynedd.has_mountains = true
 Realms.europe.Alania.has_mountains = true
@@ -11,16 +8,80 @@ Realms.europe.Amasya.has_mountains = true
 Realms.europe.Ankara.has_mountains = true
 Realms.europe.Alsace.has_mountains = true
 Realms.europe.Thuringia.has_mountains = true
-Realms.europe.Vastermanland.has_mountains = true
+Realms.europe.Murcia.has_mountains = true
+Realms.europe.Granada.has_mountains = true
+Realms.europe.Salamanca.has_mountains = true
+Realms.europe.Kabylia.has_mountains = true
+Realms.europe.Qeirwan.has_mountains = true
+Realms.europe.Hoggar.has_mountains = true
+Realms.europe.Air.has_mountains = true
+Realms.europe.Kaouar.has_mountains = true
+Realms.europe.Sawakin.has_mountains = true
+Realms.europe.Aden.has_mountains = true
+Realms.europe.Lebanon.has_mountains = true
+Realms.europe.Mascat.has_mountains = true
+Realms.europe.Kermanshah.has_mountains = true
+Realms.europe.Pontos.has_mountains = true
+Realms.europe.Nicaea.has_mountains = true
+Realms.europe.Menteshe.has_mountains = true
+Realms.europe.Achaea.has_mountains = true
+Realms.europe.Nitra.has_mountains = true
+Realms.europe.Tarnovo.has_mountains = true
+Realms.europe.Liguria.has_mountains = true
+Realms.europe.Calabria.has_mountains = true
+Realms.europe.Corsica.has_mountains = true
+Realms.europe.Auvergne.has_mountains = true
+Realms.europe.Luxembourg.has_mountains = true
+Realms.europe.Connaught.has_mountains = true
+Realms.europe.Northumberland.has_mountains = true
+Realms.europe.Crete.has_mountains = true
+Realms.europe.Algiers.has_mountains = true
+Realms.europe.Aqaba.has_mountains = true
+Realms.europe.Galicia.has_mountains = true
+Realms.europe.Meissen.has_mountains = true
+
+Realms.europe.Leon.has_mountains = false
+Realms.europe.Extremadura.has_mountains = false
+Realms.europe.Tunisia.has_mountains = false
+Realms.europe.Yathrib.has_mountains = false
+Realms.europe.Yazd.has_mountains = false
+Realms.europe.Bushehr.has_mountains = false
+Realms.europe.Ankara.has_mountains = false
+Realms.europe.Cilicia.has_mountains = false
+Realms.europe.Dyrrachion.has_mountains = false
+Realms.europe.Zagreb.has_mountains = false
+Realms.europe.Regensburg.has_mountains = false
+Realms.europe.Bavaria.has_mountains = false
+Realms.europe.Veneto.has_mountains = false
+Realms.europe.Provence.has_mountains = false
+Realms.europe.Savoy.has_mountains = false
+Realms.europe.Lombardy.has_mountains = false
+Realms.europe.Toulouse.has_mountains = false
+Realms.europe.Lothian.has_mountains = false
+Realms.europe.Vastergotland.has_mountains = false
 
 Realms.europe.Dumyat.has_rivers = true
 Realms.europe.Alexandria.has_rivers = true
+Realms.europe.West_Flanders.has_rivers = true
+Realms.europe.Tarnovo.has_rivers = true
+Realms.europe.Bremen.has_rivers = true
 
+Realms.europe.Kashubia.has_river_city = true
 Realms.europe.Dumyat.has_river_city = true
+Realms.europe.West_Flanders.has_river_city = true
+Realms.europe.Bremen.has_river_city = true
 
 Realms.europe.Hamburg.has_coastal_city = true
 Realms.europe.Bremen.has_coastal_city = true
 Realms.europe.Hordaland.has_coastal_city = true
+Realms.europe.Uppland.has_coastal_city = true
+Realms.europe.Imereti.has_coastal_city = true
+
+Realms.europe.Qeirwan.has_distant_port = true
+Realms.europe.Cilicia.has_distant_port = true
+Realms.europe.Dalmatia.has_distant_port = true
+
+
 
 
 extend Realms
@@ -44,12 +105,11 @@ extend Realms
             delete neighbors_through_sea
 			neighbors_through_sea
 			{
-				Zaragoza
-				Mallorca
 				Catalonia
 				Aquitaine
 				Auvergne
 				Provence
+				Narbonnais
 			}
 		}
 
@@ -103,6 +163,496 @@ extend Realms
 				Murcia
 				Toledo
 				Zaragoza
+			}
+		}
+
+		def Crete : Realm
+		{
+			map_color = "23,107,105" //176B69FF
+			neighbors
+			{
+				Reach_Of_Egypt
+				Ionian_Sea
+				Aegaean_Sea
+			}
+
+            delete neighbors_through_sea
+			neighbors_through_sea
+			{
+				Attica
+				Achaea
+				Izmir
+				Menteshe
+				Rhodes
+				Cyprus
+			}
+		}
+
+		def Cyprus : Realm
+		{
+			map_color = "39,174,28" //27AE1CFF
+			neighbors
+			{
+				Reach_Of_Egypt
+				Reach_Of_Cyprus
+			}
+
+            delete neighbors_through_sea
+			neighbors_through_sea
+			{
+				Lycia
+				Acre
+				Lebanon
+				Rhodes
+				Crete
+				Menteshe
+				Konya
+				Antioch
+			}
+		}
+
+		def Rhodes : Realm
+		{
+			map_color = "108,31,112" //6C1F70FF
+			neighbors
+			{
+				Reach_Of_Cyprus
+			}
+
+            delete neighbors_through_sea
+			neighbors_through_sea
+			{
+				Cyprus
+				Crete
+				Izmir
+				Menteshe
+				Konya
+			}
+		}
+
+		def Matrouh : Realm
+		{
+			map_color = "237,183,61" //EDB73DFF
+			neighbors
+			{
+				Siwa
+				Cyrenaica
+				Reach_Of_Egypt
+				Alexandria
+			}
+
+            delete neighbors_through_sea
+			neighbors_through_sea
+			{
+				Siwa
+				Cyrenaica
+				Alexandria
+			}
+		}
+
+		def Dumyat : Realm
+		{
+			map_color = "97,115,68" //617344FF
+			neighbors
+			{
+				Cairo
+				Red_Sea
+				Alexandria
+				Reach_Of_Egypt
+				Ascalon
+				Sinai
+			}
+
+            delete neighbors_through_sea
+			neighbors_through_sea
+			{
+				Cairo
+				Alexandria
+				Ascalon
+				Sinai
+				Aqaba
+				Acre
+				Qena
+				Palestine
+			}
+		}
+
+		def Konya : Realm
+		{
+			map_color = "0,0,0" //000000FF
+			neighbors
+			{
+				Reach_Of_Cyprus
+				Lycia
+				Menteshe
+				Sardis
+				Ankara
+				Cappadocia
+				Cilicia
+			}
+
+            delete neighbors_through_sea
+			neighbors_through_sea
+			{
+				Lycia
+				Menteshe
+				Sardis
+				Ankara
+				Cappadocia
+				Cilicia
+				Rhodes
+				Cyprus
+			}
+		}
+
+		def Antioch : Realm
+		{
+			map_color = "87,211,52" //57D334FF
+			neighbors
+			{
+				Lebanon
+				Reach_Of_Cyprus
+				Cilicia
+				Al_Halab
+			}
+
+            delete neighbors_through_sea
+			neighbors_through_sea
+			{
+				Lebanon
+				Cilicia
+				Al_Halab
+				Lycia
+				Acre
+				Cyprus
+			}
+		}
+
+		def Alexandria : Realm
+		{
+			map_color = "92,9,201" //5C09C9FF
+			neighbors
+			{
+				Faras
+				Siwa
+				Matrouh
+				Reach_Of_Egypt
+				Dumyat
+				Cairo
+				Qena
+			}
+
+            delete neighbors_through_sea
+			neighbors_through_sea
+			{
+				Faras
+				Siwa
+				Matrouh
+				Dumyat
+				Cairo
+				Qena
+			}
+		}
+
+		def Sicily : Realm
+		{
+			map_color = "7,63,233" //073FE9FF
+			neighbors
+			{
+				Ionian_Sea
+				Tyrrhenian_Sea
+			}
+
+            delete neighbors_through_sea
+			neighbors_through_sea
+			{
+				Calabria
+				Malta
+				Campania
+				Sardinia
+				Tunisia
+			}
+		}
+
+		def Malta : Realm
+		{
+			map_color = "248,14,146" //F80E92FF
+			neighbors
+			{
+				Central_Mediterranean
+				Ionian_Sea
+			}
+
+            delete neighbors_through_sea
+			neighbors_through_sea
+			{
+				Calabria
+				Sicily
+				Tunisia
+				Qeirwan
+				Tripolitania
+			}
+		}
+
+		def Tunisia : Realm
+		{
+			map_color = "109,119,65" //6D7741FF
+			neighbors
+			{
+				Qeirwan
+				Kabylia
+				Western_Mediterranean
+				Central_Mediterranean
+			}
+
+            delete neighbors_through_sea
+			neighbors_through_sea
+			{
+				Qeirwan
+				Tripolitania
+				Kabylia
+				Sicily
+				Malta
+			}
+		}
+
+		def Mallorca : Realm
+		{
+			map_color = "222,31,54" //DE1F36FF
+			neighbors
+			{
+				Alboran_Sea
+				Balearic_Sea
+			}
+
+            delete neighbors_through_sea
+			neighbors_through_sea
+			{
+				Valencia
+				Zaragoza
+				Catalonia
+				Sardinia
+				Murcia
+			}
+		}
+
+		def Sardinia : Realm
+		{
+			map_color = "166,119,182" //A677B6FF
+			neighbors
+			{
+				Western_Mediterranean
+				Balearic_Sea
+				Gulf_Of_Liguria
+				Tyrrhenian_Sea
+			}
+
+            delete neighbors_through_sea
+			neighbors_through_sea
+			{
+				Corsica
+				Mallorca
+				Sicily
+				Latium
+				Tuscany
+			}
+		}
+
+		def Zaragoza : Realm
+		{
+			map_color = "0,0,0" //000000FF
+			neighbors
+			{
+				Toledo
+				Burgos
+				Navarra
+				Catalonia
+				Balearic_Sea
+				Valencia
+			}
+
+            delete neighbors_through_sea
+			neighbors_through_sea
+			{
+				Toledo
+				Burgos
+				Navarra
+				Catalonia
+				Valencia
+				Mallorca
+			}
+		}
+
+		def Rogaland : Realm
+		{
+			map_color = "141,251,173" //8DFBADFF
+			neighbors
+			{
+				Agder
+				North_Sea
+				Farose_Reach
+				Hordaland
+				Viken
+			}
+
+            delete neighbors_through_sea
+			neighbors_through_sea
+			{
+				Agder
+				Hordaland
+				Viken
+				Trondheim
+				Sutherland
+				Jutland
+			}
+		}
+
+		def Hordaland : Realm
+		{
+			map_color = "102,121,187" //6679BBFF
+			neighbors
+			{
+				Viken
+				Rogaland
+				Farose_Reach
+				Trondheim
+				Svealand
+			}
+
+            delete neighbors_through_sea
+			neighbors_through_sea
+			{
+				Viken
+				Rogaland
+				Trondheim
+				Svealand
+				Trondheim
+				Agder
+				Sutherland
+			}
+		}
+
+		def Trondheim : Realm
+		{
+			map_color = "125,35,163" //7D23A3FF
+			neighbors
+			{
+				Hordaland
+				Farose_Reach
+				Empty
+				Svealand
+			}
+
+            delete neighbors_through_sea
+			neighbors_through_sea
+			{
+				Hordaland
+				Svealand
+				Rogaland
+				Agder
+				Sutherland
+			}
+		}
+
+		def Sutherland : Realm
+		{
+			map_color = "180,36,116" //B42474FF
+			neighbors
+			{
+				Outer_Hebriders_Reach
+				Farose_Reach
+				North_Sea
+				Aberdeenshire
+				Lothian
+			}
+
+            delete neighbors_through_sea
+			neighbors_through_sea
+			{
+				Aberdeenshire
+				Lothian
+				Ulster
+			}
+		}
+
+		def Veneto : Realm
+		{
+			map_color = "24,155,50" //189B32FF
+			neighbors
+			{
+				Emilia
+				Liguria
+				Lombardy
+				Tyrol
+				Carinthia
+				Ljubljana
+				Adriatic_Sea
+			}
+
+            delete neighbors_through_sea
+			neighbors_through_sea
+			{
+				Emilia
+				Liguria
+				Lombardy
+				Tyrol
+				Carinthia
+				Ljubljana
+				Latium
+				Dalmatia
+				Ragusa
+			}
+		}
+
+		def Liguria : Realm
+		{
+			map_color = "122,203,32" //7ACB20FF
+			neighbors
+			{
+				Gulf_Of_Liguria
+				Narbonnais
+				Savoy
+				Lombardy
+				Veneto
+				Emilia
+				Tuscany
+			}
+
+            delete neighbors_through_sea
+			neighbors_through_sea
+			{
+				Narbonnais
+				Savoy
+				Lombardy
+				Veneto
+				Emilia
+				Tuscany
+				Corsica
+				Sardinia
+				Latium
+			}
+		}
+
+		def Apulia : Realm
+		{
+			map_color = "97,12,192" //610CC0FF
+			neighbors
+			{
+				Ionian_Sea
+				Calabria
+				Campania
+				Adriatic_Sea
+			}
+
+            delete neighbors_through_sea
+			neighbors_through_sea
+			{
+				Calabria
+				Campania
+				Ragusa
+				Scodra
+				Dyrrachion
+				Epirus
 			}
 		}
 	}

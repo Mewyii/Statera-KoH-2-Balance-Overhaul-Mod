@@ -1,10 +1,10 @@
-Marshal.ai_min_court_count = (2 + min(num_wars, 1))
-Marshal.ai_max_court_count = (3 + min(num_wars, 2))
-Merchant.ai_min_court_count = 1
-Merchant.ai_max_court_count = 4
+Marshal.ai_min_court_count = (1 + min((ceil(num_realms / 4)), 3))
+Marshal.ai_max_court_count = (1 + min((ceil(num_realms / 3.5)), 4))
+Merchant.ai_min_court_count = 2
+Merchant.ai_max_court_count = 3
 Cleric.ai_min_court_count = 1
-Cleric.ai_max_court_count = 2
+Cleric.ai_max_court_count = 1
 Diplomat.ai_min_court_count = 1
 Diplomat.ai_max_court_count = 1
-Spy.ai_min_court_count = 1
-Spy.ai_max_court_count = 1
+Spy.ai_min_court_count = (If((num_realms > 2), 1, 0))
+Spy.ai_max_court_count = (If((num_realms > 2), min((ceil(num_realms / 8)), 2), 0))

@@ -1,21 +1,21 @@
 KingdomStats.ks_max_piety = 2000
 KingdomStats.ks_max_books = 2000
 KingdomStats.ks_vassal_tax_perc = 12.5
-KingdomStats.ks_base_gold_income = 50
+KingdomStats.ks_base_gold_income = 80
 KingdomStats.ks_base_commerce = 10
 KingdomStats.ks_base_levy_income = 10
-KingdomStats.ks_prod_books_flat = 5
-KingdomStats.ks_prod_piety_flat = 5
+KingdomStats.ks_prod_books_flat = 10
+KingdomStats.ks_prod_piety_flat = 10
 KingdomStats.ks_max_levy = 2000
 KingdomStats.ks_books_per_cleric = 1
 KingdomStats.ks_corruption = 20
-KingdomStats.ks_stability = -10
+KingdomStats.ks_stability = -5
 
 
 extend RealmStats {
     rs_max_food = 300
-    rs_attrition_damage = 5
-    rs_siege_resilience = 80
+    rs_attrition_damage = 10
+    rs_siege_resilience = 75
 
     rs_gold_income_perc = 0
 }
@@ -23,7 +23,8 @@ extend RealmStats {
 
 Prestige.max = 2000
 
-CharacterStats.cs_imprison_in_battle_chance = 50
+CharacterStats.cs_imprison_in_battle_chance = 35
+CharacterStats.cs_imprison_in_battle_retreat_chance = (cs_imprison_in_battle_chance / 3)
 CharacterStats.no_supplies = (army.no_supplies * (army.is_home * -10 + !army.is_home * -25)) { text mod_name = "Ran out of supplies" } // -10 at home, else -25 
 CharacterStats.cs_army_speed_world_perc.mod out_of_supplies = (army.no_supplies * (army.is_home * -25 + !army.is_home * -50))
 

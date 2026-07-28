@@ -1,35 +1,339 @@
 // Area: (east limit,y) bottom left, (x,y) top right for where it can spawn //size  3000, 2100
-// Random Settlement features
-DeepForests.area = [0, 0.2, 1, 1]
-Horses.area = [0, 0.15, 1, 0.9]
-Sheep.area = [0, 0.175, 1, 1]
-Vines.area = [0, 0.225, 1, 0.675]
-Herbage.area = [0, 0.2, 1, 0.8]
-Cattle.area = [0, 0.35, 1, 1]
-
 // Random Province features
-Camels.area = [0, 0, 1, 0.27]
-Camels.spawn_chance = 40
-AmberDeposits.spawn_chance = 65
-AmberDeposits.area = [0.375, 0.6, 1, 1]
 RareGame.spawn_chance = 25
-RareGame.area = [0.5, 0.55, 1, 1]
-SaltDeposit.spawn_chance = 1
-SaltDeposit.spawn_chance.Mountains = 25
-SaltDeposit.spawn_chance.Coastal = 20
-MineralsDeposit.spawn_chance = 4
-SulfurDeposits.spawn_chance = 2
-SaltpeterDeposits.spawn_chance = 2
+RareGame.area = [0.65, 0.65, 1, 1]
+SaltpeterDeposits.spawn_chance = 1
 
-// Custom Settlement dependent features
-// Quarry
-LimestoneDeposit.spawn_chance = 100
-MarbleDeposit.spawn_chance = 5
-MarbleDeposit.spawn_chance.Mountains = 5
 
-// Mines
-IronOre.spawn_chance = 60
-IronOre.spawn_chance.Mountains = 60
-SilverOre.spawn_chance = 20
-LodestoneDeposits.spawn_chance = 8
-GoldOre.spawn_chance = 6
+def Grasslands : ProvinceFeature
+{
+	name = "Grasslands"
+	flavor = "Grasslands description."
+	tooltip = "Fertile pastureland suitable for raising livestock. It allows for the establishment of sheep, cattle, and livestock farms and provides the basis for the production of wool, leather, and milk."
+	icon = "Assets/Icons/Features/Grassland.png:Grassland#1"
+	icon_big = "Assets/Icons/Features/Grassland.png:Grassland#1"
+	spawn_chance = 70
+	area = [0, 0.25, 1, 0.9] //Basically excludes the southern deserts
+}
+
+def Forests : ProvinceFeature
+{
+	name = "Forests"
+	flavor = "Deep Forests description."
+	tooltip = "Dense forests provide lumber, firewood, and game. They support logging, charcoal production, beekeeping, and hunting, and form the basis for numerous crafts."
+	icon = "Assets/Icons/Features/Forest.png:Forest#1"
+	icon_big = "Assets/Icons/Features/Forest.png:Forest#1"
+	spawn_chance = 80
+	area = [0, 0.25, 1, 1] //Basically excludes the southern deserts
+}
+
+def Swamps : ProvinceFeature
+{
+	name = "Swamps"
+	flavor = "Swamps description."
+	tooltip = "Moors, swamps, and wetlands make settlement difficult, but they provide peat, reeds, and fish, and offer natural protection from attackers."
+	icon = "Assets/Icons/Features/Swamp.png:Swamp#1"
+	icon_big = "Assets/Icons/Features/Swamp.png:Swamp#1"
+	spawn_chance = 7
+	area = [0, 0.6, 0.8, 0.85]
+}
+
+def Desert : ProvinceFeature
+{
+	name = "Desert"
+	flavor = "Desert description."
+	tooltip = "Arid and inhospitable landscapes offer few opportunities for agriculture. They make travel and supply difficult, but they facilitate caravan trade and the use of oases."
+	icon = "Assets/Icons/Features/Desert.png:Desert#1"
+	icon_big = "Assets/Icons/Features/Desert.png:Desert#1"
+	spawn_chance = 0
+	area = [0, 0, 1, 0.3] 
+}
+
+def Oasis : ProvinceFeature
+{
+	name = "Oasis"
+	flavor = "Oasis description."
+	tooltip = "Oases are fertile islands in the midst of arid landscapes. They provide travelers with water and food and serve as natural resting places and trading posts along major caravan routes."
+	icon = "Assets/Icons/Features/Oasis.png:Oasis#1"
+	icon_big = "Assets/Icons/Features/Oasis.png:Oasis#1"
+	
+	area = [0, 0, 1, 0.3] 
+	spawn_chance = 100
+	special = true
+}
+
+def Steppe : ProvinceFeature
+{
+	name = "Steppe"
+	flavor = "Steppe description."
+	tooltip = "Vast, sparsely wooded semi-arid grasslands are ideal for raising horses and livestock. They facilitate a nomadic way of life."
+	icon = "Assets/Icons/Features/Steppe.png:Steppe#1"
+	icon_big = "Assets/Icons/Features/Steppe.png:Steppe#1"
+	
+	area = [0.675, 0.5, 1, 0.72]
+	spawn_chance = 100
+	special = true
+}
+
+def Rivers : ProvinceFeature
+{
+	icon = "Assets/Icons/Features/River.png:River#1"
+	icon_big = "Assets/Icons/Features/River.png:River#1"
+}
+
+def Vines : ProvinceFeature
+{
+	name = "Vines"
+	flavor = "Vines description."
+	tooltip = "Wine was one of the most important agricultural products of the Middle Ages. It served as an everyday beverage, sacramental wine, and a major commodity, and shaped numerous cultural landscapes in Europe and the Mediterranean region."
+	icon = "Assets/Icons/Features/Vines.png:Vines#1"
+	icon_big = "Assets/Icons/Features/Vines.png:Vines#1"
+	
+	spawn_chance = 100
+	area = [0, 0.25, 0.95, 0.65]
+	special = true
+}
+
+def Horses : ProvinceFeature
+{
+	name = "Horse Breeding"
+	flavor = "Horses description."
+	tooltip = "Horse breeding enables the development of fast cavalry and provides high-quality animals for war, transportation, and prestige. Certain regions are known for horse breeds that are particularly enduring or strong."
+	icon = "Assets/UI/Elements/Common/Icons/ProvinceFeatures/Icon_ProvinceFeature_Horses.tga:Icon_ProvinceFeature_Horses#2" //GUID:279e3f6f84ddf094b9dc2683947f2b7b
+	icon_big = "Assets/UI/Elements/Common/Icons/ProvinceFeatures/Icon_ProvinceFeature_Horses_60x60.tga:Icon_ProvinceFeature_Horses_60x60#2" //GUID:23a021969bdd81343a071f9389ff2d16
+
+	area = [0, 0.1, 1, 0.8]
+	spawn_chance = 100
+	special = true
+}
+
+def Camels : ProvinceFeature
+{
+	name = "Camels"
+	flavor = "Camels description."
+	tooltip = "Camels are the backbone of long-distance trade across deserts and arid steppes. They enable caravans to travel long distances and facilitate the economic development of arid regions."
+	icon = "Assets/UI/Elements/Common/Icons/ProvinceFeatures/Icon_ProvinceFeature_Camels.tga:Icon_ProvinceFeature_Camels#2" //GUID:82bc47dc5071c60488feb195e4f0dcce
+	icon_big = "Assets/UI/Elements/Common/Icons/ProvinceFeatures/Icon_ProvinceFeature_Camels_60x60.tga:Icon_ProvinceFeature_Camels_60x60#2" //GUID:c0b153ba87f119343856d45bd992ec43
+	
+	area = [0, 0, 0.87, 0.2]
+	
+	spawn_chance = 50
+	special = true
+}
+
+def SlaveTradersAfrica : ProvinceFeature
+{
+	name = "Slave Trade (Africa)"
+	flavor = "Slave Trade description."
+	tooltip = "The slave trade was one of the most lucrative but also one of the most cruel economic sectors of the Middle Ages. Caravans and coastal cities supplied captives from West, East, and Central Africa to the markets of North Africa, Egypt, and the Middle East."
+	icon = "Assets/Icons/Features/SlaveTraders.png:SlaveTraders#1"
+	icon_big = "Assets/Icons/Features/SlaveTraders.png:SlaveTraders#1"
+	
+	area = [0, 0, 0.88, 0.22]
+	spawn_chance = 2
+}
+
+def SlaveTradersRussia : ProvinceFeature
+{
+	name = "Slave Trade (Caucasus and Steppe)"
+	flavor = "Slave Trade description."
+	tooltip = "The slave trade was one of the most lucrative but also one of the most cruel economic sectors of the Middle Ages. Border regions between settled empires and the steppe peoples supplied captives for the markets of the Mediterranean, Egypt, and the Middle East."
+	icon = "Assets/Icons/Features/SlaveTraders.png:SlaveTraders#1"
+	icon_big = "Assets/Icons/Features/SlaveTraders.png:SlaveTraders#1"
+	
+	area = [0.75, 0.3, 1, 0.8]
+	spawn_chance = 2
+}
+
+def Pirates : ProvinceFeature
+{
+	name = "Pirates"
+	tooltip = "Sheltered bays, rugged coastlines, and remote islands offer pirates and buccaneers ideal hideouts. Those who tolerate or support their activities can profit from raids on trade routes and the spoils."
+	category = "Society"
+	spawn_chance = 10
+	requre_costal = true
+	requre_distant_port = true
+	icon_big = "Assets/UI/Elements/Common/Icons/ProvinceFeatures/Icon_ProvinceFeature_Pirates_60x60.tga:Icon_ProvinceFeature_Pirates_60x60#2" //GUID:17804d103ed73b24c8afee901aaed2ce
+	icon = "Assets/UI/Elements/Common/Icons/ProvinceFeatures/Icon_ProvinceFeature_Pirates.tga:Icon_ProvinceFeature_Pirates#2" //GUID:54c3be7b0914c64448465e8d0c8b91ad
+}
+
+def SpiceTraders : ProvinceFeature
+{
+	name = "Spice Trade"
+	flavor = "Spice Traders description."
+	tooltip = "Precious spices from India, Arabia, and Southeast Asia reached the Mediterranean region via caravans and sea routes. Regions along these trade routes benefited from one of the most lucrative long-distance trade goods of the Middle Ages."
+	icon = "Assets/Icons/Features/SpiceTrader.png:SpiceTrader#1"
+	icon_big = "Assets/Icons/Features/SpiceTrader.png:SpiceTrader#1"
+	
+	area = [0.65, 0, 1, 0.35]
+	spawn_chance = 2
+}
+
+extend LimestoneDeposit
+{
+	icon = "Assets/Icons/Features/Limestone.png:Limestone#1"
+	icon_big = "Assets/Icons/Features/Limestone.png:Limestone#1"
+	
+	spawn_chance = 100
+}
+
+extend GoldOre
+{
+	icon = "Assets/Icons/Features/Gold.png:Gold#1"
+	icon_big = "Assets/Icons/Features/Gold.png:Gold#1"
+	
+	spawn_chance = 5
+	area = [0, 0, 1, 0.7616]
+}
+
+extend SilverOre
+{
+	icon = "Assets/Icons/Features/Silver.png:Silver#1"
+	icon_big = "Assets/Icons/Features/Silver.png:Silver#1"
+	
+	spawn_chance = 20
+}
+
+extend IronOre
+{
+	icon = "Assets/Icons/Features/Iron.png:Iron#1"
+	icon_big = "Assets/Icons/Features/Iron.png:Iron#1"
+
+	spawn_chance = 60
+	{
+		Mountains = 60
+	}
+}
+
+extend MarbleDeposit
+{
+	icon = "Assets/Icons/Features/Marble.png:Marble#1"
+	icon_big = "Assets/Icons/Features/Marble.png:Marble#1"
+	
+	spawn_chance = 4
+	{
+		Mountains = 6
+	}
+}
+
+extend AmberDeposits
+{
+	icon = "Assets/Icons/Features/Amber.png:Amber#1"
+	icon_big = "Assets/Icons/Features/Amber.png:Amber#1"
+
+	spawn_chance = 40
+	area = [0.42, 0.72, 0.75, 1]
+}
+
+extend SulfurDeposits
+{
+	icon = "Assets/Icons/Features/Sulfur.png:Sulfur#1"
+	icon_big = "Assets/Icons/Features/Sulfur.png:Sulfur#1"
+	
+	spawn_chance = 2
+	{
+		Mountains = 4
+	}
+}
+
+extend SaltDeposit
+{
+	icon = "Assets/Icons/Features/Salt.png:Salt#1"
+	icon_big = "Assets/Icons/Features/Salt.png:Salt#1"
+
+	spawn_chance = 0
+	{
+		Mountains = 4
+		Coastal = 10
+	}
+}
+
+def AlumDeposits : ProvinceFeature
+{
+	name = "Alum Deposits"
+	flavor = "Alum description."
+	tooltip = "Alum is an indispensable mordant used in dyeing and tanning. Regions with alum deposits supply textile centers with one of the most important raw materials of the medieval craft economy."
+	icon = "Assets/Icons/Features/Alum.png:Alum#1"
+	icon_big = "Assets/Icons/Features/Alum.png:Alum#1"
+
+	spawn_chance = 0
+	{
+		Mountains = 6
+	}
+}
+
+def GemstoneDeposits : ProvinceFeature
+{
+	name = "Gemstone Deposits"
+	flavor = "Gemstone description."
+	tooltip = "Gemstones are rare luxury goods and highly sought-after commodities. They are used in jewelry, religious artworks, and the adornment of rulers and sacred sites."
+	icon = "Assets/Icons/Features/Gemstones.png:Gemstones#1"
+	icon_big = "Assets/Icons/Features/Gemstones.png:Gemstones#1"
+
+	spawn_chance = 4
+	{
+		Mountains = 10
+	}
+	special = true
+}
+
+def DyeExtraction : ProvinceFeature
+{
+	name = "Dye Extraction"
+	flavor = "Dye Extraction description."
+	tooltip = "The cultivation and extraction of natural dyes formed the basis of medieval textile dyeing. Regions with high-quality dye plants or dyes supplied clothmakers and dyers with sought-after raw materials."
+	icon = "Assets/Icons/Features/Dyes.png:Dyes#1"
+	icon_big = "Assets/Icons/Features/Dyes.png:Dyes#1"
+
+	spawn_chance = 4
+	area = [0, 0.35, 0.8, 0.8]
+}
+
+def IncenseCultivation : ProvinceFeature
+{
+	name = "Incense Cultivation"
+	flavor = "Incense Cultivation description."
+	tooltip = "Frankincense was one of the most valuable fragrances and commodities in the medieval world. The resin of the frankincense tree was used in religious ceremonies, medicine, and perfumes, and was transported to Europe and Asia via caravan and maritime trade routes."
+	icon = "Assets/Icons/Features/Frankincense.png:Frankincense#1"
+	icon_big = "Assets/Icons/Features/Frankincense.png:Frankincense#1"
+
+	spawn_chance = 6
+	area = [0, 0, 1, 0.25]
+}
+
+def PilgrimageSiteChristian : ProvinceFeature
+{
+	name = "Pilgrimage Site (Christian)"
+	flavor = "Pilgrimage Site description."
+	tooltip = "Major Christian pilgrimage sites attract believers from all over Europe. Pilgrims boost trade, the hospitality industry, and religious prestige, transforming their region into an important spiritual center."
+	icon = "Assets/Icons/Features/PilgrimsChristian.png:PilgrimsChristian#1"
+	icon_big = "Assets/Icons/Features/PilgrimsChristian.png:PilgrimsChristian#1"
+
+	spawn_chance = 0
+}
+
+def PilgrimageSiteMuslim : ProvinceFeature
+{
+	name = "Pilgrimage Site (Muslim)"
+	flavor = "Pilgrimage Site description."
+	tooltip = "Major Islamic pilgrimage sites attract believers from across the Islamic world. Pilgrims boost trade, the hospitality industry, and religious prestige, transforming their region into an important spiritual center."
+	icon = "Assets/Icons/Features/PilgrimsMuslim.png:PilgrimsMuslim#1"
+	icon_big = "Assets/Icons/Features/PilgrimsMuslim.png:PilgrimsMuslim#1"
+
+	spawn_chance = 0
+}
+
+
+
+
+delete SheepFarm
+delete CattleFarm
+delete LoggingCamp
+
+delete FlaxFields
+delete Herbage
+delete Cattle
+delete Sheep
+delete DeepForests
+delete LodestoneDeposits
+delete MineralsDeposit

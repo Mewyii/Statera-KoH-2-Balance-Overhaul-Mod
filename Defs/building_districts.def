@@ -115,9 +115,9 @@ extend CropFarmsDistrict
 	{
 		CropFarming = 1,1
 
-		WeavingMill = 1,2
+		Windmill = 1,2 { prerequisites { CropFarming } }
 
-		Windmill = 1,3 { prerequisites { CropFarming } }
+		WeavingMill = 1,3
 	}
 }
 
@@ -182,12 +182,12 @@ def CraftingDistrict: District
 		Blacksmith = 2,1
 		Tanneries = 3,1
 
-		StonemasonsGuild = 1,2 { prerequisites { Workshop } }
-		CraftsmensGuild = 2,2 { prerequisites { Workshop } }
+		CraftsmensGuild = 1,2 { prerequisites { Workshop } }
+		StonemasonsGuild = 2,2 { prerequisites { Workshop } }
 		BlacksmithsGuild = 3,2 { prerequisites { Blacksmith } }
 
-		MasterStonemason = 1,2 { prerequisites { Workshop} }
-		MasterWorkshop = 2,2 { prerequisites { Workshop } }
+		MasterWorkshop = 1,2 { prerequisites { Workshop } }
+		MasterStonemason = 2,2 { prerequisites { Workshop} }
 		MasterBlacksmith = 3,2 { prerequisites { Blacksmith } }
 	}
 }
@@ -251,7 +251,7 @@ def PunishmentDistrict : District
 
 		CityPrison = 1,2
 
-		CourtHall = 1,2 { prerequisites { CityPrison } }
+		CourtHall = 1,3 { prerequisites { CityPrison } }
 	}
 }
 

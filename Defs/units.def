@@ -283,8 +283,6 @@ extend Infantry
 	require
 	{
 		TrainingField
-		SimpleWeaponsmithing
-		SimpleArmorsmithing
 	}
 }
 
@@ -336,7 +334,7 @@ extend HeavyInfantry
 	delete require
 	require
 	{
-		InfantryFormations
+		TrainingField
 		AdvancedWeaponsmithing
 		AdvancedArmorsmithing
 	}
@@ -346,7 +344,7 @@ extend HeavyDefense
 	delete require
 	require
 	{
-		InfantryFormations
+		TrainingField
 		SimpleWeaponsmithing
 		AdvancedArmorsmithing
 	}
@@ -356,7 +354,7 @@ extend HeavyCavalry
 	delete require
 	require
 	{
-		ArmyBarracks
+		TrainingField
 		ArmyStables
 		AdvancedWeaponsmithing
 		AdvancedArmorsmithing
@@ -367,7 +365,7 @@ extend HeavyRanged
 	delete require
 	require
 	{
-		InfantryFormations
+		TrainingField
 		ArcheryRange
 		AdvancedArmorsmithing
 	}
@@ -377,7 +375,6 @@ extend AdvancedMilitia
 	delete require
 	require
 	{
-		CityWatch
 		MilitiaBarracks
 	}
 }
@@ -703,9 +700,6 @@ def Early_Knights_Dismounted : HeavyInfantry
 	
 	require
 	{
-		KnightlyTrainingGrounds
-		SimpleWeaponsmithing
-		SimpleArmorsmithing
 	}
 
 	hide_in_wiki = false
@@ -719,16 +713,12 @@ def Early_Knights : HeavyCavalry
 
 	require
 	{
-		KnightlyTrainingGrounds
-		KnightlyStables
-		SimpleWeaponsmithing
-		SimpleArmorsmithing
 	}
 
 	hide_in_wiki = false
 }
 
-def Noble_Knights_Dismounted : HeavyInfantry
+def High_Knights_Dismounted : HeavyInfantry
 {
 	description = "Well trained and heavily armoured soldiers, skilled both in attack and defense when it comes to close combat."
 	model = "Assets/Units/Man_At_Arms_Special_01/Man_At_Arms_Special_01.prefab"
@@ -747,7 +737,7 @@ def Noble_Knights_Dismounted : HeavyInfantry
 	hide_in_wiki = false
 }
 
-def Noble_Knights : HeavyCavalry
+def High_Knights : HeavyCavalry
 {
 	model = "Assets/Units/Heavy_Cavalry_CE_01/Heavy_Cavalry_CE_01.prefab" //GUID:fe0549b7561b18a4382ff700e57beae9
 	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Heavy_Cavalry_CE.tga:Icon_Unit_Heavy_Cavalry_CE#2" //GUID:de937a70321dde04ea51552d6f23648d
@@ -768,14 +758,10 @@ extend Norman_Special
 	delete require
 	require
 	{
-		KnightlyTrainingGrounds
-		KnightlyStables
-		SimpleWeaponsmithing
-		SimpleArmorsmithing
 	}
 }
 
-def Feudal_Knights_Dismounted : HeavyInfantry
+def Late_Knights_Dismounted : HeavyInfantry
 {
 	description = "Well trained and heavily armoured soldiers, skilled both in attack and defense when it comes to close combat."
 	model = "Assets/Units/Man_At_Arms_Special_01/Man_At_Arms_Special_01.prefab"
@@ -798,9 +784,21 @@ def Feudal_Knights_Dismounted : HeavyInfantry
 	hide_in_wiki = false
 }
 
-extend Feudal_Knight_Special
+def Late_Knights : HeavyCavalry
 {
-	delete require
+	description = "Extremely heavily armoured cavalrymen, whose training in the art of war matches the quality of their equipment."
+	special = true
+	model = "Assets/Units/Feudal_Knight_Special_01/Feudal_Knight_Special_01.prefab" //GUID:38c8dc2c793b15e47b50459988fa7644
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Feudal_Knight_Special.tga:Icon_Unit_Feudal_Knight_Special#2" //GUID:989914db51388964c9d021174bf9c65a
+	
+	max_acceleration = 4.5
+	max_deceleration = 10
+	
+	bonuses
+	{
+		defense_flat = "cs_elite_unit_defense_flat"
+	}
+	
 	require
 	{
 		KnightlyTrainingGrounds
@@ -808,7 +806,10 @@ extend Feudal_Knight_Special
 		AdvancedWeaponsmithing
 		AdvancedArmorsmithing
 	}
+
+	hide_in_wiki = false
 }
+
 
 // MILITIA
 
@@ -1031,6 +1032,98 @@ def Cavalry_Militia_Cuman : HorseCavalry
 	hide_in_wiki = false
 }
 
+// ADVANCED MILITIA
+
+def Halberd_Militia : HeavyInfantry
+{
+	description = "Foot soldiers, heavily armoured and armed with two-handed polearms, unmatched in their defensive capabilities. Two lines of the halberdiers can attack at the same time and they are more effective against cavalry."
+	special = true
+	model = "Assets/Units/Halberdier_Special_01/Halberdier_Special_01.prefab" //GUID:61c4ebf12a68aa94da8465108790632f
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Halberdier_Special.tga:Icon_Unit_Halberdier_Special#2" //GUID:3eb96455cdfa75841878855650423d22
+	
+	max_acceleration = 3.5
+	max_deceleration = 3.5
+
+	bonuses
+	{
+		defense_flat = "cs_elite_unit_defense_flat"
+	}
+	
+	require
+	{
+		InfantryFormations
+		AdvancedWeaponsmithing
+	}
+
+	hide_in_wiki = false
+}
+
+def Pike_Militia : HeavyDefense
+{
+	description = "Well armored polearm soldiers, capable to fend off both cavalry and infantry attacks with their goedendag and pikes.{p}Two lines of the flemish pikemen can attack at the same time and they are more effective against cavalry."
+	special = true
+	model = "Assets/Units/Flemish_Pikeman_Special/Flemish_Pikeman_Special.prefab" //GUID:da50c394ea05d9648895b1129bf9fde9
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Flemish_Pikeman_Special.tga:Icon_Unit_Flemish_Pikeman_Special#2" //GUID:219733cca255cb447bb11614e5f26fff
+	
+	max_acceleration = 3.5
+	max_deceleration = 3.5
+
+	bonuses
+	{
+		defense_flat = "cs_elite_unit_defense_flat"
+	}
+	
+	require
+	{
+		InfantryFormations
+		AdvancedWeaponsmithing
+	}
+
+	hide_in_wiki = false
+}
+
+def Heavy_Cavalry_Militia : HeavyCavalry
+{
+	description = "Early heavily armored mounted knights representing a switch from the northern infantry fighting tradition towards the central european knighthood."
+	model = "Assets/Units/Heavy_Cavalry_CE_01/Heavy_Cavalry_CE_01.prefab" //GUID:fe0549b7561b18a4382ff700e57beae9
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Heavy_Cavalry_CE.tga:Icon_Unit_Heavy_Cavalry_CE#2" //GUID:de937a70321dde04ea51552d6f23648d
+
+	require
+	{
+		ArmyStables
+		CombinedArmsDoctrine
+		AdvancedWeaponsmithing
+		AdvancedArmorsmithing
+	}
+
+	hide_in_wiki = false
+}
+
+def Pavise_Crossbow_Militia : HeavyRanged
+{
+	//csv://csv: name = "Pavise Crossbowmen"
+	description = "Professional archers, protected in battle by their formidable shields. They can shoot at a long distance, but only a few bolts per minute."
+	special = true
+	model = "Assets/Units/Pavise_Crossbowman_Special_01/Pavise_Crossbowman_Special_01.prefab" //GUID:d15ca6a98b7e69448b83fb3180ccabec
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Pavise_Crossbowman.tga:Icon_Unit_Pavise_Crossbowman#2" //GUID:d7e790b9e59116e408bfc46410bea915
+	
+	max_acceleration = 2
+	max_deceleration = 2
+
+	bonuses
+	{
+		defense_flat = "cs_elite_unit_defense_flat"
+	}
+	
+	require
+	{
+		InfantryFormations
+		CrossbowManufactoring
+	}
+
+	hide_in_wiki = false
+}
+
 // PROFESSIONAL
 
 def Heavy_Cavalry_CE : HeavyCavalry
@@ -1040,7 +1133,7 @@ def Heavy_Cavalry_CE : HeavyCavalry
 
 	require
 	{
-		ArmyBarracks
+		TrainingField
 		ArmyStables
 		AdvancedWeaponsmithing
 		AdvancedArmorsmithing
@@ -1232,9 +1325,6 @@ def Hirdmen_Special : HeavyInfantry
 	
 	require
 	{
-		TrainingField
-		SimpleWeaponsmithing
-		SimpleArmorsmithing
 	}
 
 	hide_in_wiki = false
