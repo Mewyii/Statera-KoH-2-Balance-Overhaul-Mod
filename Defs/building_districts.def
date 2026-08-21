@@ -11,7 +11,6 @@ extend CommonDistrict
     delete buildings
 	buildings
 	{	
-		HillFort
 		PirateHaven { prerequisites { Harbor } }
 		Viticulture
 		SheepFarming
@@ -20,6 +19,7 @@ extend CommonDistrict
 		Woodworking
 		Stoneworking
 		Metalworking
+		SaltTrade
 		FightingGrounds
 		HuntingGrounds
 		BreedingGrounds
@@ -36,17 +36,14 @@ def PFDistrict : District
 	{
 		LimeTrade { prerequisites { Stoneworking; MarketSquare } }
 
-		LodestoneTrade { prerequisites { Metalworking; MarketSquare } }
 		SilverSmelting { prerequisites { Metalworking; MarketSquare } }
 		GoldSmelting { prerequisites { Metalworking; MarketSquare } }
 
 		AmberTrade { prerequisites { MarketSquare } }
-		MineralsTrade { prerequisites { MarketSquare } }
 		
 		CamelsTrade { prerequisites { MarketSquare } }
 		FurTrade { prerequisites { MarketSquare } }
 
-		SaltTrade { prerequisites { MarketSquare } }
 		SaltpeterTrade { prerequisites { MarketSquare } }		
 		SulfurTrade { prerequisites { MarketSquare } }
 	}
@@ -57,15 +54,14 @@ def CastlesDistrict : District
 	delete buildings
 	buildings
 	{
-		TrainingField = 1,1
+		CityWatch = 1,1
 		ArmyStables = 2,1
+		
+		Armory = 1,2 { prerequisites { Blacksmith } }
+		ArmySiegeWorkshop = 2,2 { prerequisites { Workshop } }
 
-		CityWatch = 1,2 { prerequisites { TrainingField } }
-		ArmySiegeWorkshop = 2,2
-
-		Armory = 1,3 { prerequisites { TrainingField; Blacksmith } }
-
-		ArmyBarracks_Christian = 2,3 { prerequisites { TrainingField; School_Christian } }
+		Feudal_Fiefs_Christian = 1,3
+		TrainingField = 2,3 { prerequisites { CityWatch; School_Christian } }
 
 		ArmyBarracks_Muslim = 2,3 { prerequisites { TrainingField; School_Muslim } }
 	}
@@ -228,7 +224,7 @@ def CultureDistrict : District
 
 		TournamentGrounds_Christian = 1,2 { prerequisites { Armory } }
 
-		Theater_Christian = 1,3 { prerequisites { StonemasonsGuild } }
+		Theater_Christian = 1,3
 
 		TownHall_Muslim = 1,1 { prerequisites { MarketSquare } }
 
@@ -249,90 +245,9 @@ def PunishmentDistrict : District
 	{
 		Dungeon = 1,1
 
-		CityPrison = 1,2
-
-		CourtHall = 1,3 { prerequisites { CityPrison } }
+		CourtHall = 1,2 { prerequisites { Dungeon } }
 	}
 }
-
-
-// Housekeeping
-// Upgrades
-delete ShoemakersShop
-delete JewellersShop
-delete TailorsShop
-delete RugsWeaver
-delete FlaxWeaver
-delete Ropewalk
-delete Alehouse
-delete Fletcher_Barracks
-delete Swordsmith
-delete Spearmaker
-delete MasterWeaponsmith
-delete HeavyArmorsmith
-delete WarStables
-delete MasterArmorer
-delete Artillery_Castles
-delete LargeKeeps
-delete Fiefs
-delete GreatHall
-delete GrainTrade
-delete ChristianDecoration
-delete Schools_Christian
-delete Hospital_Christian
-delete MuslimCeremonies
-delete Docks_RiverTrade
-delete TownWatch
-delete Courthouse
-delete ScribesOffice
-delete TownsCharter
-delete QueensChambers
-delete CastleGuards
-delete HerbalistShacks
-delete SpiceShop
-delete InkMaker_Christian
-delete SmallLibrary_Christian
-delete Apothecary_Christian
-delete ManurePits
-delete AuctionMarket_Christian
-delete AuctionMarket_Muslim
-delete RoyalGuardQuarters
-delete WatchTowers_Castles
-delete TownGuardsQuarters
-delete PublicBaths
-delete LargeHouses
-delete FishMarket
-delete InkMaker_Muslim
-delete Orphanage_Muslim
-delete Schools_Muslim
-delete SmallLibrary_Muslim
-delete MuslimDecoration
-delete Apothecary_Muslim
-delete Hospital_Muslim
-delete Bazaar
-
-
-def ArtsSchool_Muslim: Building
-def ArtsSchool_Christian: Building
-delete ArtsSchool
-delete ArtsSchool_Muslim
-delete ArtsSchool_Christian
-def TranslatorsChambers_Christian: Building
-def TranslatorsChambers_Muslim: Building
-delete TranslatorsChambers_Christian
-delete TranslatorsChambers_Muslim
-delete TranslatorsChambers
-def GreatLibrary_Christian: Building
-def GreatLibrary_Muslim: Building
-delete GreatLibrary_Christian
-delete GreatLibrary_Muslim
-delete GreatLibrary
-def AlchemistLab_Christian: Building
-def AlchemistLab_Muslim: Building
-delete AlchemistLab_Christian
-delete AlchemistLab_Muslim
-delete AlchemistLab
-
 
 
 // Might be Interesting to use in some way
@@ -354,20 +269,4 @@ extend BuildingTooltipHT
 {
 	delete preview
 }
-delete Housings
-delete RoyalArmory
-delete LordsCastles
-delete RoyalPalace
-delete VillageMilitia
-delete RiverTrade
-delete Artisans
-delete FoodMarket
-delete FlaxGrowing
-delete HerbGardening
-delete TrainingGrounds
-delete SiegeWorkshop
-delete Stables
-delete University.upgrades
-delete Madrasah.upgrades
-delete Barracks.upgrades
 

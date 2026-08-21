@@ -1,315 +1,387 @@
-extend Skill.effects
+extend Skill
 {
-	tag King 
+	resources learn_cost = ["200b","200b","200b","200b","200b"]
+	resources upgrade_cost = ["400b 200g","600b 400g"]
+
+	effects
 	{
-		class Marshal
+		tag King 
 		{
-			mod cs_king_squad_size_perc = (ceil((1 + class_level) / 2))
+			class Marshal
 			{
-				text mod_name = "Marshal is [{kingdom.king.title}|King]"
+				mod cs_king_squad_size_perc = (ceil((1 + class_level) / 2))
+				{
+					text mod_name = "Marshal is [{kingdom.king.title}|King]"
+				}
+			}
+
+			class Merchant
+			{
+				kingdom_mod ks_gold_from_own_TCs_perc = (ceil((1 + class_level) / 2))
+				{
+					per_level_value = true
+				}
+			}
+
+			class Diplomat
+			{
+				kingdom_mod ks_influence_in_neighbors = (ceil((1 + class_level) / 2))
+			}
+
+			class Spy
+			{
+
+			}
+
+			class Cleric
+			{
+
+			}
+			Default
+			{
+				//action UnExcommunicateAction
 			}
 		}
 
-		class Merchant
+		tag Govern
 		{
-			kingdom_mod ks_gold_from_own_TCs_perc = (ceil((1 + class_level) / 2))
+			class Marshal
 			{
-				per_level_value = true
+				delete rs_governor_levy_per_settlement
+				delete rs_governor_levy_per_keep
+				delete rs_siege_defense
+
+				governed_realm_mod rs_governor_levy_in_town = (ceil((2 + class_level) / 4))
+				{
+					per_level_value = true
+					recalc_on { skills_changed }
+				}
+
+				governed_realm_mod rs_governor_levy_per_keep = 1
+
+				governed_realm_mod rs_morale_in_province = (ceil((6 + class_level) / 4))
+				{
+					per_level_value = true
+					recalc_on { skills_changed }
+				}
+
+				governed_realm_mod rs_governor_town_guards = (ceil((9 + class_level) / 6))
+				{
+					per_level_value = true
+					recalc_on { skills_changed }
+				}
+			}
+
+			class Merchant
+			{
+				delete rs_governor_gold_per_settlement
+				delete rs_governor_commerce_per_village
+
+				governed_realm_mod rs_governor_commerce_flat = (ceil((3 + class_level) / 2))
+				{
+					per_level_value = true
+					recalc_on { skills_changed }
+				}
+
+	            governed_realm_mod rs_governor_commerce_per_village = 1
+
+				mod cs_base_trading_income = (ceil((3 + class_level) / 6))
+				{
+					per_level_value = true
+					recalc_on { skills_changed }
+				}
+
+				governed_realm_mod rs_governor_gold_in_town_per_good = (ceil((1 + class_level) / 10))
+				{
+					per_level_value = true
+					recalc_on { skills_changed }
+				}
+			}
+
+			class Diplomat
+			{	
+				delete rs_governor_commerce_per_settlement
+				delete rs_governor_max_population
+				delete rs_governor_food_per_settlement
+
+				governed_realm_mod rs_growth_rate_perc = (10 + class_level)
+				{
+					per_level_value = true
+					recalc_on { skills_changed }
+				}
+
+				governed_realm_mod rs_build_cost_discount_perc = (5 + class_level)
+				{
+					per_level_value = true
+					recalc_on { skills_changed }
+				}
+
+				governed_realm_mod rs_governor_books = (ceil((5 + class_level) / 4))
+				{
+					per_level_value = true
+					recalc_on { skills_changed }
+				}
+			}
+
+			class Spy
+			{
+				delete cs_spy_governor_stability_per_keep
+				delete cs_spy_governor_stability_per_village
+				delete cs_spy_governor_espionage_defense_bonus_per_keep
+				delete rs_governor_gold_per_village
+				delete rs_governor_levy_per_keep
+
+				governed_realm_mod rs_stability = (6 + class_level)
+				{
+					per_level_value = true
+					recalc_on { skills_changed }
+				}
+
+				mod cs_spy_governor_stability_per_keep = 1
+
+				governed_realm_mod rs_governor_gold_per_settlement = (ceil((1 + class_level) / 5))
+				{
+					per_level_value = true
+					recalc_on { skills_changed }
+				}
+
+				mod cs_spy_governor_espionage_defense_bonus_per_keep = (ceil((3 + class_level) / 2))
+				{
+					per_level_value = true
+					recalc_on { skills_changed }
+				}
+
+				governed_realm_mod rs_governor_enemy_attrition = (ceil((5 + class_level) / 2))
+				{
+					per_level_value = true
+					recalc_on { skills_changed }
+				}
+
+				governed_realm_mod rs_enemy_move_speed_reduction_perc = (ceil((5 + class_level) / 2))
+				{
+					per_level_value = true
+					recalc_on { skills_changed }
+				}
+			}
+
+			class Cleric
+			{
+				delete rs_governor_piety_per_shrine
+				delete rs_governor_books_per_religious_settlement
+				delete rs_governor_books
+
+				governed_realm_mod rs_governor_piety_from_cleric = (ceil((5 + class_level) / 4))
+				{
+					per_level_value = true
+					condition = (kingdom.is_christian && governed_castle.realm.is_same_k_religion)
+					recalc_on { skills_changed; kingdom_religion_changed; governed_realm_religion_changed }
+				}
+				governed_realm_mod rs_governor_piety_from_scholar = (ceil((5 + class_level) / 4))
+				{
+					per_level_value = true
+					condition = (kingdom.is_muslim && governed_castle.realm.is_same_k_religion)
+					recalc_on { skills_changed; kingdom_religion_changed; governed_realm_religion_changed }
+				}
+				governed_realm_mod rs_governor_piety_from_shaman = (ceil((5 + class_level) / 4))
+				{
+					per_level_value = true
+					condition = (kingdom.is_pagan && governed_castle.realm.is_same_k_religion)
+					recalc_on { skills_changed; kingdom_religion_changed; governed_realm_religion_changed }
+				}
+
+				governed_realm_mod rs_governor_piety_per_religous_settlement = 1
+
+				mod cs_culture_per_governed_monastery = (ceil((5 + class_level) / 4))
+				{
+					per_level_value = true
+					recalc_on { skills_changed }
+				}
+
+				governed_realm_mod rs_governor_happiness_from_CL = (ceil((9 + class_level) / 6))
+				{
+					per_level_value = true
+					recalc_on { skills_changed }
+				}
+
+				governed_realm_mod rs_governor_food_per_settlement = 0.5
+				{
+					per_level_value = true
+					recalc_on { skills_changed }
+				}
+			}
+
+			tag Cardinal
+			{
+				governed_realm_mod rs_governor_piety_per_monastery = 3
+				{
+					condition = (kingdom.is_christian && governed_castle.realm.is_same_k_religion)
+					recalc_on { kingdom_religion_changed; governed_realm_religion_changed }
+				}	
+
+			}
+
+			tag Patriarch
+			{
+				governed_realm_mod rs_governor_books_per_religious_settlement = (ceil(class_level / 5)) 
+				{
+					per_level_value = true
+					recalc_on { skills_changed }
+				}
+				governed_realm_mod rs_governor_piety_per_settlement = 1
+				{
+					condition = (kingdom.is_christian && governed_castle.realm.is_same_k_religion)
+					recalc_on { kingdom_religion_changed; governed_realm_religion_changed }
+				}			
+				governed_realm_mod rs_governor_commerce_per_settlement = 2
+			}
+
+			delete King
+			tag King
+			{
+				governed_realm_mod rs_governor_king_gold_per_settlement = 1
+
+				governed_realm_mod rs_governor_food_per_settlement = 1
+
+				governed_realm_mod rs_governor_levy_in_town = (ceil((2 + class_level) / 4))
+				{
+					per_level_value = true
+					recalc_on { skills_changed }
+				}
+
+				governed_realm_mod rs_governor_max_population = (1 + (ceil(class_level / 8)))
+				{
+					per_level_value = true
+					recalc_on { skills_changed }
+				}
+
+
+				governed_realm_mod rs_governor_town_guards = (1 + (ceil(class_level / 4)))
+				{
+					per_level_value = true
+					recalc_on { skills_changed }
+				}
+
+
+				governed_realm_mod rs_governor_local_authority_from_CL = (10 + (ceil(class_level / 1.5)))
+				{
+					per_level_value = true
+					recalc_on { skills_changed }
+				}
+
+				// Culture Dependent
+				// Germanic
+				// kingdom_mod ks_stability = (1 + (ceil(class_level / 4)))
+				// {
+				// 	condition = (kingdom.culture_group == "Germanic")
+				// 	per_level_value = true
+				// 	recalc_on { skills_changed }
+				// }
+
+				// WestGermanic
+
+				// WestSlavic
+
+				// EastSlavic
+
+				// SouthSlavic
+
+				// FinnoUgric
+
+				// Frankish
+
+				// English
+				mod cs_king_squad_size_perc = (10 + (ceil(class_level / 1.5)))
+				{
+					condition = (kingdom.culture_group == "English")
+					per_level_value = true
+					recalc_on { skills_changed }
+				}
+				kingdom_mod ks_max_food_in_towns = 50
+				{
+					condition = (kingdom.culture_group == "English")
+					per_level_value = true
+					recalc_on { skills_changed }
+				}
+				kingdom_mod ks_squad_size_perc = -10
+				{
+					condition = (kingdom.culture_group == "English")
+					per_level_value = true
+					recalc_on { skills_changed }
+				}
+
+				// Italian
+				// kingdom_mod ks_gold_from_trade = (1 + (ceil(class_level / 4)))
+				// {
+				// 	condition = (kingdom.culture_group == "Italian")
+				// 	per_level_value = true
+				// 	recalc_on { skills_changed }
+				// }
+
+				// Iberian
+				// governed_realm_mod rs_governor_piety = (1 + (ceil(class_level / 4)))
+				// {
+				// 	condition = (kingdom.culture_group == "Iberian")
+				// 	per_level_value = true
+				// 	recalc_on { skills_changed }
+				// }
+
+				// Turkic
+
+				// Steppe
+
+				// Arabic
+
+				// ArabicNomadic
+
+				// African
+
+				// Baltic
+
+				// Berber
+
+				// Caucasian
+
+				// Celtic
+
+				// Gaelic
+
+				// Greek
+				// kingdom_mod ks_culture_from_pope = (5 + class_level)
+				// {
+				// 	condition = (kingdom.culture_group == "Greek")
+				// 	per_level_value = true
+				// 	recalc_on { skills_changed }
+				// }
+				
+				// Iranic
+
+				// Magyar
+
+				// Mongolic
+
+				// Semitic
+
+				// Nordic
+
+				// Wallachian
+
 			}
 		}
 
-		class Diplomat
+		tag Crusader
 		{
-			kingdom_mod ks_influence_in_neighbors = (ceil((1 + class_level) / 2))
-		}
-
-		class Spy
-		{
-			
-		}
-
-		class Cleric
-		{
-			
-		}
-		Default
-		{
-			//action UnExcommunicateAction
-		}
+			Default
+			{
+				mod cs_crusader_squad_size_perc = 40
+				{
+					text mod_name = "Leader is crusader"
+				}
+				mod cs_army_defense_perc = (map(governed_castle.realm.income.Levy, 0, 100, 0, 100))
+				{
+					text mod_name = "From levies in [{army.leader.governed_castle}|governed province]"
+				}
+			}
+		}	
 	}
-
-	tag Govern
-	{
-		class Marshal
-		{
-			delete rs_governor_levy_per_settlement
-			delete rs_governor_levy_per_keep
-			delete rs_siege_defense
-
-			governed_realm_mod rs_governor_levy_in_town = (3 + class_level)
-			{
-				per_level_value = true
-				recalc_on { skills_changed }
-			}
-
-			governed_realm_mod rs_governor_levy_per_keep = 1
-			
-			governed_realm_mod rs_governor_levy_per_village = 1
-
-			governed_realm_mod rs_morale_in_province = (ceil((6 + class_level) / 4))
-			{
-				per_level_value = true
-				recalc_on { skills_changed }
-			}
-
-			governed_realm_mod rs_governor_town_guards = (ceil((9 + class_level) / 6))
-			{
-				per_level_value = true
-				recalc_on { skills_changed }
-			}
-		}
-
-		class Merchant
-		{
-			delete rs_governor_gold_per_settlement
-			delete rs_governor_commerce_per_village
-
-			governed_realm_mod rs_governor_commerce_flat = (ceil((3 + class_level) / 2))
-			{
-				per_level_value = true
-				recalc_on { skills_changed }
-			}
-
-            governed_realm_mod rs_governor_commerce_per_village = 1
-
-			mod cs_base_trading_income = (ceil((3 + class_level) / 6))
-			{
-				per_level_value = true
-				recalc_on { skills_changed }
-			}
-			
-			governed_realm_mod rs_governor_gold_in_town_per_good = (ceil((1 + class_level) / 10))
-			{
-				per_level_value = true
-				recalc_on { skills_changed }
-			}
-		}
-
-		class Diplomat
-		{	
-			delete rs_governor_commerce_per_settlement
-			delete rs_governor_max_population
-			delete rs_governor_food_per_settlement
-			
-			governed_realm_mod rs_growth_rate_perc = (10 + class_level)
-			{
-				per_level_value = true
-				recalc_on { skills_changed }
-			}
-			
-			governed_realm_mod rs_build_cost_discount_perc = (5 + class_level)
-			{
-				per_level_value = true
-				recalc_on { skills_changed }
-			}
-
-			governed_realm_mod rs_governor_books = (ceil((5 + class_level) / 4))
-			{
-				per_level_value = true
-				recalc_on { skills_changed }
-			}
-		}
-
-		class Spy
-		{
-			delete cs_spy_governor_stability_per_keep
-			delete cs_spy_governor_stability_per_village
-			delete cs_spy_governor_espionage_defense_bonus_per_keep
-			delete rs_governor_gold_per_village
-			delete rs_governor_levy_per_keep
-
-			governed_realm_mod rs_stability = (6 + class_level)
-			{
-				per_level_value = true
-				recalc_on { skills_changed }
-			}
-
-			mod cs_spy_governor_stability_per_keep = 1
-			
-			governed_realm_mod rs_governor_gold_per_settlement = (ceil((1 + class_level) / 5))
-			{
-				per_level_value = true
-				recalc_on { skills_changed }
-			}
-
-			mod cs_spy_governor_espionage_defense_bonus_per_keep = (ceil((3 + class_level) / 2))
-			{
-				per_level_value = true
-				recalc_on { skills_changed }
-			}
-
-			governed_realm_mod rs_governor_enemy_attrition = (ceil((5 + class_level) / 2))
-			{
-				per_level_value = true
-				recalc_on { skills_changed }
-			}
-
-			governed_realm_mod rs_enemy_move_speed_reduction_perc = (ceil((5 + class_level) / 2))
-			{
-				per_level_value = true
-				recalc_on { skills_changed }
-			}
-		}
-
-		class Cleric
-		{
-			delete rs_governor_piety_per_shrine
-			delete rs_governor_books_per_religious_settlement
-			delete rs_governor_books
-
-			governed_realm_mod rs_governor_piety_from_cleric = (ceil((5 + class_level) / 4))
-			{
-				per_level_value = true
-				condition = (kingdom.is_christian && governed_castle.realm.is_same_k_religion)
-				recalc_on { skills_changed; kingdom_religion_changed; governed_realm_religion_changed }
-			}
-			governed_realm_mod rs_governor_piety_from_scholar = (ceil((5 + class_level) / 4))
-			{
-				per_level_value = true
-				condition = (kingdom.is_muslim && governed_castle.realm.is_same_k_religion)
-				recalc_on { skills_changed; kingdom_religion_changed; governed_realm_religion_changed }
-			}
-			governed_realm_mod rs_governor_piety_from_shaman = (ceil((5 + class_level) / 4))
-			{
-				per_level_value = true
-				condition = (kingdom.is_pagan && governed_castle.realm.is_same_k_religion)
-				recalc_on { skills_changed; kingdom_religion_changed; governed_realm_religion_changed }
-			}
-
-			governed_realm_mod rs_governor_piety_per_religous_settlement = 1
-
-			mod cs_culture_per_governed_monastery = (ceil((5 + class_level) / 4))
-			{
-				per_level_value = true
-				recalc_on { skills_changed }
-			}
-			
-			governed_realm_mod rs_governor_happiness_from_CL = (ceil((9 + class_level) / 6))
-			{
-				per_level_value = true
-				recalc_on { skills_changed }
-			}
-
-			governed_realm_mod rs_governor_food_per_settlement = 0.5
-			{
-				per_level_value = true
-				recalc_on { skills_changed }
-			}
-		}
-
-		tag Cardinal
-		{
-			governed_realm_mod rs_governor_piety_per_monastery = 3
-			{
-				condition = (kingdom.is_christian && governed_castle.realm.is_same_k_religion)
-				recalc_on { kingdom_religion_changed; governed_realm_religion_changed }
-			}	
-
-		}
-
-		tag Patriarch
-		{
-			governed_realm_mod rs_governor_books_per_religious_settlement = (ceil(class_level / 5)) 
-			{
-				per_level_value = true
-				recalc_on { skills_changed }
-			}
-			governed_realm_mod rs_governor_piety_per_settlement = 1
-			{
-				condition = (kingdom.is_christian && governed_castle.realm.is_same_k_religion)
-				recalc_on { kingdom_religion_changed; governed_realm_religion_changed }
-			}			
-			governed_realm_mod rs_governor_commerce_per_settlement = 2
-		}
-
-		delete King
-		tag King
-		{
-			governed_realm_mod rs_governor_king_gold_per_settlement = 1
-			
-			governed_realm_mod rs_governor_king_commerce_per_settlement = 1
-
-			governed_realm_mod rs_governor_food_per_settlement = 1
-
-			governed_realm_mod rs_governor_max_population = 2
-
-			governed_realm_mod rs_governor_town_guards = (2 + (ceil(class_level / 5)))
-
-			governed_realm_mod rs_governor_local_authority_from_CL = (10 + (ceil(class_level / 2)))
-			{
-				per_level_value = true
-				recalc_on { skills_changed }
-			}
-
-			// Culture Dependent
-			governed_realm_mod rs_governor_workers_per_village = 1
-			{
-				condition = (kingdom.culture_group == "Italian")
-			}
-			governed_realm_mod rs_governor_commerce_per_good = 1
-			{
-				condition = (kingdom.culture_group == "Italian")
-			}
-
-			governed_realm_mod rs_governor_levy_per_settlement = 1
-			{
-				condition = (kingdom.culture_group == "Iberian")
-			}
-
-			governed_realm_mod rs_governor_piety = 2
-			{
-				condition = (kingdom.culture_group == "Iberian")
-			}
-
-			// TODO
-			// Germanic
-			// WestGermanic
-			// WestSlavic
-			// EastSlavic
-			// SouthSlavic
-			// FinnoUgric
-			// Frankish
-			// English
-			// Turkic
-			// Steppe
-			// ArabicNomadic
-			// African
-			// Baltic
-			// Berber
-			// Caucasian
-			// Celtic
-			// Greek
-			// Iranic
-			// Magyar
-			// Mongolic
-			// Semitic
-			// Nordic
-			// Wallachian
-		}
-	}
-
-	tag Crusader
-	{
-		Default
-		{
-			mod cs_crusader_squad_size_perc = 40
-			{
-				text mod_name = "Leader is crusader"
-			}
-			mod cs_army_defense_perc = (map(governed_castle.realm.income.Levy, 0, 100, 0, 100))
-			{
-				text mod_name = "From levies in [{army.leader.governed_castle}|governed province]"
-			}
-		}
-	}	
 }
+

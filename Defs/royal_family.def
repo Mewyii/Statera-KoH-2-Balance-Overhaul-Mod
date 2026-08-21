@@ -7,8 +7,8 @@ RoyalFamily.child_per_age.Venerable.max = 5
 
 CharacterAge.marriage_chance_perc = [0,0,0,15,25,25,5] //infant, child, juvenile, young, adult, old, venerable
 CharacterAge.child_birth_chance_perc = 15
-CharacterAge.die_chance_perc = 4
+CharacterAge.die_chance_perc = 5
 
-NormalAging.age_speed = 1.35
-SlowAging.age_speed = 1.7
+NormalAging.age_speed = 1.4
+SlowAging.age_speed = 1.8
 FastAging.age_speed = 1.0

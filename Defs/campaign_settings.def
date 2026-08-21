@@ -199,13 +199,13 @@ def CampaignVars {
 		delete options
 		options
 		{
-			default slow
+			slow
 			{
 				text name = "Slow"
 				text description = "Characters age slowly"
 				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_AgingSpeed_Slow.png:Icon_MultiplayerCampaign_AgingSpeed_Slow#2" //GUID:4c111722f0409c54cb298099e68fe36a
 			}
-			normal
+			default normal
 			{
 				text name = "Normal"
 				text description = "Characters age at normal rates"
@@ -351,13 +351,13 @@ def SinglePlayerCampaignVars
 		delete options
 		options
 		{
-			default slow
+			slow
 			{
 				text name = "Slow"
 				text description = "Characters age slowly"
 				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_AgingSpeed_Slow.png:Icon_MultiplayerCampaign_AgingSpeed_Slow#2" //GUID:4c111722f0409c54cb298099e68fe36a
 			}
-			normal
+			default normal
 			{
 				text name = "Normal"
 				text description = "Characters age at normal rates"

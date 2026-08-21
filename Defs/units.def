@@ -1,11 +1,11 @@
 def Army
 {
-	max_units = 9
+	max_units = 8
 	{
-		int marshal = 9
-		int shaman = 9
-		int crusader = 9
-		int king = 9
+		int marshal = 8
+		int shaman = 8
+		int crusader = 8
+		int king = 8
 	}
 
 	int max_inventory = 2
@@ -15,26 +15,119 @@ def Army
 	}
 	water_enter_duration = 10
 	water_exit_duration = 10
-	supplies_consumption_interval = 4
+	supplies_consumption_interval = 5
+
+	supplies_consumption = 0.25
+	{
+		//Kingdom stances
+		War = 3
+		Peace = 3
+		NonAggression = 1.5
+		Alliance = 1
+		Vassalage = 1
+		Own = 0.25
+		Sailing = 4
+		
+		//       Modifiers
+		NeighbouringProvinceMod = 0.75
+		
+		//Battles
+		OpenField = 1
+		Plunder = 1
+		Siege = 1
+		Assault = 1
+		BreakSiege = 1
+		Naval = 1
+		
+		//Other
+		Camping = 0.75
+		Disorganized = 1
+		OwnTown = 0
+	}
 }
 
-def Infantry
+extend Unit
+{
+	experience_to_next = [1000,3000,6000,10000,15000]
+
+	rank_texts
+	{
+		text 0 = "Inexperienced"
+		text 1 = "Experienced"
+		text 2 = "Battlehardened"
+		text 3 = "Veteran"
+		text 4 = "Elite"
+		text 5 = "Legendary"
+	} 
+
+	CTH_per_level = 10
+	defense_per_level = 6
+	stamina_per_level = 4
+	siege_strength_per_level = 0
+	resilience_per_level = 2
+}
+
+extend Militia 
+{
+	ai_emergency_only = false
+
+	delete upgrade_to
+	upgrade_to = [
+		Light_Spearman_CE,
+		Light_Spearman_Arab,
+		Light_Infantry_Arab,
+		Light_Infantry_African,
+		Light_Infantry_Steppe,
+		Light_Infantry_Slav,
+		Axeman_Special,
+		Saracen_Special,
+		Highlander_Special,
+		Viking_Special,
+		Varangian_Guard_Special,
+		Roman_Infantry_Special,
+		Light_Archer_Slav,
+		Light_Archer_CE,
+		Light_Archer_Arab,
+		Light_Archer_Steppe,
+		Light_Cavalry_CE,
+		Light_Cavalry_Arab,
+		Light_Cavalry_Steppe,
+		Light_Cavalry_African,
+		Horse_Archer_CE,
+		Horse_Archer_Arab,
+		Light_Horse_Archer_Steppe,
+		Camel_Archer_Special,
+		Mamluk_Special,
+		Mongol_Cavalry_Special
+	]
+}
+
+extend Infantry
 {
 	delete counter
 	delete countered
 	counter = []
 	countered = ["HeavyCavalry","Ranged","HeavyRanged","RangedCavalry","HeavyRangedCavalry"]
+
+	delete upgrade_to
+	upgrade_to = [
+		Heavy_Swordman_CE,
+		Heavy_Swordman_Arab
+	]
 }
 
-def HeavyInfantry
+extend HeavyInfantry
 {
 	delete counter
 	delete countered
 	counter = ["Infantry","Defense"]
 	countered = ["HeavyCavalry","HeavyRanged"]
+
+	delete upgrade_to
+	upgrade_to = []
 }
 
-def Defense
+extend Defense
 {
 	delete counter
 	delete countered
@@ -42,7 +135,7 @@ def Defense
 	countered = ["HeavyInfantry"]
 }
 
-def HeavyDefense
+extend HeavyDefense
 {
 	delete counter
 	delete countered
@@ -50,15 +143,28 @@ def HeavyDefense
 	countered = ["HeavyInfantry","HeavyRanged"]
 }
 
-def Cavalry
+extend Cavalry
 {
 	delete counter
 	delete countered
 	counter = ["Ranged"]
 	countered = ["Defense","HeavyCavalry"]
+
+	delete upgrade_to
+	upgrade_to = [
+		Heavy_Cavalry_CE,
+		Heavy_Cavalry_Arab,
+		Heavy_Cavalry_Slav,
+		Sipahi_Special,
+		Boyar_Special,
+		Cataphract_Special,
+		Norman_Special,
+		Ghulam_Cavalry_Special,
+		Pronoia_Special
+	]
 }
 
-def HeavyCavalry
+extend HeavyCavalry
 {
 	delete counter
 	delete countered
@@ -66,23 +172,35 @@ def HeavyCavalry
 	countered = ["HeavyDefense"]
 }
 
-def Ranged
+extend Ranged
 {
 	delete counter
 	delete countered
 	counter = ["Infantry","RangedCavalry"]
 	countered = ["Cavalry","HeavyCavalry","HeavyRangedCavalry"]
+
+	delete upgrade_to
+	upgrade_to = [
+		Heavy_Archer_CE,
+		Heavy_Archer_Arab,
+		Longbowman_Special
+	]
 }
 
-def HeavyRanged
+extend HeavyRanged
 {
 	delete counter
 	delete countered
 	counter = ["Infantry","HeavyInfantry","HeavyDefense","RangedCavalry","HeavyRangedCavalry"]
 	countered = ["HeavyCavalry"]
+	
+	delete upgrade_to
+	upgrade_to = [
+		Longbowman_Special
+	]
 }
 
-def RangedCavalry
+extend RangedCavalry
 {
 	delete counter
 	delete countered
@@ -90,7 +208,7 @@ def RangedCavalry
 	countered = ["Ranged","HeavyRanged"]
 }
 
-def HeavyRangedCavalry
+extend HeavyRangedCavalry
 {
 	delete counter
 	delete countered
@@ -103,25 +221,25 @@ def HeavyRangedCavalry
 Unit.retreat_damage_mod = 5
 
 FoodWagon.add_supplies = 50
-FoodWagon.progressive_cost.1 = "250g 50f"
-FoodWagon.progressive_cost.2 = "300g 50f"
-FoodWagon.progressive_cost.3 = "350g 50f"
-FoodWagon.progressive_cost.4 = "400g 50f"
-FoodWagon.progressive_upkeep.1 = "3g"
-FoodWagon.progressive_upkeep.2 = "4g"
-FoodWagon.progressive_upkeep.3 = "5g"
-FoodWagon.progressive_upkeep.4 = "6g"
+FoodWagon.progressive_cost.1 = "200g 50f"
+FoodWagon.progressive_cost.2 = "200g 50f"
+FoodWagon.progressive_cost.3 = "200g 50f"
+FoodWagon.progressive_cost.4 = "200g 50f"
+FoodWagon.progressive_upkeep.1 = "5g"
+FoodWagon.progressive_upkeep.2 = "10g"
+FoodWagon.progressive_upkeep.3 = "15g"
+FoodWagon.progressive_upkeep.4 = "20g"
 
 AdditionalTroops.food_upkeep_per_unit = 0
 AdditionalTroops.add_squad_size_perc = 10
-AdditionalTroops.progressive_cost.1 = "250g 5 workers 250 Levy"
-AdditionalTroops.progressive_cost.2 = "300g 6 workers 300 Levy"
-AdditionalTroops.progressive_cost.3 = "350g 7 workers 350 Levy"
-AdditionalTroops.progressive_cost.4 = "400g 8 workers 400 Levy"
-AdditionalTroops.progressive_upkeep.1 = "5g 5f"
-AdditionalTroops.progressive_upkeep.2 = "6g 6f"
-AdditionalTroops.progressive_upkeep.3 = "7g 7f"
-AdditionalTroops.progressive_upkeep.4 = "7g 7f"
+AdditionalTroops.progressive_cost.1 = "500g 5 workers 250 Levy"
+AdditionalTroops.progressive_cost.2 = "500g 5 workers 250 Levy"
+AdditionalTroops.progressive_cost.3 = "500g 5 workers 250 Levy"
+AdditionalTroops.progressive_cost.4 = "500g 5 workers 250 Levy"
+AdditionalTroops.progressive_upkeep.1 = "10g 5f"
+AdditionalTroops.progressive_upkeep.2 = "15g 5f"
+AdditionalTroops.progressive_upkeep.3 = "20g 5f"
+AdditionalTroops.progressive_upkeep.4 = "25g 5f"
 
 Siege_Ram.available = false
 Catapult.available = false
@@ -148,7 +266,6 @@ def Battering_Ram : SiegeEquipment
 	charging_sound = marching_sound
 	
 	counter = ["Gate"]
-	countered = ["Heavy_Trebuchet"]
 
     require
 	{
@@ -166,6 +283,8 @@ def Battering_Ram : SiegeEquipment
 	can_attack_melee = false
 
 	hide_in_wiki = false
+
+	ai_eval = 100
 }
 
 def Heavy_Siege_Ram : SiegeEquipment
@@ -189,7 +308,6 @@ def Heavy_Siege_Ram : SiegeEquipment
 	charging_sound = marching_sound
 	
 	counter = ["Gate"]
-	countered = ["Heavy_Trebuchet"]
 
     require
 	{
@@ -206,6 +324,8 @@ def Heavy_Siege_Ram : SiegeEquipment
 	can_attack_melee = false
 
 	hide_in_wiki = false
+
+	ai_eval = 200
 }
 
 
@@ -227,7 +347,7 @@ def Heavy_Trebuchet : SiegeEquipment
 	charging_sound = marching_sound
 	VO_role = null
 	
-	counter = ["WallsAndTowers","Catapult","Battering_Ram","Heavy_Siege_Ram"]
+	counter = ["WallsAndTowers","Battering_Ram","Heavy_Siege_Ram"]
 	countered = ["Heavy_Trebuchet"]
 	
 	walk_anim_speed = 0
@@ -269,6 +389,8 @@ def Heavy_Trebuchet : SiegeEquipment
 	]
 
 	hide_in_wiki = false
+
+	ai_eval = 300
 }
 
 SquadTypeIconSettings.Battering_Ram = "Assets/UI/BattleView/Elements/UnitIcons/BatteringRam_28.png:BatteringRam_28#2" //GUID:d08b3289df0bfe64d943767e55019f1d
@@ -282,7 +404,6 @@ extend Infantry
 	delete require
 	require
 	{
-		TrainingField
 	}
 }
 
@@ -291,7 +412,6 @@ extend Defense
 	delete require
 	require
 	{
-		TrainingField
 		SimpleWeaponsmithing
 	}
 }
@@ -301,7 +421,6 @@ extend Cavalry
 	delete require
 	require
 	{
-		TrainingField
 		ArmyStables
 		SimpleWeaponsmithing
 		SimpleArmorsmithing
@@ -313,7 +432,6 @@ extend Ranged
 	delete require
 	require
 	{
-		TrainingField
 	}
 }
 
@@ -322,9 +440,8 @@ extend RangedCavalry
 	delete require
 	require
 	{
-		TrainingField
 		ArmyStables
-		ArcheryRange
+		AdvancedBowmaking
 	}
 }
 
@@ -334,7 +451,6 @@ extend HeavyInfantry
 	delete require
 	require
 	{
-		TrainingField
 		AdvancedWeaponsmithing
 		AdvancedArmorsmithing
 	}
@@ -344,7 +460,6 @@ extend HeavyDefense
 	delete require
 	require
 	{
-		TrainingField
 		SimpleWeaponsmithing
 		AdvancedArmorsmithing
 	}
@@ -354,20 +469,28 @@ extend HeavyCavalry
 	delete require
 	require
 	{
-		TrainingField
 		ArmyStables
 		AdvancedWeaponsmithing
 		AdvancedArmorsmithing
 	}
+
+	delete upgrade_to
+	upgrade_to = [
+		Sipahi_Special,
+		Boyar_Special,
+		Cataphract_Special,
+		Norman_Special,
+		Ghulam_Cavalry_Special,
+		Pronoia_Special,
+	]
 }
 extend HeavyRanged
 {
 	delete require
 	require
 	{
-		TrainingField
-		ArcheryRange
-		AdvancedArmorsmithing
+		AdvancedBowmaking
+		SimpleArmorsmithing
 	}
 }
 extend AdvancedMilitia
@@ -377,6 +500,36 @@ extend AdvancedMilitia
 	{
 		MilitiaBarracks
 	}
+
+	delete upgrade_to
+	upgrade_to = [
+		Light_Spearman_CE,
+		Light_Spearman_Arab,
+		Light_Infantry_Arab,
+		Light_Infantry_African,
+		Light_Infantry_Steppe,
+		Light_Infantry_Slav,
+		Axeman_Special,
+		Saracen_Special,
+		Highlander_Special,
+		Viking_Special,
+		Varangian_Guard_Special,
+		Roman_Infantry_Special,
+		Light_Archer_Slav,
+		Light_Archer_CE,
+		Light_Archer_Arab,
+		Light_Archer_Steppe,
+		Light_Cavalry_CE,
+		Light_Cavalry_Arab,
+		Light_Cavalry_Steppe,
+		Light_Cavalry_African,
+		Horse_Archer_CE,
+		Horse_Archer_Arab,
+		Light_Horse_Archer_Steppe,
+		Camel_Archer_Special,
+		Mamluk_Special,
+		Mongol_Cavalry_Special
+	]
 }
 extend Highlander_Special
 {
@@ -400,7 +553,6 @@ extend Varangian_Guard_Special
 	delete require
 	require
 	{
-		TrainingField
 		SimpleWeaponsmithing
 		SimpleArmorsmithing
 	}
@@ -416,24 +568,13 @@ extend Roman_Infantry_Special
 	}
 }
 
-extend Man_At_Arms_Special
-{
-	delete require
-	require
-	{
-		ArmyBarracks
-		AdvancedWeaponsmithing
-		AdvancedArmorsmithing
-	}
-}
-
 extend Halberdier_Special
 {
 	delete require
 	require
 	{
 		InfantryFormations
-		AdvancedWeaponsmithing
+		LateWeaponsmithing
 		AdvancedArmorsmithing
 	}
 }
@@ -444,8 +585,8 @@ extend Flemish_Pikeman_Special
 	require
 	{
 		InfantryFormations
-		InfantryFormations
-		AdvancedWeaponsmithing
+		LateWeaponsmithing
+		AdvancedArmorsmithing
 	}
 }
 
@@ -460,34 +601,12 @@ extend Jenissary_Special
 	}
 }
 
-extend Crossbowman_Special
-{
-	delete require
-	require
-	{
-		CityWatch
-		CrossbowManufactoring
-	}
-}
-
-extend Pavise_Crossbowman_Special
-{
-	delete require
-	require
-	{
-		TrainingField
-		CrossbowManufactoring
-		AdvancedArmorsmithing
-	}
-}
-
 extend Horse_Archer_CE
 {
 	delete require
 	require
 	{
-		TrainingField
-		ArcheryRange
+		AdvancedBowmaking
 		ArmyStables
 	}
 }
@@ -497,8 +616,7 @@ extend Horse_Archer_Arab
 	delete require
 	require
 	{
-		TrainingField
-		ArcheryRange
+		AdvancedBowmaking
 		ArmyStables
 	}
 }
@@ -508,8 +626,7 @@ extend Light_Horse_Archer_Steppe
 	delete require
 	require
 	{
-		TrainingField
-		ArcheryRange
+		AdvancedBowmaking
 		ArmyStables
 	}
 }
@@ -519,8 +636,7 @@ extend Camel_Archer_Special
 	delete require
 	require
 	{
-		TrainingField
-		ArcheryRange
+		AdvancedBowmaking
 	}
 }
 
@@ -529,8 +645,7 @@ extend Mamluk_Special
 	delete require
 	require
 	{
-		TrainingField
-		ArcheryRange
+		AdvancedBowmaking
 		ArmyStables
 		KnightlyStables
 		AdvancedWeaponsmithing
@@ -543,8 +658,7 @@ extend Mongol_Cavalry_Special
 	delete require
 	require
 	{
-		TrainingField
-		ArcheryRange
+		AdvancedBowmaking
 		ArmyStables
 		KnightlyStables
 	}
@@ -555,8 +669,7 @@ extend Heavy_Horse_Archer_Steppe
 	delete require
 	require
 	{
-		TrainingField
-		ArcheryRange
+		AdvancedBowmaking
 		ArmyStables
 		KnightlyStables
 		AdvancedArmorsmithing
@@ -568,7 +681,6 @@ extend Camel_Rider_Special
 	delete require
 	require
 	{
-		TrainingField
 		SimpleWeaponsmithing
 		ArmyStables
 	}
@@ -579,7 +691,6 @@ extend Mongol_Heavy_Lancers_Special
 	delete require
 	require
 	{
-		TrainingField
 		ArmyStables
 		KnightlyStables
 		AdvancedWeaponsmithing
@@ -592,7 +703,6 @@ extend Sipahi_Special
 	delete require
 	require
 	{
-		TrainingField
 		ArmyStables
 		KnightlyStables
 		AdvancedArmorsmithing
@@ -604,7 +714,6 @@ extend Boyar_Special
 	delete require
 	require
 	{
-		TrainingField
 		ArmyStables
 		KnightlyStables
 		AdvancedWeaponsmithing
@@ -617,7 +726,6 @@ extend Cataphract_Special
 	delete require
 	require
 	{
-		TrainingField
 		ArmyStables
 		KnightlyStables
 		SimpleArmorsmithing
@@ -629,7 +737,6 @@ extend Ghulam_Cavalry_Special
 	delete require
 	require
 	{
-		TrainingField
 		ArmyStables
 		KnightlyStables
 		AdvancedArmorsmithing
@@ -641,7 +748,6 @@ extend Pronoia_Special
 	delete require
 	require
 	{
-		TrainingField
 		ArmyStables
 		KnightlyStables
 		AdvancedWeaponsmithing
@@ -681,7 +787,7 @@ def Levy_Axemen : Infantry
 
 	require
 	{
-		TrainingField
+		SimpleWeaponsmithing
 	}
 
 	hide_in_wiki = false
@@ -694,6 +800,11 @@ def Early_Knights_Dismounted : HeavyInfantry
 	description = "Early heavily armored dismounted knights representing a switch from the earlier northern fighting tradition towards the central european knighthood."
 	model = "Assets/Units/Man_At_Arms_Special_01/Man_At_Arms_Special_01.prefab"
 	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_ManAtArms_Special.tga:Icon_Unit_ManAtArms_Special#2"
+
+	bonuses
+	{
+		defense_flat = "cs_elite_unit_defense_flat"
+	}
 	
 	max_acceleration = 4
 	max_deceleration = 4
@@ -711,6 +822,11 @@ def Early_Knights : HeavyCavalry
 	model = "Assets/Units/Heavy_Cavalry_CE_01/Heavy_Cavalry_CE_01.prefab" //GUID:fe0549b7561b18a4382ff700e57beae9
 	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Heavy_Cavalry_CE.tga:Icon_Unit_Heavy_Cavalry_CE#2" //GUID:de937a70321dde04ea51552d6f23648d
 
+	bonuses
+	{
+		defense_flat = "cs_elite_unit_defense_flat"
+	}
+
 	require
 	{
 	}
@@ -723,6 +839,11 @@ def High_Knights_Dismounted : HeavyInfantry
 	description = "Well trained and heavily armoured soldiers, skilled both in attack and defense when it comes to close combat."
 	model = "Assets/Units/Man_At_Arms_Special_01/Man_At_Arms_Special_01.prefab"
 	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_ManAtArms_Special.tga:Icon_Unit_ManAtArms_Special#2"
+
+	bonuses
+	{
+		defense_flat = "cs_elite_unit_defense_flat"
+	}
 	
 	max_acceleration = 4
 	max_deceleration = 4
@@ -730,8 +851,8 @@ def High_Knights_Dismounted : HeavyInfantry
 	require
 	{
 		KnightlyTrainingGrounds
-		SimpleWeaponsmithing
-		SimpleArmorsmithing
+		AdvancedWeaponsmithing
+		AdvancedArmorsmithing
 	}
 
 	hide_in_wiki = false
@@ -742,12 +863,17 @@ def High_Knights : HeavyCavalry
 	model = "Assets/Units/Heavy_Cavalry_CE_01/Heavy_Cavalry_CE_01.prefab" //GUID:fe0549b7561b18a4382ff700e57beae9
 	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Heavy_Cavalry_CE.tga:Icon_Unit_Heavy_Cavalry_CE#2" //GUID:de937a70321dde04ea51552d6f23648d
 
+	bonuses
+	{
+		defense_flat = "cs_elite_unit_defense_flat"
+	}
+
 	require
 	{
 		KnightlyTrainingGrounds
 		KnightlyStables
-		SimpleWeaponsmithing
-		SimpleArmorsmithing
+		AdvancedWeaponsmithing
+		AdvancedArmorsmithing
 	}
 
 	hide_in_wiki = false
@@ -774,11 +900,12 @@ def Late_Knights_Dismounted : HeavyInfantry
 	{
 		defense_flat = "cs_elite_unit_defense_flat"
 	}
+
 	require
 	{
 		KnightlyTrainingGrounds
-		AdvancedWeaponsmithing
-		AdvancedArmorsmithing
+		LateWeaponsmithing
+		LateArmorsmithing
 	}
 
 	hide_in_wiki = false
@@ -803,8 +930,8 @@ def Late_Knights : HeavyCavalry
 	{
 		KnightlyTrainingGrounds
 		KnightlyStables
-		AdvancedWeaponsmithing
-		AdvancedArmorsmithing
+		LateWeaponsmithing
+		LateArmorsmithing
 	}
 
 	hide_in_wiki = false
@@ -831,7 +958,7 @@ def Sword_Militia_CE : Infantry
 	require
 	{
 		MilitiaBarracks
-		SimpleWeaponsmithing
+		AdvancedWeaponsmithing
 		SimpleArmorsmithing
 	}
 
@@ -879,7 +1006,7 @@ def Cavalry_Militia_CE : HorseCavalry
 	{
 		MilitiaBarracks
 		ArmyStables
-		SimpleWeaponsmithing
+		AdvancedWeaponsmithing
 		SimpleArmorsmithing
 	}
 
@@ -1052,7 +1179,8 @@ def Halberd_Militia : HeavyInfantry
 	require
 	{
 		InfantryFormations
-		AdvancedWeaponsmithing
+		LateWeaponsmithing
+		LateArmorsmithing
 	}
 
 	hide_in_wiki = false
@@ -1060,7 +1188,32 @@ def Halberd_Militia : HeavyInfantry
 
 def Pike_Militia : HeavyDefense
 {
-	description = "Well armored polearm soldiers, capable to fend off both cavalry and infantry attacks with their goedendag and pikes.{p}Two lines of the flemish pikemen can attack at the same time and they are more effective against cavalry."
+	description = "Well armored polearm soldiers, capable to fend off both cavalry and infantry attacks with their goedendag and pikes.{p}Two lines of the pike militia can attack at the same time and they are more effective against cavalry."
+	special = true
+	model = "Assets/Units/Flemish_Pikeman_Special/Flemish_Pikeman_Special.prefab" //GUID:da50c394ea05d9648895b1129bf9fde9
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Flemish_Pikeman_Special.tga:Icon_Unit_Flemish_Pikeman_Special#2" //GUID:219733cca255cb447bb11614e5f26fff
+	
+	max_acceleration = 3.5
+	max_deceleration = 3.5
+
+	bonuses
+	{
+		defense_flat = "cs_elite_unit_defense_flat"
+	}
+	
+	require
+	{
+		InfantryFormations
+		LateWeaponsmithing
+		SimpleArmorsmithing
+	}
+
+	hide_in_wiki = false
+}
+
+def Bill_Militia : HeavyDefense
+{
+	description = "English town militias armed with the fearsome billhook, a weapon adapted from agricultural tools into an effective polearm. Well suited to holding the line and bringing down heavily armoured foes.{p}Two lines of the bill militia can attack at the same time and they are more effective against cavalry."
 	special = true
 	model = "Assets/Units/Flemish_Pikeman_Special/Flemish_Pikeman_Special.prefab" //GUID:da50c394ea05d9648895b1129bf9fde9
 	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Flemish_Pikeman_Special.tga:Icon_Unit_Flemish_Pikeman_Special#2" //GUID:219733cca255cb447bb11614e5f26fff
@@ -1093,7 +1246,7 @@ def Heavy_Cavalry_Militia : HeavyCavalry
 		ArmyStables
 		CombinedArmsDoctrine
 		AdvancedWeaponsmithing
-		AdvancedArmorsmithing
+		LateArmorsmithing
 	}
 
 	hide_in_wiki = false
@@ -1119,6 +1272,7 @@ def Pavise_Crossbow_Militia : HeavyRanged
 	{
 		InfantryFormations
 		CrossbowManufactoring
+		WindlassMechanisms
 	}
 
 	hide_in_wiki = false
@@ -1133,7 +1287,6 @@ def Heavy_Cavalry_CE : HeavyCavalry
 
 	require
 	{
-		TrainingField
 		ArmyStables
 		AdvancedWeaponsmithing
 		AdvancedArmorsmithing
@@ -1286,7 +1439,6 @@ extend Viking_Special
 	delete require
 	require
 	{
-		TrainingField
 	}
 }
 
@@ -1303,7 +1455,6 @@ def Almogavars_Special : Infantry
 
 	require
 	{
-		TrainingField
 		SimpleWeaponsmithing
 	}
 
@@ -1322,6 +1473,11 @@ def Hirdmen_Special : HeavyInfantry
 		"Assets/Units/Viking_Special_03/Viking_Special_03.prefab" //GUID:94c100e0bbf8893429f3d976476a6823
 	]
 	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Viking_Special.tga:Icon_Unit_Viking_Special#2" //GUID:180ce42f7e9f003408b3871feb763665
+
+	bonuses
+	{
+		defense_flat = "cs_elite_unit_defense_flat"
+	}
 	
 	require
 	{
@@ -1337,7 +1493,6 @@ def Hobelar_Special : HorseCavalry
 	delete require
 	require
 	{
-		TrainingField
 		SimpleWeaponsmithing
 		ArmyStables
 	}
@@ -1358,7 +1513,6 @@ def Jinetes_Special : RangedHorseCavalry
 	delete require
 	require
 	{
-		TrainingField
 		SimpleWeaponsmithing
 		ArmyStables
 	}
@@ -1374,7 +1528,8 @@ extend Longbowman_Special
 	require
 	{
 		ArcheryRange
-		AdvancedArmorsmithing
+		AdvancedBowmaking
+		SimpleArmorsmithing
 	}
 }
 
@@ -1391,8 +1546,51 @@ def Welsh_Longbowman_Special : HeavyRanged
 	require
 	{
 		ArcheryRange
+		AdvancedBowmaking
 		Leatherworking
 	}
+
+	hide_in_wiki = false
+}
+
+def Clan_Axemen : Infantry
+{
+	description = "Fierce warriors from the Scottish Highlands, fighting for their clan with heavy axes and unwavering resolve. Accustomed to rough terrain and brutal close combat, they excel in ferocious infantry assaults."
+	special = true
+	model = "Assets/Units/Varangian_Guard_Special_01/Varangian_Guard_Special_01.prefab" //GUID:f2e3a48f1a7aeed4aa9c3a8388adecc4
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Varangian_Special.tga:Icon_Unit_Varangian_Special#2" //GUID:d3615b09c49831d4c9aee22d692bbfb1
+	
+	require
+	{
+		AdvancedWeaponsmithing
+		AdvancedArmorsmithing
+	}
+	
+	max_acceleration = 5
+	max_deceleration = 5
+	
+	retreat_damage_mod = 10
+
+	hide_in_wiki = false
+}
+
+def Gallowglass : Infantry
+{
+	description = "Elite mercenaries of Norse-Gaelic descent, renowned for their heavy armour and devastating two-handed axes. Originally recruited from the Scottish Isles, they became the backbone of many Irish lords' armies."
+	special = true
+	model = "Assets/Units/Varangian_Guard_Special_01/Varangian_Guard_Special_01.prefab" //GUID:f2e3a48f1a7aeed4aa9c3a8388adecc4
+	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Varangian_Special.tga:Icon_Unit_Varangian_Special#2" //GUID:d3615b09c49831d4c9aee22d692bbfb1
+	
+	require
+	{
+		LateWeaponsmithing
+		AdvancedArmorsmithing
+	}
+	
+	max_acceleration = 5
+	max_deceleration = 5
+	
+	retreat_damage_mod = 10
 
 	hide_in_wiki = false
 }
@@ -1402,10 +1600,9 @@ extend Templar_Knight_Special
 	delete require
 	require
 	{
-		TrainingField
 		CistercianDiscipline
-		SimpleWeaponsmithing
-		SimpleArmorsmithing
+		AdvancedWeaponsmithing
+		AdvancedArmorsmithing
 	}
 
 	kingdom_religion = Catholic
@@ -1416,11 +1613,10 @@ extend Templar_Special
 	delete require
 	require
 	{
-		TrainingField
 		CistercianDiscipline
 		ArmyStables
-		SimpleWeaponsmithing
-		SimpleArmorsmithing
+		AdvancedWeaponsmithing
+		AdvancedArmorsmithing
 	}
 	
 	kingdom_religion = Catholic
@@ -1431,10 +1627,9 @@ extend Teutonic_Knight_Special
 	delete require
 	require
 	{
-		TrainingField
 		Hospital
-		SimpleWeaponsmithing
-		AdvancedArmorsmithing
+		AdvancedWeaponsmithing
+		LateArmorsmithing
 	}
 	
 	kingdom_religion = Catholic
@@ -1445,11 +1640,10 @@ extend Teutonic_Knight_Mounted_Special
 	delete require
 	require
 	{
-		TrainingField
 		Hospital
 		ArmyStables
-		SimpleWeaponsmithing
-		AdvancedArmorsmithing
+		AdvancedWeaponsmithing
+		LateArmorsmithing
 	}
 	
 	kingdom_religion = Catholic
@@ -1472,10 +1666,9 @@ def Hospitaller_Dismounted_Special : HeavyInfantry
 	
 	require
 	{
-		TrainingField
 		Hospital
-		SimpleWeaponsmithing
-		SimpleArmorsmithing
+		AdvancedWeaponsmithing
+		AdvancedArmorsmithing
 	}
 
 	
@@ -1501,11 +1694,10 @@ def Hospitaller_Special : HeavyCavalry
 	
 	require
 	{
-		TrainingField
 		Hospital
 		ArmyStables
-		SimpleWeaponsmithing
-		SimpleArmorsmithing
+		AdvancedWeaponsmithing
+		AdvancedArmorsmithing
 	}
 	
 	kingdom_religion = Catholic
@@ -1531,3 +1723,10 @@ def Pechenegs_Special : HeavyRangedHorseCavalry
 
 	hide_in_wiki = false
 }
+
+// Housekeeping
+delete Light_Infantry_CE
+delete Feudal_Knight_Special
+delete Man_At_Arms_Special
+delete Crossbowman_Special
+delete Pavise_Crossbowman_Special

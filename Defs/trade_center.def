@@ -1,0 +1,19 @@
+extend TradeCenter
+{
+	float income_per_province = 0.5
+	float income_per_good = 0 //temporary no appeal per good
+	float income_commerse_percent = 0 //temporary no appeal per commerce
+	
+	color map_colors = ["#6b9898", "#a52a2a", "#006400", "#00008b", "#ff0000", "#ffa500", "#ffff00", "#e487c2", "#00ff00", "#00fa9a", "#7474ff", "#b577f0", "#1e90ff", "#f0e68c", "#87ceeb", "#ffb6c1", "#85f08e", "#826b91", "#d0ffdd", "#dfc455", "#8a5763", "#7040bf", "#8298ce", "#a6df55", "#c5583f", "#6cd2db"]
+	int min = 20
+	int max = 26 //make sure there are enough map colors to match this num
+	int min_realm_distance_between = 1
+
+	// New Zone Appeal = Incoming Appeal * tc_spread_appeal_fade_perc * (tc_spread_relation_base +Rel between Zones owners) / tc_spread_relation_total *
+	// (tc_spread_relation_base + Rel between zone and TC owner) / tc_spread_relation_total – TC Appeal Fade Const
+	float tc_spread_appeal_fade_perc = 90 //percent
+	float tc_spread_appeal_fade_const = 4
+	float tc_spread_appeal_fade_sea_const = 10
+	float tc_spread_relation_base = 1000
+	float tc_spread_relation_total = 2000
+}

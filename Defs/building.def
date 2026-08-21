@@ -1,7 +1,7 @@
 extend Building
 {
 	slots_base = 6
-	slots_expand_cost.gold = (100 + 25 * (realm_tier) * (realm_tier))
+	slots_expand_cost.gold = (100 + 50 * (realm_tier) * (realm_tier))
 
 	// Cost increase for upgrades (in percent of upgrade costs) per building of the same type that would benefit from it
 	progressive_gold_cost_for_upgrades = 20
@@ -89,7 +89,6 @@ def ArmyBarracks : Building
 	illustration = "Assets/Icons/Buildings/Barracks.png:Barracks#1"
 
 	ai_category = "Military"
-	ai_eval = (!kingdom.ArmyBarracks and kingdom.BlacksmithsGuild and 5000)
 }
 
 // Trade
@@ -140,51 +139,67 @@ def HorseBreeding : Building
 	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_HorseBreeding.tga:UI_Structure_Icon_HorseBreeding#2" //GUID:ef7a83374df54c54ab493c9f414519a7
 	illustration = "Assets/UI/Elements/Buildings/Illustrations/UI_Structure_Illustration_HorseBreeding.tga:UI_Structure_Illustration_HorseBreeding#2" //GUID:ec4ffe488535acb45b656fb94fdb31c9
 
-	ai_eval = (!kingdom.HorseBreeding and kingdom.Stables and 1000 * kingdom.realms_count)
+	ai_eval = (!kingdom.HorseBreeding and kingdom.Stables and 500 * kingdom.realms_count)
 }
 
 def Woodworking : Building
 {
 	name = "Woodworking"
 	flavor = "The woodworking industry provides a lot of raw resources like timber and tar, as well as furniture, forest glass and barrels."
+	
+	delete upgrades
 	upgrades
 	{
 		buildings
 		{
-			Sawmill
-			ColliersKiln
+			Sawmill = 1,1
+			ColliersKiln = 2,1
 			
-			CoopersShop = 1,2 { prerequisites { Sawmill } }
-			TarPit = 2,2 { prerequisites { ColliersKiln } }
-			
-			MasterJoiner = 1,2.8 { prerequisites { Sawmill } }
-			Glassworks = 2,2.8 { prerequisites { ColliersKiln } }
+			MasterJoiner = 1,2
+			TarPit = 2,2
 		}
 	}
 	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Woodworking.tga:UI_Structure_Icon_Woodworking#2" //GUID:3ac344bae9497844d8631a3c9df5d4d0
 	illustration = "Assets/UI/Elements/Buildings/Illustrations/UI_Structure_Illustration_Woodworking.tga:UI_Structure_Illustration_Woodworking#2" //GUID:7e51197314f917b4ba4efe5425868475
 
-	ai_eval = (!kingdom.HorseBreeding and kingdom.CropFarming and 5000)
+	ai_eval = (!kingdom.Woodworking and 1500)
 }
 
 def Metalworking : Building
 {
 	name = "Metalworking"
 	flavor = "The processes and facilities for mining iron ore and smelting it, to produce wrought iron."
+
+	delete upgrades
 	upgrades
 	{
 		buildings
 		{
-			Machinery_Mine
-			MinersShacks_Mine
-			
-			BlastFurnace = 1.5,2 { prerequisites { Machinery_Mine; MinersShacks_Mine } }
+			BloomeryFurnaces = 1,1
+			Stücköfen = 1,2 { prerequisites { BloomeryFurnaces } }
+			BlastFurnace = 1,3 { prerequisites { Stücköfen } }
 		}
 	}
-	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Metalworking.tga:UI_Structure_Icon_Metalworking#2" //GUID:0dc17aa0a54ba844c815ce2c297509f1
-	illustration = "Assets/UI/Elements/Buildings/Illustrations/UI_Structure_Illustration_Metalworking.tga:UI_Structure_Illustration_Metalworking#2" //GUID:529b3cba887fd3b4d9e89a00e3fba367
+	icon = "Assets/Icons/Buildings/IronMines.png:IronMines#1"
+	illustration = "Assets/Icons/Buildings/IronMines.png:IronMines#1"
 	
-	ai_eval = (kingdom.DeepForests and !kingdom.Metalworking and 500 * kingdom.realms_count)
+	ai_eval = (!kingdom.Metalworking and 1500)
+}
+
+extend SaltTrade : Building
+{
+	name = "Salt Trade"
+	flavor = "Development of salt production and trade ensures a great economical and commercial boost to any province, as this white gold is an important part of the human diet and essential for food preservation."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_SaltTrade.tga:UI_Structure_Icon_SaltTrade#2" //GUID:c59fd0d60f1fd7e4fa749a3ced9d2657
+	illustration = "Assets/UI/Elements/Buildings/Illustrations/UI_Structure_Illustration_SaltTrade.tga:UI_Structure_Illustration_SaltTrade#2" //GUID:ea19f296042978242b50ff8064a6b887
+
+	upgrades
+	{
+		buildings
+		{
+			SaltRefineries = 1,1
+		}
+	}
 }
 
 def FightingGrounds : Building
@@ -275,28 +290,28 @@ def KhansCourt : Building
 // Common Buildings
 // Military
 
-def TrainingField : Building
+def CityWatch : Building
 {
-	name = "Training Field"
-	flavor = "A field set aside for training peasants and knights, instilling discipline and martial skill in local levies."
-	add_tooltip = "{blt} Required for recruiting {clr:enables_color}trained levy units{/clr}"
+	name = "Town Watch"
+	flavor = "Armed townsmen and watchmen guard the streets, gates, and walls of the town. The town watch forms the backbone of local defence and can be swiftly mustered in times of war."
 
 	upgrades
 	{
 		buildings
 		{
-			MilitiaDrills = 1,1
-			ArcheryRange = 2,1
-			KnightlyTrainingGrounds = 3,1
+			MilitiaBarracks = 1,1
+			MilitiaOffices = 1,2 { prerequisites { MilitiaBarracks } }
+			MilitiaDrills = 1,3 { prerequisites { MilitiaBarracks } }
+			WatchRotations = 2,1
+			Watchtowers = 2,2
 		}
 	}
 	
-	icon = "Assets/Icons/Buildings/TrainingField.png:TrainingField#1"
-	illustration = "Assets/Icons/Buildings/TrainingField.png:TrainingField#1"
+	icon = "Assets/Icons/Buildings/CityWatch.png:CityWatch#1"
+	illustration = "Assets/Icons/Buildings/CityWatch.png:CityWatch#1"
 
 	ai_category = "Military"
-	ai_eval = (500 + max(0, ((kingdom.realms_count + 2) / 3) - (kingdom.TrainingField or 0)) * 5000)
-	ai_urgent = (!kingdom.TrainingField)
+	ai_eval = ((castle.worker_slots > 7) or 0.25) * (500 + (max(0, (kingdom.realms_count + 3 / 4) - (kingdom.CityWatch or 0)) * 1500))
 }
 
 def ArmyStables : Building
@@ -305,7 +320,7 @@ def ArmyStables : Building
 
 	name = "Stables"
 	flavor = "Essential facilities for breeding, housing, and maintaining the horses that serve both farm and battlefield."
-	add_tooltip = "{blt} Required for recruiting {clr:enables_color}cavalry units{/clr}"
+	add_tooltip = "Required for recruiting {clr:enables_color}Cavalry Units{/clr}"
 
 	upgrades
 	{
@@ -321,39 +336,41 @@ def ArmyStables : Building
 	illustration = "Assets/Icons/Buildings/Stables.png:Stables#1"
 
 	ai_category = "Military"
-	ai_eval = ((castle.TrainingField or 0.5) * (castle.Blacksmith or 0.5) * ((base_ai_eval + max(0, (kingdom.realms_count + 4 / 5) - (kingdom.ArmyStables or 0)) * 2000)))
+	ai_eval = ((castle.Blacksmith or 0.25) * ((base_ai_eval + max(0, (kingdom.realms_count + 4 / 5) - (kingdom.ArmyStables or 0)) * 750)))
 }
 
-def CityWatch : Building
+def TrainingField : Building
 {
-	name = "City Watch"
-	flavor = "An organized guard force tasked with maintaining order, patrolling walls, and responding to threats within the city."
+	name = "Training Field"
+	flavor = "A field set aside for training peasants and knights, instilling discipline and martial skill in local levies."
+	add_tooltip = "Required for recruiting {clr:enables_color}Advanced Militia Units{/clr}"
 
 	upgrades
 	{
 		buildings
 		{
-			MilitiaBarracks = 1,1
-			AlarmBells = 2,1
-			MercenaryHiringOffice = 3,1
+			InfantryFormations = 1,1
+			OfficerMess = 2,1
 
-			CrossbowManufactoring = 1,2
-			WatchRotations = 2,2
+			DrillInstructors = 1,2 { prerequisites { InfantryFormations } }
+			CombinedArmsDoctrine = 2,2 { prerequisites { OfficerMess } }
+
+			StandardizedArmament = 1,3 { prerequisites { DrillInstructors } }
 		}
 	}
 	
-	icon = "Assets/Icons/Buildings/CityWatch.png:CityWatch#1"
-	illustration = "Assets/Icons/Buildings/CityWatch.png:CityWatch#1"
+	icon = "Assets/Icons/Buildings/TrainingField.png:TrainingField#1"
+	illustration = "Assets/Icons/Buildings/TrainingField.png:TrainingField#1"
 
 	ai_category = "Military"
-	ai_eval = ((castle.worker_slots > 10) or 0.25) * (500 + (max(0, (kingdom.realms_count + 4 / 5) - (kingdom.CityWatch or 0)) * 5000))
+	ai_eval = ((castle.Blacksmith or 0.25) * (500 + max(0, ((kingdom.realms_count + 4) / 5) - (kingdom.TrainingField or 0)) * 1500))
 }
 
 def ArmySiegeWorkshop : Building
 {
 	name = "Siege Workshop"
 	flavor = "A specialized complex where engineers and craftsmen design, build, and maintain engines of war for siege and defense."
-	add_tooltip = "{blt} Enables constructing {clr:enables_color}siege equipment{/clr}"
+	add_tooltip = "Enables constructing {clr:enables_color}Siege Equipment{/clr}"
 
 	upgrades
 	{
@@ -370,7 +387,7 @@ def ArmySiegeWorkshop : Building
 	illustration = "Assets/Icons/Buildings/SiegeWorkshop.png:SiegeWorkshop#1"
 	
 	ai_category = "Military"
-	ai_eval = (!kingdom.ArmySiegeWorkshop and kingdom.Blacksmith and 2000)
+	ai_eval = (!kingdom.ArmySiegeWorkshop and kingdom.Workshop and 1000)
 }
 
 def Armory: Building {
@@ -381,9 +398,10 @@ def Armory: Building {
 	{
 		buildings
 		{
-			RecruitmentOffices = 1,1
+			PlanningRoom = 1,1
 			HeraldryChambers = 2,1
-			PlanningRoom = 3,1
+			RecruitmentOffices = 1,2
+			MercenaryHiringOffice = 2,2
 		}
 	}
 	
@@ -391,7 +409,7 @@ def Armory: Building {
 	illustration = "Assets/Icons/Buildings/Armory.png:Armory#1"
 	
 	ai_category = "Military"
-	ai_eval = (base_ai_eval + 500)
+	ai_eval = (base_ai_eval + 250)
 }
 
 // Trade
@@ -414,7 +432,7 @@ def MarketSquare : Building
 	icon = "Assets/Icons/Buildings/MarketSquare.png:MarketSquare#1"
 	illustration = "Assets/Icons/Buildings/MarketSquare.png:MarketSquare#1"
 
-	ai_eval = (base_ai_eval + 500)
+	ai_eval = (base_ai_eval + 250)
 }
 
 def MerchantHall : Building
@@ -597,17 +615,17 @@ def Workshop : Building
 	{
 		buildings
 		{
-			Toolmaking = 1,1
-			Craftsmenship = 2,1
-			Stonemasonry = 3,1
+			Craftsmenship = 1,1
+			Stonemasonry = 2,1
+
+			CrossbowManufactoring = 1,2 { prerequisites { Craftsmenship } }
 		}
 	}
 
 	icon = "Assets/Icons/Buildings/Workshop.png:Workshop#1"
 	illustration = "Assets/Icons/Buildings/Workshop.png:Workshop#1"
 
-	ai_eval = (base_ai_eval + (!kingdom.Workshop and 10000))
-	ai_urgent = (!kingdom.Workshop)
+	ai_eval = (base_ai_eval + 250 + (!kingdom.Workshop and 1000))
 }
 
 def Blacksmith : Building
@@ -621,19 +639,21 @@ def Blacksmith : Building
 		{
 			SimpleWeaponsmithing = 1,1
 			SimpleArmorsmithing = 2,1
+			Toolsmithing = 3,1
 
-			ForgeBellows = 1,2
-			Toolsmithing = 2,2 { prerequisites { ForgeBellows } }
+    		AdvancedWeaponsmithing = 1,2 { prerequisites { Toolsmithing; SimpleWeaponsmithing } }
+    		AdvancedArmorsmithing = 2,2 { prerequisites { Toolsmithing; SimpleArmorsmithing } }
+			ForgeBellows = 3,2 { prerequisites { Toolsmithing } }
 
-    		AdvancedWeaponsmithing = 1,3 { prerequisites { Toolsmithing; SimpleWeaponsmithing } }
-    		AdvancedArmorsmithing = 2,3 { prerequisites { Toolsmithing; SimpleArmorsmithing } }
+			LateWeaponsmithing = 1,3 { prerequisites { ForgeBellows; AdvancedWeaponsmithing } }
+			LateArmorsmithing = 2,3 { prerequisites { ForgeBellows; AdvancedArmorsmithing } }
 		}
 	}
 
 	icon = "Assets/Icons/Buildings/Blacksmith.png:Blacksmith#1"
 	illustration = "Assets/Icons/Buildings/Blacksmith.png:Blacksmith#1"
 
-	ai_eval = ((castle.TrainingField or 0) * ((castle.ArmyStables or castle.CityWatch) or 0.66) * ((base_ai_eval + max(0, (kingdom.realms_count + 4 / 5) - (kingdom.Blacksmith or 0)) * 2500)))
+	ai_eval = (((castle.Feudal_Fiefs_Christian or castle.CityWatch or castle.TrainingField) or 0.66) * ((base_ai_eval + max(0, (kingdom.realms_count + 4 / 5) - (kingdom.Blacksmith or 0)) * 1500)))
 	ai_category = "Military"
 }
 
@@ -654,7 +674,7 @@ def Tanneries : Building
 	icon = "Assets/Icons/Buildings/Tannery.png:Tannery#1"
 	illustration = "Assets/Icons/Buildings/Tannery.png:Tannery#1"
 
-	ai_eval = (base_ai_eval + (!kingdom.Tanneries and 1000))
+	ai_eval = (base_ai_eval + (!kingdom.Tanneries and 750))
 }
 
 // Punishment
@@ -670,6 +690,7 @@ def Dungeon : Building
 		{
 			ExecutionersSquare = 1,1
 			TortureChamber = 2,1
+			CityPrison = 3,1
 		}
 	}
 
@@ -699,24 +720,6 @@ def CourtHall : Building
 	illustration = "Assets/Icons/Buildings/CourtHall.png:CourtHall#1"
 }
 
-def CityPrison : Building
-{
-	name = "City Prison"
-	flavor = "A fortified complex designed for the long-term confinement of criminals and political prisoners alike."
-
-	upgrades
-	{
-		buildings
-		{
-			GuardBarracks = 1,1
-			PublicPunishments = 2,1
-		}
-	}
-
-	icon = "Assets/Icons/Buildings/CityPrison.png:CityPrison#1"
-	illustration = "Assets/Icons/Buildings/CityPrison.png:CityPrison#1"
-}
-
 
 // Christian Buildings
 // Religious
@@ -728,12 +731,13 @@ def Church : Building
 	{
 		buildings
 		{
-			PriestlyEducation = 1,1
-			FestiveCalendar = 2,1
-			Cemetries = 3,1
+			Processions = 1,1
+			Cemetry = 2,1
+			ChurchPeace = 3,1
 
-			Processions = 1,2 { prerequisites { PriestlyEducation } }
-			ProperBells = 2,2 { prerequisites { FestiveCalendar } }
+			FrescoCycle = 1,2
+			Pulpit = 2,2
+			BellTower = 3,2
 		}
 	}
 
@@ -794,7 +798,8 @@ def EcclesiasticalCourt : Building
 	{
 		buildings
 		{
-			InquisitorialChamber = 1,1
+			MoralTribunal = 1,1
+			InquisitorialChamber = 1,2 { prerequisites { MoralTribunal } }
 		}
 	}
 	icon = "Assets/Icons/Buildings/EcclesiasticalCourt.png:EcclesiasticalCourt#1"
@@ -820,21 +825,27 @@ def EpiscopalPalace : Building
 }
 
 // Military
-def ArmyBarracks_Christian: ArmyBarracks {
-	name = "Barracks"
+def Feudal_Fiefs_Christian: Building {
+	name = "Feudal Fiefs"
+	flavor = "Feudal fiefs allow lesser and greater nobles to maintain the costly service of war on horseback. Their revenues provide horses, arms, armour, and the means to sustain an armed retinue."
+
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Hillfort.tga:UI_Structure_Icon_Hillfort#2" //GUID:c0617dc2c83590c4ba4d910a6050eef9
+	illustration = "Assets/UI/Elements/Buildings/Illustrations/UI_Structure_Illustration_HillFort.tga:UI_Structure_Illustration_HillFort#2" //GUID:36b58ed3b9f544640b9188e7c5105ca3
 
 	upgrades
 	{
 		buildings
 		{
-			DrillInstructors = 1,1
-			InfantryFormations = 2,1
-			OfficerMess = 3,1
-
-			StandardizedArmament = 1,2 { prerequisites { DrillInstructors } }
-			CombinedArmsDoctrine = 2,2 { prerequisites { InfantryFormations } }
+			LanceWarfare = 1,1
+			KnightlyTrainingGrounds = 2,1
+			ArcheryRange = 3,1
+			LordsHalls = 1,2 { prerequisites { LanceWarfare } }
+			Chivalry = 2,2 { prerequisites { TournamentGrounds_Christian } }
+			LesserFiefs = 3,2
 		}
 	}
+	
+	ai_eval = (base_ai_eval + 500 + (max(0, (kingdom.realms_count + 2 / 3) - (kingdom.Feudal_Fiefs_Christian or 0)) * 1500))
 }
 
 // Trade
@@ -909,6 +920,8 @@ def CraftsmensGuild : Building
 	{
 		buildings
 		{
+			WindlassMechanisms = 1,1 { prerequisites { CrossbowManufactoring } }
+			AdvancedBowmaking = 2,1
 		}
 	}
 
@@ -1369,3 +1382,24 @@ def Bimaristan : Building
 }
 
 // Punishment
+
+// Housekeeping
+delete Housings
+delete RoyalArmory
+delete LordsCastles
+delete RoyalPalace
+delete VillageMilitia
+delete RiverTrade
+delete Artisans
+delete FoodMarket
+delete FlaxGrowing
+delete HerbGardening
+delete TrainingGrounds
+delete SiegeWorkshop
+delete Stables
+delete University.upgrades
+delete Madrasah.upgrades
+delete Barracks.upgrades
+delete MineralsTrade
+delete LodestoneTrade
+delete HillFort

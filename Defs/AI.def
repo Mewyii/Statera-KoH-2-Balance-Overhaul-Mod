@@ -13,7 +13,7 @@ def DevSettings
 	///////////////////// DIFFICULTY SETTINGS  ///////////////////////////////
 	//////////////////////////////////////////////////////////////////////////
 	// values are per difficulty: <easy>/<normal>/<hard>/<very_hard>
-	float ai_resource_boost
+	float ai_resource_boost = 1.0 / 1.2 / 1.4 / 1.6
 	{
 		gold = 1.0 / 1.2 / 1.4 / 1.6
 		books = 0.9 / 1.1 / 1.2 / 1.4
@@ -92,8 +92,8 @@ extend AI
 		}
 	}	
 
-	BigBonusPower = 2.5;
-	BonusPower = 1.5;
+	BigBonusPower = 3;
+	BonusPower = 1.25;
 	MalusPower = 1.0;
 
 	// big bonus for offmap empires
@@ -102,6 +102,6 @@ extend AI
 
 	// bonus for historically important kingdoms
 	delete bonus_eligible_kingdoms
-	bonus_eligible_kingdoms { England; Scotland; France; Castile; Portgual; Aragon; Germany; Bohemia; Sweden; Denmark; Poland; Lithuania; Hungary; Venice; Genoa; SicilyNorman; Sicily; Byzantium; Kyiv; Novgorod; Volga_Bulgaria; Toksoba; Kipchak; Georgia; Rum; Abbasids; Seljuks; Kerman; Jerusalem; Fatimids; Kanem; Almoravids; Nicaea; Mongols; Ottomans; Austria; Muscovy; Mali; Mamluks; }
+	bonus_eligible_kingdoms { England; Scotland; France; Castile; Portgual; Aragon; Germany; Bohemia; Sweden; Denmark; Poland; Lithuania; Hungary; Venice; Genoa; SicilyNorman; Sicily; Byzantium; Kyiv; Novgorod; Volga_Bulgaria; Toksoba; Kipchak; Georgia; Rum; Abbasids; Seljuks; Kerman; Assassin_Order; Jerusalem; Fatimids; Kanem; Almoravids; Nicaea; Mongols; Ottomans; Austria; Muscovy; Mali; Mamluks; }
 	// malus are all the others
 }

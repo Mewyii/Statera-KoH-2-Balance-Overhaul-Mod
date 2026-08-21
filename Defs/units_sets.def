@@ -22,7 +22,7 @@ def DefaultUnitSet : AvailableUnits
 {
 	Militia_CE
 	AdvancedMilitia_CE
-	Light_Infantry_CE
+	Levy_Axemen
 	Light_Spearman_CE
 	Light_Archer_CE
 	Light_Cavalry_CE
@@ -278,7 +278,7 @@ def EnglishUnitSet : AvailableUnits
 
 	// Trained Militia
 	Halberd_Militia
-	Pike_Militia
+	Bill_Militia
 	Heavy_Cavalry_Militia
 	Pavise_Crossbow_Militia
 
@@ -306,7 +306,58 @@ def EnglishUnitSet : AvailableUnits
 }
 
 delete CelticUnitSet
-def CelticUnitSet : AvailableUnits
+def WalesUnitSet : AvailableUnits
+{
+	// Levy
+	Militia_CE
+	Levy_Axemen
+	Light_Spearman_CE
+	Light_Archer_CE
+	Light_Cavalry_CE
+
+	// Militia
+	AdvancedMilitia_CE
+	Sword_Militia_CE
+	Spear_Militia_CE
+	Crossbow_Militia_CE
+	Cavalry_Militia_CE
+
+	// Sergeants
+	Heavy_Swordman_CE
+	Heavy_Spearman_CE
+	Heavy_Archer_CE
+	Heavy_Cavalry_CE
+
+	// Trained Militia
+	Halberd_Militia
+	Bill_Militia
+	Heavy_Cavalry_Militia
+	Pavise_Crossbow_Militia
+
+	// Knights
+	Early_Knights_Dismounted
+	Early_Knights
+	High_Knights_Dismounted
+	High_Knights
+	Late_Knights_Dismounted
+	Late_Knights
+
+	town_guards
+	{
+		TownGuard_CE
+		EliteGuard_CE
+		RoyalGuard_CE
+	}
+	marshals
+	{
+		marshal = Marshal_CE
+		marshal_guard = Marshal_Guard_CE
+		rebel_marshal = Marshal_Rebel_CE
+		rebel_marshal_guard = Marshal_Guard_Rebel_CE
+	}
+}
+
+def ScottishUnitSet : AvailableUnits
 {
 	// Levy
 	Militia_CE
@@ -356,6 +407,58 @@ def CelticUnitSet : AvailableUnits
 		rebel_marshal_guard = Marshal_Guard_Rebel_CE
 	}
 }
+
+def IrishUnitSet : AvailableUnits
+{
+	// Levy
+	Militia_CE
+	Levy_Axemen
+	Light_Spearman_CE
+	Light_Archer_CE
+	Light_Cavalry_CE
+
+	// Militia
+	AdvancedMilitia_CE
+	Sword_Militia_CE
+	Spear_Militia_CE
+	Crossbow_Militia_CE
+	Cavalry_Militia_CE
+
+	// Sergeants
+	Heavy_Swordman_CE
+	Heavy_Spearman_CE
+	Heavy_Archer_CE
+	Heavy_Cavalry_CE
+
+	// Trained Militia
+	Halberd_Militia
+	Pike_Militia
+	Heavy_Cavalry_Militia
+	Pavise_Crossbow_Militia
+
+	// Knights
+	Early_Knights_Dismounted
+	Early_Knights
+	High_Knights_Dismounted
+	High_Knights
+	Late_Knights_Dismounted
+	Late_Knights
+
+	town_guards
+	{
+		TownGuard_CE
+		EliteGuard_CE
+		RoyalGuard_CE
+	}
+	marshals
+	{
+		marshal = Marshal_CE
+		marshal_guard = Marshal_Guard_CE
+		rebel_marshal = Marshal_Rebel_CE
+		rebel_marshal_guard = Marshal_Guard_Rebel_CE
+	}
+}
+
 
 delete ItalianUnitSet
 def ItalianUnitSet : AvailableUnits
@@ -517,7 +620,7 @@ def TeutonicUnitSet : AvailableUnits
 {
 	Militia_CE
 	AdvancedMilitia_CE
-	Light_Infantry_CE
+	Levy_Axemen
 	Light_Spearman_CE
 	Light_Archer_CE
 	Light_Cavalry_CE
@@ -545,7 +648,7 @@ def ByzantineUnitSet : AvailableUnits
 {
 	Militia_CE
 	AdvancedMilitia_CE
-	Light_Infantry_CE
+	Levy_Axemen
 	Light_Spearman_CE
 	Light_Archer_CE
 	Light_Cavalry_CE
@@ -571,7 +674,7 @@ def HungarianUnitSet : AvailableUnits
 {
 	Militia_CE
 	AdvancedMilitia_CE
-	Light_Infantry_CE
+	Levy_Axemen
 	Light_Spearman_CE
 	Light_Archer_CE
 	Light_Cavalry_CE
@@ -599,7 +702,7 @@ def BalticUnitSet : AvailableUnits
 {
 	Militia_CE
 	AdvancedMilitia_CE
-	Light_Infantry_CE
+	Levy_Axemen
 	Light_Spearman_CE
 	Light_Archer_CE
 	Light_Cavalry_CE

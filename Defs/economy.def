@@ -9,8 +9,8 @@ def Economy {
 			
 			float base_income = 1
 			float income_modifier
-			float royal_profit_mod = ( (is_king and 1.33) or 1 )
-			float relations_profit = (map_clamp(GetRelationship(src_kingdom, tgt_kingdom), 0, 1000, 0, 15))
+			float royal_profit_mod = ( (is_king and 1.2) or 1 )
+			float relations_profit = (map_clamp(GetRelationship(src_kingdom, tgt_kingdom), 0, 1000, 0, 10))
 			float profit_from_navigation = (obj.cs_gold_per_coastal_where_trading * tgt_kingdom.coastal_realms_count)
 
 			float with_subordinated = (tgt_kingdom.subordinated * tgt_kingdom.is_orthodox * src_kingdom.ks_trade_income_with_subordinated_perc)
@@ -33,35 +33,35 @@ def Economy {
 		level_1 : trade_level
 		{
 			name = "Small Scale Trade"
-			commerce = (10 - (tgt_kingdom.kingdom.vassal_of == src_kingdom) * 5)
+			commerce = (10 - (tgt_kingdom.kingdom.vassal_of == src_kingdom) * 3)
 			income_modifier = 1
 		}
 		level_2 : trade_level
 		{
 			name = "Medium Scale Trade"
 			upgrade_gold_cost = 100
-			commerce = (20 - (tgt_kingdom.kingdom.vassal_of == src_kingdom) * 10)
+			commerce = (20 - (tgt_kingdom.kingdom.vassal_of == src_kingdom) * 7)
 			income_modifier = 1.5
 		}
 		level_3 : trade_level
 		{
 			name = "Large Scale Trade"
 			upgrade_gold_cost = 200
-			commerce = (40 - (tgt_kingdom.kingdom.vassal_of == src_kingdom) * 20)
+			commerce = (40 - (tgt_kingdom.kingdom.vassal_of == src_kingdom) * 13)
 			income_modifier = 2.0
 		}
 		level_4 : trade_level
 		{
 			name = "Exclusive Trade"
 			upgrade_gold_cost = 300
-			commerce = (60 - (tgt_kingdom.kingdom.vassal_of == src_kingdom) * 30)
+			commerce = (60 - (tgt_kingdom.kingdom.vassal_of == src_kingdom) * 20)
 			income_modifier = 2.5
 		}
 		level_5 : trade_level
 		{
 			name = "Imperial Trade"
 			upgrade_gold_cost = 500
-			commerce = (100 - (tgt_kingdom.kingdom.vassal_of == src_kingdom) * 50)
+			commerce = (100 - (tgt_kingdom.kingdom.vassal_of == src_kingdom) * 33)
 			income_modifier = 3.0
 		}
 	}

@@ -5,8 +5,8 @@ def Ale : Resource
 	tooltip = "A hearthy drink fit for noblemen and peasants alike."
 	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Ale.png:Icon_Resource_Ale#2" //GUID:64a6fc20c81a2a746a5dcc2fb185cbe7
 	category = "Base"
-	import_commerce = 6
-	import_gold = 6
+	import_commerce = 5
+	import_gold = 2
 	
 	mod ks_happiness = 1
 	mod ks_gold_from_goods = 4
@@ -20,8 +20,8 @@ def Pastries : Resource
 	tooltip = "Various delicious baked goods made from delicate dough."
 	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Pastries.png:Icon_Resource_Pastries#2" //GUID:886d69992bbae9c4fbd09442574bb058
 	category = "Base"
-	import_commerce = 4
-	import_gold = 4
+	import_commerce = 6
+	import_gold = 3
 
 	mod ks_happiness = 2
 	mod ks_max_food_in_towns = 50
@@ -36,7 +36,7 @@ def Oils : Resource
 	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Oils.png:Icon_Resource_Oils#2" //GUID:a1e7efb0ce62d6a409750ef2f6677604
 	category = "Base"
 	import_commerce = 8
-	import_gold = 8
+	import_gold = 4
 
 	mod ks_melee_CTH_perc = 5
 	mod ks_siege_equipment_cth_perc = 30
@@ -49,8 +49,8 @@ def Craftsmen : Resource
 	tooltip = "Craftsmen."
 	icon = "Assets/Icons/Buildings/Craftsmen.png:Craftsmen#1"
 	category = "Base"
-	import_commerce = 5
-	import_gold = 5
+	import_commerce = 6
+	import_gold = 3
 
 	mod ks_hammers_in_provinces_perc = 10
 }
@@ -61,22 +61,10 @@ def Stonemasons : Resource
 	tooltip = "Stonemasons."
 	icon = "Assets/Icons/Buildings/Stonemasons.png:Stonemasons#1"
 	category = "Base"
-	import_commerce = 5
-	import_gold = 5
+	import_commerce = 8
+	import_gold = 4
 
 	mod ks_hammers_in_provinces_perc = 10
-}
-
-def BasicTools : Resource
-{
-	name = "Basic Tools"
-	tooltip = "Basic Tools."
-	icon = "Assets/Icons/Buildings/Toolmaking.png:Toolmaking#1"
-	category = "Base"
-	import_commerce = 3
-	import_gold = 3
-
-	mod ks_hammers_in_provinces_perc = 5
 }
 
 def IronTools : Resource
@@ -85,8 +73,8 @@ def IronTools : Resource
 	tooltip = "Iron Tools."
 	icon = "Assets/Icons/Buildings/Toolmaking.png:Toolmaking#1"
 	category = "Base"
-	import_commerce = 4
-	import_gold = 4
+	import_commerce = 10
+	import_gold = 5
 
 	mod ks_hammers_in_provinces_perc = 10
 }
@@ -98,8 +86,8 @@ def Leather : Resource
 	tooltip = "The animal skin can be turned into a sturdy material, used for shoemaking and armor crafting."
 	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Leather.png:Icon_Resource_Leather#2" //GUID:8f8fa7f456a0a5940aeeda2e8de3fc34
 	category = "Base"
-	import_commerce = 6
-	import_gold = 6
+	import_commerce = 8
+	import_gold = 4
 
 	mod ks_defense_flat = 8
 }
@@ -110,7 +98,7 @@ def Horseshoes : Resource
 	tooltip = "The animal skin can be turned into a sturdy material, used for shoemaking and armor crafting."
 	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Farrier.tga:UI_Structure_Icon_Farrier#2" //GUID:b4d952b7238f7e148a1858ffd314cfa9
 	category = "Base"
-	import_commerce = 4
+	import_commerce = 8
 	import_gold = 4
 
 	mod ks_horse_cavalry_CTH_perc = 10
@@ -124,7 +112,7 @@ def VariedCrops : Resource
 	icon = "Assets/Icons/Buildings/CanalNetworks.png:CanalNetworks#1"
 	category = "Base"
 	import_commerce = 6
-	import_gold = 6
+	import_gold = 3
 
 	mod ks_population_growth_perc = 5
 }
@@ -136,7 +124,7 @@ def Flax : Resource
 	icon = "Assets/Icons/Buildings/FlaxGrowing.png:FlaxGrowing#1"
 	category = "Base"
 	import_commerce = 4
-	import_gold = 4
+	import_gold = 2
 
 	mod ks_commerce_goods = 4
 }
@@ -148,8 +136,8 @@ def DriedGrain : Resource
 	tooltip = "Grain dried in a drying oven, which can be stored longer and is less susceptible to damage."
 	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_DryingOvens.tga:UI_Structure_Icon_DryingOvens#2" //GUID:14eb0542663b8364ea2c0432b622a84c
 	category = "Base"
-	import_commerce = 5
-	import_gold = 5
+	import_commerce = 8
+	import_gold = 4
 
 	mod ks_resupply_price_gold_reduction_perc = 15
 }
@@ -161,8 +149,8 @@ def Linen : Resource
 	tooltip = "Linen is strong and absorbent textile made from flax and due to its good properties, it is very suitable for the making of comfortable clothing."
 	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Linen.png:Icon_Resource_Linen#2" //GUID:1949efd636e7e714cafd1c98c7a28a45
 	category = "Base"
-	import_commerce = 8
-	import_gold = 8
+	import_commerce = 6
+	import_gold = 3
 
 	mod ks_commerce_goods = 2
 	mod ks_gold_from_goods = 2
@@ -174,8 +162,8 @@ def Clothes : Resource
 	tooltip = "Clothes."
 	icon = "Assets/Icons/Buildings/ClothManufacturing.png:ClothManufacturing#1"
 	category = "Base"
-	import_commerce = 10
-	import_gold = 10
+	import_commerce = 8
+	import_gold = 4
 
 	mod ks_commerce_goods = 4
 	mod ks_gold_from_goods = 4
@@ -188,7 +176,7 @@ def Gambeson : Resource
 	icon = "Assets/UI/Elements/Common/Icons/RealmResources/ArmorWeaving.png:ArmorWeaving#2"
 	category = "Base"
 	import_commerce = 12
-	import_gold = 12
+	import_gold = 6
 
 	mod ks_defense_flat = 15
 }
@@ -199,8 +187,8 @@ def StandardizedWeights : Resource
 	tooltip = "Standardized Weights."
 	icon = "Assets/Icons/Buildings/StandardizationOffices.png:StandardizationOffices#1"
 	category = "Base"
-	import_commerce = 10
-	import_gold = 10
+	import_commerce = 12
+	import_gold = 6
 
 	mod ks_corruption = -10
 	mod ks_culture_from_goods = 5
@@ -213,8 +201,8 @@ def Herbs : Resource
 	tooltip = "The dried leaves and pettles of many wild and domestic plants can be used for healing and well being."
 	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Herbs.png:Icon_Resource_Herbs#2" //GUID:befab961bb1cbee4192175bd946b7f2d
 	category = "Base"
-	import_commerce = 4
-	import_gold = 4
+	import_commerce = 5
+	import_gold = 2
 
 	mod ks_population_growth_perc = 7
 }
@@ -225,8 +213,8 @@ def EducationalBooks : Resource
 	tooltip = "Educational Books."
 	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_School.tga:UI_Structure_Icon_School#2"
 	category = "Base"
-	import_commerce = 6
-	import_gold = 6
+	import_commerce = 8
+	import_gold = 4
 
 	mod ks_prod_books_goods = 2
 	mod ks_culture_from_goods = 5
@@ -240,7 +228,7 @@ def IllustratedBooks : Resource
 	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_IllustratedBooks.png:Icon_Resource_IllustratedBooks#2" //GUID:bb97198f930762c478e530a83d11cae3
 	category = "Base"
 	import_commerce = 10
-	import_gold = 10
+	import_gold = 5
 
 	mod ks_prod_piety_religion_perc = 1
 	mod ks_culture_from_goods = 10
@@ -292,7 +280,7 @@ def Inquisitors : Resource
 	mod ks_prod_books_flat = -5
 	mod ks_corruption = -5
 	mod ks_witch_hunt_efficiency_perc = 20
-	mod ks_heresy_susceptibility_perc = -25
+	mod ks_heresy_susceptibility_perc = -30
 }
 
 def Muftis : Resource
@@ -336,8 +324,8 @@ def Gunpowder : Resource
 	tooltip = "An explosive mixture of saltpeter, sulfur and carbon, initially used for cannons and other heavy artillery guns."
 	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Gunpowder.png:Icon_Resource_Gunpowder#2" //GUID:453fd23940ba6fb41aee0c472f0479af
 	category = "Base"
-	import_commerce = 20
-	import_gold = 20
+	import_commerce = 24
+	import_gold = 12
 
 	mod ks_base_siege_damage_perc = 20
 }
@@ -350,7 +338,7 @@ def Cannons : Resource
 	category = "Base"
 	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Cannons.png:Icon_Resource_Cannons#2" //GUID:a7fd2fedd03a4934e861533b507c4d0f
 	import_commerce = 30
-	import_gold = 30
+	import_gold = 15
 
 	mod ks_naval_CTH = 10
 	mod ks_attrition_bonus = 30
@@ -359,14 +347,22 @@ def Cannons : Resource
 
 def TrainedArchers : Resource
 {
-	name = "Trained archers"
-	tooltip = "Trained archers that have a bigger arm strength and aiming accuracy than normal levies."
+	name = "Archery Culture"
+	tooltip = "A culture of archery training and education, strengthening ranged units in this kingdom."
 	category = "Base"
 	icon = "Assets/Icons/Buildings/ArcheryRange.png:ArcheryRange#1"
-	import_commerce = 15
-	import_gold = 15
 
 	mod ks_ranged_CTH_perc = 10
+}
+
+def TrainedKnights : Resource
+{
+	name = "Knightly Combat Culture"
+	tooltip = "A culture of knightly combat training and education, strengthening the feudal knights in this kingdom."
+	category = "Base"
+	icon = "Assets/Icons/Buildings/KnightlyTrainingGrounds.png:KnightlyTrainingGrounds#1"
+
+	mod ks_elite_unit_defense_flat = 10
 }
 
 def ArmyOfficers : Resource
@@ -375,8 +371,6 @@ def ArmyOfficers : Resource
 	tooltip = "Trained army officers that plan, strategize and uphold military discipline."
 	category = "Base"
 	icon = "Assets/Icons/Buildings/PlanningRoom.png:PlanningRoom#1"
-	import_commerce = 35
-	import_gold = 35
 
 	mod ks_army_speed_world_perc = 10
 	mod ks_squad_size_perc = 10
@@ -388,8 +382,6 @@ def MilitaryHeraldry : Resource
 	tooltip = "Banner carriers that travel with the army, holding up the coat of arms of the ruling houses."
 	category = "Base"
 	icon = "Assets/Icons/Buildings/HeraldryChambers.png:HeraldryChambers#1"
-	import_commerce = 25
-	import_gold = 25
 
 	mod ks_army_morale = 5
 	mod ks_character_experience_perc = 10
@@ -401,8 +393,8 @@ def MercenaryRecruiters : Resource
 	tooltip = "Professional recruiters to attract, negotiate and hire mercenaries."
 	category = "Base"
 	icon = "Assets/Icons/Buildings/RecruitmentChambers.png:RecruitmentChambers#1"
-	import_commerce = 20
-	import_gold = 20
+	import_commerce = 10
+	import_gold = 5
 
 	mod ks_mercenary_price_reduction_perc = -25
 }
@@ -414,6 +406,7 @@ def EarlyScholars : Resource
 	tooltip = "Pioneers of early scholasticism, travelling europe, translating texts of other cultures and reconciling classical philosophy and catholic christianity."
 	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Scholars.png:Icon_Resource_Scholars#2" //GUID:5f58b37cb4491b74b903719bb0c02a66
 	category = "Society"
+	ai_eval = 10 // needed for Advanced Technology
 
 	mod ks_piety_converted_to_books_perc = 10
 }
@@ -424,6 +417,7 @@ def Scholars : Resource
 	tooltip = "They are not only the most learned people in a society, but also the ones who preserve, discover and teach learnings of various types."
 	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Scholars.png:Icon_Resource_Scholars#2" //GUID:5f58b37cb4491b74b903719bb0c02a66
 	category = "Society"
+	ai_eval = 10 // needed for Advanced Technology
 
 	mod ks_prod_books_goods = 5
 	mod ks_learn_upgrade_skill_tradition_discount_perc = 10
@@ -437,4 +431,110 @@ def TranslatedBooks : Resource
 	category = "Society"
 
 	mod ks_learn_upgrade_skill_tradition_discount_perc = 15
+}
+
+delete Timber
+def Timber : Resource
+{
+	name = "Timber"
+	tooltip = "Processed wooden chunks, essencial for buildings and carpentry."
+	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Timber.png:Icon_Resource_Timber#2" //GUID:779217316bdfd2b4b895caa1e64c090d
+	category = "Base"
+	import_commerce = 4
+	import_gold = 2
+
+	mod ks_hammers_in_provinces_perc = 10
+}
+
+delete Furniture
+def Furniture : Resource
+{
+	name = "Furniture"
+	tooltip = "All kinds of wooden articles for basic household needs and facilities like hospitals and libraries."
+	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Furniture.png:Icon_Resource_Furniture#2" //GUID:ca4f870d29753504b89dfe18708120c9
+	category = "Base"
+	import_commerce = 6
+	import_gold = 3
+
+	mod ks_commerce_goods = 5
+	mod ks_hammers_in_provinces_perc = 5
+}
+
+delete Charcoal
+def Charcoal : Resource
+{
+	name = "Charcoal"
+	tooltip = "A basic product used mainly used as fuel for burning when high temperatures are required."
+	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Charcoal.png:Icon_Resource_Charcoal#2" //GUID:b2f235f7fbe1d6041acb07a2dda18d90
+	category = "Base"
+	import_commerce = 5
+	import_gold = 2
+	ai_eval = (5 + (kingdom.Blacksmith and 5)) // needed for Advanced Smithing
+
+	mod ks_gold_from_goods = 3
+}
+
+delete Tar
+def Tar : Resource
+{
+	name = "Tar"
+	tooltip = "This dark-colored viscous liquid is an important resource for making ropes, shipbuilding and ship maintenance."
+	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Tar.png:Icon_Resource_Tar#2" //GUID:4f4c83bcdf68d9d40bbb52b871852662
+	category = "Base"
+	import_commerce = 6
+	import_gold = 3
+	ai_eval = (kingdom.Harbor and 5) // needed for Ship Building
+
+	mod ks_max_food_in_towns = 50
+	mod ks_population_growth_perc = 5
+}
+
+delete Iron
+def Iron : Resource
+{
+	name = "Iron"
+	tooltip = "Refined from pig iron and ready for smithing, this is the most common and suitable metal to be used in the creation of various tools, weapons, building materials, mechanical parts and others."
+	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Iron.png:Icon_Resource_Iron#2" //GUID:0a0460d303f41f84da8cdf079a19d7ef
+	category = "Base"
+	import_commerce = 8
+	import_gold = 4
+	ai_eval = (5 + (kingdom.Blacksmith and 5))
+
+	mod ks_gold_from_goods = 2
+	mod ks_commerce_goods = 2
+	mod ks_siege_equipment_cth_perc = 25
+	mod ks_siege_equipment_siege_damage_perc = 25
+}
+
+def EarlySteel : Resource
+{
+	name = "Early Steel"
+	tooltip = "Refined from pig iron and ready for smithing, this is the most common and suitable metal to be used in the creation of various tools, weapons, building materials, mechanical parts and others."
+	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Iron.png:Icon_Resource_Iron#2" //GUID:0a0460d303f41f84da8cdf079a19d7ef
+	category = "Base"
+	import_commerce = 20
+	import_gold = 10
+	ai_eval = ((kingdom.School and 5) + (kingdom.University and 5))
+
+	mod ks_base_trading_income = 1
+	mod ks_gold_from_goods = 4
+	mod ks_commerce_goods = 4
+	mod ks_heavy_unit_defense_flat = 10
+	mod ks_melee_CTH_perc = 10
+}
+
+delete Salt
+def Salt : Resource
+{
+	name = "Salt"
+	tooltip = "Harvested from both sea and land, this substance is used for food flavoring, enrichment and preservation."
+	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Salt.png:Icon_Resource_Salt#2" //GUID:f8fa2cdb054b4b94c8808231aac5ebb6
+	category = "Base"
+	import_commerce = 10
+	import_gold = 5
+
+	mod ks_happiness = 1
+	mod ks_base_trading_income = 1
+	mod ks_max_food_in_towns = 50
+	mod ks_population_growth_perc = 5
 }

@@ -2,8 +2,8 @@
 {
 	pop_majority_convert
 	{
-		update_interval = 600
-		convert_threshold = 50
+		update_interval = 450
+		convert_threshold = 35
 		min_attack_strength = 0.1
 		max_local_authority = 0.1
 		max_influence = 4

@@ -12,7 +12,7 @@ def Grasslands : ProvinceFeature
 	tooltip = "Fertile pastureland suitable for raising livestock. It allows for the establishment of sheep, cattle, and livestock farms and provides the basis for the production of wool, leather, and milk."
 	icon = "Assets/Icons/Features/Grassland.png:Grassland#1"
 	icon_big = "Assets/Icons/Features/Grassland.png:Grassland#1"
-	spawn_chance = 70
+	spawn_chance = 75
 	area = [0, 0.25, 1, 0.9] //Basically excludes the southern deserts
 }
 
@@ -23,7 +23,7 @@ def Forests : ProvinceFeature
 	tooltip = "Dense forests provide lumber, firewood, and game. They support logging, charcoal production, beekeeping, and hunting, and form the basis for numerous crafts."
 	icon = "Assets/Icons/Features/Forest.png:Forest#1"
 	icon_big = "Assets/Icons/Features/Forest.png:Forest#1"
-	spawn_chance = 80
+	spawn_chance = 75
 	area = [0, 0.25, 1, 1] //Basically excludes the southern deserts
 }
 
@@ -90,7 +90,7 @@ def Vines : ProvinceFeature
 	icon_big = "Assets/Icons/Features/Vines.png:Vines#1"
 	
 	spawn_chance = 100
-	area = [0, 0.25, 0.95, 0.65]
+	area = [0, 0.25, 0.95, 0.675]
 	special = true
 }
 

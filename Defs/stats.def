@@ -1,16 +1,50 @@
-KingdomStats.ks_max_piety = 2000
-KingdomStats.ks_max_books = 2000
-KingdomStats.ks_vassal_tax_perc = 12.5
-KingdomStats.ks_base_gold_income = 80
-KingdomStats.ks_base_commerce = 10
-KingdomStats.ks_base_levy_income = 10
-KingdomStats.ks_prod_books_flat = 10
-KingdomStats.ks_prod_piety_flat = 10
-KingdomStats.ks_max_levy = 2000
-KingdomStats.ks_books_per_cleric = 1
-KingdomStats.ks_corruption = 20
-KingdomStats.ks_stability = -5
+extend CharacterStats
+{
+    cs_imprison_in_battle_chance = 35
+    cs_imprison_in_battle_retreat_chance = (cs_imprison_in_battle_chance / 3)
 
+    cs_army_speed_world_perc
+	{
+		out_of_supplies = (army.no_supplies * (army.is_home * -15 + !army.is_home * -30))
+		max = 30
+	}
+
+    cs_army_morale = 15
+	{
+		max = 30
+		kingdom = "ks_army_morale"
+		own_realm = #CalcMoraleInOwnRealm { text mod_name = "In home lands" } // +5
+		allied_realm = #CalcMoraleInAlliedRealm { text mod_name = "In allied lands" } // 0
+		neutral_realm = #CalcMoraleInNeutralRealm { text mod_name = "In neutral lands" } // -3
+		enemy_realm = #CalcMoraleInEnemyRealm { text mod_name = "On enemy soil" } // -3 or worse
+		realm_keeps = #CalcMoraleEnemyRealmKeeps { text mod_name = "Castles in province" } // -1 per keep
+		restoring_papacy = #CalcMoraleRestorePapacy { text mod_name = "Restoring Papacy" } // 5
+		king_warfare_ability = #CalcMoraleKingWarfareAbility { text mod_name = "King Warfare ability" } // 0 - 2.5 for non-marshal kings, 0-5 for marshal king
+		no_supplies = (army.no_supplies * (army.is_home * -5 + !army.is_home * -15)) { text mod_name = "Ran out of supplies" } // -3 at home, else -12 
+		is_king = (is_king * 5) { text mod_name = "King leading army" } // 5
+		is_prince = (is_prince * 2) { text mod_name = "Prince leading army" } // 2
+		is_marshal = (-3 * !is_marshal) { text mod_name = "Non marshal leading army"} // -3
+		in_sea_navigation = #CalcMoraleNavigationSkill { text mod_name = "In the sea" } // at sea
+		realm_same_pop_majority = #CalcMoralePopMajorityBonus { text mod_name = "Realm is same pop majority as army kingdom" } // ?
+		jihad_against_realm_owner = #CalcMoraleJihad { text mod_name = "Jihad" }// in own realm and realm of jihad enemies
+	}
+}
+
+extend KingdomStats
+{
+    ks_max_piety = 1000
+    ks_max_books = 500
+    ks_vassal_tax_perc = 12.5
+    ks_base_gold_income = 100
+    ks_base_commerce = 10
+    ks_base_levy_income = 0
+    ks_prod_books_flat = 5
+    ks_prod_piety_flat = 5
+    ks_max_levy = 300
+    ks_books_per_cleric = 1
+    ks_corruption = 25
+    ks_stability = -5
+}
 
 extend RealmStats {
     rs_max_food = 300
@@ -18,15 +52,16 @@ extend RealmStats {
     rs_siege_resilience = 75
 
     rs_gold_income_perc = 0
+
+    stat rs_settlement_recovery = 0
+	{
+        text mod_text = "{value}% {name}"
+		text name = "faster recovery of burned settlements"
+	}
 }
 
 
 Prestige.max = 2000
-
-CharacterStats.cs_imprison_in_battle_chance = 35
-CharacterStats.cs_imprison_in_battle_retreat_chance = (cs_imprison_in_battle_chance / 3)
-CharacterStats.no_supplies = (army.no_supplies * (army.is_home * -10 + !army.is_home * -25)) { text mod_name = "Ran out of supplies" } // -10 at home, else -25 
-CharacterStats.cs_army_speed_world_perc.mod out_of_supplies = (army.no_supplies * (army.is_home * -25 + !army.is_home * -50))
 
 BattleSimulation.morale_factors.no_food = (is_starving * -10)
 BattleViewSimulation.morale_factors.no_food = (is_starving * -10)

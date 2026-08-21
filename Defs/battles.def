@@ -1,6 +1,16 @@
 River.retreat_damage_mod = 25 { perc = true }
 OceanCoast.retreat_damage_mod = 50 { perc = true }
 
+extend Battle
+{
+	AI_retreat = true
+	{
+		estimation_threshold = 0.25 // 0 - losing completely .. 1 - winning completely, 0.2 = losing_badly
+		min_lost_units = 1 // have at least N units defeated (killed/fled)
+		min_lost_perc = 25 // have at least X% of initial units defeated (nobles not included), 3/8 = 0.375
+	}
+}
+
 def Plunder : Battle
 {
 	preparation_time_base = 0

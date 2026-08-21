@@ -277,8 +277,6 @@ def Jewish : Religion
 	}
 	tooltip = "One of the branches of Christianity, most popular in western, northern and central Europe"
 
-	christian = true
-
 	map_color = "38,92,199" //275DC7FF
 
 	piety = "Piety"

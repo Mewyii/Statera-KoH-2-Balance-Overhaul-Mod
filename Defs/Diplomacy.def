@@ -1,0 +1,285 @@
+extend Pact
+{
+	max_members = 3 // including the leader kingdom
+	
+	float upkeep = (SSum(owner.kingdom, 0.01, 10)) //(20 - owner.class_level)
+}
+
+extend DefensivePact : Pact
+{
+	int max_pacts_against_target = 3
+}
+
+extend OffensivePact : Pact
+{
+	int max_pacts_against_target = 2
+}
+
+extend Offer
+{
+	timeout = 150
+}
+
+extend CounterOffer
+{
+	pro_con_difference_cover_perc = [100, 200] //Calculated pro-cons ratio = 1.0, accept treshold = 1.2, difference 0.2, cover between 100% and 200% of 0.2 as additional offers
+
+	args // original offer, additional demand offers(minimum 1)
+	{
+		Offer arg0 = CanBeCountered
+		Offer arg1 = AdditionalConditionOffers
+		Offer? arg2 = AdditionalConditionOffers
+		Offer? arg3 = AdditionalConditionOffers
+	}
+
+	string CanBeCountered = ["DemandGold",
+							 "DemandLand",
+							 "MarriageOffer",
+							 "WhitePeaceOffer",
+							 "PeaceOfferTribute",
+							 "PeaceDemandTribute",
+							 "SignNonAggression",
+							 "SignAlliance",
+							 "SignTrade",
+							 "SignExclusiveTrade",
+							 "DemandChangeReligion",
+							 "DemandAttackKingdom",
+							 "AskForProtection",
+							 "DemandReleasePrisoners",
+							 "DemandHelpWithRebels",
+							 "DemandSupportInWar",
+							 "DemandJoinInDefensivePact",
+							 "DemandJoinInOffensivePact",
+							 "ClaimIndependence",
+							 "AskForCrusadeOffer",
+							 "AskForExcommunicationOffer"]
+	
+	string AdditionalConditionOffers = ["DemandGold",
+										"DemandLand",
+										"MarriageOffer",
+										"DemandVassalage",
+										"DemandAbandonCaliphate",
+										"SignNonAggression",
+										"SignAlliance",
+										"SignTrade",
+										"SignExclusiveTrade",
+										"DemandBook",
+										"DemandChangeReligion",
+										"DemandAttackKingdom",
+										"AskForProtection",
+										"DemandReleasePrisoners",
+										"DemandHelpWithRebels",
+										"DemandSupportInWar",
+										"DemandJoinInDefensivePact",
+										"DemandJoinInOffensivePact",
+										"ClaimIndependence"]
+}
+
+extend SweetenOffer
+{
+	pro_con_difference_cover_perc = [25, 100] //Calculated pro-cons ratio = 1.5, propose treshold = 1.2, difference 0.3, cover between 20% and 90% of 0.3 as additional offers
+
+	args // original offer, additional sweeten offer
+	{
+		Offer arg0 = CanBeSweetened
+		Offer arg1 = CanBeSweetenedWith
+	}
+
+	string CanBeSweetened = ["MarriageOffer",
+							 "WhitePeaceOffer",
+							 "PeaceOfferTribute",
+							 "PeaceDemandTribute",
+							 "SignNonAggression",
+							 "SignTrade",
+							 "ClaimIndependence",
+							 "DemandSupportInWar",
+							 "DemandGold",
+							 "DemandLand",
+							 "AskForProtection",
+							 "DemandAttackKingdom",
+							 "AskForPrisonerRansom",
+							 "OfferRansomPrisoner",
+							 "DemandReleasePrisoners",
+							 "OfferSupportInWar",
+							 "OfferJoinInDefensivePact",
+							 "DemandJoinInDefensivePact",
+							 "OfferJoinInOffensivePact",
+							 "DemandJoinInOffensivePact",
+							 "AskForProtection"
+							 ]
+
+	string CanBeSweetenedWith = ["OfferGold",
+								 "OfferLand",
+								 "MarriageOffer",
+								 "OfferVassalage",
+								 "SignNonAggression",
+								 "SignAlliance",
+								 "SignTrade",
+								 "SignExclusiveTrade",
+								 "OfferChangeReligion",
+								 "OfferAttackKingdom",
+								 "OfferReleasePrisoners",
+								 "OfferHelpWithRebels",
+								 "OfferSupportInWar",
+								 "OfferJoinInDefensivePact",
+								 "OfferJoinInOffensivePact",
+								 "GrantIndependence"]
+}
+
+extend AdditionalConditionOffer
+{
+	pro_con_difference_cover_perc = [50, 250] //Calculated pro-cons ratio = 1.5, propose treshold = 1.2, difference 0.3, cover between min% and max% of 0.3 as additional offers
+
+	args // offer, 3 additional conditions(mininum 1)
+	{
+		Offer arg0 = CanBeOffered
+		Offer arg1 = AdditionalConditionOffers
+		Offer? arg2 = AdditionalConditionOffers
+		Offer? arg3 = AdditionalConditionOffers
+	}
+
+	string CanBeOffered = ["OfferGold", 
+							"OfferLand", 
+							"MarriageOffer",
+							"SignNonAggression", 
+							"SignTrade",
+							"OfferHelpWithRebels",
+							"OfferSupportInWar", 
+							"OfferJoinInDefensivePact", 
+							"OfferJoinInOffensivePact"]
+
+	string AdditionalConditionOffers = ["DemandGold",
+										"DemandLand",
+										"MarriageOffer",
+										"SignNonAggression",
+										"SignAlliance",
+										"SignTrade",
+										"SignExclusiveTrade",
+										"DemandAttackKingdom",
+										"AskForProtection",
+										"DemandReleasePrisoners",
+										"DemandHelpWithRebels",
+										"DemandSupportInWar",
+										"DemandJoinInDefensivePact",
+										"DemandJoinInOffensivePact"]
+}
+
+def WhitePeaceOffer : DiplomacyOffer
+{
+	name = "White peace"
+	label = "White peace"
+	tooltip = "Sign unconditional peace with {tgt_kingdom}"
+	diplomacy_event_id = "Peace"
+	propose_caption = "{src_kingdom} offers Peace"
+	rel_change_type = "neutral"
+}
+
+def PeaceOfferTribute : DiplomacyOffer
+{
+	name = "Peace tribute offer{indent:1em}[{p}- {arg0}][{p}- {arg1}][{p}- {arg2}]{/indent}"
+	label = "Offer tribute"
+	diplomacy_event_id = "PeaceOfferred"
+	propose_caption = "{src_kingdom} pleads for Peace"
+	float sub_offers_weight_mod = 1
+	args
+	{
+		Offer? arg0 = CanIncludeOffers
+		Offer? arg1 = CanIncludeOffers
+		Offer? arg2 = CanIncludeOffers
+	}
+	rel_change_type = "neutral"
+	outcomes
+	{
+		decline
+		{
+			trigger moral_change_offer_outcome
+			{
+				param = -3
+				condition = (tgt_kingdom.ArmyOpinion < 0)
+				target = (tgt_kingdom)
+			}
+		}
+	}
+	string CanIncludeOffers = ["EmptyOffer",
+								"MarriageOffer",
+								"OfferLand",
+								"OfferGold",
+								"OfferVassalage",
+								"OfferChangeReligion",
+								"OfferReleasePrisoners"]
+}
+
+def PeaceDemandTribute : DiplomacyOffer
+{
+	name = "Peace tribute demand{indent:1em}[{p}- {arg0}][{p}- {arg1}][{p}- {arg2}]{/indent}"
+	label = "Demand tribute"
+	diplomacy_event_id = "PeaceDemanded"
+	propose_caption = "{src_kingdom} demands your Surrender"
+	float sub_offers_weight_mod = 1
+	args
+	{
+		Offer? arg0 = CanIncludeOffers
+		Offer? arg1 = CanIncludeOffers
+		Offer? arg2 = CanIncludeOffers
+	}
+	rel_change_type = "neutral"
+	outcomes
+	{
+		decline
+		{
+			trigger moral_change_offer_outcome
+			{
+				param = -3
+				condition = (tgt_kingdom.ArmyOpinion < 0)
+				target = (tgt_kingdom)
+			}
+		}
+	}
+	string CanIncludeOffers = ["EmptyOffer",
+								"DemandGold",
+								"DemandLand",
+								"MarriageOffer",
+								"DemandVassalage",
+								"DemandAbandonCaliphate",
+								"DemandChangeReligion",
+								"DemandAttackKingdom",
+								"DemandReleasePrisoners"
+								]
+}
+
+def OfferHelpWithRebels : DiplomacyOffer
+{
+	name = "Help with rebels"
+	label = "Help with rebels"
+	tooltip = "Offer to send {src_kingdom:ian} armies against the rebels plaguing {tgt_kingdom}"
+	diplomacy_event_id = "HelpWithRebels"
+	propose_caption = "{src_kingdom} offers help with our rebels"
+	rel_change_type = "positive"
+}
+
+def OfferAttackKingdom : DiplomacyOffer
+{
+	name = "Attack {arg}"
+	label = "Attack kingdom : {arg}"
+	tooltip = "Offer to wage war against {arg}"
+	diplomacy_event_id = "OfferAttackKingdom"
+	propose_caption = "{src_kingdom} offers to Attack {arg}"
+	args = "Kingdom"
+	can_be_sent_without_parent_offer = false
+	diplomacy_accept = "event:/sound_effects/notification/war_declared"
+	sfx_priority = 10
+}
+
+def DemandAttackKingdom : DiplomacyOffer
+{
+	name = "Attack {arg}"
+	label = "Attack kingdom : {arg}"
+	tooltip = "Demand to wage war against {arg}"
+	diplomacy_event_id = "DemandAttackKingdom"
+	propose_caption = "{src_kingdom} demands us to Attack {arg}"
+	args = "Kingdom"
+	can_be_sent_without_parent_offer = false
+	rel_change_type = "positive"
+	player_accept_offer = "event:/sound_effects/notification/war_declared"
+	sfx_priority = 10
+}

@@ -104,7 +104,7 @@ extend RealmFeaturesPresets
 
 		def HorsesRealmSet : RealmFeaturesPreset
 		{
-			occurances = 7
+			occurances = 6
 			required_settlements
 			{
 				HorseFarm
@@ -112,7 +112,6 @@ extend RealmFeaturesPresets
 			required_province_fetures = [Horses]
 			desired_in_realms = 100
 			{
-				Normandy
 				Brittany
 				Banat
 				Zaragoza
@@ -138,28 +137,12 @@ extend RealmFeaturesPresets
 
 		def SlaveTradersRussiaRealmSet : RealmFeaturesPreset 
 		{
-			occurances = 5
+			occurances = 2
 			required_province_fetures = [SlaveTradersRussia]
 			desired_in_realms = 100
 			{
-				Crimea
 				Taman
-				Mosul
 				Shirvan
-				Bolghar
-			}
-		}
-
-		def SpiceTradersRealmSet : RealmFeaturesPreset 
-		{
-			occurances = 4
-			required_province_fetures = [SpiceTraders]
-			desired_in_realms = 100
-			{
-				Khuzestan
-				Basra
-				Ispahan
-				Cairo
 			}
 		}
 
@@ -178,15 +161,13 @@ extend RealmFeaturesPresets
 
 		def SulfurRealmSet : RealmFeaturesPreset 
 		{
-			occurances = 5
+			occurances = 3
 			required_province_fetures = [SulfurDeposits]
 			desired_in_realms = 100
 			{
-				Sicily
 				Attica
 				Erzurum
 				Sinai
-				Moravia
 			}
 		}
 
@@ -202,15 +183,13 @@ extend RealmFeaturesPresets
 
 		def FurTradeRealmSet : RealmFeaturesPreset 
 		{
-			occurances = 6
+			occurances = 4
 			required_province_fetures = [RareGame]
 			desired_in_realms = 100
 			{
-				Novgorod
 				Smolensk
 				Livonia
 				Minsk
-				Perm
 				Vyatka
 			}
 		}
@@ -218,7 +197,7 @@ extend RealmFeaturesPresets
 		delete IronRealmSet
 		def IronRealmSet : RealmFeaturesPreset
 		{
-			occurances = 3
+			occurances = 2
 			required_settlements
 			{
 				Mine
@@ -228,7 +207,6 @@ extend RealmFeaturesPresets
 			{
 				Svealand
 				Navarra
-				Pontos
 			}
 		}
 
@@ -279,24 +257,10 @@ extend RealmFeaturesPresets
 			}
 		}
 
-		def SlaveTradersAndSilverRealmSet : RealmFeaturesPreset
-		{
-			occurances = 1
-			required_settlements
-			{
-				Mine
-			}
-			required_province_fetures = [SlaveTradersAfrica, SilverOre]
-			desired_in_realms = 100
-			{
-				Draa // Imiter
-			}
-		}
-
 		delete GoldRealmSet
 		def GoldRealmSet : RealmFeaturesPreset
 		{
-			occurances = 5
+			occurances = 3
 			required_settlements
 			{
 				Mine
@@ -307,8 +271,34 @@ extend RealmFeaturesPresets
 				Pfalz
 				Transylvania
 				Abauj
-				Moravia
+			}
+		}
+		
+		def IronAndGoldRealmSet : RealmFeaturesPreset
+		{
+			occurances = 1
+			required_settlements
+			{
+				Mine
+			}
+			required_province_fetures = [IronOre, GoldOre]
+			desired_in_realms = 100
+			{
 				Pontos
+			}
+		}
+
+		def SulfurAndGoldRealmSet : RealmFeaturesPreset 
+		{
+			occurances = 1
+			required_settlements
+			{
+				Mine
+			}
+			required_province_fetures = [SulfurDeposits, GoldOre]
+			desired_in_realms = 100
+			{
+				Moravia
 			}
 		}
 
@@ -387,7 +377,7 @@ extend RealmFeaturesPresets
 
 		def SaltRealmSet : RealmFeaturesPreset
 		{
-			occurances = 13
+			occurances = 12
 			required_province_fetures = [SaltDeposit]
 			desired_in_realms = 100
 			{
@@ -400,7 +390,6 @@ extend RealmFeaturesPresets
 				Ragusa
 				Epirus
 				Izmir
-				Alexandria
 				Acre
 				Tabriz
 				Mascat
@@ -549,7 +538,7 @@ extend RealmFeaturesPresets
 
 		def MarbleRealmSet : RealmFeaturesPreset
 		{
-			occurances = 4
+			occurances = 2
 			required_settlements
 			{
 				Quarry
@@ -559,8 +548,6 @@ extend RealmFeaturesPresets
 			{
 				Bursa // Prokonnesos
 				Extremadura // Estremoz
-				Lombardy // Laas
-				Tunisia // Chemtou
 			}
 		}
 
@@ -615,43 +602,13 @@ extend RealmFeaturesPresets
 
 		def WineRealmSet : RealmFeaturesPreset 
 		{
-			occurances = 5
+			occurances = 3
 			required_province_fetures = [Vines]
 			desired_in_realms = 100
 			{
 				Burgundy
 				Aquitaine
 				Luxembourg
-				Catalonia
-				Cordoba
-			}
-		}
-
-		def SilverAndWineRealmSet : RealmFeaturesPreset
-		{
-			occurances = 1
-			required_settlements
-			{
-				Mine
-			}
-			required_province_fetures = [SilverOre, Vines]
-			desired_in_realms = 100
-			{
-				Rhineland
-			}
-		}
-
-		def MarbleAndWineRealmSet : RealmFeaturesPreset
-		{
-			occurances = 1
-			required_settlements
-			{
-				Quarry
-			}
-			required_province_fetures = [MarbleDeposit, Vines]
-			desired_in_realms = 100
-			{
-				Strymon // Thasos
 			}
 		}
 
@@ -668,12 +625,11 @@ extend RealmFeaturesPresets
 
 		def DyeExtractionRealmSet : RealmFeaturesPreset 
 		{
-			occurances = 6
+			occurances = 5
 			required_province_fetures = [DyeExtraction]
 			desired_in_realms = 100
 			{
 				Toulouse // Languedoc (Waid)
-				West_Flanders // Krapp
 				Leon // Safran
 				Menteshe // Kermes
 				Saxony // Azurit
@@ -698,20 +654,6 @@ extend RealmFeaturesPresets
 			desired_in_realms = 100
 			{
 				Holland
-			}
-		}
-
-		def MarbleWineAndDyeExtractionRealmSet : RealmFeaturesPreset
-		{
-			occurances = 1
-			required_settlements
-			{
-				Quarry
-			}
-			required_province_fetures = [MarbleDeposit, Vines, DyeExtraction]
-			desired_in_realms = 100
-			{
-				Tuscany // Carrara
 			}
 		}
 
@@ -776,17 +718,6 @@ extend RealmFeaturesPresets
 			}
 		}
 
-		def PilgrimageSiteChristianRealmSet : RealmFeaturesPreset 
-		{
-			occurances = 2
-			required_province_fetures = [PilgrimageSiteChristian]
-			desired_in_realms = 100
-			{
-				Galicia // Santiago
-				Anjou // Tours
-			}
-		}
-
 		def SulfurAndPilgrimageSiteChristianRealmSet : RealmFeaturesPreset 
 		{
 			occurances = 1
@@ -794,16 +725,6 @@ extend RealmFeaturesPresets
 			desired_in_realms = 100
 			{
 				Campania // Monte Gargano
-			}
-		}
-
-		def WineAndPilgrimageSiteChristianRealmSet : RealmFeaturesPreset 
-		{
-			occurances = 1
-			required_province_fetures = [Vines, PilgrimageSiteChristian]
-			desired_in_realms = 100
-			{
-				Latium
 			}
 		}
 
@@ -821,27 +742,6 @@ extend RealmFeaturesPresets
 			}
 		}
 
-		def PilgrimageSiteMuslimRealmSet : RealmFeaturesPreset 
-		{
-			occurances = 2
-			required_province_fetures = [PilgrimageSiteMuslim]
-			desired_in_realms = 100
-			{
-				Yathrib // Medina
-				Baghdad // Nadschaf
-			}
-		}
-
-		def SaltAndPilgrimageSiteRealmSet : RealmFeaturesPreset
-		{
-			occurances = 1
-			required_province_fetures = [SaltDeposit, PilgrimageSiteChristian, PilgrimageSiteMuslim]
-			desired_in_realms = 100
-			{
-				Palestine // Jerusalem
-			}
-		}
-
 		def DesertAndPilgrimageSiteMuslimRealmSet : RealmFeaturesPreset
 		{
 			occurances = 1
@@ -852,22 +752,9 @@ extend RealmFeaturesPresets
 			}
 		}
 
-		def IncenseCultivationAndPilgrimageSiteMuslimRealmSet : RealmFeaturesPreset 
-		{
-			occurances = 1
-			required_province_fetures = [IncenseCultivation, PilgrimageSiteMuslim]
-			desired_in_realms = 100
-			{
-				Al_Maqqah // Mecca
-			}
-		}
-		
-
-		// TODO ab hier	
-
 		def CornChamberRealmSet : RealmFeaturesPreset 
 		{
-			occurances = 10
+			occurances = 6
 			required_settlements
 			{
 				Farm = 3
@@ -875,73 +762,394 @@ extend RealmFeaturesPresets
 			desired_in_realms = 100
 			{
 				Dumyat
-				Alexandria
-				Kabylia
-				Algiers
-				Mosul
-				Normandy
-				Lombardy
+				Apulia
+				Andalucia
 				Thrace
 				Nicaea
-				Sicily
+				Pereyaslavl
 			}
 		}
 
-		def CityStatesRealmSet : RealmFeaturesPreset 
+		def PiratesWineAndCornChamberRealmSet : RealmFeaturesPreset 
 		{
-			occurances = 7
+			occurances = 1
+			required_province_fetures = [Pirates, Vines]
 			required_settlements
 			{
-				Village = 2
+				Farm = 3
 			}
 			desired_in_realms = 100
 			{
-				Veneto
-				Liguria
-				Lombardy
-				Tuscany
-				Novgorod
-				Gotland
-				Catalonia
+				Kabylia
 			}
 		}
 
-
-		def TradersRealmSet : RealmFeaturesPreset //best for trade center
+		def SlaveTradersRussiaAndCornChamberRealmSet : RealmFeaturesPreset 
 		{
-			occurances = 10 //the sum of all chances down should be around this value, multiplied by 80-90, preferably less than 1000
+			occurances = 1
+			required_province_fetures = [SlaveTradersRussia]
 			required_settlements
 			{
-				Village = 1
+				Farm = 3
 			}
+			desired_in_realms = 100
+			{
+				Mosul
+			}
+		}
+
+		def MarbleWineAndCornChamberRealmSet : RealmFeaturesPreset
+		{
+			occurances = 1
+			required_settlements
+			{
+				Quarry
+				Farm = 3
+			}
+			required_province_fetures = [MarbleDeposit, Vines]
+			desired_in_realms = 100
+			{
+				Strymon // Thasos
+			}
+		}
+
+		def HorsesAndCornChamberRealmSet : RealmFeaturesPreset
+		{
+			occurances = 1
+			required_settlements
+			{
+				HorseFarm
+				Farm = 3
+			}
+			required_province_fetures = [Horses]
+			desired_in_realms = 100
+			{
+				Normandy
+			}
+		}
+
+		def MarbleCornChamberAndCityStateRealmSet : RealmFeaturesPreset
+		{
+			occurances = 1
+			required_settlements
+			{
+				Quarry
+				Farm = 3
+				Village = 2
+			}
+			required_province_fetures = [MarbleDeposit]
+			desired_in_realms = 100
+			{
+				Lombardy // Laas
+			}
+		}
+
+		def MarbleWineAndDyeExtractionAndCityStateRealmSet : RealmFeaturesPreset
+		{
+			occurances = 1
+			required_settlements
+			{
+				Quarry
+				Village = 3
+			}
+			required_province_fetures = [MarbleDeposit, Vines, DyeExtraction]
+			desired_in_realms = 100
+			{
+				Tuscany // Carrara
+			}
+		}
+
+		def PilgrimageSiteMuslimAndReligiousCenterRealmSet : RealmFeaturesPreset 
+		{
+			occurances = 2
+			required_province_fetures = [PilgrimageSiteMuslim]
+			required_settlements
+			{
+				Monastery = 2
+			}
+			desired_in_realms = 100
+			{
+				Yathrib // Medina
+				Baghdad // Nadschaf
+			}
+		}
+
+		def PilgrimageSiteChristianAndReligiousCenterRealmSet : RealmFeaturesPreset 
+		{
+			occurances = 2
+			required_province_fetures = [PilgrimageSiteChristian]
+			required_settlements
+			{
+				Monastery = 2
+			}
+			desired_in_realms = 100
+			{
+				Galicia // Santiago
+				Anjou // Tours
+			}
+		}
+
+		def SaltPilgrimageSiteAndReligiousCenterRealmSet : RealmFeaturesPreset
+		{
+			occurances = 1
+			required_province_fetures = [SaltDeposit, PilgrimageSiteChristian, PilgrimageSiteMuslim]
+			required_settlements
+			{
+				Monastery = 2
+			}
+			desired_in_realms = 100
+			{
+				Palestine // Jerusalem
+			}
+		}
+
+		def WinePilgrimageSiteChristianAndReligiousCenterRealmSet : RealmFeaturesPreset 
+		{
+			occurances = 1
+			required_province_fetures = [Vines, PilgrimageSiteChristian]
+			required_settlements
+			{
+				Monastery = 2
+			}
+			desired_in_realms = 100
+			{
+				Latium // Rome
+			}
+		}
+
+		def IncenseCultivationPilgrimageSiteMuslimAndReligiousCenterRealmSet : RealmFeaturesPreset 
+		{
+			occurances = 1
+			required_province_fetures = [IncenseCultivation, PilgrimageSiteMuslim]
+			required_settlements
+			{
+				Monastery = 2
+			}
+			desired_in_realms = 100
+			{
+				Al_Maqqah // Mecca
+			}
+		}
+
+		def TradeCenterRealmSet : RealmFeaturesPreset
+		{
+			occurances = 4
 			features
 			{
 				tradeCenter
 			}
 
-			delete desired_in_realms
-			desired_in_realms = 20
+			desired_in_realms = 100
 			{
-				Cordoba = 100
-				Sicily = 100 
-				Veneto = 75
-				Alexandria = 75
-				Liguria = 75
-				Marrakesh = 75
-				Damascus = 50
-				Kiev = 50
-				Novgorod = 30
-				Antioch = 30
-				Al_Halab = 30
-				Basra = 20
+				Kyiv
+				Antioch
+				Regensburg
+				Damascus
+			}
+		}
 
-				Bohemia = 10
-				Rhodes = 10
-				Smolensk = 10
-				Lebanon = 10
-				Malopolska = 10
-				Regensburg = 10
-				Hamburg = 10
+		def SpiceTradersAndTradeCenterRealmSet : RealmFeaturesPreset 
+		{
+			occurances = 3
+			required_province_fetures = [SpiceTraders]
+			features
+			{
+				tradeCenter
+			}
+			desired_in_realms = 100
+			{
+				Khuzestan
+				Basra
+				Ispahan
+			}
+		}
+
+		def CityStateAndTradeCenterRealmSet : RealmFeaturesPreset 
+		{
+			occurances = 3
+			required_settlements
+			{
+				Village = 3
+			}
+			features
+			{
+				tradeCenter
+			}
+			desired_in_realms = 100
+			{
+				Veneto
+				Liguria
+				Gotland
+			}
+		}
+
+		def FurTradeCityStateAndTradeCenterRealmSet : RealmFeaturesPreset 
+		{
+			occurances = 1
+			required_province_fetures = [RareGame]
+			required_settlements
+			{
+				Village = 3
+			}
+			features
+			{
+				tradeCenter
+			}
+			desired_in_realms = 100
+			{
+				Novgorod
+			}
+		}
+
+		def SaltCornChamberAndTradeCenterRealmSet : RealmFeaturesPreset
+		{
+			occurances = 1
+			required_province_fetures = [SaltDeposit]
+			required_settlements
+			{
+				Farm = 3
+			}
+			features
+			{
+				tradeCenter
+			}
+			desired_in_realms = 100
+			{
+				Alexandria
+			}
+		}
+
+		def SlaveTradersSilverAndTradeCenterRealmSet : RealmFeaturesPreset
+		{
+			occurances = 1
+			required_settlements
+			{
+				Mine
+			}
+			required_province_fetures = [SlaveTradersAfrica, SilverOre]
+			features
+			{
+				tradeCenter
+			}
+			desired_in_realms = 100
+			{
+				Draa // Imiter
+			}
+		}
+
+		def WineAndTradeCenterRealmSet : RealmFeaturesPreset 
+		{
+			occurances = 2
+			required_province_fetures = [Vines]
+			features
+			{
+				tradeCenter
+			}
+			desired_in_realms = 100
+			{
+				Catalonia
+				Cordoba
+			}
+		}
+
+		def DyeExtractionAndTradeCenterRealmSet : RealmFeaturesPreset 
+		{
+			occurances = 1
+			required_province_fetures = [DyeExtraction]
+			features
+			{
+				tradeCenter
+			}
+			desired_in_realms = 100
+			{
+				West_Flanders // Krapp
+			}
+		}
+
+		def SilverWineAndTradeCenterRealmSet : RealmFeaturesPreset
+		{
+			occurances = 1
+			required_settlements
+			{
+				Mine
+			}
+			required_province_fetures = [SilverOre, Vines]
+			features
+			{
+				tradeCenter
+			}
+			desired_in_realms = 100
+			{
+				Rhineland
+			}
+		}
+
+		def SulfurCornChamberAndTradeCenterRealmSet : RealmFeaturesPreset 
+		{
+			occurances = 1
+			required_province_fetures = [SulfurDeposits]
+			required_settlements
+			{
+				Farm = 3
+			}
+			features
+			{
+				tradeCenter
+			}
+			desired_in_realms = 100
+			{
+				Sicily
+			}
+		}
+
+		def SpiceTradersReligiousCenterAndTradeCenterRealmSet : RealmFeaturesPreset 
+		{
+			occurances = 1
+			required_province_fetures = [SpiceTraders]
+			required_settlements
+			{
+				Monastery = 2
+			}
+			features
+			{
+				tradeCenter
+			}
+			desired_in_realms = 100
+			{
+				Cairo
+			}
+		}
+
+		def SlaveTradersRussiaAndTradeCenterRealmSet : RealmFeaturesPreset 
+		{
+			occurances = 2
+			required_province_fetures = [SlaveTradersRussia]
+			features
+			{
+				tradeCenter
+			}
+			desired_in_realms = 100
+			{
+				Bolghar
+				Crimea
+			}
+		}
+
+		def MarbleAndTradeCenterRealmSet : RealmFeaturesPreset
+		{
+			occurances = 1
+			required_settlements
+			{
+				Quarry
+			}
+			required_province_fetures = [MarbleDeposit]
+			features
+			{
+				tradeCenter
+			}
+			desired_in_realms = 100
+			{
+				Tunisia // Chemtou
 			}
 		}
 
@@ -950,9 +1158,9 @@ extend RealmFeaturesPresets
 			occurances = 1
 			required_settlements
 			{
-				Monastery
-				Keep
-				Village
+				Monastery = 2
+				Keep = 1
+				Village = 2
 			}
 			features
 			{
@@ -964,25 +1172,7 @@ extend RealmFeaturesPresets
 			}
 		}
 
-		def CathedralUniversityGuaranteedRealmSet : RealmFeaturesPreset
-		{
-			occurances = 6
-			required_settlements
-			{
-				Monastery = 2
-			}
-			
-			desired_in_realms = 100
-			{
-				Baghdad
-				Latium // Rome
-				Palestine // Jerusalem
-				Al_Maqqah // Mecca
-				Yathrib //Mdina
-				Cairo
-			}
-		}
-
+		delete TradersRealmSet
 		delete CathedralUniversityOptionalRealmSet
 		delete SausageBeerRealmSet
 		delete SheepRealmSet
@@ -992,6 +1182,7 @@ extend RealmFeaturesPresets
 		delete FlaxRealmSet
 		delete LimestoneRealmSet
 		delete HerbsSpicesRealmSet
+		delete CathedralUniversityGuaranteedRealmSet
 	}
 }
 

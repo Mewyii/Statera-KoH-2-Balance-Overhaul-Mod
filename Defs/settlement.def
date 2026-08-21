@@ -4,11 +4,14 @@ extend Settlement
 	garrison_worker_excess_manpower_bonus = 1
 
 	attrition = [1,1,1]
+
+	trade_center_gold_per_good = 0.5
+	trade_center_gold_per_commerce = 0.25
 }
 
 extend Fortifications
 {
-	Resources cost = ["1g 1h", "250g 250 Levy 1000h", "1000g 500 Levy 2500h", "2000g 1000 Levy 6000h"]
+	Resources cost = ["1g 1h", "500g 1500h", "1500g 3000h", "3000g 6000h"]
 	int reqiured_citadel_level = [0,0,0,0] //[0,1,2,3]
 	mod rs_siege_defense = 0/50/150/300
 }
@@ -17,10 +20,10 @@ extend Fortifications
 
 Settlement.max_identical_settlement_per_realm = 3 // Limit for all settlements
 Settlement.max_allowed_features_per_settlement_type = 5 // Features are not limited here anyways?
-Settlement.max_specal_settlements_per_realm = 3
+Settlement.max_specal_settlements_per_realm = 2
 Settlement.min_restriction_settlements = 8
 Settlement.max_restriction_settlements = 12
-Settlement.settlement_repeating_chance_mul = 1.4 // relevant only for base settlements
+Settlement.settlement_repeating_chance_mul = 1.25 // relevant only for base settlements
 
 RealmFeaturesPreset.preferred_min_distance = 1
 
@@ -58,6 +61,8 @@ extend Castle : Settlement
 
 extend Keep: Settlement
 {
+	production = "1Levy 1TownGuards"
+
 	attrition = [5,5,5]
 }
 
@@ -67,7 +72,22 @@ extend KeepEffects
 	max_distance = 30
 }
 
-def SettlementsRandomizationWeights = 3 // Same settlement type limit for normal settlements
+extend Village
+{
+	production = "1g 1WorkerSlots 1TownGuards"
+
+	color occupied_enemy = "255,0,0,94" //FF00005E
+	color occupied_enemy_supporter = "120,0,0,150" //780000
+	color occupied_ally = "25,125,0,170" //197d00
+	color occupied_own = "48,255,0,94" //31FF005E
+	color occupied_neutral = "99,153,190,120" //6399be
+	prefab occupied_decal_prefab = "Assets/Europe/Prefabs/KeepOccupationDecal.prefab" //GUID:e2aadf3f574e5d84db4cfe475179171f
+	
+	float food_copy_mod = 0.5
+	bool take_max_food = true
+}
+
+def SettlementsRandomizationWeights = 4 // Same settlement type limit for normal settlements
 {
 	float Village = 30
 	float Farm = 30
@@ -84,7 +104,7 @@ def SettlementsRandomizationWeights = 3 // Same settlement type limit for normal
 }
 
 delete SpecialSettlementsRandomizationWeights
-def SpecialSettlementsRandomizationWeights = 1.5 // Same settlement type limit for special settlements
+def SpecialSettlementsRandomizationWeights = 2 // Same settlement type limit for special settlements
 {
     
     float Mine = 0
@@ -99,8 +119,10 @@ def SpecialSettlementsRandomizationWeights = 1.5 // Same settlement type limit f
 	float HorseFarm = 8
 }
 
-extend Quarry : Settlement
+extend Quarry
 {
+	production = "1g 1h"
+
 	delete enable_feature
 	enable_feature
 	{
@@ -109,8 +131,10 @@ extend Quarry : Settlement
 	}
 }
 
-extend Mine : Settlement
+extend Mine
 {
+	production = "1g 1Trade"
+
 	delete enable_feature
 	enable_feature
 	{
@@ -121,6 +145,25 @@ extend Mine : Settlement
 	}
 }
 
+extend CattleFarm
+{
+	production = "1f 1Trade"
+}
+
+extend SheepFarm
+{
+	production = "2f"
+}
+
+extend HorseFarm
+{
+	production = "1g 1Trade"
+}
+
+extend Vineyard
+{
+	production = "1f 1g"
+}
 
 def OasisVillage : Settlement
 {
@@ -136,7 +179,7 @@ def OasisVillage : Settlement
 		default Oasis
 	}
 	
-	production = "1f"
+	production = "1f 1TownGuards"
 	
 	icon = "Assets/Icons/Features/Oasis.png:Oasis#1"
 	illustration = "Assets/Icons/Features/Oasis.png:Oasis#1"
