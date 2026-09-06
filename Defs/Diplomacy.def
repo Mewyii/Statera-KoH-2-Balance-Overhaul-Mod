@@ -77,12 +77,13 @@ extend CounterOffer
 
 extend SweetenOffer
 {
-	pro_con_difference_cover_perc = [25, 100] //Calculated pro-cons ratio = 1.5, propose treshold = 1.2, difference 0.3, cover between 20% and 90% of 0.3 as additional offers
+	pro_con_difference_cover_perc = [35, 100] //Calculated pro-cons ratio = 1.5, propose treshold = 1.2, difference 0.3, cover between 35% and 100% of 0.3 as additional offers
 
 	args // original offer, additional sweeten offer
 	{
 		Offer arg0 = CanBeSweetened
 		Offer arg1 = CanBeSweetenedWith
+		Offer? arg2 = CanBeSweetenedWith
 	}
 
 	string CanBeSweetened = ["MarriageOffer",
@@ -280,6 +281,23 @@ def DemandAttackKingdom : DiplomacyOffer
 	args = "Kingdom"
 	can_be_sent_without_parent_offer = false
 	rel_change_type = "positive"
+	player_accept_offer = "event:/sound_effects/notification/war_declared"
+	sfx_priority = 10
+}
+
+def DemandSovereignDefendOffer : DiplomacyOffer
+{
+	name = "Attack {arg}"
+	label = "Attack kingdom : {arg}"
+	tooltip = "Demand to wage war against {arg}"
+	diplomacy_event_id = "DemandAttackKingdom"
+	args = [ "Kingdom", "War"]
+	propose_message = "DemandSovereignDefendMessage"
+	outcomes
+	{
+		accept { rel_change = "rel_accept_lead_crusade" }
+		decline { rel_change = "rel_decline_lead_crusade" }
+	}
 	player_accept_offer = "event:/sound_effects/notification/war_declared"
 	sfx_priority = 10
 }

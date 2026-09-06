@@ -1,4 +1,8 @@
-Upgrade.ai_eval = 500
+extend Upgrade 
+{
+	float base_ai_eval = 250
+	ai_eval = (base_ai_eval)
+}
 
 // MILITARY
 def ArcheryRange : Upgrade
@@ -8,7 +12,7 @@ def ArcheryRange : Upgrade
 	icon = "Assets/Icons/Buildings/ArcheryRange.png:ArcheryRange#1"
 
 	ai_category = "Military"
-	ai_eval = 1000
+	ai_eval = (base_ai_eval + 500)
 }
 
 def MilitiaDrills : Upgrade
@@ -34,7 +38,7 @@ def LesserFiefs : Upgrade
 	icon = "Assets/Icons/Buildings/KnightlyTrainingGrounds.png:KnightlyTrainingGrounds#1"
 
 	ai_category = "Military"
-	ai_eval = 1500
+	ai_eval = (base_ai_eval + 500)
 }
 
 def KnightlyTrainingGrounds : Upgrade
@@ -44,7 +48,7 @@ def KnightlyTrainingGrounds : Upgrade
 	icon = "Assets/Icons/Buildings/KnightlyTrainingGrounds.png:KnightlyTrainingGrounds#1"
 
 	ai_category = "Military"
-	ai_eval = 1000
+	ai_eval = (base_ai_eval + 500)
 }
 
 def LanceWarfare : Upgrade
@@ -55,7 +59,7 @@ def LanceWarfare : Upgrade
 	add_tooltip = "Required for recruiting {clr:enables_color}High Knight Units{/clr}"
 
 	ai_category = "Military"
-	ai_eval = 750
+	ai_eval = (base_ai_eval + 250)
 }
 
 def LordsHalls : Upgrade
@@ -66,7 +70,7 @@ def LordsHalls : Upgrade
 	add_tooltip = "Required for recruiting {clr:enables_color}Late Knight Units{/clr}"
 
 	ai_category = "Military"
-	ai_eval = 750
+	ai_eval = (base_ai_eval + 250)
 }
 
 def Chivalry : Upgrade
@@ -81,28 +85,48 @@ def Chivalry : Upgrade
 def Farrier : Upgrade
 {
 	name = "Farriers"
-	flavor = "A craftsman, specialized in trimming and balancing horses' hooves, as well as placing shoes when necessary."
+	flavor = "In the smithy, iron horseshoes are forged and fitted to the animals' hooves. Shoeing protects the hooves from wear and allows horses to endure long journeys over hard or rocky ground."
 	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Farrier.tga:UI_Structure_Icon_Farrier#2" //GUID:b4d952b7238f7e148a1858ffd314cfa9
 
 	ai_category = "Military"
 }
 
+def SaddlersShop : Upgrade
+{
+	name = "Saddler's Workshop"
+	flavor = "Saddlers craft saddles, bridles, and harnesses from leather and wood, carefully fitting them to each horse. Well-made tack allows riders to control their mounts securely, even in the chaos of battle."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_SaddlersShop.tga:UI_Structure_Icon_SaddlersShop#2" //GUID:d82e69dff50048049aec3441fb5eae73
+}
+
 def MessengerService : Upgrade
 {
 	name = "Messenger Service"
-	flavor = "A relay network of riders ensuring rapid communication between castles and towns."
+	flavor = "A relay network of horses and riders allows messages to travel swiftly across great distances. Fresh mounts are kept along important routes, allowing messengers to replace tired horses and continue their journey."
 	icon = "Assets/Icons/Buildings/MessengerService.png:MessengerService#1"
 }
 
-def KnightlyStables : Upgrade
+def StudFarm : Upgrade
 {
-	name = "Knightly Stables"
-	flavor = "Reserved quarters for trained warhorses, tended by squires and master grooms."
+	name = "Stud Farm"
+	flavor = "Selected mares and stallions are kept apart from ordinary livestock in dedicated breeding grounds. Spacious pastures and separate stables allow for careful rearing and the selection of valuable breeding stock."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Horsemarket.tga:UI_Structure_Icon_Horsemarket#2" //GUID:5ea591ecbe4987b4497ab527b3458c10
+}
+
+def SelectiveBreeding : Upgrade
+{
+	name = "Selective Breeding"
+	flavor = "Breeders select the strongest, most enduring, and most reliable animals for further breeding. Over generations, desirable traits can be reinforced, producing horses of increasingly valued qualities."
 	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_WarStables.tga:UI_Structure_Icon_WarStables#2" //GUID:4614b122faea18e4582c4fdd671c9e5a
-	add_tooltip = "Required for recruiting {clr:enables_color}Advanced Knight Units{/clr}"
 
 	ai_category = "Military"
-	ai_eval = 1000
+	ai_eval = (base_ai_eval + 500)
+}
+
+def WarhorseBreed : Upgrade
+{
+	name = "Warhorse Breeds"
+	flavor = "Particularly strong and spirited horses are bred and carefully raised for warfare. Breeding focuses on animals with the strength, endurance, and temperament needed to carry heavily armed riders into battle."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_WarhorseBreed.tga:UI_Structure_Icon_WarhorseBreed#2" //GUID:f1a9e3416c6845b42920bc3d197510e2
 }
 
 def MilitiaBarracks : Upgrade
@@ -113,7 +137,7 @@ def MilitiaBarracks : Upgrade
 	add_tooltip = "Required for recruiting {clr:enables_color}Militia Units{/clr}"
 
 	ai_category = "Military"
-	ai_eval = 1500
+	ai_eval = (base_ai_eval + 1000)
 }
 
 def CrossbowManufactoring : Upgrade
@@ -135,7 +159,7 @@ def WindlassMechanisms : Upgrade
 	add_tooltip = "Required for recruiting {clr:enables_color}Advanced Crossbow Units{/clr}"
 
 	ai_category = "Military"
-	ai_eval = 1000
+	ai_eval = (base_ai_eval + 500)
 }
 
 def AdvancedBowmaking : Upgrade
@@ -146,7 +170,7 @@ def AdvancedBowmaking : Upgrade
 	add_tooltip = "Required for recruiting {clr:enables_color}Advanced Bow Units{/clr}"
 
 	ai_category = "Military"
-	ai_eval = 500
+	ai_eval = (base_ai_eval + 100)
 }
 
 def Watchtowers : Upgrade
@@ -162,7 +186,7 @@ def WatchRotations : Upgrade
 	flavor = "A regular rotation of guards ensures that gates, streets, and vital facilities remain watched at all times. The militia can thus keep part of its strength on permanent duty even in peacetime."
 	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_MountainPassGuards.tga:UI_Structure_Icon_MountainPassGuards#2" //GUID:4db8cfeb5d63bfa4b97e9b1232dab538
 
-	ai_eval = 750
+	ai_eval = (base_ai_eval + 250)
 }
 
 def HeraldryChambers : Upgrade
@@ -191,6 +215,8 @@ def MercenaryHiringOffice : Upgrade
 	name = "Mercenary Hiring Office"
 	flavor = "Chambers to professionally organize the recruitment of mercenaries troughout kingdom."
 	icon = "Assets/Icons/Buildings/MercenaryHiringOffice.png:MercenaryHiringOffice#1"
+
+	ai_eval = (base_ai_eval + 250 + (If(kingdom.is_orthodox, 500, 0)))
 }
 
 def TrebuchetAssemblyYard : Upgrade
@@ -273,6 +299,7 @@ def BellTower : Upgrade
 	name = "Bell Tower"
 	flavor = "Erecting a massive stone bell tower gives the town its temporal rhythm. The tolling bells replace the sun as the community's clock, dictating labor shifts and prayer hours, while its thunderous 'storm tolling' serves as a crucial early warning system against fires and oncoming sieges."
 	icon = "Assets/Icons/Buildings/ProperBells.png:ProperBells#1"
+	ai_eval = (base_ai_eval + 250)
 }
 
 def Cemetry : Upgrade
@@ -309,7 +336,7 @@ def Scriptorium : Upgrade
 	flavor = "Quiet chambers where monks laboriously copy manuscripts, preserving sacred and classical texts alike."
 	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_ScribesOffice.tga:UI_Structure_Icon_ScribesOffice#2" //GUID:ab3dc5b23bf99a640b72192498cf76f5
 
-	ai_eval = 1500
+	ai_eval = (base_ai_eval + 1000)
 }
 
 def ScholaMonastica : Upgrade
@@ -318,7 +345,7 @@ def ScholaMonastica : Upgrade
 	flavor = "Schooling chambers where educated monks teach novices, noble and local children."
 	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_School.tga:UI_Structure_Icon_School#2"
 
-	ai_eval = 3000
+	ai_eval = (base_ai_eval + (map_clamp(game.time_hours, 0, 2, 0, 4000)))
 }
 
 def IlluminatorsAtelier : Upgrade
@@ -453,6 +480,7 @@ def AblutionCourtyard : Upgrade
 	name = "Ablution Courtyard"
 	flavor = "A sunlit courtyard with flowing water prepares worshippers in ritual purity before prayer."
 	icon = "Assets/Icons/Buildings/Cloister.png:Cloister#1"
+	ai_eval = (base_ai_eval + 250)
 }
 
 def Minbar : Upgrade
@@ -680,14 +708,6 @@ def MerchantBank : Upgrade
 
 // CRAFTING
 
-def Stonemasonry : Upgrade
-{
-	name = "Stonemasonry"
-	flavor = "Skilled builders shaping stone for walls, churches, and fortifications, laying the foundation of lasting architecture."
-	icon = "Assets/Icons/Buildings/Stonemasons.png:Stonemasons#1"
-
-	ai_eval = 1000
-}
 
 def Craftsmenship : Upgrade
 {
@@ -695,7 +715,16 @@ def Craftsmenship : Upgrade
 	flavor = "Independent artisans creating everything from pottery to furniture, forming the backbone of the town’s economy."
 	icon = "Assets/Icons/Buildings/Craftsmen.png:Craftsmen#1"
 
-	ai_eval = 2000
+	ai_eval = (base_ai_eval + (map_clamp(game.time_hours, 0, 2, 500, 4000)))
+}
+
+def Stonemasonry : Upgrade
+{
+	name = "Stonemasonry"
+	flavor = "Skilled builders shaping stone for walls, churches, and fortifications, laying the foundation of lasting architecture."
+	icon = "Assets/Icons/Buildings/Stonemasons.png:Stonemasons#1"
+
+	ai_eval = (base_ai_eval + (map_clamp(game.time_hours, 0, 3, 0, 4000)))
 }
 
 def SimpleWeaponsmithing : Upgrade
@@ -704,7 +733,7 @@ def SimpleWeaponsmithing : Upgrade
 	flavor = "The foundations of military smithing, allowing the production of simple but reliable weapons for levies and militia. Every realm depends on skilled village blacksmiths to arm its soldiers."
 	icon = "Assets/Icons/Buildings/SimpleWeaponsmithing.png:SimpleWeaponsmithing#1"
 
-	ai_eval = 3000
+	ai_eval = (base_ai_eval + (map_clamp(game.time_hours, 0, 2, 500, 4000)))
 	ai_category = "Military"
 }
 
@@ -714,7 +743,7 @@ def SimpleArmorsmithing : Upgrade
 	flavor = "The crafting of padded garments and leather armour provides affordable protection for common soldiers. These practical defences form the backbone of every early army."
 	icon = "Assets/Icons/Buildings/SimpleArmorsmithing.png:SimpleArmorsmithing#1"
 
-	ai_eval = 2500
+	ai_eval = (base_ai_eval + (map_clamp(game.time_hours, 0, 2, 500, 4000)))
 	ai_category = "Military"
 }
 
@@ -724,7 +753,7 @@ def Toolsmithing : Upgrade
 	flavor = "Forging durable ploughshares, hammers, and nails essential for craftsmen and farmers alike."
 	icon = "Assets/Icons/Buildings/Toolsmithing.png:Toolsmithing#1"
 	
-	ai_eval = 2000
+	ai_eval = (base_ai_eval + (kingdom.SimpleWeaponsmithing and 1000) + (kingdom.SimpleArmorsmithing and 1000))
 }
 
 def ForgeBellows : Upgrade
@@ -733,7 +762,7 @@ def ForgeBellows : Upgrade
 	flavor = "Installation of improved air bellows to reach higher temperatures and refine the quality of ironwork."
 	icon = "Assets/Icons/Buildings/FullingMills.png:FullingMills#1"
 
-	ai_eval = 2000
+	ai_eval = (base_ai_eval + (kingdom.AdvancedWeaponsmithing and 1000) + (kingdom.AdvancedArmorsmithing and 1000))
 	ai_category = "Military"
 }
 
@@ -743,7 +772,7 @@ def ImprovedTanningLiquors : Upgrade
 	flavor = "Use of refined mixtures of bark and lime to speed up curing and improve leather strength."
 	icon = "Assets/Icons/Buildings/ImprovedTanningLiquors.png:ImprovedTanningLiquors#1"
 	
-	ai_eval = 1000
+	ai_eval = (base_ai_eval + 500)
 	ai_category = "Military"
 }
 
@@ -753,7 +782,7 @@ def Leatherworking : Upgrade
 	flavor = "Crafting of finished goods such as belts, saddles, pouches, and light armor from tanned hides."
 	icon = "Assets/Icons/Buildings/Leatherworking.png:Leatherworking#1"
 	
-	ai_eval = 2000
+	ai_eval = (base_ai_eval + 1500)
 	ai_category = "Military"
 }
 
@@ -770,7 +799,7 @@ def AdvancedWeaponsmithing : Upgrade
 	flavor = "Improved forging techniques produce stronger, more durable weapons for professional soldiers. Better craftsmanship allows armies to field increasingly effective arms."
 	icon = "Assets/Icons/Buildings/AdvancedWeaponsmithing.png:AdvancedWeaponsmithing#1"
 
-	ai_eval = 3000
+	ai_eval = (base_ai_eval + 2500)
 	ai_category = "Military"
 }
 
@@ -780,7 +809,7 @@ def AdvancedArmorsmithing : Upgrade
 	flavor = "The expertise to forge riveted mail armour greatly improves a warrior's protection without sacrificing mobility. Such armour becomes the hallmark of experienced soldiers and knights."
 	icon = "Assets/Icons/Buildings/AdvancedArmorsmithing.png:AdvancedArmorsmithing#1"
 
-	ai_eval = 3000
+	ai_eval = (base_ai_eval + 2500)
 	ai_category = "Military"
 }
 
@@ -790,7 +819,7 @@ def LateWeaponsmithing : Upgrade
 	flavor = "Master smiths create finely crafted weapons of exceptional quality for the realm's elite warriors. Advanced techniques ensure superior balance, strength, and reliability in battle."
 	icon = "Assets/Icons/Buildings/AdvancedWeaponsmithing.png:AdvancedWeaponsmithing#1"
 
-	ai_eval = 3000
+	ai_eval = (base_ai_eval + 2500)
 	ai_category = "Military"
 }
 
@@ -800,7 +829,7 @@ def LateArmorsmithing : Upgrade
 	flavor = "Master armourers fashion sophisticated plate defences that offer unmatched protection on the battlefield. Only the wealthiest realms can equip their finest warriors with such armour."
 	icon = "Assets/Icons/Buildings/AdvancedArmorsmithing.png:AdvancedArmorsmithing#1"
 
-	ai_eval = 3000
+	ai_eval = (base_ai_eval + 2500)
 	ai_category = "Military"
 }
 
@@ -1043,32 +1072,11 @@ def TownHeralds : Upgrade
 	icon = "Assets/Icons/Buildings/Cataloguing.png:Cataloguing#1"
 }
 
-def GuardBarracks : Upgrade
-{
-	name = "Guard Barracks"
-	flavor = "Quarters for the wardens who maintain order and security within the prison walls."
-	icon = "Assets/Icons/Buildings/Cataloguing.png:Cataloguing#1"
-}
-
-def PublicPunishments : Upgrade
-{
-	name = "Public Punishments"
-	flavor = "Designated areas where transgressors are shamed before the townsfolk to enforce moral discipline."
-	icon = "Assets/Icons/Buildings/Cataloguing.png:Cataloguing#1"
-}
-
-def Cataloguing : Upgrade
-{
-	name = "Cataloguing"
-	flavor = "The development of systematic classification enables faster access to knowledge and learning."
-	icon = "Assets/Icons/Buildings/Cataloguing.png:Cataloguing#1"
-}
-
 // RESOURCES
 
 extend ColliersKiln
 {
-	ai_eval = (500 + (kingdom.Blacksmith and 1000))
+	ai_eval = (base_ai_eval + (kingdom.SimpleWeaponsmithing and 1000) + (kingdom.SimpleArmorsmithing and 1000))
 	ai_category = "Military"
 }
 
@@ -1078,7 +1086,7 @@ def BloomeryFurnaces : Upgrade
 	flavor = "Simple shaft furnaces built from clay and stone allow ironworkers to smelt iron ore together with charcoal. The furnace produces a solid bloom of iron and slag, which is removed and hammered to produce workable iron."
 	icon = "Assets/Icons/Buildings/BloomeryFurnaces.png:BloomeryFurnaces#1"
 
-	ai_eval = (500 + (kingdom.Blacksmith and 1000))
+	ai_eval = (base_ai_eval + (kingdom.SimpleWeaponsmithing and 1000) + (kingdom.SimpleArmorsmithing and 1000))
 	ai_category = "Military"
 }
 
@@ -1088,14 +1096,14 @@ def Stücköfen : Upgrade
 	flavor = "Larger shaft furnaces allow greater quantities of ore and charcoal to be smelted at higher temperatures. Their improved design produces larger blooms with less waste, increasing the output of workable iron."
 	icon = "Assets/Icons/Buildings/Stuckofen.png:Stuckofen#1"
 
-	ai_eval = (250 + (kingdom.School and 500))
+	ai_eval = (base_ai_eval + (kingdom.AdvancedWeaponsmithing and 1000) + (kingdom.AdvancedArmorsmithing and 1000))
 }
 
 extend BlastFurnace : Upgrade
 {
 	icon = "Assets/Icons/Buildings/BlastFurnace.png:BlastFurnace#1"
 
-	ai_eval = (500 + (kingdom.University and 1000))
+	ai_eval = (base_ai_eval + (kingdom.AdvancedWeaponsmithing and 1000) + (kingdom.AdvancedArmorsmithing and 1000))
 }
 
 def SaltRefineries : Upgrade
@@ -1103,6 +1111,39 @@ def SaltRefineries : Upgrade
 	name = "Salt Refineries"
 	flavor = "At salt refineries, harvested salt is washed, dried, and processed into clean crystals. Large boiling pans and drying floors remove impurities and moisture, producing high-quality salt for trade, food preservation, and everyday use."
 	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_SaltTrade.tga:UI_Structure_Icon_SaltTrade#2" //GUID:c59fd0d60f1fd7e4fa749a3ced9d2657
+}
+
+def WoolWeaver : Upgrade
+{
+	name = "Wool Weavers"
+	flavor = "A varied assortment of garments is produced here, satisfying the local population's clothing needs."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_WoolWeaver.tga:UI_Structure_Icon_WoolWeaver#2" //GUID:fb0a19997a4d736439a3d46ab85b7fa9
+}
+
+def FineWoolBreeding : Upgrade
+{
+	name = "Fine Wool Breeding"
+	flavor = "Sheep with particularly dense and valuable fleeces are selected for breeding. Over generations, the flock develops finer and more abundant wool, well suited for high-quality cloth."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_SpinningMill.tga:UI_Structure_Icon_SpinningMill#2" //GUID:d8283fbc63071f54f9da095376fde188
+}
+
+def OxBreeding : Upgrade
+{
+	name = "Ox Breeding"
+	flavor = "Strong young animals are selected and raised as reliable oxen for heavy work. They pull ploughs and carts, providing valuable labor in fields and on roads."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_CattleMarket.tga:UI_Structure_Icon_CattleMarket#2" //GUID:6a72fccfed238f34b9e922acec732dd9
+}
+
+def DairyShop : Upgrade
+{
+	name = "Dairy Shops"
+	flavor = "A place where fresh milk is turned into many types of dairy products, which are then prepared to be bought and sold."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_DairyShop.tga:UI_Structure_Icon_DairyShop#2" //GUID:3a963f927a22dfd4182353fbbec29fba
+}
+
+def Butcher_Cattle : Butcher
+{
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_CattleButcher.tga:UI_Structure_Icon_CattleButcher#2" //GUID:097ddaf3d3d196e4da040f43e14ad3de
 }
 
 // Housekeeping
@@ -1192,3 +1233,13 @@ def AlchemistLab_Muslim: Upgrade
 delete AlchemistLab_Christian
 delete AlchemistLab_Muslim
 delete AlchemistLab
+delete HorseMarket
+def Tannery_Sheep: Upgrade
+def Tannery_Cattle: Upgrade
+delete Tannery_Sheep
+delete Tannery_Cattle
+delete Tannery
+delete CattleMarket
+delete SausageMaker
+delete SpinningMill
+delete Butcher_Sheep

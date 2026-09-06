@@ -9,7 +9,7 @@ def Action
     float kingdom_income_cost_modifier = ((1 + (0.00015 * (own_kingdom.S1 - 100))) * kingdom_size_modifier)
     float kingdom_income_upkeep_modifier = ((1 + (0.00015 * (own_kingdom.S1 - 100))) * kingdom_size_modifier)
     float agent_level_cost_modifier = (owner.class_level * 5)
-    float agent_level_upkeep_modifier = (owner.class_level * 1)
+    float agent_level_upkeep_modifier = (owner.class_level * 0.5)
 
 	resources upkeep
 	{
@@ -28,5 +28,5 @@ def Status
     float kingdom_income_cost_modifier = ((1 + (0.00015 * own_kingdom.S1)) * kingdom_size_modifier)
     float kingdom_income_upkeep_modifier = ((1 + (0.00015 * own_kingdom.S1)) * kingdom_size_modifier)
     float agent_level_cost_modifier = (owner.class_level * 5)
-    float agent_level_upkeep_modifier = (owner.class_level * 1)
+    float agent_level_upkeep_modifier = (owner.class_level * 0.5)
 }

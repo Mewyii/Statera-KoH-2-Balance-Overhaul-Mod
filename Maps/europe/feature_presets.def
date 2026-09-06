@@ -76,9 +76,9 @@ extend RealmFeaturesPresets
 			}
 		}
 
-		def SteppesRealmSet : RealmFeaturesPreset 
+		def SteppesMinorRealmSet : RealmFeaturesPreset 
 		{
-			occurances = 13
+			occurances = 8
 			required_settlements
 			{
 				SteppeSettlement = 3
@@ -87,18 +87,32 @@ extend RealmFeaturesPresets
 			desired_in_realms = 100
 			{
 				Samara
-				Al_Jadid
-				Al_Maqhrus
-				Astrakhan
-				Sarkel
-				Manych
-				Izyum
 				Ukek
 				Yedisan
 				Vinnytsia
 				Cherkasy
 				Bessarabia
 				Voronezh
+				Wallachia
+			}
+		}
+
+		def SteppesMajorRealmSet : RealmFeaturesPreset 
+		{
+			occurances = 6
+			required_settlements
+			{
+				SteppeSettlement = 4
+			}
+			required_province_fetures = [Steppe]
+			desired_in_realms = 100
+			{
+				Manych
+				Al_Maqhrus
+				Al_Jadid
+				Astrakhan
+				Izyum
+				Sarkel
 			}
 		}
 
@@ -1153,13 +1167,13 @@ extend RealmFeaturesPresets
 			}
 		}
 
+		delete ConstantinopleRealmSet
 		def ConstantinopleRealmSet : RealmFeaturesPreset
 		{
 			occurances = 1
 			required_settlements
 			{
 				Monastery = 2
-				Keep = 1
 				Village = 2
 			}
 			features

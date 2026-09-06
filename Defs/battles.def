@@ -14,7 +14,7 @@ extend Battle
 def Plunder : Battle
 {
 	preparation_time_base = 0
-	duration = 90
+	duration = 80
 	float resume_plunder_progress_mod = 0.5 // when defenders die, plunder progress *= resume_plunder_progress_mod
 	float plunder_gold_base = 250
 	float plunder_per_gold_production = 0

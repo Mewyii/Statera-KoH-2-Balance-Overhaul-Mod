@@ -9,7 +9,7 @@ def Economy {
 			
 			float base_income = 1
 			float income_modifier
-			float royal_profit_mod = ( (is_king and 1.2) or 1 )
+			float royal_profit_mod = ( (is_king and 1.1) or 1 )
 			float relations_profit = (map_clamp(GetRelationship(src_kingdom, tgt_kingdom), 0, 1000, 0, 10))
 			float profit_from_navigation = (obj.cs_gold_per_coastal_where_trading * tgt_kingdom.coastal_realms_count)
 

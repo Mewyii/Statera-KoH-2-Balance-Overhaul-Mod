@@ -11,9 +11,10 @@ Genoa,Genuese,Catholic,Republic,Liguria,-,-,-,-,-,-,-,-,,-,Duchy,-,,,,,ItalianUn
 Venice,Venetian,Catholic,Republic,Veneto,-,-,-,-,-,-,-,-,,-,Duchy,-,,,,,ItalianUnitSet,Militia_CE
 Papal_States,Roman,Catholic,Papacy,Latium,-,-,-,-,-,-,-,-,,Papal,Kingdom.H,-,,,,,ItalianUnitSet,Militia_CE
 Naples,Neapolitan,Catholic,-,Campania,-,-,-,-,-,-,-,-,,-,Kingdom,-,,,,,ItalianUnitSet,Militia_CE
-Hungary,Hungarian,Catholic,-,Buda,-,-,-,-,-,-,-,-,,-,Kingdom,-,,,,,-,Militia_CE
-Poland,Polish,Catholic,-,Malopolska,-,-,-,-,-,-,-,-,,All,Kingdom,-,,,,,-,Militia_CE
-Poland_Lithuania,Polish,Catholic,-,-,-,-,-,-,-,-,-,-,,Baltic,Empire,-,,,,,-,Militia_CE
+Bohemia,Bohemian,Catholic,-,Bohemia,Vladislav.A,Marshal,Richenza.A,Svatava.f.C,Vladislav.m.I,Depold.m.I,-,Germany,,-,Duchy,-,,,,,EuropeanUnitSet,Militia_CE
+Hungary,Hungarian,Catholic,-,Buda,-,-,-,-,-,-,-,-,,-,Kingdom,-,,,,,EuropeanUnitSet,Militia_CE
+Poland,Polish,Catholic,-,Malopolska,-,-,-,-,-,-,-,-,,All,Kingdom,-,,,,,EuropeanUnitSet,Militia_CE
+Poland_Lithuania,Polish,Catholic,-,-,-,-,-,-,-,-,-,-,,Baltic,Empire,-,,,,,EuropeanUnitSet,Militia_CE
 Hammamids,Sanhaja,Sunni,-,Marrakesh,Al_Aziz.A,Diplomat,Arwa.A,Yahya.m.I,-,-,-,-,,-,Kingdom,-,,,,,-,Militia_CE
 BanuHilal,Bedouin,Shia,-,Qeirwan,Hamid.A,Marshal,Devlesah.A,Wadih.m.I,Tahir.m.I,-,-,-,,Arab,Duchy,-,,,,,-,Horse_Archer_Arab
 BanuSulaym,Bedouin,Shia,-,Cyrenaica,Musa.A,Marshal,Devlesah.A,Yasin.m.C,Arwa.f.I,Azzah.f.I,-,-,,Arab,Duchy,-,,,,,-,Horse_Archer_Arab
@@ -22,6 +23,7 @@ Massufa,Sanhaja,Sunni,-,-,-,-,-,-,-,-,-,Almoravids,,Tribal,Kingdom,-,,,,,-,Milit
 Lamtuna,Sanhaja,Sunni,-,-,-,-,-,-,-,-,-,Almoravids,,Tribal,Kingdom,-,,,,,-,Militia_CE
 Lamta,Sanhaja,Sunni,-,-,-,-,-,-,-,-,-,,,Tribal,Kingdom,-,,,,,-,Militia_CE
 Hawwara,Hawwara,Sunni,-,-,-,-,-,-,-,-,-,,,Tribal,Kingdom,-,,,,,-,Militia_CE
+BanuMarin,Zenata,Sunni,-,Tahert,Al_Haqq.A,Cleric,,-,-,-,-,Almohads,,Arab,Duchy,-,,,,,-,Militia_CE
 SicilyNorman,Norman,Catholic,-,Sicily,Roger.2.Y,Diplomat,Elvira.Y,-,-,-,-,-,,County,Duchy,-,,,,,NormanUnitSet,-
 Jarin,Beja,Orthodox.I,-,Sawakin,Sosso.A,Merchant,-,-,-,-,-,-,,-,Kingdom,-,,,,,-,-
 Kerman,Persian,Sunni,-,Konya,-,-,-,-,-,-,-,-,,-,Empire,-,,,,,-,-
@@ -58,11 +60,10 @@ Lorraine,French,Catholic,-,Lorraine,-,-,-,-,-,-,-,-,,-,Duchy,German,,,,,,Roman_I
 France,French,Catholic,-,Ile_de_France,-,-,-,-,-,-,-,-,,-,Kingdom,-,,,,,-,Militia_CE
 
 // Early
-Zaragoza.E,Andalusian,Sunni,-,Zaragoza,Al_Malik.A,Diplomat,-,Ahmad.m.J,-,-,-,,,Berber,Duchy,-,,,,,SaracenUnitSet,Militia_CE
+Zaragoza.E,Andalusian,Sunni,-,Zaragoza,Al_Malik.A,Diplomat,-,Ahmad.m.J,-,-,-,Castile,,Berber,Duchy,-,,,,,SaracenUnitSet,Militia_CE
 Castile.E,Castilian,-,-,Leon,Alfonso.6.A,Marshal,Constance.A,Urraca.f.J,-,-,-,-,,-,-,-,,,,,SpanishUnitSet,Militia_CE
 Aragon.E,Aragonese,Catholic,-,-,Alfonso.1.A,Marshal,Urraca.J.Castile,-,-,-,-,-,,-,Kingdom,-,,,,,SpanishUnitSet,Militia_CE
 Portugal.E,Portuguese,-,-,-,Henrique.A,Diplomat,Teresa.A,Urraca.f.J,Sancha.f.J,Alfonso.m.I,-,Castile,,County,Duchy,-,,,,,SpanishUnitSet,Militia_CE
-Portugal.M,-,-,-,-,Sancho.2.Y,Cleric,-,-,-,-,-,-,,-,-,-,,,,,-,Militia_CE
 Portugal.L,-,-,-,Estremadura,Pedro.1.A,Spy,Ines.A,Fernando.m.J,Joao.m.C,Dinis.m.C,-,-,,-,-,-,,,,,-,Militia_CE
 Galicia.E,Galician,Catholic,-,Galicia,Alfonso.7.Y,Cleric,-,-,-,-,-,-,,-,-,-,,,,,SpanishUnitSet,Militia_CE
 Barcelona.E,Catalan,-,-,-,Ramon.3.A,Diplomat,Dulcia.Y,Ramon.m.I,-,-,-,-,,County,Duchy,-,,,,,SpanishUnitSet,Militia_CE
@@ -81,13 +82,14 @@ Jerusalem.E,French,-,-,-,Baudouin.A,Marshal,Arda.A,-,-,-,-,-,,-,-,-,,,,,NormanUn
 Antioch.E,Norman,Catholic,-,Antioch,Bohemond.A,Marshal,Constance.A,Bohemond.m.C,-,-,-,Jerusalem,,-,Kingdom,-,,,,,NormanUnitSet,Horse_Archer_CE/Norman_Special
 Tripoli.E,French,Catholic,-,Lebanon,Bertrand.A,Merchant,Helie.A,Pons.m.C,Agnes.f.I,-,-,Jerusalem,,County,Duchy,-,,,,,CrusaderUnitSet,Militia_CE
 Edessa.E,French,Catholic,-,Edessa,Baudouin.2.A,Merchant,Morphia.A,Melisende.f.C,Alix.f.I,Hodierna.f.I,-,Jerusalem,,County,Duchy,-,,,,,CrusaderUnitSet,Militia_CE
-Danishmends.E,-,-,-,-,Melikgazi.Y,Spy,-,Mehmet.m.I,-,-,-,Danishmends,,Turk,Duchy,-,,,,,-,-
+Danishmends.E,Turkmen,-,-,-,Melikgazi.Y,Spy,-,Mehmet.m.I,-,-,-,Danishmends,,Turk,Duchy,-,,,,,-,-
 Shaddadids.E,Kurdish,Sunni,-,-,Manuchihr.A,Merchant,-,Shavur.m.I,-,-,-,Seljuks,,-,-,-,,,,,-,-
 Saltuqids.E,-,-,-,-,Ali.A,Marshal,-,-,-,-,-,Seljuks,,-,-,-,,,,,-,-
-Artuqids.E,-,-,-,Adiyaman,Ilghazi.A,Marshal,-,-,-,-,-,-,,-,-,-,,,,,-,
+Artuqids.E,Turkmen,-,-,Adiyaman,Ilghazi.A,Marshal,-,-,-,-,-,-,,-,-,-,,,,,-,
 Aleppo.E,-,-,-,-,Rudwan.A,Spy,-,Taj.m.C,-,-,-,Aleppo,,Arab,Duchy,-,,,,,-,-
+Damascus.E,Turkmen,Sunni,-,Damascus,Toghtekin.A,Marshal,-,Buri.m.J,-,-,-,-,,Arab,Duchy,-,,,,,-,-
 Assassin_Order.E,Persian,Muslim.H,Order,Qazvin,Hasan.O,Spy,-,-,-,-,-,,,Assassin,Kingdom.H,-,,,,,-,-
-Kerman.E,-,-,-,-,Arslan.A,Diplomat,Karima.A,-,-,-,-,-,,-,-,-,,,,,-,Jenissary_Special
+Kerman.E,Turkmen,-,-,-,Arslan.A,Diplomat,Karima.A,-,-,-,-,-,,-,-,-,,,,,-,Jenissary_Special
 Mecca.E,Arab,Sunni,Sharifate,Al_Maqqah,Qasim.A,Cleric,-,Fulaytah.m.C,-,-,-,Fatimids,,Sharif,Kingdom,-,,,,,SaracenUnitSet,Horse_Archer_Arab
 Medina.E,Arab,Sunni,Sharifate,Al_Maqqah,Qasim.A,Cleric,-,Fulaytah.m.C,-,-,-,Seljuks,,Sharif,Kingdom,-,,,,,SaracenUnitSet,Horse_Archer_Arab
 Sulayhids,Arab,Shia,-,Aden,Ahmad.O,Marshal,Arwa.O,Muhammed.m.A,Ali.m.Y,Fatimah.f.Y,Umm.f.J,-,,-,Empire,-,,,,,-,-
@@ -107,7 +109,7 @@ Novgorod.E,Novgorodian,Orthodox,Republic,Novgorod,Mikhail.A,Merchant,Elena.A,-,-
 Rostov_Suzdal.E,Kyivan,Orthodox,-,Rostov,Yuriy.Y,Spy,Dayfa.Y,Marja.f.C,Yuriy.m.I,Anastasiya.f.I,-,Kyiv,,-,Duchy,-,,,,,-,-
 Serbia.E,Serbian,Orthodox,-,-,Vukan.2.O,Marshal,Katarina.O,Milika.f.A,Ana.f.Y,-,-,-,,Russ,-,-,,,,,-,-
 Hungary.E,-,-,-,Komarom,Kalman.O,Cleric,Felicia.A,Zsofia.f.J,Istvan.m.C,Ladislaus.m.I,-,-,,-,-,-,,,,,-,-
-Lithuania.E,Lithuanian,Pagan,-,Lithuania,Gedvydas.A,Marshal,Fiedora.f.A,Zygimantas.m.C,Agrafena.f.C,-,-,-,,Tribal,Kingdom,-,,,,,-,-
+Lithuania.E,Lithuanian,Pagan,-,Lithuania,Gedvydas.A,Marshal,Fiedora.f.A,Zygimantas.m.C,Agrafena.f.C,-,-,-,,Tribal,Kingdom,-,,,,,LithuanianUnitSet,-
 Prussia.E,Prussian,Pagan,-,Prussia,Jogaila.O,Merchant,Anna.f.O,Alberts.m.Y,Allune.f.Y,-,-,-,,Tribal,Kingdom,-,,,,,-,-
 England.E,Norman,-,-,-,Henry.1.A,Spy,Matilda.A,Matilda.f.J,William.m.C,-,-,-,,-,-,-,,,,,EnglishUnitSet,Militia_CE
 Munster.E,Irish,Catholic,-,Munster,Muirchertach.O,Marshal,Dubhchoblaig.O,Domnall.m.Y,Lafracoth.f.Y,Bjadmunjo.f.C,Mathghamhain.m.C,-,,-,Kingdom,-,,,,,IrishUnitSet,Militia_CE
@@ -125,9 +127,16 @@ Mallorca.E,Andalusian,Sunni,-,Mallorca,Mubassir.A,Merchant,-,-,-,-,-,-,,-,Duchy,
 Jerusalem.E,-,-,-,-,Baudouin.A,Marshal,Arda.A,-,-,-,-,-,,-,-,-,,,,,-,Militia_CE/Teutonic_Knight_Mounted_Special/Teutonic_Knight_Special
 
 // Mid
+Portugal.M,Portuguese,-,-,Estremadura,Sancho.1.O,Diplomat,Dulce.A.Aragon,Teresa.f.Y,Sancha.f.J,Raimundo.m.J,Constanza.f.J,-,,-,-,-,,,,,SpanishUnitSet,Militia_CE
+Castile.M,Castilian,-,-,Toledo,Alfonso.8.O,Cleric,Eleanor.A.England,Berenguela.f.J,Sancho.m.J,Sancha.f.J,Urraca.f.C,-,,-,-,-,,,,,SpanishUnitSet,Militia_CE
+Leon_Kingdom,Leonese,Catholic,-,Leon,Alfonso.9.Y,Marshal,,,,,,-,,-,Kingdom,-,,,,,SpanishUnitSet,Militia_CE
+Aragon.M,Aragonese,Catholic,-,Zaragoza,Alfonso.2.O,Diplomat,Sancha.O,Peter.m.A,Constanza.f.J,Alfonso.m.J,Eleanor.f.J,-,,-,Kingdom,-,,,,,SpanishUnitSet,Militia_CE
+Almohads.M,-,-,-,Andalucia,Al_Mansur.A,Marshal,Ammet.A,Al_Mamun.m.Y,Al_Nasir.m.C,-,-,-,,-,-,-,,,,,-,-
+Almoravids.M,-,-,-,Mallorca,Yahya.A,Marshal,,-,-,-,-,-,,-,-,-,,,,,-,-
+Massufa.M,Sanhaja,Sunni,-,-,-,-,-,-,-,-,-,Almohads,,Tribal,Kingdom,-,,,,,-,Militia_CE
+Lamtuna.M,Sanhaja,Sunni,-,-,-,-,-,-,-,-,-,Almohads,,Tribal,Kingdom,-,,,,,-,Militia_CE
 Luxembourg.M,German,Catholic,-,Luxembourg,Walram.3.O,Marshal,Ermesinde.A,Sophie.f.A,Matilda.f.A,Heinrich.m.A,Walerian.m.Y,Germany,,County,Duchy,-,,,,,,Militia_CE
 Austria.M,Austrian,Catholic,-,Austria,Luitpold.6.A,Cleric,Theodora.A,Margarethe.f.Y,Agnise.f.J,Friedrich.m.I,-,Germany,,-,Duchy,-,,,,,-,Militia_CE
-Aragon.M,Spanish,Catholic,-,-,Jaume.1.Y,Marshal,Eleanor.Y,-,-,-,-,-,,-,Kingdom,-,,,,,-,Militia_CE
 Navarra.M,Basque,Catholic,-,Navarra,Antso.7.A,Marshal,Clemence.A,-,-,-,-,-,,-,Kingdom,-,,,,,SpanishUnitSet,Militia_CE
 Champagne.M,French,Catholic,-,Champagne,Thibaud.Y,Cleric,Agnes.Y,Blanche.f.I,-,-,-,France,,County,Duchy,-,,,,,-,Militia_CE/Militia_CE/Norman_Special
 Lorraine.M,-,-,-,-,Matthias.2.A,Spy,Catherine.A,Ferry.m.I,-,-,-,Germany,,-,Duchy,German,,,,,-,Militia_CE/Roman_Infantry_Special

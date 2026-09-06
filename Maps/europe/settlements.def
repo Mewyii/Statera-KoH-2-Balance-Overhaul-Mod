@@ -3195,5 +3195,19 @@ extend Settlements
 			forest = false
 			houses = "Roman"
 		}
+
+		def 2186 : Settlement
+		{
+			position = 1887, 1674
+			forest = true
+			houses = "West"
+		}
+
+		def 2187 : Settlement
+		{
+			position = 1981, 1645
+			forest = true
+			houses = "West"
+		}
 	}
 }

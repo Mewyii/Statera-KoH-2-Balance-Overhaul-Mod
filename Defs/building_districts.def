@@ -63,7 +63,11 @@ def CastlesDistrict : District
 		Feudal_Fiefs_Christian = 1,3
 		TrainingField = 2,3 { prerequisites { CityWatch; School_Christian } }
 
-		ArmyBarracks_Muslim = 2,3 { prerequisites { TrainingField; School_Muslim } }
+		Iqta = 1,3
+		ArmyBarracks_Muslim = 2,3
+
+		Pronoia = 1,3
+		ArmyBarracks_Orthodox = 2,3
 	}
 }
 
@@ -95,7 +99,7 @@ def MonasteriesDistrict : District
 		Cathedral = 1,2 { prerequisites { Church } }
 
 		EcclesiasticalCourt = 2,2 { prerequisites { Church; Dungeon } }
-		EpiscopalPalace = 1.5,3 { prerequisites { StonemasonsGuild; Cathedral; EcclesiasticalCourt } }
+		EpiscopalPalace = 1.5,3 { prerequisites { StonemasonsGuild; Cathedral } }
 
 		Masjid = 1.5,1
 		GreatMosque = 1,2 { prerequisites { Masjid } }	

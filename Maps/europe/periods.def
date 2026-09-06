@@ -1,0 +1,9 @@
+extend Periods
+{
+	europe = "late"
+	{		
+		early = "E"
+		mid = "M"
+		late = "L"
+	}
+}

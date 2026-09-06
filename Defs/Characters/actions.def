@@ -149,6 +149,8 @@ def ImproveRelationsAction : CharacterAction
 }
 def ImprovingRelationsStatus : CharacterStatus
 {
+	update_interval = 300/450
+
     resources upkeep
 	{
 		gold = (ceil((6 * kingdom_income_upkeep_modifier - agent_level_upkeep_modifier - (100 * own_character.cs_diplomat_actions_upkeep_reduction_perc)), 1))

@@ -3,9 +3,9 @@ Catholic.ask_crusade_funds_cooldown = 150/300
 def Crusade
 {
 	
-	float cooldown = 1200 // cooldown of the crusade action
-	float cooldown_for_players = 600 // cooldown of the crusade action through audience
-	float initial_cooldown_crusade = 1500 //cooldown after the game starts
+	float cooldown = 1800 // cooldown of the crusade action
+	float cooldown_for_players = 1800 // cooldown of the crusade action through audience
+	float initial_cooldown_crusade = 1200 //cooldown after the game starts
 	
 	float minTroopsOnGoHome = 2
 	float maxTroopsOnGoHome = 5
@@ -37,8 +37,8 @@ def Crusade
 				king = 25
 				prince = 20
 			}
-			option give_to_papacy = 15
-			option give_to_helping_kingdom = 40
+			option give_to_papacy = 10
+			option give_to_helping_kingdom = 50
 			option give_to_established_kingdom = 20
 		}
 		option establish_new_kingdom //happens when it cant be given to any kingdom
@@ -77,8 +77,8 @@ def Crusade
 	
 	crusader_death_outcomes
 	{
-		main army_goes_rogue = 70
-		option army_becomes_merc_camp = 30
+		main army_goes_rogue = 80
+		option army_becomes_merc_camp = 20
 		option default // prevent "no outcome"
 	}
 	
@@ -114,7 +114,7 @@ def Orthodox : Christian
 {
     mod ks_base_gold_income = 10
     mod ks_hammers_in_provinces_perc = 10
-    mod ks_max_population = 3
+    mod ks_max_population = 2
     mod ks_culture = -10
 
 	mod ks_prod_gold_perc
@@ -134,7 +134,15 @@ def Orthodox : Christian
 	}
 	mod ks_stability_religion = 0
 	{
-		ecumenical_patriarch = -5
+		ecumenical_patriarch = -2
+	}
+	mod ks_orthodox_subordinated_influence
+	{
+		ecumenical_patriarch = 50
+	}
+	mod ks_orthodox_independent_influence
+	{
+		ecumenical_patriarch = 25
 	}
 
     religious_tension
@@ -153,7 +161,7 @@ def Pagan : Religion
     mod ks_happiness = 2
     mod ks_army_morale = 2
     mod ks_commerce_religion = 5
-    mod ks_base_levy_income = -5
+    mod ks_base_gold_income = -10
 
     religious_tension
 	{

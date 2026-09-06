@@ -1,10 +1,28 @@
-Marshal.ai_min_court_count = (1 + min((ceil(num_realms / 4)), 3))
-Marshal.ai_max_court_count = (1 + min((ceil(num_realms / 3.5)), 4))
-Merchant.ai_min_court_count = 2
+extend Marshal 
+{
+    float war_boost_modifier = (If(num_wars > 0, 1, 0))
+    float game_time_modifier = (If((game.time_hours > 1), 1, 0))
+    float realm_dependent_min = (min((ceil(kingdom.num_realms / 4)), 2))
+    float realm_dependent_max = (min((ceil(kingdom.num_realms / 4)), 2))
+
+    ai_min_court_count = (realm_dependent_min + game_time_modifier)
+    ai_max_court_count = (realm_dependent_max + game_time_modifier + war_boost_modifier)
+}
+
+Merchant.ai_min_court_count = 1
 Merchant.ai_max_court_count = 3
 Cleric.ai_min_court_count = 1
-Cleric.ai_max_court_count = 1
-Diplomat.ai_min_court_count = 1
+Cleric.ai_max_court_count = (min((ceil(kingdom.num_realms / 3)), 2))
+Diplomat.ai_min_court_count = (If((kingdom.num_realms > 2), 1, 0))
 Diplomat.ai_max_court_count = 1
-Spy.ai_min_court_count = (If((num_realms > 2), 1, 0))
-Spy.ai_max_court_count = (If((num_realms > 2), min((ceil(num_realms / 8)), 2), 0))
+
+extend Spy
+{
+    float game_time_modifier = (If((game.time_hours < 1), 1, 0))
+    float oriental_modifier = (If((kingdom.culture_group == "Arabic"), 1, 0) + If((kingdom.culture_group == "Iranic"), 1, 0) + If((kingdom.culture_group == "Turkic"), 1, 0))
+    float realm_dependent_min = (If((kingdom.num_realms > 2), 1, 0))
+    float realm_dependent_max = (If((kingdom.num_realms > 2), 1, 0))
+
+    ai_min_court_count = (max((realm_dependent_min - game_time_modifier), 0))
+    ai_max_court_count = (max((realm_dependent_max - game_time_modifier + oriental_modifier), 0))
+}

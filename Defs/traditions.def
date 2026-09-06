@@ -1,0 +1,71 @@
+extend MedicineTradition : Tradition
+{
+	name = "Medicine"
+	icon = "Assets/UI/Elements/Common/Icons/Skills/UI_Icon_Skill_Medicine_3.tga:UI_Icon_Skill_Medicine_3#2" //GUID:b5fb300b7abd42f4490a3d368ab5d67d
+	icon_wide = "Assets/UI/Elements/Common/Icons/Traditions/UI_Icon_Tradition_Medicine_Wide.png:UI_Icon_Tradition_Medicine_Wide#2" //GUID:6a4a64df2efaf754a947f7e064679a68
+	tooltip = "Development of medicine and healthcare undoubtedly leads to growth of the population and improves its well-being."
+	
+	mod ks_max_population = 3
+	mod ks_population_growth_perc = 35
+	mod ks_happiness = 5
+	mod ks_culture_from_traditions = 50
+	
+	skills
+	{
+		skill MedicineSkill
+		{
+			class Cleric
+			{
+				kingdom_mod ks_fame_traditions = 250
+				tag Govern
+				{
+					governed_realm_mod rs_governor_gold_per_religious_settlement = 3
+				}
+			}
+			
+			class Marshal
+			{
+				mod cs_retreat_penalty_decrease_perc = 30
+			}
+		}
+	}
+
+	ai_eval = 5
+	ai_eval_stability = 20
+}
+
+extend LogisticsTradition
+{
+	name = "Logistics"
+	icon = "Assets/UI/Elements/Common/Icons/Skills/UI_Icon_Skill_Logistics_3.tga:UI_Icon_Skill_Logistics_3#2" //GUID:3aae9195008da264198415653c373b2b
+	icon_wide = "Assets/UI/Elements/Common/Icons/Traditions/UI_Icon_Tradition_Logistics_Wide.png:UI_Icon_Tradition_Logistics_Wide#2" //GUID:fd9b87285a9e6604bb4a68c0f2b343be
+	tooltip = "Transportation of goods, supplies and arms plays crucial role in both civil and military matters."
+	
+	mod ks_food_production_perc = 20
+	mod ks_army_speed_world_perc = 5
+	mod ks_gold_per_good = 1
+	mod ks_resupply_price_gold_reduction_perc  = 20
+	
+	skills
+	{
+		skill LogisticsSkill
+		{
+			Default
+			{
+				mod cs_army_item_bonus = 2
+			}
+			class Marshal
+			{
+				mod cs_sieging_troops_defense_perc = 25
+			}
+			class Merchant
+			{
+				tag Govern
+				{
+					// maybe unite this with rs_governor_gold_in_town_per_good?
+					governed_realm_mod rs_governor_gold_per_good = 0.5
+				}
+			}
+		}
+	}
+}

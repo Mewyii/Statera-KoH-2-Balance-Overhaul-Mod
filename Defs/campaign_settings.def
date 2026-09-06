@@ -19,15 +19,15 @@ def CampaignVars {
 			}
 			mid
 			{
-				text name = "1224 AD"
-				text description = "Starting political landscape based around year 1224"
-				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_StartPeriod_Mid.png:Icon_MultiplayerCampaign_StartPeriod_Mid#2"
+				text name = "1190 AD"
+				text description = "Starting political landscape based around year 1190"
+				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_StartPeriod_Mid.png:Icon_MultiplayerCampaign_StartPeriod_Mid#2" //GUID:91711d53fae59a546896f470c423a941
 			}
 			late
 			{
-				text name = "1360 AD"
-				text description = "Starting political landscape based around year 1360"
-				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_StartPeriod_Late.png:Icon_MultiplayerCampaign_StartPeriod_Late#2"
+				text name = "1240 AD"
+				text description = "Starting political landscape based around year 1240"
+				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_StartPeriod_Late.png:Icon_MultiplayerCampaign_StartPeriod_Late#2" //GUID:0e30b53142427c1439644be4b5229aa2
 			}
 		}
 	}
@@ -272,14 +272,14 @@ def SinglePlayerCampaignVars
 			}
 			mid
 			{
-				text name = "1224 AD"
-				text description = "Starting political landscape based around year 1224"
+				text name = "1190 AD"
+				text description = "Starting political landscape based around year 1190"
 				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_StartPeriod_Mid.png:Icon_MultiplayerCampaign_StartPeriod_Mid#2" //GUID:91711d53fae59a546896f470c423a941
 			}
 			late
 			{
-				text name = "1360 AD"
-				text description = "Starting political landscape based around year 1360"
+				text name = "1240 AD"
+				text description = "Starting political landscape based around year 1240"
 				sprite icon = "Assets/UI/Elements/Multiplayer/Campaings/RuleIcons/Icon_MultiplayerCampaign_StartPeriod_Late.png:Icon_MultiplayerCampaign_StartPeriod_Late#2" //GUID:0e30b53142427c1439644be4b5229aa2
 			}
 		}

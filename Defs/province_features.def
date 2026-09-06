@@ -70,7 +70,7 @@ def Steppe : ProvinceFeature
 	icon = "Assets/Icons/Features/Steppe.png:Steppe#1"
 	icon_big = "Assets/Icons/Features/Steppe.png:Steppe#1"
 	
-	area = [0.675, 0.5, 1, 0.72]
+	area = [0.65, 0.5, 1, 0.72]
 	spawn_chance = 100
 	special = true
 }

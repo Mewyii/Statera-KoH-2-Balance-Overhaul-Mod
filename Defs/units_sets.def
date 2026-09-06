@@ -644,17 +644,28 @@ def TeutonicUnitSet : AvailableUnits
 	}
 }
 
+delete ByzantineUnitSet
 def ByzantineUnitSet : AvailableUnits
 {
-	Militia_CE
-	AdvancedMilitia_CE
-	Levy_Axemen
-	Light_Spearman_CE
-	Light_Archer_CE
-	Light_Cavalry_CE
+	Contaratoi_BY
+	Skoutatoi_BY
+	Menavlatoi_BY
+	Toxotai_BY
+	Kavallarioi_BY
+
+	AdvancedMilitia_BY
+	Sword_Militia_BY
+	Spear_Militia_BY
+	Crossbow_Militia_BY
+	Cavalry_Militia_BY
+
+	Varangian_Guard_Special
+	Cataphract_Special
+
 	Roman_Infantry_Special
-	Heavy_Spearman_CE
 	Pronoia_Special
+	Oikeioi_Dismounted
+	Oikeioi
 	town_guards
 	{
 		TownGuard_CE
@@ -663,26 +674,49 @@ def ByzantineUnitSet : AvailableUnits
 	}
 	marshals
 	{
-		marshal = Marshal_CE
-		marshal_guard = Marshal_Guard_CE
-		rebel_marshal = Marshal_Rebel_CE
-		rebel_marshal_guard = Marshal_Guard_Rebel_CE
+		marshal = Marshal_BY
+		marshal_guard = Marshal_Guard_BY
+		rebel_marshal = Marshal_Rebel_BY
+		rebel_marshal_guard = Marshal_Guard_BY
 	}
 }
 
+delete HungarianUnitSet
 def HungarianUnitSet : AvailableUnits
 {
+	// Levy
 	Militia_CE
-	AdvancedMilitia_CE
 	Levy_Axemen
 	Light_Spearman_CE
 	Light_Archer_CE
 	Light_Cavalry_CE
+
+	// Militia
+	AdvancedMilitia_CE
+	Sword_Militia_CE
+	Spear_Militia_CE
+	Crossbow_Militia_CE
+	Cavalry_Militia_CE
+
+	// Sergeants
 	Heavy_Swordman_CE
 	Heavy_Spearman_CE
 	Heavy_Archer_CE
 	Heavy_Cavalry_CE
-	Horse_Archer_CE
+
+	// Trained Militia
+	Halberd_Militia
+	Pike_Militia
+	Heavy_Cavalry_Militia
+	Pavise_Crossbow_Militia
+
+	// Knights
+	Early_Knights_Dismounted
+	Early_Knights
+	High_Knights_Dismounted
+	High_Knights
+	Late_Knights_Dismounted
+	Late_Knights
 	town_guards
 	{
 		TownGuard_CE
@@ -698,17 +732,36 @@ def HungarianUnitSet : AvailableUnits
 	}
 }
 
+delete BalticUnitSet
 def BalticUnitSet : AvailableUnits
 {
-	Militia_CE
-	AdvancedMilitia_CE
-	Levy_Axemen
-	Light_Spearman_CE
-	Light_Archer_CE
-	Light_Cavalry_CE
-	Heavy_Swordman_CE
-	Heavy_Spearman_CE
-	Heavy_Archer_CE
+	// Tribal
+	Levies_Baltic
+	Infantry_Baltic
+	Spearmen_Baltic
+	Archers_Baltic
+	Cavalry_Baltic
+
+	// Militia
+	AdvancedMilitia_Baltic
+	Sword_Militia_Baltic
+	Spear_Militia_Baltic
+	Crossbow_Militia_Baltic
+	Cavalry_Militia_Baltic
+	
+	// Nobles
+	Warrior_Retainers_Baltic
+	Mounted_Warrior_Retainers_Baltic
+	Late_Warrior_Retainers_Baltic
+	Late_Mounted_Warrior_Retainers_Baltic
+
+	// Knights - In Case of Catholic Conversion
+	Early_Knights_Dismounted
+	Early_Knights
+	High_Knights_Dismounted
+	High_Knights
+	Late_Knights_Dismounted
+	Late_Knights
 	town_guards
 	{
 		TownGuard_Nord
@@ -724,6 +777,51 @@ def BalticUnitSet : AvailableUnits
 	}
 }
 
+def LithuanianUnitSet : AvailableUnits
+{
+	// Tribal
+	Levies_Baltic
+	Infantry_Baltic
+	Spearmen_Baltic
+	Javelinmen_Lithuania
+	Cavalry_Baltic
+
+	// Militia
+	AdvancedMilitia_Baltic
+	Sword_Militia_Baltic
+	Spear_Militia_Baltic
+	Crossbow_Militia_Baltic
+	Cavalry_Militia_Baltic
+	
+	// Nobles
+	Warrior_Retainers_Baltic
+	Mounted_Warrior_Retainers_Baltic
+	Kariauna
+	Mounted_Kariauna
+
+	// Knights - In Case of Catholic Conversion
+	Early_Knights_Dismounted
+	Early_Knights
+	High_Knights_Dismounted
+	High_Knights
+	Late_Knights_Dismounted
+	Late_Knights
+	town_guards
+	{
+		TownGuard_Nord
+		EliteGuard_Nord
+		RoyalGuard_Nord
+	}
+	marshals
+	{
+		marshal = Marshal_Nord
+		marshal_guard = Marshal_Guard_Nord
+		rebel_marshal = Marshal_Rebel_Nord
+		rebel_marshal_guard = Marshal_Guard_Rebel_Nord
+	}
+}
+
+delete WestSlavicUnitSet
 def WestSlavicUnitSet : AvailableUnits
 {
 	Militia_CE
@@ -896,19 +994,30 @@ def BerberUnitSet : AvailableUnits
 	}
 }
 
+delete TurkmenUnitSet
 def TurkmenUnitSet : AvailableUnits
 {
 	Militia_Steppe
-	AdvancedMilitia_Steppe
 	Light_Infantry_Steppe
 	Light_Spearman_CE
 	Light_Archer_Steppe
 	Light_Cavalry_Steppe
-	Heavy_Swordman_CE
-	Heavy_Spearman_CE
-	Light_Horse_Archer_Steppe
-	Heavy_Horse_Archer_Steppe
-	Sipahi_Special
+
+	AdvancedMilitia_TU
+	Sword_Militia_TU
+	Spear_Militia_TU
+	Crossbow_Militia_TU
+	Cavalry_Militia_TU
+
+	Ghulam_Dismounted
+	Ghulam_Cavalry_Special
+	Ghulam_Archers
+	Late_Ghulam_Dismounted
+	Late_Ghulam
+	Late_Ghulam_Archers
+
+	Iqta_Cavalry
+	Late_Iqta_Cavalry
 	
 	town_guards
 	{

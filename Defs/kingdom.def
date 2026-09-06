@@ -18,6 +18,11 @@ extend Kingdom {
 	diplomatic_gold_perc = 10/20/40/60/80
 
 	mp_levies_weight = 1
+
+	min_provinces_hunger_stability_penalty_perc = 25
+
+	traditions_slots = ["All","All","All","All","All","All","All","All","All"]
+	traditions_slots_tiers = [0,1,1,2,2,2,3,3,3]
 }
 
 
@@ -28,17 +33,17 @@ extend Tradition {
 	float per_adopted_cost_books = 0
     float per_adopted_cost_piety = 0
 
-	float tier_cost_gold = [400,600,800,1000]
-	float tier_cost_books = [400,600,800,1000]
-	float tier_cost_piety = [400,600,800,1000]
+	float tier_cost_gold = [500,750,1000,1250]
+	float tier_cost_books = [500,750,1000,1250]
+	float tier_cost_piety = [500,750,1000,1250]
 
     float kingdom_size_modifier = (1 + (0.05 * (kingdom.realms_count - 1)))
 
     resources adopt_cost
 	{
-		gold = (tier_cost_gold[tier] * kingdom_size_modifier)
-		books = (tier_cost_books[tier] * kingdom_size_modifier)
-        piety = (tier_cost_piety[tier] * kingdom_size_modifier)
+		gold = (round((tier_cost_gold[tier] * kingdom_size_modifier)))
+		books = (round((tier_cost_books[tier] * kingdom_size_modifier)))
+        piety = (round((tier_cost_piety[tier] * kingdom_size_modifier)))
 	}
 }
 
@@ -65,13 +70,13 @@ extend CrownAuthority {
 	int breakTrade = 0
 
     // Negative
-    int kingDeath = -2 
+    int kingDeath = -3
 	int noSuccessor = -1
 	int establish_order = -1
 	int realm_annex = -1
 	int rebelOccupation = -1
 	int religionChangeSuccess = -1
-	int religionChangeFail = -2
+	int religionChangeFail = -1
     int warLost = -1
     int vassalBecome = -1
 	int breakNAP = -2
@@ -112,7 +117,7 @@ extend WarExhaustionModifier : FadingModifier
 {
 	min = 0;
 	max = 100;
-	time_period_increase = 120;
+	time_period_increase = 90;
 	increase_base = 1;
 	increase_per_war = 0.25;
 	time_period_decrease = 30;

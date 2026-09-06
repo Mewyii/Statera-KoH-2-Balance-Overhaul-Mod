@@ -9,8 +9,42 @@ extend Building
 	// Cost increase for buildings (in percent of building costs) per upgrade for that building
 	progressive_gold_cost_for_building = 35
 
-	float base_ai_eval = 250
+	bool is_capital_region = (realm.province_name == "Lothian" or realm.province_name == "Leinster" or realm.province_name == "London" or realm.province_name == "Ile_de_France" or realm.province_name == "Damascus" or realm.province_name == "Constantinopolis" or realm.province_name == "Toulouse" or realm.province_name == "Catalonia")
+	
+	float base_ai_eval = (200 + (realm.settlements_count * 25) + (If(is_capital_region, 200, 0)))
 	ai_eval = base_ai_eval
+
+	conditions
+	{
+		ChristianRealm = (realm.is_christian)
+		{
+			hide_if_inactive = true
+		}
+		CatholicRealm = (realm.is_catholic)
+		{
+			hide_if_inactive = true
+		}
+		OrthodoxRealm = (realm.is_orthodox)
+		{
+			hide_if_inactive = true
+		}
+		MuslimRealm = (realm.is_muslim)
+		{
+			hide_if_inactive = true
+		}
+		SunniRealm = (realm.is_sunni)
+		{
+			hide_if_inactive = true
+		}
+		ShiaRealm = (realm.is_shia)
+		{
+			hide_if_inactive = true
+		}
+		Greek = (kingdom.culture_group == "Greek")
+		{
+			hide_if_inactive = true
+		}
+	}
 
 	bonus_texts
 	{
@@ -128,18 +162,17 @@ def HorseBreeding : Building
 	{
 		buildings
 		{
-			HorseMarket = 1.5,1
+			StudFarm = 1,1
+			SelectiveBreeding = 2,1
 			
-			SaddlersShop { prerequisites { HorseMarket } }
-			
-			WarhorseBreed = 1.5,3 { prerequisites { Farrier; SaddlersShop } }
+			WarhorseBreed = 1.5,2 { prerequisites { StudFarm; SelectiveBreeding } }
 		}
 	}
 
 	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_HorseBreeding.tga:UI_Structure_Icon_HorseBreeding#2" //GUID:ef7a83374df54c54ab493c9f414519a7
 	illustration = "Assets/UI/Elements/Buildings/Illustrations/UI_Structure_Illustration_HorseBreeding.tga:UI_Structure_Illustration_HorseBreeding#2" //GUID:ec4ffe488535acb45b656fb94fdb31c9
 
-	ai_eval = (!kingdom.HorseBreeding and kingdom.Stables and 500 * kingdom.realms_count)
+	ai_eval = (base_ai_eval + ((!kingdom.HorseBreeding) and 500))
 }
 
 def Woodworking : Building
@@ -162,7 +195,7 @@ def Woodworking : Building
 	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Woodworking.tga:UI_Structure_Icon_Woodworking#2" //GUID:3ac344bae9497844d8631a3c9df5d4d0
 	illustration = "Assets/UI/Elements/Buildings/Illustrations/UI_Structure_Illustration_Woodworking.tga:UI_Structure_Illustration_Woodworking#2" //GUID:7e51197314f917b4ba4efe5425868475
 
-	ai_eval = (!kingdom.Woodworking and 1500)
+	ai_eval = (base_ai_eval + (!kingdom.Woodworking and 1000))
 }
 
 def Metalworking : Building
@@ -183,7 +216,7 @@ def Metalworking : Building
 	icon = "Assets/Icons/Buildings/IronMines.png:IronMines#1"
 	illustration = "Assets/Icons/Buildings/IronMines.png:IronMines#1"
 	
-	ai_eval = (!kingdom.Metalworking and 1500)
+	ai_eval = (base_ai_eval + (!kingdom.Metalworking and 1000))
 }
 
 extend SaltTrade : Building
@@ -200,6 +233,42 @@ extend SaltTrade : Building
 			SaltRefineries = 1,1
 		}
 	}
+	ai_eval = (base_ai_eval + (!kingdom.SaltTrade and 250))
+}
+
+delete SheepFarming
+def SheepFarming : Building
+{
+	name = "Sheep Farming"
+	flavor = "Sheep stockfarming for production of dairy products, parchment and wool."
+	upgrades
+	{
+		buildings
+		{
+			WoolWeaver = 1,1
+			FineWoolBreeding = 1,2 { prerequisites { WoolWeaver } }
+		}
+	}
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_SheepFarming.tga:UI_Structure_Icon_SheepFarming#2" //GUID:220d56c288bedae4b9ff0a5e27e31042
+	illustration = "Assets/UI/Elements/Buildings/Illustrations/UI_Structure_Illustration_SheepFarming.tga:UI_Structure_Illustration_SheepFarming#2" //GUID:66a12fb817a2a864594fecc79b107ded
+}
+
+delete CattleFarming
+def CattleFarming : Building
+{
+	name = "Cattle Farming"
+	flavor = "Cattle farming  for production of meat, leather and for breeding draft oxen."
+	upgrades
+	{
+		buildings
+		{
+			OxBreeding = 1,1
+			DairyShop = 2,1
+			Butcher_Cattle = 3,1
+		}
+	}
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_CattleFarming.tga:UI_Structure_Icon_CattleFarming#2" //GUID:b4b732eb0fd983b489b88da6a730d480
+	illustration = "Assets/UI/Elements/Buildings/Illustrations/UI_Structure_Illustration_CattleFarming.tga:UI_Structure_Illustration_CattleFarming#2" //GUID:9877f8d8e1b523d47a12071ae4f29972
 }
 
 def FightingGrounds : Building
@@ -214,6 +283,10 @@ def FightingGrounds : Building
 	}
 	icon = "Assets/Icons/Buildings/FightingGrounds.png:FightingGrounds#1"
 	illustration = "Assets/Icons/Buildings/FightingGrounds.png:FightingGrounds#1"
+	
+	ai_eval = (base_ai_eval + (max(0, (((kingdom.realms_count + 2) / 3) - (kingdom.FightingGrounds or 0))) * 1500))
+	ai_urgent = (!kingdom.FightingGrounds)
+	ai_category = "Military"
 }
 
 def HuntingGrounds : Building
@@ -228,6 +301,8 @@ def HuntingGrounds : Building
 	}
 	icon = "Assets/Icons/Buildings/HuntingGrounds.png:HuntingGrounds#1"
 	illustration = "Assets/Icons/Buildings/HuntingGrounds.png:HuntingGrounds#1"
+
+	ai_eval = (base_ai_eval + 500)
 }
 
 def BreedingGrounds : Building
@@ -242,6 +317,8 @@ def BreedingGrounds : Building
 	}
 	icon = "Assets/Icons/Buildings/BreedingGrounds.png:BreedingGrounds#1"
 	illustration = "Assets/Icons/Buildings/BreedingGrounds.png:BreedingGrounds#1"
+
+	ai_eval = (base_ai_eval + 500)
 }
 
 def SacredGrounds : Building
@@ -256,6 +333,8 @@ def SacredGrounds : Building
 	}
 	icon = "Assets/Icons/Buildings/SacredGrounds.png:SacredGrounds#1"
 	illustration = "Assets/Icons/Buildings/SacredGrounds.png:SacredGrounds#1"
+
+	ai_eval = (base_ai_eval + 500)
 }
 
 def KhansTent : Building
@@ -270,6 +349,8 @@ def KhansTent : Building
 	}
 	icon = "Assets/Icons/Buildings/SacredGrounds.png:SacredGrounds#1"
 	illustration = "Assets/Icons/Buildings/SacredGrounds.png:SacredGrounds#1"
+
+	ai_eval = (base_ai_eval + 500)
 }
 
 def KhansCourt : Building
@@ -284,6 +365,8 @@ def KhansCourt : Building
 	}
 	icon = "Assets/Icons/Buildings/SacredGrounds.png:SacredGrounds#1"
 	illustration = "Assets/Icons/Buildings/SacredGrounds.png:SacredGrounds#1"
+	
+	ai_eval = (base_ai_eval + (max(0, (((kingdom.realms_count + 4) / 5) - (kingdom.KhansCourt or 0))) * 1000))
 }
 
 
@@ -302,6 +385,7 @@ def CityWatch : Building
 			MilitiaBarracks = 1,1
 			MilitiaOffices = 1,2 { prerequisites { MilitiaBarracks } }
 			MilitiaDrills = 1,3 { prerequisites { MilitiaBarracks } }
+
 			WatchRotations = 2,1
 			Watchtowers = 2,2
 		}
@@ -310,8 +394,7 @@ def CityWatch : Building
 	icon = "Assets/Icons/Buildings/CityWatch.png:CityWatch#1"
 	illustration = "Assets/Icons/Buildings/CityWatch.png:CityWatch#1"
 
-	ai_category = "Military"
-	ai_eval = ((castle.worker_slots > 7) or 0.25) * (500 + (max(0, (kingdom.realms_count + 3 / 4) - (kingdom.CityWatch or 0)) * 1500))
+	ai_eval = (If((castle.worker_slots > 7), 1, 0.5) * (base_ai_eval + (max(0, (((kingdom.realms_count + 2) / 3) - (kingdom.CityWatch or 0)) * 1000))))
 }
 
 def ArmyStables : Building
@@ -319,16 +402,17 @@ def ArmyStables : Building
 	type = "Building"
 
 	name = "Stables"
-	flavor = "Essential facilities for breeding, housing, and maintaining the horses that serve both farm and battlefield."
+	flavor = "Spacious stables provide horses with shelter, food, and care, keeping valuable animals ready for riding, transport, or war."
 	add_tooltip = "Required for recruiting {clr:enables_color}Cavalry Units{/clr}"
 
 	upgrades
 	{
 		buildings
 		{
-			MessengerService = 1,1
-			KnightlyStables = 2,1
-			Farrier = 3,1
+			SaddlersShop = 1,1
+			Farrier = 2,1
+
+			MessengerService = 1,2 { prerequisites { SaddlersShop } }
 		}
 	}
 	
@@ -336,7 +420,7 @@ def ArmyStables : Building
 	illustration = "Assets/Icons/Buildings/Stables.png:Stables#1"
 
 	ai_category = "Military"
-	ai_eval = ((castle.Blacksmith or 0.25) * ((base_ai_eval + max(0, (kingdom.realms_count + 4 / 5) - (kingdom.ArmyStables or 0)) * 750)))
+	ai_eval = ((If(castle.Blacksmith, 1, 0.25)) * (base_ai_eval + (max(0, (((kingdom.realms_count + 4) / 5) - (kingdom.ArmyStables or 0)) * 500))))
 }
 
 def TrainingField : Building
@@ -363,7 +447,7 @@ def TrainingField : Building
 	illustration = "Assets/Icons/Buildings/TrainingField.png:TrainingField#1"
 
 	ai_category = "Military"
-	ai_eval = ((castle.Blacksmith or 0.25) * (500 + max(0, ((kingdom.realms_count + 4) / 5) - (kingdom.TrainingField or 0)) * 1500))
+	ai_eval = ((If(castle.Blacksmith, 1, 0.5)) * (base_ai_eval + (max(0, (((kingdom.realms_count + 4) / 5) - (kingdom.TrainingField or 0)) * 1000))))
 }
 
 def ArmySiegeWorkshop : Building
@@ -387,7 +471,7 @@ def ArmySiegeWorkshop : Building
 	illustration = "Assets/Icons/Buildings/SiegeWorkshop.png:SiegeWorkshop#1"
 	
 	ai_category = "Military"
-	ai_eval = (!kingdom.ArmySiegeWorkshop and kingdom.Workshop and 1000)
+	ai_eval = ((If(castle.Blacksmith, 1, 0.5)) * (base_ai_eval + ((!kingdom.ArmySiegeWorkshop) and castle.Workshop and 1000)))
 }
 
 def Armory: Building {
@@ -408,8 +492,7 @@ def Armory: Building {
 	icon = "Assets/Icons/Buildings/Armory.png:Armory#1"
 	illustration = "Assets/Icons/Buildings/Armory.png:Armory#1"
 	
-	ai_category = "Military"
-	ai_eval = (base_ai_eval + 250)
+	ai_eval = ((If(castle.Blacksmith, 1, 0.75)) * (base_ai_eval + 250 + (castle.CityWatch and 250)))
 }
 
 // Trade
@@ -431,8 +514,6 @@ def MarketSquare : Building
 
 	icon = "Assets/Icons/Buildings/MarketSquare.png:MarketSquare#1"
 	illustration = "Assets/Icons/Buildings/MarketSquare.png:MarketSquare#1"
-
-	ai_eval = (base_ai_eval + 250)
 }
 
 def MerchantHall : Building
@@ -498,7 +579,7 @@ def WeavingMill : Building
 	icon = "Assets/Icons/Buildings/WeavingMill.png:WeavingMill#1"
 	illustration = "Assets/Icons/Buildings/WeavingMill.png:WeavingMill#1"
 
-	ai_eval = (base_ai_eval + 500)
+	ai_eval = (base_ai_eval + ((!kingdom.ArmySiegeWorkshop) and 500))
 }
 
 def Windmill : Building
@@ -625,7 +706,8 @@ def Workshop : Building
 	icon = "Assets/Icons/Buildings/Workshop.png:Workshop#1"
 	illustration = "Assets/Icons/Buildings/Workshop.png:Workshop#1"
 
-	ai_eval = (base_ai_eval + 250 + (!kingdom.Workshop and 1000))
+	ai_eval = (base_ai_eval + 250 + ((!kingdom.Workshop) and 2000))
+	ai_urgent = (!kingdom.Workshop)
 }
 
 def Blacksmith : Building
@@ -653,8 +735,9 @@ def Blacksmith : Building
 	icon = "Assets/Icons/Buildings/Blacksmith.png:Blacksmith#1"
 	illustration = "Assets/Icons/Buildings/Blacksmith.png:Blacksmith#1"
 
-	ai_eval = (((castle.Feudal_Fiefs_Christian or castle.CityWatch or castle.TrainingField) or 0.66) * ((base_ai_eval + max(0, (kingdom.realms_count + 4 / 5) - (kingdom.Blacksmith or 0)) * 1500)))
+	ai_eval = (base_ai_eval + (max(0, (((kingdom.realms_count + 4) / 5) - (kingdom.Blacksmith or 0))) * 2000))
 	ai_category = "Military"
+	ai_urgent = (!kingdom.Blacksmith)
 }
 
 def Tanneries : Building
@@ -668,13 +751,14 @@ def Tanneries : Building
 		{
 			ImprovedTanningLiquors = 1,1
 			Leatherworking = 1,2 { prerequisites { ImprovedTanningLiquors } }
+			ParchmentMaker = 1,3 { prerequisites { Leatherworking } }
 		}
 	}
 
 	icon = "Assets/Icons/Buildings/Tannery.png:Tannery#1"
 	illustration = "Assets/Icons/Buildings/Tannery.png:Tannery#1"
 
-	ai_eval = (base_ai_eval + (!kingdom.Tanneries and 750))
+	ai_eval = (base_ai_eval + ((!kingdom.Tanneries) and 500))
 }
 
 // Punishment
@@ -726,6 +810,8 @@ def CourtHall : Building
 
 def Church : Building
 {
+	piety_type = "Christian"
+
 	delete upgrades
 	upgrades
 	{
@@ -750,6 +836,7 @@ def CityMonastery : Building
 	name = "Monastery"
 	flavor = "A secluded religious community devoted to prayer, study, and labor, forming a cornerstone of faith and learning across Christendom."
 	piety_type = "Christian"
+
 	upgrades
 	{
 		buildings
@@ -766,25 +853,26 @@ def CityMonastery : Building
 	icon = "Assets/Icons/Buildings/Monastery.png:Monastery#1"
 	illustration = "Assets/Icons/Buildings/Monastery.png:Monastery#1"
 
-	ai_eval = (base_ai_eval + 250 + (!kingdom.CityMonastery and 1500))
+	ai_eval = (base_ai_eval + 250 + ((!kingdom.CityMonastery) and 1500))
 }
 
 def Cathedral : Building
 {
 	flavor = "A monumental house of worship and civic pride, embodying divine authority and the pinnacle of medieval craftsmanship."
-	 delete upgrades
-	 upgrades
-	 {
-	 	buildings
-	 	{
-			ChristianCeremonies = 1,1
-	 		StainedGlassWorkshops = 2,1
-	 		Cloister = 3,1
+	piety_type = "Christian"
 
-	 		ChoralLiturgy = 1,2 { prerequisites { ChristianCeremonies } }
-	 		GothicTechniques = 2,2 { prerequisites { StainedGlassWorkshops } }
-	 	}
-	 }
+	delete upgrades
+	upgrades
+	{
+		buildings
+		{
+		ChristianCeremonies = 1,1
+			StainedGlassWorkshops = 2,1
+			Cloister = 3,1
+			ChoralLiturgy = 1,2 { prerequisites { ChristianCeremonies } }
+			GothicTechniques = 2,2 { prerequisites { StainedGlassWorkshops } }
+		}
+	}
 	icon = "Assets/Icons/Buildings/Cathedral.png:Cathedral#1"
 	illustration = "Assets/Icons/Buildings/Cathedral.png:Cathedral#1"
 }
@@ -793,7 +881,8 @@ def EcclesiasticalCourt : Building
 {
 	name = "Ecclesiastical Court"
 	flavor = "A tribunal of clerics empowered to judge matters of faith, morality, and canon law, reflecting the growing reach of Church authority."
-	piety_type = "Christian"
+	piety_type = "Catholic"
+
 	upgrades
 	{
 		buildings
@@ -810,7 +899,8 @@ def EpiscopalPalace : Building
 {
 	name = "Episcopal Palace"
 	flavor = "The residence and administrative seat of a bishop, combining spiritual leadership with worldly governance over his diocese."
-	piety_type = "Christian"
+	piety_type = "Catholic"
+
 	upgrades
 	{
 		buildings
@@ -828,6 +918,7 @@ def EpiscopalPalace : Building
 def Feudal_Fiefs_Christian: Building {
 	name = "Feudal Fiefs"
 	flavor = "Feudal fiefs allow lesser and greater nobles to maintain the costly service of war on horseback. Their revenues provide horses, arms, armour, and the means to sustain an armed retinue."
+	piety_type = "Catholic"
 
 	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Hillfort.tga:UI_Structure_Icon_Hillfort#2" //GUID:c0617dc2c83590c4ba4d910a6050eef9
 	illustration = "Assets/UI/Elements/Buildings/Illustrations/UI_Structure_Illustration_HillFort.tga:UI_Structure_Illustration_HillFort#2" //GUID:36b58ed3b9f544640b9188e7c5105ca3
@@ -840,12 +931,14 @@ def Feudal_Fiefs_Christian: Building {
 			KnightlyTrainingGrounds = 2,1
 			ArcheryRange = 3,1
 			LordsHalls = 1,2 { prerequisites { LanceWarfare } }
-			Chivalry = 2,2 { prerequisites { TournamentGrounds_Christian } }
+			Chivalry = 2,2
 			LesserFiefs = 3,2
 		}
 	}
 	
-	ai_eval = (base_ai_eval + 500 + (max(0, (kingdom.realms_count + 2 / 3) - (kingdom.Feudal_Fiefs_Christian or 0)) * 1500))
+	ai_eval = ((If(castle.Blacksmith, 1, 0.75)) * (base_ai_eval + (max(0, (((kingdom.realms_count + 3) / 4) - (kingdom.Feudal_Fiefs_Christian or 0)) * 1000))))
+	ai_category = "Military"
+	ai_urgent = (!kingdom.Feudal_Fiefs_Christian)
 }
 
 // Trade
@@ -965,7 +1058,7 @@ def School_Christian : Building
 	icon = "Assets/Icons/Buildings/School.png:School#1"
 	illustration = "Assets/Icons/Buildings/School.png:School#1"
 
-	ai_eval = (base_ai_eval + 500)
+	ai_eval = (base_ai_eval + 250 + ((!kingdom.School_Christian) and 750))
 }
 
 def Library_Christian : Building
@@ -1061,6 +1154,44 @@ def Theater_Christian : Building
 
 // Punishment
 
+// Orthodox Buildings
+
+def Pronoia: Building {
+	name = "Pronoia"
+	flavor = "Feudal fiefs allow lesser and greater nobles to maintain the costly service of war on horseback. Their revenues provide horses, arms, armour, and the means to sustain an armed retinue."
+	add_tooltip = "Required for recruiting {clr:enables_color}Pronoia Units{/clr}"
+	piety_type = "Orthodox"
+
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Hillfort.tga:UI_Structure_Icon_Hillfort#2" //GUID:c0617dc2c83590c4ba4d910a6050eef9
+	illustration = "Assets/UI/Elements/Buildings/Illustrations/UI_Structure_Illustration_HillFort.tga:UI_Structure_Illustration_HillFort#2" //GUID:36b58ed3b9f544640b9188e7c5105ca3
+
+	upgrades
+	{
+		buildings
+		{
+		}
+	}
+	
+	ai_eval = ((If(castle.Blacksmith, 1, 0.75)) * (base_ai_eval + (max(0, (((kingdom.realms_count + 4) / 5) - (kingdom.Pronoia or 0)) * 1250))))
+	ai_category = "Military"
+}
+
+def ArmyBarracks_Orthodox: ArmyBarracks {
+	name = "Imperial Barracks"
+	add_tooltip = "Required for recruiting {clr:enables_color}Professional Units{/clr}"
+	piety_type = "Orthodox"
+
+	upgrades
+	{
+		buildings
+		{
+		}
+	}
+
+	ai_eval = ((If(castle.Blacksmith, 1, 0.75)) * (base_ai_eval + (max(0, (((kingdom.realms_count + 10) / 11) - (kingdom.ArmyBarracks_Orthodox or 0)) * 2500))))
+	ai_category = "Military"
+	ai_urgent = (!kingdom.ArmyBarracks_Orthodox)
+}
 
 // Muslim Buildings
 // Religious
@@ -1070,6 +1201,7 @@ def Masjid : Building
 	name = "Masjid"
 	flavor = "A Masjid serves as the local center of worship, community gathering, and religious instruction, reinforcing faith, social cohesion, and daily ritual life."
 	piety_type = "Muslim"
+
 	delete upgrades
 	upgrades
 	{
@@ -1094,6 +1226,7 @@ def GreatMosque : Building
 	name = "Great Mosque"
 	flavor = "A Great Mosque is the principal religious monument of the city, hosting Friday sermons, major gatherings, and scholarly activity while projecting spiritual and political authority."
 	piety_type = "Muslim"
+
 	delete upgrades
 	upgrades
 	{
@@ -1116,6 +1249,7 @@ def ShariaCourt : Building
 	name = "Sharia Court"
 	flavor = "A Sharia Court administers justice according to Islamic law, resolving civil, commercial, and moral disputes to ensure order, legitimacy, and stability."
 	piety_type = "Muslim"
+
 	upgrades
 	{
 		buildings
@@ -1133,6 +1267,7 @@ def DarAlImara : Building
 	name = "Dar Al Imara"
 	flavor = "A Dar al-Imara functions as the seat of the governor, coordinating administration, taxation, and military oversight on behalf of the ruling authority."
 	piety_type = "Muslim"
+
 	upgrades
 	{
 		buildings
@@ -1147,8 +1282,14 @@ def DarAlImara : Building
 }
 
 // Military
-def ArmyBarracks_Muslim: ArmyBarracks {
-	name = "Barracks"
+def Iqta: Building {
+	name = "Iqta"
+	flavor = "Feudal fiefs allow lesser and greater nobles to maintain the costly service of war on horseback. Their revenues provide horses, arms, armour, and the means to sustain an armed retinue."
+	add_tooltip = "Required for recruiting {clr:enables_color}Iqta Units{/clr}"
+	piety_type = "Muslim"
+
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Hillfort.tga:UI_Structure_Icon_Hillfort#2" //GUID:c0617dc2c83590c4ba4d910a6050eef9
+	illustration = "Assets/UI/Elements/Buildings/Illustrations/UI_Structure_Illustration_HillFort.tga:UI_Structure_Illustration_HillFort#2" //GUID:36b58ed3b9f544640b9188e7c5105ca3
 
 	upgrades
 	{
@@ -1156,12 +1297,34 @@ def ArmyBarracks_Muslim: ArmyBarracks {
 		{
 		}
 	}
+	
+	ai_eval = ((If(castle.Blacksmith, 1, 0.75)) * (base_ai_eval + (max(0, (((kingdom.realms_count + 4) / 5) - (kingdom.Iqta or 0)) * 1250))))
+	ai_category = "Military"
+}
+
+def ArmyBarracks_Muslim: ArmyBarracks {
+	name = "Barracks"
+	add_tooltip = "Required for recruiting {clr:enables_color}Professional Units{/clr}"
+	
+	piety_type = "Muslim"
+
+	upgrades
+	{
+		buildings
+		{
+		}
+	}
+
+	ai_eval = ((If(castle.Blacksmith, 1, 0.75)) * (base_ai_eval + (max(0, (((kingdom.realms_count + 10) / 11) - (kingdom.ArmyBarracks_Muslim or 0)) * 2500))))
+	ai_category = "Military"
+	ai_urgent = (!kingdom.ArmyBarracks_Muslim)
 }
 
 // Trade
 def GreatBazaar : Building
 {
 	name = "Great Bazaar"
+	piety_type = "Muslim"
 
 	upgrades
 	{
@@ -1187,6 +1350,7 @@ def ForeignTraderQuarters : Building
 {
 	name = "Foreign Trader Quarters"
 	flavor = "A privileged district granted to foreign merchants, dominated by Italian trading houses, warehouses, and consulates."
+	piety_type = "Muslim"
 
 	upgrades
 	{
@@ -1199,8 +1363,8 @@ def ForeignTraderQuarters : Building
 def DiwanAlBahr : Building
 {
 	name = "Diwan al-Bahr"
-
 	flavor = "The Diwan al-Bahr oversees maritime affairs, managing ports, trade fleets, and naval logistics to ensure the smooth operation of the city’s coastal commerce."
+	piety_type = "Muslim"
 
 	upgrades
 	{
@@ -1218,6 +1382,7 @@ def MasterStonemason : Building
 {
 	name = "Master Stonemason"
 	flavor = "A powerful brotherhood of master masons controlling stonework, construction standards, and monumental building projects."
+	piety_type = "Muslim"
 
 	upgrades
 	{
@@ -1235,6 +1400,7 @@ def MasterWorkshop : Building
 {
 	name = "Master Workshop"
 	flavor = "A civic organization uniting diverse artisans, protecting their rights, and upholding standards of skilled labor."
+	piety_type = "Muslim"
 
 	upgrades
 	{
@@ -1251,6 +1417,7 @@ def MasterBlacksmith : Building
 {
 	name = "Master Blacksmith"
 	flavor = "An influential association of smiths regulating metalworking, weapon forging, and the quality of iron goods."
+	piety_type = "Muslim"
 
 	upgrades
 	{
@@ -1269,6 +1436,7 @@ def School_Muslim : Building
 {
 	name = "Madrasa"
 	flavor = "A center of higher learning dedicated to islamic law, theology, arithmetics and arabic literature."
+	piety_type = "Muslim"
 
 	upgrades
 	{
@@ -1293,6 +1461,7 @@ def Library_Muslim : Building
 {
 	name = "House of Books"
 	flavor = "A House of Books preserves and copies manuscripts, supporting literacy, learning, and the transmission of religious and secular knowledge."
+	piety_type = "Muslim"
 
 	upgrades
 	{
@@ -1312,8 +1481,8 @@ def Library_Muslim : Building
 def University_Muslim : Building
 {
 	name = "House of Wisdom"
-
 	flavor = "A House of Wisdom is a major center of scholarship and translation, where scholars study, translate, and advance knowledge in science, philosophy, and medicine."
+	piety_type = "Muslim"
 
 	upgrades
 	{
@@ -1335,8 +1504,8 @@ def University_Muslim : Building
 def TownHall_Muslim : Building
 {
 	name = "Diwan"
-
 	flavor = "The Diwan serves as the administrative center of the city, coordinating governance, taxation, and civic management under the authority of the local ruler."
+	piety_type = "Muslim"
 
 	upgrades
 	{
@@ -1353,6 +1522,7 @@ def Bathhouse_Muslim : Building
 {
 	name = "Bathhouse"
 	flavor = "A social and sanitary institution where citizens gather to cleanse body and spirit in heated chambers and flowing water."
+	piety_type = "Muslim"
 
 	upgrades
 	{
@@ -1369,6 +1539,7 @@ def Bimaristan : Building
 {
 	name = "House of Healing"
 	flavor = "A House of Healing or Bimaristan is a sophisticated medical institution where theory and practice advance side by side."
+	piety_type = "Muslim"
 
 	upgrades
 	{
