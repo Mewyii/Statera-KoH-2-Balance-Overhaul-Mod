@@ -18,13 +18,13 @@ extend RelationUtils
 		// If-Conditions work here, but sadly kingdom, src_kingdom or own_kingdom dont work so no possibility so set initial relations historically accurate.
 		float negative_factor = (0)
 		float positive_factor = (0)
-		rnd_min = (clamp((-400 + positive_factor - negative_factor), -1000, 1000))
-		rnd_max = (clamp((200 + positive_factor - negative_factor), -1000, 1000))
+		rnd_min = (clamp((-350 + positive_factor - negative_factor), -1000, 1000))
+		rnd_max = (clamp((150 + positive_factor - negative_factor), -1000, 1000))
 		no_relations_distance = 3 //on this distance and above, rel is 0
 		not_neighbour_modifier = 0.5
-		war_threshold = -400
-		chance_join_existing_war = 100
-		trade_thresold = 1 //minimum relationship for trade agreements at the start of the game (-1000 to turn this check off)
+		war_threshold = -340
+		chance_join_existing_war = 10
+		trade_thresold = -50 //minimum relationship for trade agreements at the start of the game (-1000 to turn this check off)
 		trades_base = 1 // num of initial trades = base + num_provinces/provinces_per_trade
 		provinces_per_trade = 3
 		trades_max_distance = 2 //kingdom-kingdom distance in realms
@@ -44,6 +44,6 @@ extend RelationUtils
 extend RelationModifiers
 {
 	// First is a a permanent relation change, second one fades after time. Both are immediate.
-	rel_mod rel_sign_peace = [(250 - (100 * (src_kingdom.is_player + tgt_kingdom.is_player))), 50, (1 * !leader_signed_peace)]
-	rel_mod rel_decline = [(-15 - (15 * (src_kingdom.is_player + tgt_kingdom.is_player))), (-15 - (15 * (src_kingdom.is_player + tgt_kingdom.is_player))), 0]
+	rel_mod rel_sign_peace = [(250 - (100 * tgt_kingdom.is_player)), 50, (1 * !leader_signed_peace)]
+	rel_mod rel_decline = [(-10 - (10 * tgt_kingdom.is_player)), (-10 - (10 * tgt_kingdom.is_player)), 0]
 }

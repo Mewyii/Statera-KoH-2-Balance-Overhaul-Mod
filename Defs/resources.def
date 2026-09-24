@@ -575,13 +575,85 @@ def Salt : Resource
 	tooltip = "Harvested from both sea and land, this substance is used for food flavoring, enrichment and preservation."
 	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Salt.png:Icon_Resource_Salt#2" //GUID:f8fa2cdb054b4b94c8808231aac5ebb6
 	category = "Base"
+	import_commerce = 14
+	import_gold = 7
+
+	mod ks_happiness = 1
+	mod ks_base_trading_income = 2
+	mod ks_max_food_in_towns = 50
+	mod ks_population_growth_perc = 5
+}
+
+delete Silver
+def Silver : Resource
+{
+	name = "Silver Ingots"
+	tooltip = "A soft, white, lustrous metal, mined from the earth and refined to be used by jewellers and various artisans."
+	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Silver.png:Icon_Resource_Silver#2" //GUID:0cbde2f62d5b01d429601a103c5ba7f2
+	category = "Base"
+	import_commerce = 10
+	import_gold = 5
+
+	mod ks_base_trading_income = 1
+	mod ks_gold_from_goods = 2
+	mod ks_commerce_goods = 2
+}
+
+delete Gold
+def Gold : Resource
+{
+	name = "Gold ingots"
+	tooltip = "A precious metal, refined and ready to be used in jewellery, finery and every facet of the economy."
+	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Gold.png:Icon_Resource_Gold#2" //GUID:6426f4993554eff4d802c5ce5caa6547
+	category = "Base"
+	import_commerce = 14
+	import_gold = 7
+
+	mod ks_base_trading_income = 2
+	mod ks_gold_from_goods = 5
+	mod ks_commerce_goods = 5
+}
+
+def Gemstones : Resource
+{
+	name = "Gemstones"
+	tooltip = "Rare and precious minerals valued for their exceptional color, clarity, and luster. Gemstones are used for jewelry, religious ornaments, and valuable trade goods."
+	icon = "Assets/Icons/Resources/Gemstones.png:Gemstones#1"
+	category = "Base"
+	import_commerce = 10
+	import_gold = 5
+
+	mod ks_base_trading_income = 1
+	mod ks_commerce_goods = 5
+}
+
+delete Lime
+def Lime : Resource
+{
+	name = "Lime"
+	tooltip = "Limestone is a sedimentary rock, which is widely used in architecture, road building and sculpturing as well, since it is easy to work and good for fine detail. Limewater is also used in leatherworking."
+	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Lime.png:Icon_Resource_Lime#2" //GUID:b78144b9cf98f1a459cc26f1faa959c4+
+	category = "Base"
+	import_commerce = 8
+	import_gold = 4
+
+	mod ks_siege_defense = 50
+	mod ks_build_cost_discount_perc = 5
+}
+
+delete Marble
+def Marble : Resource
+{
+	name = "Marble"
+	tooltip = "Stonemasons can turn this ordinarily looking rock into architectural marvel. It is also popular to use among artist for sculptures and frescoes."
+	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Marble.png:Icon_Resource_Marble#2" //GUID:2acdbf1baf0cbbe478ed971233221841
+	category = "Base"
 	import_commerce = 12
 	import_gold = 6
 
-	mod ks_happiness = 1
 	mod ks_base_trading_income = 1
-	mod ks_max_food_in_towns = 50
-	mod ks_population_growth_perc = 5
+	mod ks_culture_from_goods = 10
+	mod ks_influence_from_goods = 5
 }
 
 delete DraftOxen
@@ -639,4 +711,38 @@ def Wool : Resource
 	mod ks_base_trading_income = 1
 }
 
+delete Wine
+def Wine : Resource
+{
+	name = "Wine"
+	tooltip = "This sophisticated drink is made by fermented grapes and is favored by both the nobility and the common folk."
+	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Wine.png:Icon_Resource_Wine#2" //GUID:3a80b68d4927bc44182450fa7a3c2618
+	category = "Base"
+	import_commerce = 8
+	import_gold = 4
+
+	mod ks_happiness = 2
+	mod ks_influence_from_goods = 10
+}
+
+delete Spirits
+def Spirits : Resource
+{
+	name = "Spirits"
+	tooltip = "Made from fermented and then distilled fruits, this substance have medicinal application and lifts the spirits as well."
+	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Spirits.png:Icon_Resource_Spirits#2" //GUID:cb4fa163273cd92469dd12383d4594d4
+	category = "Base"
+	import_commerce = 8
+	import_gold = 4
+
+	mod ks_gold_from_goods = 4
+	mod ks_population_growth_perc = 5
+}
+
 delete FineCheese
+delete Barrels
+delete Candles
+delete Lodestone
+delete Sausages
+delete Wax
+delete Raisins

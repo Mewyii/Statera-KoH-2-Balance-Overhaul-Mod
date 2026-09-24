@@ -98,6 +98,20 @@ extend Settlements
 		delete 1195
 		delete 2101
 		delete 797
+		delete 2168
+		delete 910
+		delete 1206
+		delete 1438
+		delete 1995
+		delete 1660
+		delete 1885
+		delete 804
+		delete 1608
+		delete 1642
+		delete 918
+		delete 478
+		delete 1203
+		delete 1045
 
 
 		def 465 : Castle
@@ -2635,6 +2649,91 @@ extend Settlements
 				}
 			}
 		}
+
+		def 199 : Castle
+		{
+			name = "Pisa"
+			position = 1701, 1236
+			forest = true
+			rotation = 3.248042
+			citadel = 0.1600443, -0.4200738
+			{
+				architecture = "Central"
+				rotation = 15.28501
+			}
+			houses = "Central"
+			{
+				1 = -1.479936, -11.68991 { rotation = 197.3179 }
+				2 = 4.659992, 1.850009 { rotation = 238.5083 }
+				3 = -8.559928, 2.280022 { rotation = 59.99994 }
+				4 = -3.160073, 2.489994 { rotation = 179.9999 }
+				5 = 2.019994, 4.19003 { rotation = 112.7476 }
+				6 = 2.830004, -5.910064 { rotation = 160.1427 }
+				7 = 6.049992, 7.920084 { rotation = 112.7476 }
+				8 = -2.539922, -4.339968 { rotation = 301.3628 }
+				9 = 0.8799986, -7.94007
+				{
+					type = "Fillers"
+					rotation = 174.0906
+				}
+				10 = -5.090021, -9.829944
+				{
+					type = "Fillers"
+					rotation = 354.0906
+				}
+				11 = 4.430083, -3.599996
+				{
+					type = "Fillers"
+					rotation = 218.3447
+				}
+				12 = 4.480065, -1.180068
+				{
+					type = "Fillers"
+					rotation = 218.3447
+				}
+				13 = -1.77994, -7.329911
+				{
+					type = "Fillers"
+					rotation = 114.0906
+				}
+				14 = -4.510041, -0.8900195
+				{
+					type = "Fillers"
+					rotation = 98.34473
+				}
+				15 = -8.02998, -2.869979
+				{
+					type = "Fillers"
+					rotation = 114.0906
+				}
+				16 = -0.03999959, -5.469917
+				{
+					type = "Fillers"
+					rotation = 234.0906
+				}
+			}
+			wall = -0.5759, 0.60523
+			{
+				towers_architecture = "Central"
+				segments_architecture = "Central"
+				level = 4
+				curveness = 0.5
+				corners
+				{
+					1 = -6.187119, -1.579823
+					2 = -5.059831, -4.341679
+					3 = -4.039984, -8.329976
+					4 = 2.140019, -10.36004 { height_ofs = 0.01526451 }
+					5 = 5.719972, -7.629992 { height_ofs = -0.1615248 }
+					6 = 7.110025, -3.920028 { height_ofs = 0.05486584 }
+					7 = 7.679981, 0.4200188
+					8 = 6.679971, 3.489996
+					9 = 3.339984, 6.049987
+					10 = -0.5599075, 5.279936
+					11 = -4.020025, 4.480066
+				}
+			}
+		}
 		
 		def 2106 : Settlement
 		{
@@ -3207,6 +3306,126 @@ extend Settlements
 		{
 			position = 1981, 1645
 			forest = true
+			houses = "West"
+		}
+
+		def 2188 : Settlement
+		{
+			position = 1547, 1389
+			forest = true
+			houses = "Central"
+		}
+
+		def 2189 : Settlement
+		{
+			position = 1698, 1403
+			forest = true
+			houses = "Central"
+		}
+		def 2190 : Settlement
+		{
+			position = 811, 563
+			houses = "Moor"
+		}
+		def 2191 : Settlement
+		{
+			position = 830, 926
+			houses = "Spanish"
+		}
+		def 2192 : Settlement
+		{
+			position = 1268, 1187
+			forest = true
+			houses = "Spanish"
+		}
+		def 2193 : Settlement
+		{
+			position = 1626, 1334
+			houses = "Central"
+		}
+		def 2194 : Settlement
+		{
+			position = 2264, 2583
+			houses = "Nordic"
+		}
+		def 2195 : Settlement
+		{
+			position = 2645, 1711
+			houses = "Slavic"
+		}
+		def 2196 : Settlement
+		{
+			position = 2892, 1795
+			houses = "Slavic"
+		}
+		def 2197 : Settlement
+		{
+			position = 1896, 1752
+			houses = "West"
+		}
+		def 2198 : Settlement
+		{
+			position = 914, 1229
+			houses = "Spanish"
+		}
+		def 2199 : Settlement
+		{
+			position = 2228, 992
+			houses = "Roman"
+		}
+		def 2200 : Settlement
+		{
+			position = 2481, 1095
+			houses = "Roman"
+		}
+		def 2201 : Settlement
+		{
+			position = 3189, 1081
+			houses = "Roman"
+		}
+		def 2202 : Settlement
+		{
+			position = 2529, 948
+			houses = "Roman"
+		}
+		def 2203 : Settlement
+		{
+			position = 1721.7, 1238.6
+			houses = "Roman"
+		}
+		def 2204 : Settlement
+		{
+			position = 1697, 1252
+			houses = "Roman"
+		}
+		def 2205 : Settlement
+		{
+			position = 3147, 1070
+			houses = "Roman"
+		}
+		def 2206 : Settlement
+		{
+			position = 2980, 745
+			houses = "Arab"
+		}
+		def 2207 : Settlement
+		{
+			position = 3278, 554
+			houses = "Arab"
+		}
+		def 2208 : Settlement
+		{
+			position = 2798, 498
+			houses = "Arab"
+		}
+		def 2209 : Settlement
+		{
+			position = 3622, 897
+			houses = "Arab"
+		}
+		def 2210 : Settlement
+		{
+			position = 1485, 1327
 			houses = "West"
 		}
 	}

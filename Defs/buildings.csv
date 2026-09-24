@@ -1,298 +1,325 @@
 extend *,BasedOn,GoldCost,HammersCost,BooksCost,PietyCost,GoldUpkeep,Bonuses,Requires
 // Common Buildings
 // Military
-ArmyStables,Building,400,600,,,,1 WorkerSlots in Town,
-CityWatch,Building,600,800,,,,2 rs_stability_buildings 2 TownGuards in Town,
-ArmySiegeWorkshop,Building,1200,1800,50,,,10 rs_siege_defense 5 rs_attrition_damage,Craftsmen
-Armory,Building,1000,1200,,,,20 rs_siege_defense 20 rs_light_discount_perc,
+ArmyStables,Building,450,600,,,,1 WorkerSlots in Town,
+CityWatch,Building,660,800,,,,2 rs_stability_buildings 2 TownGuards in Town,
+ArmySiegeWorkshop,Building,1320,1800,50,,,10 rs_siege_defense 5 rs_attrition_damage,Craftsmen
+Armory,Building,1100,1200,,,,20 rs_siege_defense 20 rs_light_discount_perc,
 // Trade
-MarketSquare,Building,500,800,,,,4 Gold in Town,
-MerchantHall,Building,1400,2000,,,,2 Gold in Town 1 Gold in Village 1 WorkerSlots in Town 10 rs_growth_rate_perc,Craftsmen
+MarketSquare,Building,550,800,,,,4 Gold in Town,
+MerchantHall,Building,1550,2000,,,,2 Gold in Town 1 Gold in Village 1 WorkerSlots in Town 10 rs_growth_rate_perc,Craftsmen
 // Farming
-CropFarming,Building,250,1000,,,,2 Food in Town 1 Food in Farm,
-WeavingMill,Building,800,1200,,,,1 Trade in Town 1 Trade in Farm 1 WorkerSlots in Town produces Linen,Craftsmen Flax
-Windmill,Building,600,1000,,,,1 Trade in Town 1 Food in Town 1 Trade in Farm 1 Food in Farm 50 rs_max_food,Craftsmen
+CropFarming,Building,280,1000,,,,2 Food in Town 1 Food in Farm,
+WeavingMill,Building,890,1200,,,,1 Trade in Town 1 Trade in Farm 1 WorkerSlots in Town produces Linen,Craftsmen Flax
+Windmill,Building,660,1000,,,,1 Trade in Town 1 Food in Town 1 Trade in Farm 1 Food in Farm 50 rs_max_food,Craftsmen
 // River
-RiverDocks,Building,800,1100,,,,0.5 Gold in All 5 rs_growth_rate_perc
-Irrigation,Building,1000,2000,,,,2 Food in Town 2 Food in Farm,Rivers
+RiverDocks,Building,890,1100,,,,0.5 Gold in All 5 rs_growth_rate_perc
+Irrigation,Building,1100,2000,,,,2 Food in Town 2 Food in Farm,Rivers
 // Sea
-Harbor,Building,1200,1400,,,,1 Gold in All 5 rs_growth_rate_perc,Craftsmen
-FishingDocks,Building,600,600,,,,3 Food in Town
-TradePort,Building,2500,3500,,,,2 Gold in Town 1 Gold in All 15 rs_growth_rate_perc,Craftsmen
-Shipyard,Building,2000,3000,,,,6 Trade in Town 20 rs_siege_defense,Craftsmen Tar
+Harbor,Building,1320,1400,,,,1 Gold in All 5 rs_growth_rate_perc,Craftsmen
+FishingDocks,Building,660,600,,,,3 Food in Town
+TradePort,Building,2750,3500,,,,2 Gold in Town 1 Gold in All 15 rs_growth_rate_perc,Craftsmen Timber
+Shipyard,Building,2200,3000,,,,6 Trade in Town 20 rs_siege_defense,Craftsmen Timber Tar
 // Crafting
-Workshop,Building,200,400,,,,1 Hammers in Town 1 WorkerSlots in Town 5 rs_build_cost_discount_perc,
-Blacksmith,Building,600,1000,,,,1 Trade in Town 1 Trade in Village 1 WorkerSlots in Town,
-Tanneries,Building,400,800,,,,2 Trade in Town 1 WorkerSlots in Town,
+Workshop,Building,230,400,,,,1 Hammers in Town 1 WorkerSlots in Town 5 rs_build_cost_discount_perc,
+Blacksmith,Building,660,1000,,,,1 Trade in Town 1 Trade in Village 1 WorkerSlots in Town,
+Tanneries,Building,450,800,,,,2 Trade in Town 1 WorkerSlots in Town,
 // Punishment
-Dungeon,Building,600,900,,,,6 rs_stability_buildings -1 ks_stability,
-CourtHall,Building,1100,1500,,,,1 rs_stability_buildings 1 ks_stability if Governed,EarlyScholars
+Dungeon,Building,550,800,,,,4 rs_stability_buildings -10 rs_growth_rate_perc,
+CourtHall,Building,1210,1500,,,,1 WorkerSlots in Town 2 rs_stability_buildings 1 ks_stability if Governed,EarlyScholars
 
 
 // Catholic Buildings
 // Religious
-Church,Building,700,900,,,,2 Piety in Town 2 rs_happiness if ChristianRealm,Christian
-CityMonastery,Building,500,1100,,,,1 Piety in Town 1 Books in Town,Christian
-Cathedral,Building,3500,4500,,500,,4 Piety in Town 1 Piety in Monastery 1 Piety in Village 100 ks_max_piety if ClericGovernor 20 ks_culture_from_buildings if ClericGovernor,Christian Stonemasons
-EcclesiasticalCourt,Building,1300,2000,,250,,4 rs_stability_buildings -2 ks_corruption if Governed,Catholic
-EpiscopalPalace,Building,5000,5000,,1000,,4 Gold in Town 1 Gold in Village 1 Gold in Monastery 200 ks_max_piety if ClericGovernor 30 rs_fame_buildings_bonus if ClericGovernor,Catholic Stonemasons
+Church,Building,780,900,,,,2 Piety in Town 2 rs_happiness if ChristianRealm,Christian
+CityMonastery,Building,550,1100,,,,1 Piety in Town 1 Books in Town,Christian
+Cathedral,Building,3860,4500,,500,,4 Piety in Town 1 Piety in Monastery 1 Piety in Village 100 ks_max_piety if ClericGovernor 20 ks_culture_from_buildings if ClericGovernor,Christian Stonemasons
+EcclesiasticalCourt,Building,1440,2000,,250,,4 rs_stability_buildings -2 ks_corruption if Governed,Catholic
+EpiscopalPalace,Building,5500,5000,,1000,,4 Gold in Town 1 Gold in Village 1 Gold in Monastery 200 ks_max_piety if ClericGovernor 30 rs_fame_buildings_bonus if ClericGovernor,Catholic Stonemasons
 // Military
-Feudal_Fiefs_Christian,Building,500,1500,,,,2 Levy in Town 1 Levy in Keep -2 Gold in Town -1 Gold in Keep 50 ks_max_levy if Governed,Catholic
-TrainingField,Building,2000,4000,500,,,1 rs_initial_troops_level,Scholars Catholic
+Feudal_Fiefs_Christian,Building,550,1500,,,,2 Levy in Town 1 Levy in Keep -2 Gold in Town -1 Gold in Keep 50 ks_max_levy if Governed,Catholic
+TrainingField,Building,2200,4000,500,,,1 rs_initial_troops_level,Scholars Catholic
 // Trade
-MerchantsGuild,Building,2800,3000,,,,5 Gold in Town 1 WorkerSlots in Town 1 ks_base_trading_income if Governed produces Merchants,Stonemasons Christian
+MerchantsGuild,Building,3090,3000,,,,5 Gold in Town 1 WorkerSlots in Town 1 ks_base_trading_income if Governed produces Merchants,Stonemasons Christian
 // Farming
 // River
 // Sea
-Admiralty,Building,4000,5000,,,,50 rs_siege_defense 20 rs_fame_buildings_bonus if Governed 15 ks_profit_from_colonies_perc if Governed 1 ks_has_admiralty if Governed,Christian Stonemasons
-ItalianTraderQuarters,Building,1500,2000,,,,10 Gold in Town 20 rs_growth_rate_perc -5 rs_happiness ,Christian Stonemasons
+Admiralty,Building,4400,5000,,,,50 rs_siege_defense 20 rs_fame_buildings_bonus if Governed 15 ks_profit_from_colonies_perc if Governed 1 ks_has_admiralty if Governed,Christian Stonemasons
+ItalianTraderQuarters,Building,1660,2000,,,,10 Gold in Town 20 rs_growth_rate_perc -5 rs_happiness ,Christian Stonemasons
 // Crafting
-StonemasonsGuild,Building,2400,3000,,,,2 Hammers in Town 10 rs_build_cost_discount_perc 2 WorkerSlots in Town,Christian
-CraftsmensGuild,Building,2000,2500,,,,2 Hammers in Town 10 rs_build_cost_discount_perc 2 WorkerSlots in Town,Christian
-BlacksmithsGuild,Building,2600,3500,,,,2 Trade in Town 2 WorkerSlots in Town 1 Trade in Village 1 WorkerSlots in Village,Christian
+StonemasonsGuild,Building,2640,3000,,,,2 Hammers in Town 10 rs_build_cost_discount_perc 2 WorkerSlots in Town,Christian
+CraftsmensGuild,Building,2200,2500,,,,2 Hammers in Town 10 rs_build_cost_discount_perc 2 WorkerSlots in Town,Christian
+BlacksmithsGuild,Building,2870,3500,,,,2 Trade in Town 2 WorkerSlots in Town 1 Trade in Village 1 WorkerSlots in Village,Christian
 // Education
-School_Christian,Building,400,750,,,,2 Books in Town 1 WorkerSlots in Town,EducationalBooks Christian 
-Library_Christian,Building,1600,2000,,,,4 Books in Town 1 WorkerSlots in Town 5 ks_culture_from_buildings if Governed 100 ks_max_books if Governed,EarlyScholars Christian
-University_Christian,Building,4200,5000,,,,6 Books in Town 1 Books in Village 2 WorkerSlots in Town 1 WorkerSlots in Village 10 rs_growth_rate_perc 20 rs_fame_buildings_bonus if Governed -4 rs_stability_buildings,Stonemasons Christian
+School_Christian,Building,450,750,,,,2 Books in Town 1 WorkerSlots in Town,EducationalBooks Christian 
+Library_Christian,Building,1770,2000,,,,4 Books in Town 1 WorkerSlots in Town 5 ks_culture_from_buildings if Governed 100 ks_max_books if Governed,EarlyScholars Christian
+University_Christian,Building,4620,5000,,,,6 Books in Town 1 Books in Village 2 WorkerSlots in Town 1 WorkerSlots in Village 10 rs_growth_rate_perc 20 rs_fame_buildings_bonus if Governed -4 rs_stability_buildings,Stonemasons Christian
 // Culture
-TownHall_Christian,Building,700,900,,,,2 rs_happiness 10 rs_growth_rate_perc 5 ks_culture_from_buildings if Governed,EducationalBooks Christian
-TournamentGrounds_Christian,Building,2200,2000,,,,1 Levy in Town 1 Levy in Keep 4 rs_happiness 10 ks_hire_knight_cost_discount_perc if KingGovernor 10 ks_knight_wage_discount_perc if KingGovernor 10 rs_fame_buildings_bonus if Governed  20 ks_culture_from_buildings if Governed,IronTools EarlyScholars Christian
-Theater_Christian,Building,2900,3500,,,,1 Books in Town 1 Books in Village 4 rs_happiness 10 rs_fame_buildings_bonus if Governed 20 ks_culture_from_buildings if Governed,Stonemasons Artists Christian
+TownHall_Christian,Building,780,900,,,,2 rs_happiness 10 rs_growth_rate_perc 5 ks_culture_from_buildings if Governed,EducationalBooks Christian
+TournamentGrounds_Christian,Building,2420,2000,,,,1 Levy in Town 1 Levy in Keep 4 rs_happiness 10 ks_hire_knight_cost_discount_perc if KingGovernor 10 ks_knight_wage_discount_perc if KingGovernor 10 rs_fame_buildings_bonus if Governed  20 ks_culture_from_buildings if Governed,IronTools EarlyScholars Christian
+Theater_Christian,Building,3200,3500,,,,1 Books in Town 1 Books in Village 4 rs_happiness 10 rs_fame_buildings_bonus if Governed 20 ks_culture_from_buildings if Governed,Stonemasons Artists Christian
 // Punishment
 
 // Orthodox Buildings
 // Religious
 // Military
-Pronoia,Building,500,1500,,,,2 Levy in Town 1 Levy in Keep -2 Gold in Town -1 Gold in Keep 50 ks_max_levy if Governed,Orthodox
-ArmyBarracks_Orthodox,Building,2500,3500,200,,,-5 Gold in Town 50 rs_fame_buildings_bonus if Governed,Orthodox
+Pronoia,Building,550,1500,,,,2 Levy in Town 1 Levy in Keep -2 Gold in Town -1 Gold in Keep 50 ks_max_levy if Governed,Orthodox
+ArmyBarracks_Orthodox,Building,2750,3500,200,,,-5 Gold in Town 50 rs_fame_buildings_bonus if Governed,Orthodox
 
 // Muslim Buildings
 // Religious
-Masjid,Building,700,900,,,,3 Piety in Town 2 rs_happiness,Muslim
-GreatMosque,Building,3500,5000,,,,4 Piety in Town 1 Piety in Mosque 1 Piety in Village 100 ks_max_piety if ClericGovernor 20 ks_culture_from_buildings if ClericGovernor,Muslim Stonemasons
-ShariaCourt,Building,1500,2500,,,,2 Piety in Town 4 rs_stability_buildings -2 ks_corruption,Muslim
-DarAlImara,Building,4500,5000,,,,4 Gold in Town 1 Gold in Village 1 Gold in Mosque 200 ks_max_piety if ClericGovernor 30 rs_fame_buildings_bonus if ClericGovernor,Muslim Stonemasons
+Masjid,Building,780,900,,,,3 Piety in Town 2 rs_happiness,Muslim
+GreatMosque,Building,3860,5000,,,,4 Piety in Town 1 Piety in Mosque 1 Piety in Village 100 ks_max_piety if ClericGovernor 20 ks_culture_from_buildings if ClericGovernor,Muslim Stonemasons
+ShariaCourt,Building,1660,2500,,,,2 Piety in Town 4 rs_stability_buildings -2 ks_corruption,Muslim
+DarAlImara,Building,4950,5000,,,,4 Gold in Town 1 Gold in Village 1 Gold in Mosque 200 ks_max_piety if ClericGovernor 30 rs_fame_buildings_bonus if ClericGovernor,Muslim Stonemasons
 // Military
-Iqta,Building,500,1500,,,,-2 Gold in Town,Muslim
-ArmyBarracks_Muslim,Building,2500,3500,200,,,5 Levy in Town -5 Gold in Town 50 ks_max_levy if Governed,Muslim
+Iqta,Building,550,1500,,,,-2 Gold in Town,Muslim
+ArmyBarracks_Muslim,Building,2750,3500,200,,,5 Levy in Town -5 Gold in Town 50 ks_max_levy if Governed,Muslim
 // Trade
-GreatBazaar,Building,2800,3000,,,,5 Gold in Town 1 WorkerSlots in Town 1 ks_base_trading_income if Governed produces Merchants,Stonemasons Muslim
+GreatBazaar,Building,3090,3000,,,,5 Gold in Town 1 WorkerSlots in Town 1 ks_base_trading_income if Governed produces Merchants,Stonemasons Muslim
 // Farming
 // River
 // Sea
-DiwanAlBahr,Building,4000,5000,,,,50 rs_siege_defense 20 rs_fame_buildings_bonus if Governed 15 ks_profit_from_colonies_perc if Governed 1 ks_has_admiralty if Governed,Muslim Stonemasons
-ForeignTraderQuarters,Building,1500,2000,,,,10 Gold in Town 20 rs_growth_rate_perc -5 rs_happiness ,Muslim Stonemasons
+DiwanAlBahr,Building,4400,5000,,,,50 rs_siege_defense 20 rs_fame_buildings_bonus if Governed 15 ks_profit_from_colonies_perc if Governed 1 ks_has_admiralty if Governed,Muslim Stonemasons
+ForeignTraderQuarters,Building,1660,2000,,,,10 Gold in Town 20 rs_growth_rate_perc -5 rs_happiness ,Muslim Stonemasons
 // Crafting
-MasterStonemason,Building,2400,3000,,,,3 Hammers in Town 10 rs_build_cost_discount_perc 1 WorkerSlots in Town,Muslim
-MasterWorkshop,Building,2000,2500,,,,3 Hammers in Town 10 rs_build_cost_discount_perc 1 WorkerSlots in Town,Muslim
-MasterBlacksmith,Building,2600,3500,,,,3 Trade in Town 1 WorkerSlots in Town 1 Trade in Village 1 WorkerSlots in Village,Muslim
+MasterStonemason,Building,2640,3000,,,,3 Hammers in Town 10 rs_build_cost_discount_perc 1 WorkerSlots in Town,Muslim
+MasterWorkshop,Building,2200,2500,,,,3 Hammers in Town 10 rs_build_cost_discount_perc 1 WorkerSlots in Town,Muslim
+MasterBlacksmith,Building,2870,3500,,,,3 Trade in Town 1 WorkerSlots in Town 1 Trade in Village 1 WorkerSlots in Village,Muslim
 // Education
-School_Muslim,Building,400,750,,,,2 Books in Town 1 WorkerSlots in Town,Muslim
-Library_Muslim,Building,1600,2000,,,,4 Books in Town 1 WorkerSlots in Town 5 ks_culture_from_buildings if Governed 100 ks_max_books if Governed,EarlyScholars Muslim
-University_Muslim,Building,4200,5000,,,,6 Books in Town 1 Books in Village 2 WorkerSlots in Town 1 WorkerSlots in Village 10 rs_growth_rate_perc 20 rs_fame_buildings_bonus if Governed -4 rs_stability_buildings,Stonemasons Muslim
+School_Muslim,Building,450,750,,,,2 Books in Town 1 WorkerSlots in Town,Muslim
+Library_Muslim,Building,1770,2000,,,,4 Books in Town 1 WorkerSlots in Town 5 ks_culture_from_buildings if Governed 100 ks_max_books if Governed,EarlyScholars Muslim
+University_Muslim,Building,4620,5000,,,,6 Books in Town 1 Books in Village 2 WorkerSlots in Town 1 WorkerSlots in Village 10 rs_growth_rate_perc 20 rs_fame_buildings_bonus if Governed -4 rs_stability_buildings,Stonemasons Muslim
 // Culture
-TownHall_Muslim,Building,1000,1000,,,,2 rs_happiness 10 rs_growth_rate_perc 10 ks_culture_from_buildings if Governed,Muslim
-Bathhouse_Muslim,Building,2500,3500,,,,10 rs_growth_rate_perc 20 rs_fame_buildings_bonus if Governed 10 ks_culture_from_buildings if Governed,Muslim
-Bimaristan,Building,3000,4000,,,,30 rs_growth_rate_perc 3 Books in Town,Muslim
+TownHall_Muslim,Building,1100,1000,,,,2 rs_happiness 10 rs_growth_rate_perc 10 ks_culture_from_buildings if Governed,Muslim
+Bathhouse_Muslim,Building,2750,3500,,,,10 rs_growth_rate_perc 20 rs_fame_buildings_bonus if Governed 10 ks_culture_from_buildings if Governed,Muslim
+Bimaristan,Building,3310,4000,,,,30 rs_growth_rate_perc 3 Books in Town,Muslim
 // Punishment
 
 // Pagan Buildings
 // Religious
-Temple,Building,700,900,,,,1 Piety in Town 1 Piety in Shrine 1 Books in Town 1 rs_happiness if PaganRealmOtherKingdom,Pagan
+Temple,Building,780,900,,,,1 Piety in Town 1 Piety in Shrine 1 Books in Town 1 rs_happiness if PaganRealmOtherKingdom,Pagan
 
-FightingGrounds,Building,200,2000,,,,1 Levy in SteppeSettlement 50 ks_max_levy if Governed,Pagan Steppe
-HuntingGrounds,Building,200,2000,,,,1 Food in SteppeSettlement,Pagan Steppe
-BreedingGrounds,Building,200,2000,,,,1 Trade in SteppeSettlement,Pagan Steppe
-SacredGrounds,Building,200,2000,,,,1 Piety in SteppeSettlement,Pagan Steppe
-KhansTent,Building,600,1500,,,,1 Gold in SteppeSettlement,Pagan Steppe
-KhansCourt,Building,3000,3000,,500,,1 Piety in SteppeSettlement 2 Levy in SteppeSettlement 1 Books in SteppeSettlement -2 Gold in SteppeSettlement,Pagan Steppe
+FightingGrounds,Building,230,2000,,,,1 Levy in SteppeSettlement 50 ks_max_levy if Governed,Pagan Steppe
+HuntingGrounds,Building,230,2000,,,,1 Food in SteppeSettlement,Pagan Steppe
+BreedingGrounds,Building,230,2000,,,,1 Trade in SteppeSettlement,Pagan Steppe
+SacredGrounds,Building,230,2000,,,,1 Piety in SteppeSettlement,Pagan Steppe
+KhansTent,Building,660,1500,,,,1 Gold in SteppeSettlement,Pagan Steppe
+KhansCourt,Building,3310,3000,,500,,1 Piety in SteppeSettlement 2 Levy in SteppeSettlement 1 Books in SteppeSettlement -2 Gold in SteppeSettlement,Pagan Steppe
 
 // Resource Buildings
-Woodworking,Building,300,600,,,,2 Hammers in Town 5 rs_build_cost_discount_perc,Forests
-Metalworking,Building,900,1000,,,,2 Gold in Mine 2 Trade in Mine,IronOre
-SaltTrade,Building,1400,1200,,,,2 Gold in Town 4 Trade in Town produces Salt,SaltDeposit
-SheepFarming,Building,500,1000,,,,3 Food in Town 1 Trade in Town,Grasslands
-CattleFarming,Building,500,1000,,,,2 Food in Town 1 Gold in Town 1 Food in Farm,Grasslands
-HorseBreeding,Building,700,1200,,,,2 Gold in HorseFarm 2 Trade in HorseFarm,HorseFarm
+Woodworking,Building,500,800,,,,1 WorkerSlots in Town 2 Hammers in Town 5 rs_build_cost_discount_perc,Forests
+Metalworking,Building,1000,1500,,,,1 WorkerSlots in Mine 4 Gold in Mine,IronOre
+SaltTrade,Building,2750,4000,,,,1 WorkerSlots in Town 2 Gold in Town 4 Trade in Town produces Salt,SaltDeposit
+SheepFarming,Building,550,1000,,,,3 Food in Town 1 Trade in Town,Grasslands
+CattleFarming,Building,550,1000,,,,2 Food in Town 1 Gold in Town 1 Food in Farm,Grasslands
+HorseBreeding,Building,780,1200,,,,2 Gold in HorseFarm 2 Trade in HorseFarm,HorseFarm
+SilverMines,Building,1300,2000,,,,1 WorkerSlots in Town 4 Gold in Mine 2 Trade in Mine,SilverOre
+GoldMines,Building,1600,2500,,,,1 WorkerSlots in Mine 2 Gold in Mine 4 Trade in Mine,GoldOre
+GemstoneMines,Building,1200,2000,,,,1 WorkerSlots in Mine 3 Gold in Mine 3 Trade in Mine,GemstoneDeposits
+Vineyards,Building,650,1000,,,,2 Gold in Vineyard 1 Food in Vineyard 1 rs_happiness,Vines
+LimestoneQuarry,Building,1100,2000,,,,1 WorkerSlots in Quarry 2 Hammers in Quarry 10 rs_build_cost_discount_perc,LimestoneDeposit
+MarbleQuarry,Building,1400,2500,,,,1 WorkerSlots in Quarry 5 Gold in Quarry 1 Trade in Quarry,MarbleDeposit
+Chapel,Building,650,800,,,,2 Piety in Town 2 Gold in Town,PilgrimageSiteChristian Christian
+Haram,Building,650,800,,,,2 Piety in Town 2 Gold in Town,PilgrimageSiteMuslim Muslim
 
 // Upgrades
 // Religious
 // Christian
-Processions,Upgrade,900,3000,,300,,1 Piety in Town 1 Piety in Monastery 5 ks_culture_from_buildings if Governed
-Cemetry,Upgrade,800,2500,,200,,1 Gold in Town 1 Gold in Village 5 rs_growth_rate_perc
-ChurchPeace,Upgrade,400,2000,,200,,2 rs_happiness 1 ks_catholic_influence if Governed
-FrescoCycle,Upgrade,1000,3500,,350,,1 Piety in Town 1 Gold in Town 1 Piety in Village,Dyes
-Pulpit,Upgrade,1200,3000,,400,,2 rs_stability 2 rs_morale_in_province -1 ks_corruption if Governed,Clergy
-BellTower,Upgrade,1300,3500,,400,,1 Piety in Town 10 ks_culture_from_buildings if ClericGovernor 50 ks_max_piety if ClericGovernor,Stonemasons
-HerbGrowing,Upgrade,800,3000,,100,,1 Trade in Town 1 Trade in Monastery produces Herbs
-Scriptorium,Upgrade,1200,3500,50,200,,1 Books in Town 1 Books in Monastery
-ScholaMonastica,Upgrade,1500,4500,100,400,,1 Books in Town 50 ks_max_books if Governed produces EducationalBooks,
-IlluminatorsAtelier,Upgrade,1750,4000,200,400,,1 Piety in Town 10 ks_culture_from_buildings if Governed 5 rs_fame_buildings_bonus if ClericGovernor produces IllustratedBooks
-Hospital,Upgrade,2000,5000,100,300,,25 rs_growth_rate_perc -2 ks_army_refill_cost_perc if Governed,
-CistercianDiscipline,Upgrade,600,3500,,200,,1 Piety in Town 2 Trade in Town -1 Books in Town 1 Piety in Monastery 2 Trade in Monastery -1 Books in Monastery
-MoralTribunal,Upgrade,800,2500,,100,,-1 Books in Town 1 Piety in Town 1 Gold in Town -1 ks_corruption if Governed,
-InquisitorialChamber,Upgrade,1200,3500,,300,,-2 rs_happiness produces Inquisitors,
-ChristianCeremonies,Upgrade,1400,5000,,400,,1 Piety in Village produces Clergy,
-ChoralLiturgy,Upgrade,2000,6000,100,500,,2 Piety in Town 10 ks_culture_from_buildings if ClericGovernor 2 rs_morale_in_province produces CatholicChoirs
-StainedGlassWorkshops,Upgrade,2000,6000,200,200,,2 Gold in Town 1 WorkerSlots in Town 10 rs_fame_buildings_bonus if Governed 1 WorkerSlots in Village,Glass
-GothicTechniques,Upgrade,3000,8000,500,300,,4 Gold in Town 2 WorkerSlots in Town 20 rs_fame_buildings_bonus if Governed
-Cloister,Upgrade,1500,4000,50,500,,1 ks_books_per_cleric if ClericGovernor 1 ks_piety_per_cleric if ClericGovernor 1 ks_influence 2 ks_catholic_influence
-DiocesanAdministration,Upgrade,2000,6000,200,600,,1 Gold in Monastery 1 food in Farm 1 Trade in Village 1 Levy in Keep produces ReligiousAdministration,
-EpiscopalChancery,Upgrade,3000,5000,500,800,,7 ks_influence 7 ks_catholic_influence 25 rs_fame_buildings_bonus if ClericGovernor
-SynodalCourts,Upgrade,3500,8000,500,1000,,25 ks_convert_chance_after_siege_perc if ClericGovernor 25 ks_convert_religion_duration_reduction_perc if ClericGovernor 25 ks_reduce_religious_tension_perc if ClericGovernor
+Processions,Upgrade,1000,3000,,300,,1 Piety in Town 1 Piety in Monastery 5 ks_culture_from_buildings if Governed
+Cemetry,Upgrade,890,2500,,200,,1 Gold in Town 1 Gold in Village 5 rs_growth_rate_perc
+ChurchPeace,Upgrade,450,2000,,200,,2 rs_happiness 1 ks_catholic_influence if Governed
+FrescoCycle,Upgrade,1100,3500,,350,,1 Piety in Town 1 Gold in Town 1 Piety in Village,Dyes
+Pulpit,Upgrade,1320,3000,,400,,2 rs_stability 2 rs_morale_in_province -1 ks_corruption if Governed,Clergy
+BellTower,Upgrade,1440,3500,,400,,1 Piety in Town 10 ks_culture_from_buildings if ClericGovernor 50 ks_max_piety if ClericGovernor,Stonemasons
+HerbGrowing,Upgrade,890,3000,,100,,1 Trade in Town 1 Trade in Monastery produces Herbs
+Scriptorium,Upgrade,1320,3500,50,200,,1 Books in Town 1 Books in Monastery
+ScholaMonastica,Upgrade,1660,4500,100,400,,1 Books in Town 50 ks_max_books if Governed produces EducationalBooks,
+IlluminatorsAtelier,Upgrade,1930,4000,200,400,,1 Piety in Town 10 ks_culture_from_buildings if Governed 5 rs_fame_buildings_bonus if ClericGovernor produces IllustratedBooks
+Hospital,Upgrade,2200,5000,100,300,,25 rs_growth_rate_perc -2 ks_army_refill_cost_perc if Governed,
+CistercianDiscipline,Upgrade,660,3500,,200,,1 Piety in Town 2 Trade in Town -1 Books in Town 1 Piety in Monastery 2 Trade in Monastery -1 Books in Monastery
+Distillery,Upgrade,2000,4000,,,,2 Gold in Monastery 1 Books in Monastery 1 rs_happiness produces Spirits,Wine
+MoralTribunal,Upgrade,890,2500,,100,,-1 Books in Town 1 Piety in Town 1 Gold in Town -1 ks_corruption if Governed,
+InquisitorialChamber,Upgrade,1320,3500,,300,,-2 rs_happiness produces Inquisitors,
+ChristianCeremonies,Upgrade,1550,5000,,400,,1 Piety in Village produces Clergy,
+ChoralLiturgy,Upgrade,2200,6000,100,500,,2 Piety in Town 10 ks_culture_from_buildings if ClericGovernor 2 rs_morale_in_province produces CatholicChoirs
+StainedGlassWorkshops,Upgrade,2200,6000,200,200,,2 Gold in Town 1 WorkerSlots in Town 10 rs_fame_buildings_bonus if Governed 1 WorkerSlots in Village,Glass
+GothicTechniques,Upgrade,3310,8000,500,300,,4 Gold in Town 2 WorkerSlots in Town 20 rs_fame_buildings_bonus if Governed
+Cloister,Upgrade,1660,4000,50,500,,1 ks_books_per_cleric if ClericGovernor 1 ks_piety_per_cleric if ClericGovernor 1 ks_influence 2 ks_catholic_influence
+DiocesanAdministration,Upgrade,2200,6000,200,600,,1 Gold in Monastery 1 food in Farm 1 Trade in Village 1 Levy in Keep produces ReligiousAdministration,
+EpiscopalChancery,Upgrade,3310,5000,500,800,,7 ks_influence 7 ks_catholic_influence 25 rs_fame_buildings_bonus if ClericGovernor
+SynodalCourts,Upgrade,3860,8000,500,1000,,25 ks_convert_chance_after_siege_perc if ClericGovernor 25 ks_convert_religion_duration_reduction_perc if ClericGovernor 25 ks_reduce_religious_tension_perc if ClericGovernor
 // Muslim
-TeachingCircles,Upgrade,900,3000,50,,,1 Piety in Town 1 Books in Town
-MysticalTraditions,Upgrade,750,5000,50,,,1 rs_happiness 10 ks_culture_from_buildings if ClericGovernor
-Kuttab,Upgrade,1200,4000,100,,,1 Books in Town 1 Gold in Town 1 Hammers in Town
-RuralKuttabs,Upgrade,2500,6000,200,,,1 Gold in Village 1 Levy in Keep 1 Food in Farm 1 Books in Mosque 1 Gold in Mine 1 Trade in Quarry 1 Trade in Vineyard 1 Trade in HorseFarm
-AblutionCourtyard,Upgrade,900,3000,,,,1 Piety in Town 5 ks_culture_from_buildings if ClericGovernor 50 ks_max_piety if ClericGovernor
-Minbar,Upgrade,1000,2000,,,,2 Piety in Town
-Khutba,Upgrade,1500,4000,50,,,2 rs_happiness 1 Piety in Town 1 Piety in Mosque
-AdvancedTheology,Upgrade,3500,6000,50,,,1 ks_books_per_cleric if ClericGovernor 1 ks_piety_per_cleric if ClericGovernor produces Clergy
-DomedSanctuary,Upgrade,1750,5000,100,,,1 Piety in Town 1 Piety in Village 1 Piety in Keep
-MonumentalMinaret,Upgrade,2500,6000,200,,,15 ks_culture_from_buildings if ClericGovernor 1 rs_morale_in_province if ClericGovernor 10 rs_fame_buildings_bonus if Governed
-GeometricTilework,Upgrade,2000,7000,500,,,4 Gold in Town 2 WorkerSlots in Town 20 rs_fame_buildings_bonus if Governed
-FatwaCouncil,Upgrade,2500,5000,200,,,2 rs_stability 1 ks_piety_converted_to_books_perc if Governed produces Muftis
-MoralOversight,Upgrade,1500,4000,100,,,-2 rs_happiness 2 Gold in Town produces Muhtasibs
-RoyalDecreesOffice,Upgrade,2000,6000,200,,,-5 ks_happiness if KingGovernor 30 ks_culture_from_buildings if KingGovernor 30 rs_fame_buildings_bonus if KingGovernor
-CentralizationReforms,Upgrade,3000,8000,500,,,-5 ks_stability if KingGovernor 15 rs_stability_to_own_neighbors if KingGovernor 30 rs_stability if KingGovernor
-ViziersOffices,Upgrade,2500,5000,100,,,-5 rs_stability if KingGovernor 20 Gold in Town if KingGovernor 5 ks_influence if KingGovernor
+TeachingCircles,Upgrade,1000,3000,50,,,1 Piety in Town 1 Books in Town
+MysticalTraditions,Upgrade,830,5000,50,,,1 rs_happiness 10 ks_culture_from_buildings if ClericGovernor
+Kuttab,Upgrade,1320,4000,100,,,1 Books in Town 1 Gold in Town 1 Hammers in Town
+RuralKuttabs,Upgrade,2750,6000,200,,,1 Gold in Village 1 Levy in Keep 1 Food in Farm 1 Books in Mosque 1 Gold in Mine 1 Trade in Quarry 1 Trade in Vineyard 1 Trade in HorseFarm
+AblutionCourtyard,Upgrade,1000,3000,,,,1 Piety in Town 5 ks_culture_from_buildings if ClericGovernor 50 ks_max_piety if ClericGovernor
+Minbar,Upgrade,1100,2000,,,,2 Piety in Town
+Khutba,Upgrade,1660,4000,50,,,2 rs_happiness 1 Piety in Town 1 Piety in Mosque
+AdvancedTheology,Upgrade,3860,6000,50,,,1 ks_books_per_cleric if ClericGovernor 1 ks_piety_per_cleric if ClericGovernor produces Clergy
+DomedSanctuary,Upgrade,1930,5000,100,,,1 Piety in Town 1 Piety in Village 1 Piety in Keep
+MonumentalMinaret,Upgrade,2750,6000,200,,,15 ks_culture_from_buildings if ClericGovernor 1 rs_morale_in_province if ClericGovernor 10 rs_fame_buildings_bonus if Governed
+GeometricTilework,Upgrade,2200,7000,500,,,4 Gold in Town 2 WorkerSlots in Town 20 rs_fame_buildings_bonus if Governed
+FatwaCouncil,Upgrade,2750,5000,200,,,2 rs_stability 1 ks_piety_converted_to_books_perc if Governed produces Muftis
+MoralOversight,Upgrade,1660,4000,100,,,-2 rs_happiness 2 Gold in Town produces Muhtasibs
+RoyalDecreesOffice,Upgrade,2200,6000,200,,,-5 ks_happiness if KingGovernor 30 ks_culture_from_buildings if KingGovernor 30 rs_fame_buildings_bonus if KingGovernor
+CentralizationReforms,Upgrade,3310,8000,500,,,-5 ks_stability if KingGovernor 15 rs_stability_to_own_neighbors if KingGovernor 30 rs_stability if KingGovernor
+ViziersOffices,Upgrade,2750,5000,100,,,-5 rs_stability if KingGovernor 20 Gold in Town if KingGovernor 5 ks_influence if KingGovernor
 // Miltary
-MilitiaBarracks,Upgrade,800,2500,,,,1 TownGuards in Town
-MilitiaDrills,Upgrade,1400,4000,50,,,1 rs_initial_troops_level,
-MilitiaOffices,Upgrade,1000,2500,,,,2 TownGuards in Town 1 WorkerSlots in Town 3 ks_espionage_defense_skills_traditions if Governed,
-WatchRotations,Upgrade,800,3000,100,,,2 rs_stability_buildings -2 ks_corruption if Governed
-Watchtowers,Upgrade,1500,3500,,,,1 TownGuards in Village 2 rs_stability_buildings 10 rs_enemy_move_speed_reduction_perc,Craftsmen
-ArcheryRange,Upgrade,1000,4000,50,,,1 TownGuards in Town 1 TownGuards in Village 2 ks_ranged_CTH_perc if Governed produces TrainedArchers
-KnightlyTrainingGrounds,Upgrade,1200,5000,,,,1 TownGuards in Keep 2 ks_elite_unit_defense_flat if Governed produces TrainedKnights
-LesserFiefs,Upgrade,1200,3500,,,,1 Levy in Village -2 Gold in Village 50 ks_max_levy if Governed
-Chivalry,Upgrade,1500,6000,,1000,,10 rs_fame_buildings_bonus if Governed 5 ks_culture_from_buildings if Governed 2 rs_morale_in_province if Governed 2 ks_catholic_influence if Governed,TranslatedBooks
-LanceWarfare,Upgrade,1500,4500,50,,,1 Levy in Town -1 Gold in Town,
-LordsHalls,Upgrade,2500,6000,100,,,1 Levy in Town -1 Gold in Town,
-Farrier,Upgrade,1400,3500,100,,,1 Trade in Town 1 Gold in Town produces Horseshoes,IronTools
-SaddlersShop,Upgrade,1200,3000,50,,,1 Gold in Town produces Saddles,Craftsmen
-MessengerService,Upgrade,1600,5000,100,,,-5 Gold in Town if KingGovernor 20 ks_knight_wage_discount_perc if KingGovernor,EarlyScholars
-CrossbowManufactoring,Upgrade,700,4000,100,,,1 Trade in Town,Craftsmen
-HeraldryChambers,Upgrade,1800,5000,,,,4 rs_morale_in_province produces MilitaryHeraldry,Canvas
-PlanningRoom,Upgrade,1000,4000,,,,5 ks_army_speed_world_perc if KingGovernor 5 ks_spy_action_success_chance if KingGovernor
-RecruitmentOffices,Upgrade,1500,4000,,,,150 rs_max_food 10 rs_light_discount_perc 10 rs_heavy_discount_perc -2 rs_happiness
-MercenaryHiringOffice,Upgrade,1200,2500,,,,produces MercenaryRecruiters
-WindlassMechanisms,Upgrade,1500,4500,500,,,1 Trade in Town,
-AdvancedBowmaking,Upgrade,1200,6000,200,,,1 Trade in Town,
-TrebuchetAssemblyYard,Upgrade,800,6000,500,,,5 rs_attrition_damage,IronTools
-GunpowderStorage,Upgrade,1500,5000,1000,,,3 Trade in Town produces Gunpowder,Saltpeter Sulfur IronTools
-CannonFoundry,Upgrade,3000,7000,1500,,,3 Trade in Town produces Cannons,Gunpowder
-DrillInstructors,Upgrade,1500,5000,100,,,1 rs_initial_troops_level
-StandardizedArmament,Upgrade,1250,5000,200,,,20 rs_heavy_discount_perc
-OfficerMess,Upgrade,2000,6000,500,,,produces ArmyOfficers
-InfantryFormations,Upgrade,500,8000,,,,
-CombinedArmsDoctrine,Upgrade,500,8000,,,,
+MilitiaBarracks,Upgrade,890,2500,,,,1 TownGuards in Town
+MilitiaDrills,Upgrade,1550,4000,50,,,1 rs_initial_troops_level,
+MilitiaOffices,Upgrade,1100,2500,,,,2 TownGuards in Town 1 WorkerSlots in Town 3 ks_espionage_defense_skills_traditions if Governed,
+WatchRotations,Upgrade,890,3000,100,,,2 rs_stability_buildings -2 ks_corruption if Governed
+SettlementGarrisons,Upgrade,2200,4000,,,,-1 Gold in All 2 TownGuards in All -1 ks_corruption if Governed
+Watchtowers,Upgrade,1660,3500,,,,1 TownGuards in Village 2 rs_stability_buildings 10 rs_enemy_move_speed_reduction_perc,Craftsmen
+ArcheryRange,Upgrade,1100,4000,50,,,1 TownGuards in Town 1 TownGuards in Village 2 ks_ranged_CTH_perc if Governed produces TrainedArchers
+KnightlyTrainingGrounds,Upgrade,1320,5000,,,,1 TownGuards in Keep 2 ks_elite_unit_defense_flat if Governed produces TrainedKnights
+LesserFiefs,Upgrade,1320,3500,,,,1 Levy in Village -2 Gold in Village 50 ks_max_levy if Governed
+Chivalry,Upgrade,1660,6000,,1000,,10 rs_fame_buildings_bonus if Governed 5 ks_culture_from_buildings if Governed 2 rs_morale_in_province if Governed 2 ks_catholic_influence if Governed,TranslatedBooks
+LanceWarfare,Upgrade,1660,4500,50,,,1 Levy in Town -1 Gold in Town,
+LordsHalls,Upgrade,2750,6000,100,,,1 Levy in Town -1 Gold in Town,
+Farrier,Upgrade,1550,3500,100,,,1 Trade in Town 1 Gold in Town produces Horseshoes,IronTools
+SaddlersShop,Upgrade,1320,3000,50,,,1 Gold in Town produces Saddles,Craftsmen
+MessengerService,Upgrade,1770,5000,100,,,-5 Gold in Town if KingGovernor 20 ks_knight_wage_discount_perc if KingGovernor,EarlyScholars
+CrossbowManufactoring,Upgrade,780,4000,100,,,1 Trade in Town,Craftsmen
+HeraldryChambers,Upgrade,1990,5000,,,,4 rs_morale_in_province produces MilitaryHeraldry,Canvas
+PlanningRoom,Upgrade,1100,4000,,,,5 ks_army_speed_world_perc if KingGovernor 5 ks_spy_action_success_chance if KingGovernor
+RecruitmentOffices,Upgrade,1660,4000,,,,150 rs_max_food 10 rs_light_discount_perc 10 rs_heavy_discount_perc -2 rs_happiness
+MercenaryHiringOffice,Upgrade,1320,2500,,,,produces MercenaryRecruiters
+WindlassMechanisms,Upgrade,1660,4500,500,,,1 Trade in Town,
+AdvancedBowmaking,Upgrade,1320,6000,200,,,1 Trade in Town,
+TrebuchetAssemblyYard,Upgrade,890,6000,500,,,5 rs_attrition_damage,IronTools
+GunpowderStorage,Upgrade,1660,5000,1000,,,3 Trade in Town produces Gunpowder,Saltpeter Sulfur IronTools
+CannonFoundry,Upgrade,3310,7000,1500,,,3 Trade in Town produces Cannons,Gunpowder
+DrillInstructors,Upgrade,1660,5000,100,,,1 rs_initial_troops_level
+StandardizedArmament,Upgrade,1380,5000,200,,,20 rs_heavy_discount_perc
+OfficerMess,Upgrade,2200,6000,500,,,produces ArmyOfficers
+InfantryFormations,Upgrade,550,8000,,,,
+CombinedArmsDoctrine,Upgrade,550,8000,,,,
 // Trade
-AnnualFairs,Upgrade,1200,3000,,,,2 Gold in Town 1 Gold in Village
-Inns,Upgrade,800,2000,,,,2 rs_happiness 2 Gold in Town,Ale
-GrainTrading,Upgrade,200,2500,,,,5 Gold in Town -2 Food in Town,DriedGrain
-LinenTrading,Upgrade,200,2500,,,,5 Gold in Town -2 Trade in Town,Linen
-ToolsTrading,Upgrade,200,2500,,,,5 Gold in Town -2 Hammers in Town,IronTools
-Tavern,Upgrade,1400,3500,,,,2 rs_happiness 1 Gold in Town 1 Gold in Village 1 Gold in Keep,Ale Pastries
-StandardizationOffices,Upgrade,1700,4500,200,,,1 Food in Town 1 Trade in Town 1 Books in Town produces StandardizedWeights,IronTools
-DiplomaticOffices,Upgrade,1200,4000,100,,,2 Gold in Town 5 ks_influence
-TradeFair,Upgrade,2000,5000,100,,,5 rs_happiness 10 ks_culture_from_buildings if Governed 10 rs_fame_buildings_bonus if Governed
-MerchantBank,Upgrade,3000,6000,100,,,2 Gold in Farm 2 Gold in Monastery 1 Gold in Keep 10 ks_inflation_reduction_perc if Governed -5 Piety in Town
-MarketOffices,Upgrade,2000,5000,100,,,5 rs_happiness 10 ks_culture_from_buildings if Governed 10 rs_fame_buildings_bonus if Governed
-Caravanserai,Upgrade,3000,6000,100,,,2 Gold in Village 2 Gold in OasisVillage 1 Gold in Keep
+AnnualFairs,Upgrade,1320,3000,,,,2 Gold in Town 1 Gold in Village
+Inns,Upgrade,890,2000,,,,2 rs_happiness 2 Gold in Town,Ale
+GrainTrading,Upgrade,230,2500,,,,5 Gold in Town -2 Food in Town,DriedGrain
+LinenTrading,Upgrade,230,2500,,,,5 Gold in Town -2 Trade in Town,Linen
+ToolsTrading,Upgrade,230,2500,,,,5 Gold in Town -2 Hammers in Town,IronTools
+Tavern,Upgrade,1550,3500,,,,2 rs_happiness 1 Gold in Town 1 Gold in Village 1 Gold in Keep,Ale Pastries
+StandardizationOffices,Upgrade,1880,4500,200,,,1 Food in Town 1 Trade in Town 1 Books in Town produces StandardizedWeights,IronTools
+DiplomaticOffices,Upgrade,1550,4000,100,,,5 ks_import_goods_and_food_upkeep_reduction_perc if Governed 5 ks_influence
+TradeFair,Upgrade,2200,5000,100,,,5 rs_happiness 10 ks_culture_from_buildings if Governed 10 rs_fame_buildings_bonus if Governed,Ale Pastries Meat
+MerchantBank,Upgrade,3310,6000,100,,,2 Gold in Farm 2 Gold in Monastery 1 Gold in Keep 10 ks_inflation_reduction_perc if Governed -5 Piety in Town
+MarketOffices,Upgrade,2200,5000,100,,,5 rs_happiness 10 ks_culture_from_buildings if Governed 10 rs_fame_buildings_bonus if Governed
+Caravanserai,Upgrade,3310,6000,100,,,2 Gold in Village 2 Gold in OasisVillage 1 Gold in Keep
 // Crafting
-Craftsmenship,Upgrade,800,4000,50,,,3 rs_build_cost_discount_perc produces Craftsmen
-Stonemasonry,Upgrade,1200,4000,50,,,3 rs_build_cost_discount_perc produces Stonemasons
-SimpleWeaponsmithing,Upgrade,800,3000,50,,,
-SimpleArmorsmithing,Upgrade,1200,3000,50,,,
-Toolsmithing,Upgrade,1000,3500,100,,,2 Trade in Town produces IronTools,Charcoal Iron
-ImprovedTanningLiquors,Upgrade,600,3000,200,,,1 Trade in Village 5 rs_light_discount_perc
-Leatherworking,Upgrade,1200,4000,200,,,1 Gold in Town 1 Trade in Town 10 rs_light_discount_perc produces Leather,IronTools
-AdvancedWeaponsmithing,Upgrade,2000,4500,500,,,1 Trade in Town
-AdvancedArmorsmithing,Upgrade,2200,4500,500,,,1 Trade in Town
-ForgeBellows,Upgrade,800,5000,200,,,1 Hammers in Town 1 WorkerSlots in Town,EarlySteel
-LateWeaponsmithing,Upgrade,2800,6000,1000,,,2 Trade in Town
-LateArmorsmithing,Upgrade,3000,6000,1000,,,2 Trade in Town
-Glassmaking,Upgrade,2200,6000,1000,,,2 Trade in Town 1 WorkerSlots in Town produces Glass,Christian
-Sculpting,Upgrade,2000,5000,500,,,3 Trade in Town produces Sculptures,Artists Christian
-Glassmaking_Muslim,Upgrade,2200,6000,1000,,,2 Trade in Town 1 WorkerSlots in Town produces Glass,Muslim
-Sculpting_Muslim,Upgrade,2000,5000,500,,,3 Trade in Town produces Sculptures,Artists Muslim
+Craftsmenship,Upgrade,890,4000,50,,,3 rs_build_cost_discount_perc produces Craftsmen
+Stonemasonry,Upgrade,1320,4000,50,,,3 rs_build_cost_discount_perc produces Stonemasons
+SimpleWeaponsmithing,Upgrade,890,3000,50,,,
+SimpleArmorsmithing,Upgrade,1320,3000,50,,,
+Toolsmithing,Upgrade,1100,3500,100,,,2 Trade in Town produces IronTools,Charcoal Iron
+ImprovedTanningLiquors,Upgrade,660,3000,200,,,1 Trade in Village 5 rs_light_discount_perc
+Leatherworking,Upgrade,1320,4000,200,,,1 Gold in Town 1 Trade in Town 10 rs_light_discount_perc produces Leather,IronTools
+AdvancedWeaponsmithing,Upgrade,2200,4500,500,,,1 Trade in Town
+AdvancedArmorsmithing,Upgrade,2420,4500,500,,,1 Trade in Town
+ForgeBellows,Upgrade,890,5000,200,,,1 Hammers in Town 1 WorkerSlots in Town,EarlySteel
+LateWeaponsmithing,Upgrade,3090,6000,1000,,,2 Trade in Town
+LateArmorsmithing,Upgrade,3310,6000,1000,,,2 Trade in Town
+Glassmaking,Upgrade,2420,6000,1000,,,2 Trade in Town 1 WorkerSlots in Town produces Glass,Christian
+Sculpting,Upgrade,2200,5000,500,,,3 Trade in Town produces Sculptures,Artists Christian
+Glassmaking_Muslim,Upgrade,2420,6000,1000,,,2 Trade in Town 1 WorkerSlots in Town produces Glass,Muslim
+Sculpting_Muslim,Upgrade,2200,5000,500,,,3 Trade in Town produces Sculptures,Artists Muslim
 // Farming
-HorseHarnessing,Upgrade,750,2500,50,,,1 Food in Town 1 Food in Farm,
-HeavyPloughsWorkshop,Upgrade,900,3500,100,,,1 Food in Town 1 WorkerSlots in Town,IronTools
-CropsRotation,Upgrade,1000,4000,200,,,1 Food in Farm 1 WorkerSlots in Town produces VariedCrops,
-Granary,Upgrade,500,2000,50,,,100 rs_max_food 1 WorkerSlots in Town,
-DryingOvens,Upgrade,1100,3000,100,,,1 Trade in Town produces DriedGrain,IronTools
-FlaxFarming,Upgrade,600,3000,50,,,1 Trade in Town produces Flax
-Bakery,Upgrade,1100,3000,50,,,1 Gold in Town produces Pastries,VariedCrops Salt
-Breweries,Upgrade,1500,4000,100,,,1 Gold in Town 1 Trade in Town produces Ale,VariedCrops
-OilPress,Upgrade,900,3000,50,,,1 Gold in Town 1 Trade in Town produces Oils,Flax
-SpinningWheels,Upgrade,800,3500,100,,,2 Trade in Town
-CanvasMaker,Upgrade,1400,3000,50,,,1 Hammers in Town 1 Trade in Town produces Canvas,
-FullingMills,Upgrade,1200,3500,200,,,1 Gold in Town 1 Gold in Village 1 Trade in Town
-ClothManufacturing,Upgrade,2000,4500,200,,,2 Gold in Town 2 WorkerSlots in Town produces Clothes,IronTools
-ArmorWeaving,Upgrade,2400,4500,500,,,1 Trade in Town 10 rs_light_discount_perc 10 rs_heavy_discount_perc produces Gambeson,IronTools
+HorseHarnessing,Upgrade,830,2500,50,,,1 Food in Town 1 Food in Farm,
+HeavyPloughsWorkshop,Upgrade,1000,3500,100,,,1 Food in Town 1 WorkerSlots in Town,IronTools
+CropsRotation,Upgrade,1100,4000,200,,,1 Food in Farm 1 WorkerSlots in Town produces VariedCrops,
+Granary,Upgrade,550,2000,50,,,100 rs_max_food 1 WorkerSlots in Town,
+DryingOvens,Upgrade,1210,3000,100,,,1 Trade in Town produces DriedGrain,IronTools
+FlaxFarming,Upgrade,660,3000,50,,,1 Trade in Town produces Flax
+Bakery,Upgrade,1210,3000,50,,,1 Gold in Town produces Pastries,VariedCrops Salt
+Breweries,Upgrade,1660,4000,100,,,1 Gold in Town 1 Trade in Town produces Ale,VariedCrops
+OilPress,Upgrade,1000,3000,50,,,1 Gold in Town 1 Trade in Town produces Oils,Flax
+SpinningWheels,Upgrade,890,3500,100,,,2 Trade in Town
+CanvasMaker,Upgrade,1550,3000,50,,,1 Hammers in Town 1 Trade in Town produces Canvas,
+FullingMills,Upgrade,1320,3500,200,,,1 Gold in Town 1 Gold in Village 1 Trade in Town
+ClothManufacturing,Upgrade,2200,4500,200,,,2 Gold in Town 2 WorkerSlots in Town produces Clothes,IronTools
+ArmorWeaving,Upgrade,2640,4500,500,,,1 Trade in Town 10 rs_light_discount_perc 10 rs_heavy_discount_perc produces Gambeson,IronTools
 // Culture
 // Education
 //Christian
-EarlyScholasticism,Upgrade,1000,4000,100,,,1 Books in Town produces EarlyScholars
-TriviumCurriculum,Upgrade,2500,6000,500,,,1 Gold in Village 1 Levy in Keep 1 Food in Farm 1 Books in Monastery 1 Gold in Mine 1 Trade in Quarry 1 Trade in Vineyard 1 Trade in HorseFarm
-TranslationWorkshops,Upgrade,2000,5000,200,,,2 ks_learn_upgrade_skill_tradition_discount_perc if Governed produces TranslatedBooks
-Cataloguing,Upgrade,1000,3000,50,,,2 Books in Town 5 rs_growth_rate_perc,Christian
-ArchiveRoom,Upgrade,1300,4000,100,,,1 Books in Town 150 ks_max_books if Governed
-FacultyTheology,Upgrade,1500,5000,200,,,-2 rs_stability_buildings 4 Piety in Town 1 WorkerSlots in Town 2 Piety in Monastery
-FacultyMedicine,Upgrade,2000,5000,500,,,-2 rs_stability_buildings 1 WorkerSlots in Town produces Medicine
-FacultyArts,Upgrade,1500,5000,200,,,-2 rs_stability_buildings 4 Trade in Town 1 WorkerSlots in Town 1 Trade in Village produces Artists
-HighScholasticism,Upgrade,2000,6000,500,,,-2 rs_stability_buildings produces Scholars
-AcademicCharter,Upgrade,1000,5000,100,,,-4 rs_stability_buildings 4 Books in Town 2 Books in Village
-Observatory_Christian,Upgrade,2500,6000,200,,,1 WorkerSlots in Town 2 ks_army_speed_world_perc if Governed 2 ks_ships_speed_perc if Governed produces Compasses
+EarlyScholasticism,Upgrade,1100,4000,100,,,1 Books in Town produces EarlyScholars
+TriviumCurriculum,Upgrade,2750,6000,500,,,1 Gold in Village 1 Levy in Keep 1 Food in Farm 1 Books in Monastery 1 Gold in Mine 1 Trade in Quarry 1 Trade in Vineyard 1 Trade in HorseFarm
+TranslationWorkshops,Upgrade,2200,5000,200,,,2 ks_learn_upgrade_skill_tradition_discount_perc if Governed produces TranslatedBooks
+Cataloguing,Upgrade,1100,3000,50,,,2 Books in Town 5 rs_growth_rate_perc,Christian
+ArchiveRoom,Upgrade,1440,4000,100,,,1 Books in Town 150 ks_max_books if Governed
+FacultyTheology,Upgrade,1660,5000,200,,,-2 rs_stability_buildings 4 Piety in Town 1 WorkerSlots in Town 2 Piety in Monastery
+FacultyMedicine,Upgrade,2200,5000,500,,,-2 rs_stability_buildings 1 WorkerSlots in Town produces Medicine
+FacultyArts,Upgrade,1660,5000,200,,,-2 rs_stability_buildings 4 Trade in Town 1 WorkerSlots in Town 1 Trade in Village produces Artists
+HighScholasticism,Upgrade,2200,6000,500,,,-2 rs_stability_buildings produces Scholars
+AcademicCharter,Upgrade,1100,5000,100,,,-4 rs_stability_buildings 4 Books in Town 2 Books in Village
+Observatory_Christian,Upgrade,2750,6000,200,,,1 WorkerSlots in Town 2 ks_army_speed_world_perc if Governed 2 ks_ships_speed_perc if Governed produces Compasses,Christian
 // Muslim
-QuranicStudies,Upgrade,500,3000,,,,1 Piety in Town
-LogicPhilosophy,Upgrade,1000,4000,100,,,1 Books in Town produces EarlyScholars
-EthicsStudies,Upgrade,1000,4000,100,,,3 Books in Town -2 Piety in Town -2 rs_stability_buildings
-ReligiousOrthodoxy,Upgrade,500,3000,50,,,1 Piety in Town 1 Levy in Town -1 Books in Town 1 Piety in Mosque 1 Levy in Mosque -1 Books in Mosque
-WomensTeachingCircles,Upgrade,500,4000,50,,, -4 rs_stability_buildings 1 Books in Town 1 Piety in Town 1 Books in Village 1 Piety in Village
-Cataloguing_Muslim,Upgrade,1000,3000,50,,,2 Books in Town 5 rs_growth_rate_perc,Muslim
-TranslationWorkshops_Muslim,Upgrade,2000,5000,200,,,2 ks_learn_upgrade_skill_tradition_discount_perc if Governed produces TranslatedBooks,Muslim
-ScientificNotation,Upgrade,2000,5000,500,,,2 Hammers in Town 5 ks_culture_from_buildings if Governed
-MedicinePharmacy,Upgrade,2000,5000,500,,,-2 rs_stability_buildings 5 rs_growth_rate_perc 3 Trade in Town 1 WorkerSlots in Town produces Medicine
-MathematicsEngineering,Upgrade,2000,5000,500,,,-2 rs_stability_buildings 4 Hammers in Town 1 WorkerSlots in Town 3 ks_build_cost_discount_perc if Governed 1 Hammers in Village
-AdvancedPhilosophy,Upgrade,2500,6000,500,,,-2 rs_stability_buildings 2 Books in Town 1 Books in Village produces Scholars
-Observatory_Muslim,Upgrade,2500,6000,200,,,1 WorkerSlots in Town 2 ks_army_speed_world_perc if Governed 2 ks_ships_speed_perc if Governed produces Compasses
+QuranicStudies,Upgrade,550,3000,,,,1 Piety in Town
+LogicPhilosophy,Upgrade,1100,4000,100,,,1 Books in Town produces EarlyScholars
+EthicsStudies,Upgrade,1100,4000,100,,,3 Books in Town -2 Piety in Town -2 rs_stability_buildings
+ReligiousOrthodoxy,Upgrade,550,3000,50,,,1 Piety in Town 1 Levy in Town -1 Books in Town 1 Piety in Mosque 1 Levy in Mosque -1 Books in Mosque
+WomensTeachingCircles,Upgrade,550,4000,50,,, -4 rs_stability_buildings 1 Books in Town 1 Piety in Town 1 Books in Village 1 Piety in Village
+Cataloguing_Muslim,Upgrade,1100,3000,50,,,2 Books in Town 5 rs_growth_rate_perc,Muslim
+TranslationWorkshops_Muslim,Upgrade,2200,5000,200,,,2 ks_learn_upgrade_skill_tradition_discount_perc if Governed produces TranslatedBooks,Muslim
+ScientificNotation,Upgrade,2200,5000,500,,,2 Hammers in Town 5 ks_culture_from_buildings if Governed
+MedicinePharmacy,Upgrade,2200,5000,500,,,-2 rs_stability_buildings 5 rs_growth_rate_perc 3 Trade in Town 1 WorkerSlots in Town produces Medicine
+MathematicsEngineering,Upgrade,2200,5000,500,,,-2 rs_stability_buildings 4 Hammers in Town 1 WorkerSlots in Town 3 ks_build_cost_discount_perc if Governed 1 Hammers in Village
+AdvancedPhilosophy,Upgrade,2750,6000,500,,,-2 rs_stability_buildings 2 Books in Town 1 Books in Village produces Scholars
+Observatory_Muslim,Upgrade,2750,6000,200,,,1 WorkerSlots in Town 2 ks_army_speed_world_perc if Governed 2 ks_ships_speed_perc if Governed produces Compasses,Muslim
 // Punishment
-ExecutionersSquare,Upgrade,500,1500,,,,4 rs_stability_buildings -10 rs_growth_rate_perc
-TortureChamber,Upgrade,1000,3000,,,,5 rs_stability_buildings -2 Gold in Town
-JudgesBench,Upgrade,500,500,,,,,Christian
-RecordsArchive,Upgrade,500,500,,,,,Christian
-TownHeralds,Upgrade,500,500,,,,,Christian
-CourtScribes,Upgrade,500,500,50,,,,Muslim
-DisputeMediationOffice,Upgrade,500,500,50,,,,Muslim
-CityPrison,Upgrade,2000,2600,,,,2 rs_stability_buildings,
+ExecutionersSquare,Upgrade,550,1500,,,,2 Gold in Town 4 rs_stability_buildings -1 ks_stability,
+CityPrison,Upgrade,1550,3000,,,,2 rs_stability_buildings 2 TownGuards in Town -2 Gold in Town,
+RecordsArchive,Upgrade,1990,4000,50,,,2 rs_stability_buildings 50 ks_max_piety if Governed 50 ks_max_books if Governed,Christian
+TownHeralds,Upgrade,2420,4500,100,,,2 rs_stability_buildings -2 ks_corruption if Governed 10 ks_culture_from_buildings if Governed,Christian
+CourtScribes,Upgrade,550,500,50,,,,Muslim
+DisputeMediationOffice,Upgrade,550,500,50,,,,Muslim
 // River and Sea
-AnglersHuts,Upgrade,600,1500,,,,2 Food in Town 1 Food in Village,
-Warehouse,Upgrade,1400,3000,,,,1 Gold in Town 1 Gold in LoggingCamp 1 Gold in Mine 1 Gold in Quarry 1 Gold in Vineyard 1 Gold in HorseFarm 10 rs_growth_rate_perc 50 rs_max_food,
+AnglersHuts,Upgrade,660,1500,,,,2 Food in Town 1 Food in Village,
+Warehouse,Upgrade,1550,3000,,,,1 Gold in Town 1 Gold in Mine 1 Gold in Quarry 1 Gold in Vineyard 1 Gold in HorseFarm 10 rs_growth_rate_perc 50 rs_max_food,Craftsmen
 Warehouse_RiverTrade,Warehouse,,,,,,,
 Warehouse_Harbor,Warehouse,,,,,,,
-WaterWheels,Upgrade,2000,4000,100,,,1 Food in Town 1 Food in Farm 5 rs_growth_rate_perc,IronTools
-Boatwright,Upgrade,1600,3500,50,,,2 Trade in Town 1 Trade in Village,Craftsmen Tar
-Boatwright_Harbor,Upgrade,1600,3500,50,,,2 Trade in Town 1 Trade in Village,Craftsmen Tar
-HarborChains,Upgrade,1800,4500,100,,,1 TownGuards in Town 50 rs_siege_defense 2 rs_happiness,IronTools
-BeaconTowers,Upgrade,2400,5000,100,,,3 Gold in Town 5 ks_ships_speed_perc if Governed 10 ks_tc_sea_spread_penalty_reduced_perc if Governed,Stonemasons
+WaterWheels,Upgrade,2200,4000,100,,,1 Food in Town 1 Food in Farm 5 rs_growth_rate_perc,IronTools
+Boatwright,Upgrade,1770,3500,50,,,2 Trade in Town 1 Trade in Village,
+Boatwright_Harbor,Upgrade,1770,3500,50,,,2 Trade in Town 1 Trade in Village,
+HarborChains,Upgrade,1990,4500,100,,,1 TownGuards in Town 50 rs_siege_defense 2 rs_happiness,IronTools
+BeaconTowers,Upgrade,2640,5000,100,,,3 Gold in Town 5 ks_ships_speed_perc if Governed 10 ks_tc_sea_spread_penalty_reduced_perc if Governed,Stonemasons
 // Resource Upgrades
-Sawmill,Upgrade,1000,2000,,,,10 rs_build_cost_discount_perc 5 rs_settlement_recovery produces Timber,
-TarPit,Upgrade,1400,3000,100,,,5 rs_growth_rate_perc 1 Gold in Town produces Tar,
-ColliersKiln,Upgrade,800,1500,,,,1 Gold in Town produces Charcoal,
-MasterJoiner,Upgrade,2100,4000,200,,,1 WorkerSlots in Town 1 Trade in Town 15 rs_settlement_recovery produces Furniture,Craftsmen
-BloomeryFurnaces,Upgrade,1300,3000,,,,1 WorkerSlots in Town 1 Trade in Town produces Iron,Charcoal
-Stücköfen,Upgrade,1900,4500,100,,,2 Gold in Town 2 Trade in Town 10 rs_heavy_discount_perc,EarlyScholars
-BlastFurnace,Upgrade,3000,6000,500,,,1 WorkerSlots in Town 1 Gold in Village 1 Trade in Town produces EarlySteel,Scholars
-SaltRefineries,Upgrade,1600,4000,100,,,1 WorkerSlots in Town 1 Gold in Village 1 Trade in Town 5 rs_growth_rate_perc,EarlyScholars
-StudFarm,Upgrade,900,2500,50,,,2 Gold in HorseFarm 1 Food in Farm,
-SelectiveBreeding,Upgrade,2500,4000,100,,,1 Trade in HorseFarm produces TrainedHorses,
-WarhorseBreed,Upgrade,3500,6000,500,,,3 Trade in HorseFarm produces WarHorses,
-ParchmentMaker,Upgrade,2500,4000,100,,,"2 Gold in Town 1 Books in MonasteryOrMosque produces Parchment",
-WoolWeaver,Upgrade,1500,2500,,,,"1 Gold in Town 1 Gold in Village produces Wool",
-FineWoolBreeding,Upgrade,1000,4000,100,,,"2 Trade in Town 1 WorkerSlots in Town",
-OxBreeding,Upgrade,2000,3500,100,,,"2 Trade in Town produces DraftOxen",
-DairyShop,Upgrade,1100,2000,50,,,"2 Food in Town 1 Trade in Town 1 Gold in Town",-
-Butcher_Cattle,Butcher,1600,2500,50,,,2 Food in Town 50 rs_max_food 1 WorkerSlots in Town produces Meat,Salt
+Sawmill,Upgrade,1100,2000,,,,10 rs_build_cost_discount_perc 5 rs_settlement_recovery produces Timber,
+TarPit,Upgrade,1550,3000,100,,,5 rs_growth_rate_perc 1 Gold in Town produces Tar,
+ColliersKiln,Upgrade,890,1500,,,,1 Gold in Town produces Charcoal,
+MasterJoiner,Upgrade,2310,4000,200,,,1 WorkerSlots in Town 1 Trade in Town 15 rs_settlement_recovery produces Furniture,Craftsmen
+BloomeryFurnaces,Upgrade,1440,3000,,,,1 WorkerSlots in Town 1 Trade in Town produces Iron,Charcoal
+Stücköfen,Upgrade,2090,4500,100,,,2 Gold in Town 2 Trade in Town 10 rs_heavy_discount_perc,EarlyScholars
+BlastFurnace,Upgrade,3310,6000,500,,,1 WorkerSlots in Town 1 Gold in Village 1 Trade in Town produces EarlySteel,Scholars
+SaltRefineries,Upgrade,1770,4000,100,,,1 WorkerSlots in Town 1 Gold in Village 1 Trade in Town 5 rs_growth_rate_perc,EarlyScholars
+StudFarm,Upgrade,1000,2500,50,,,2 Gold in HorseFarm 1 Food in Farm,
+SelectiveBreeding,Upgrade,2750,4000,100,,,1 Trade in HorseFarm produces TrainedHorses,
+WarhorseBreed,Upgrade,3860,6000,500,,,3 Trade in HorseFarm produces WarHorses,
+ParchmentMaker,Upgrade,2750,4000,100,,,"2 Gold in Town 1 Books in MonasteryOrMosque produces Parchment",
+WoolWeaver,Upgrade,1660,2500,,,,"1 Gold in Town 1 Gold in Village produces Wool",
+FineWoolBreeding,Upgrade,1100,4000,100,,,"2 Trade in Town 1 WorkerSlots in Town",
+OxBreeding,Upgrade,2200,3500,100,,,"2 Trade in Town produces DraftOxen",
+DairyShop,Upgrade,1210,2000,50,,,"2 Food in Town 1 Trade in Town 1 Gold in Town",-
+Butcher_Cattle,Butcher,1770,2500,50,,,2 Food in Town 50 rs_max_food 1 WorkerSlots in Town produces Meat,Salt
+Cupellation,Upgrade,1650,3500,100,,,1 Gold in Mine 1 Gold in Village 2 Trade in Mine 10 ks_culture_from_buildings if Governed,
+DeepMining,Upgrade,3000,5000,500,,,,Craftsmen Timber EarlyScholars
+DeepMining_Silver,DeepMining,,,,,,1 WorkerSlots in Mine 4 Gold in Mine 4 Trade in Mine produces Silver,
+GoldRefining,Upgrade,1950,4000,100,,,1 Gold in Mine 1 Gold in Village 1 Gold in Monastery 2 Trade in Mine 10 ks_culture_from_buildings if Governed,
+DeepMining_Gold,DeepMining,,,,,,1 WorkerSlots in Mine 2 Gold in Mine 4 Trade in Mine produces Gold,
+GemstoneWorkshop,Upgrade,2390,4000,100,,,1 WorkerSlots in Mine 1 Gold in Town 1 Gold in Village 1 Gold in Monastery produces Gemstones,
+WinePresses,Upgrade,1200,2500,,,,2 Gold in Vineyard 1 Trade in Vineyard 1 Food in Vineyard,
+WineCellars,Upgrade,2600,4000,50,,,1 Trade in Town 2 Trade in Vineyard 1 Trade in Monastery produces Wine,Timber
+SunDryingGrapes,Upgrade,650,1500,,,,1 Gold in Vineyard 2 Food in Vineyard,
+LimeKilns,Upgrade,1800,2500,50,,,1 WorkerSlots in Quarry 1 Gold in Quarry 0.5 Gold in All 5 rs_build_cost_discount_perc,
+StoneCutters,Upgrade,1500,2000,50,,,1 WorkerSlots in Quarry 1 Gold in Quarry 1 Trade in Quarry produces Lime,
+MarbleSawingWorkshop,Upgrade,2400,3000,50,,,,
+PilgrimageChurch,Upgrade,1400,2500,,100,,1 Piety in Town 2 Gold in Town 1 Gold in Monastery 50 ks_max_piety if ClericGovernor,
+Basilica,Upgrade,3000,5500,,500,,2 Piety in Town 4 Gold in Town 1 Gold in All if ClericGovernor 100 ks_max_piety if ClericGovernor,Stonemasons
+CeremonialShrine,Upgrade,1000,2000,,200,,2 Piety in Town 1 Piety in Monastery 5 ks_culture_from_buildings if ClericGovernor,
+PilgrimHospice,Upgrade,1200,2000,,50,,1 Trade in Town 1 Trade in Monastery 1 Trade in Village 5 ks_catholic_influence if ClericGovernor,
+ExpandedSacredPrecinct,Upgrade,1500,2500,,100,,2 Piety in Town 2 Gold in Town 1 Gold in Mosque 50 ks_max_piety if ClericGovernor,
+GrandSacredPrecinct,Upgrade,3200,5500,,500,,3 Piety in Town 4 Gold in Town 1 Gold in All if ClericGovernor 100 ks_max_piety if ClericGovernor,Stonemasons
+PilgrimageComplex,Upgrade,1400,3000,,50,,2 Trade in Town 1 Trade in Mosque 1 Trade in Village 10 ks_caliphate_influence if ClericGovernor,

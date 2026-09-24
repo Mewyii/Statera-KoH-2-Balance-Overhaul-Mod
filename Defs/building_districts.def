@@ -11,13 +11,16 @@ extend CommonDistrict
     delete buildings
 	buildings
 	{	
+		Chapel
+		Haram
 		PirateHaven { prerequisites { Harbor } }
-		Viticulture
+		Vineyards
 		SheepFarming
 		CattleFarming
 		HorseBreeding
 		Woodworking
-		Stoneworking
+		LimestoneQuarry
+		MarbleQuarry
 		Metalworking
 		SaltTrade
 		FightingGrounds
@@ -36,8 +39,9 @@ def PFDistrict : District
 	{
 		LimeTrade { prerequisites { Stoneworking; MarketSquare } }
 
-		SilverSmelting { prerequisites { Metalworking; MarketSquare } }
-		GoldSmelting { prerequisites { Metalworking; MarketSquare } }
+		SilverMines
+		GoldMines
+		GemstoneMines
 
 		AmberTrade { prerequisites { MarketSquare } }
 		

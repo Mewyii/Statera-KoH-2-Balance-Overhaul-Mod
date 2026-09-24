@@ -4,10 +4,10 @@ def KingdomStability
 	float rebel_risk_variable_period = 60
 	
 	//rebel armies, not rebellions
-	int max_rebels_per_kingdom = 20 
-	int max_rebels_per_game = 100
+	int max_rebels_per_kingdom = 25 
+	int max_rebels_per_game = 150
 
-	int max_rebellions_per_game = 20
+	int max_rebellions_per_game = 50
 	int min_provinces_per_rebellion = 3 //RoundUp KingdomSize
 	int max_rebellions_per_AI_kingdom = 3 //for player we have this defined by difficulty settings
 
@@ -46,16 +46,6 @@ def RebellionRisk
 	/// UI
 	float low_stability_in_realm_message_threshold = -20 // if a realm has reached this low stability and has no active rebellion there, give a player reminder message
 	
-	//risk_from_taxes = [0, 5, 10]
-	
-	//float risk_happiness_mod = 1
-	//float max_risk_from_happiness = 20
-	
-	//float risk_happiness_mitigation_mod = 1
-	//float max_happiness_mitigation = 80
-	
-	//float risk_from_local_authority = [-20, -15, -10, -6, -3, 0, 1, 2, 3, 4, 5]
-	
 	float risk_rebellion_zone = -5
 	float risk_disloyal_population = -20
 	
@@ -84,7 +74,7 @@ def RebellionRisk
 	float risk_per_occupied_realms_min = -1000000
 	float risk_per_occupied_realms_max = 0
 	
-	float risk_dead_king = 15 // !!! for future - increase this a lot (e.g. 30) - we want this an instant spawn check with no fading over-time
+	float risk_dead_king = (min((20 + (kingdom.num_realms * 2)), 75)) // !!! for future - increase this a lot (e.g. 30) - we want this an instant spawn check with no fading over-time
 	float dead_king_risk_period = 600 // !!! for future - remove this so it's not a fading modifier
 	
 	
@@ -99,9 +89,9 @@ def RebellionRisk
 	
 	rp_min_for_rebellion_spawn = 3
 	
-	chance_rebel_pop_take_action = [5, 7, 10, 30, 50, 70]
+	chance_rebel_pop_take_action = [5, 7, 10, 20, 30, 40, 50, 60, 70]
 	
-	float chance_to_reinforce = 40
+	float chance_to_reinforce = 10
 	float chance_to_rebel = 30
 	float chance_to_migrate = 0
 	
@@ -122,7 +112,7 @@ def RebellionRisk
 	//int max_rebellious_population_per_risk = 1
 	//int max_rebellious_population = (3 + round(-worker_slots * max_rebellious_population_per_risk * rebellion_risk / 100))
 
-	float min_time_before_attacking_towns = 300
+	float min_time_before_attacking_towns = 150
 }
 
 def Rebel
@@ -143,7 +133,7 @@ def Rebel
 	string kingdom_key = ""
 	float exp_per_level = 100
 	int starting_unit_cnt = 2
-	float supplies_consumption_rate_mod = 0
+	float supplies_consumption_rate_mod = 0.25
 
 	int payoff_gold = 10000
 	string payoff_realm_0 = ""
@@ -152,20 +142,20 @@ def Rebel
 	
 	leader_class_weights
 	{
-		float Marshal = 70
-		float Spy = 15
+		float Marshal = 60
+		float Spy = 10
 		float Merchant = 5
 		float Diplomat = 5
-		float Cleric = 5
+		float Cleric = 20
 	}
 	int units_max_tier = 0 // 0 - Milita, 1 - single prerequsite, 2 -  two or more prerequsites
-	float inital_wealth = 300
+	float inital_wealth = 500
 	
 	float chance_sack = 10 //drop to 0 if the the attacked castle was just sacked by other army or if that realm is the last in the zone that is not occupied, goes to 100 is not allowed to <can_takeover_realm>
 	float chance_denounce_disband = 50
 	float rel_loyalty_change_mult = 0 //defines the relation drop when your loyalists do stuff to Kingdom
 	
-	float merc_chance_to_reinforce = 30
+	float merc_chance_to_reinforce = 50
 	int merc_reinforce_range = 1 // in realms away, 1 - only in current realm, 2 - current realm and its neighbors, etc.
 	
 	//restrictions and abilities
@@ -210,11 +200,11 @@ def Rebel
 		float settlement = 50
 		float castle = 300
 		float open_field = 100
-		float leader_also_recieves_levels = 50
+		float leader_also_recieves_levels = 75
 	}
 
-	float rebel_army_defeated_reward_base = 125
-	float rebel_army_defeated_reward_leader_level = 25
+	float rebel_army_defeated_reward_base = 50
+	float rebel_army_defeated_reward_leader_level = 50
 	float rebel_army_defeated_reward_general_level = 50
 	float rebel_army_defeated_reward = (!is_leader * (rebel_army_defeated_reward_base + rebel_army_defeated_reward_leader_level * rebellion.leader.class_level + is_general * rebel_army_defeated_reward_general_level *  army.leader.class_level))
 
@@ -244,15 +234,16 @@ def Rebels : Rebel
 {
 	type_name = "Rebels"
 	rebel_type = "Rebels"
+	can_use_cavalry = true
 	useKingdomColors = false
-	starting_unit_cnt = 4
-	units_max_tier = 1
+	starting_unit_cnt = (map_clamp(game.time_hours, 0, 8, 4, 8))
+	units_max_tier = (map_clamp(game.time_hours, 0, 8, 1, 3))
 	promotes_to = "GeneralRebels"
 	change_to_loyalist_def = "Loyalists"
 	fraction_type = "RebelFaction"
 	kingdom_key = "RebelsFaction"
 	icon = "Assets/UI/Elements/Rebels/Icons/Icon_RebelType_Rebels.png:Icon_RebelType_Rebels#1" //GUID:235687d3e0d93b1499f6f8577ceb41dd
-	chance_disorder_takeover_realm = 10
+	chance_disorder_takeover_realm = 25
 	//rebellion_start_voice_line =  "" //RebellionSpawnedMessage
 	//rebellion_defeated_voice_line = "" //RebelDefeatedMessage
 }
@@ -261,11 +252,11 @@ def GeneralRebels : Rebels
 {
 	type_name = "Rebel general"
 	rebel_type = "Rebels"
-	can_use_cavalry = true
+	can_takeover_realm = true
 	promotes_to = "LeaderRebels"
 	change_to_loyalist_def = "GeneralLoyalists"
-	units_max_tier = 1
-	starting_unit_cnt = 5
+	starting_unit_cnt = (map_clamp(game.time_hours, 0, 8, 5, 9))
+	units_max_tier = (map_clamp(game.time_hours, 0, 8, 1, 3))
 	chance_join_court_on_independance = 70
 	tents = "Assets/Europe/Tents/Rebels/Camping_Famous_Rebels.prefab" //GUID:244be1d5117fc8b458b2cad0e6028592
 }
@@ -275,10 +266,9 @@ def LeaderRebels : GeneralRebels
 	type_name = "Rebel leader"
 	rebel_type = "Rebels"
 	change_to_loyalist_def = "LeaderLoyalists"
-	can_takeover_realm = true
 	can_attack_castle = true
-	units_max_tier = 2
-	starting_unit_cnt = 6
+	starting_unit_cnt = (map_clamp(game.time_hours, 0, 8, 6, 9))
+	units_max_tier = (map_clamp(game.time_hours, 0, 8, 2, 3))
 	chance_join_court_on_independance = 100
 	tents = "Assets/Europe/Tents/Rebels/Camping_Famous_Rebels.prefab" //GUID:244be1d5117fc8b458b2cad0e6028592
 	banner = "Assets/Units/Banners/banner_rebel_leader.prefab" //GUID:b1b06d9d638d60b44ae8f7641b1a81f0
@@ -288,16 +278,17 @@ def Loyalists : Rebel
 {
 	type_name = "Loyalists"
 	rebel_type = "Loyalists"
+	can_use_cavalry = true
 	useKingdomColors = true
-	starting_unit_cnt = 4
-	units_max_tier = 1
+	starting_unit_cnt = (map_clamp(game.time_hours, 0, 8, 4, 8))
+	units_max_tier = (map_clamp(game.time_hours, 0, 8, 1, 3))
 	promotes_to = "GeneralLoyalists"
 	change_to_rebel_def = "Rebels"
 	fraction_type = "LoyalistsFaction"
 	kingdom_key = "LoyalistsFaction"
 	icon = "Assets/UI/Elements/Rebels/Icons/Icon_RebelType_Loyalists.png:Icon_RebelType_Loyalists#2" //GUID:03e328917af8b1f4cb5b055afa82f6c6
 	banner = "Assets/Units/Banners/banner_loyalist.prefab" //GUID:8e8f4bed4eaab0b4ba90a62cf12de9e9
-	chance_disorder_takeover_realm = 25
+	chance_disorder_takeover_realm = 33
 	//rebellion_start_voice_line = "" 	
 }
 
@@ -305,11 +296,10 @@ def GeneralLoyalists : Loyalists
 {
 	type_name = "Loyalist general"
 	rebel_type = "Loyalists"
-	can_use_cavalry = true
 	can_takeover_realm = true
 	rel_loyalty_change_mult = 1
-	units_max_tier = 1
-	starting_unit_cnt = 5
+	starting_unit_cnt = (map_clamp(game.time_hours, 0, 8, 5, 9))
+	units_max_tier = (map_clamp(game.time_hours, 0, 8, 1, 3))
 	chance_join_court_on_independance = 70
 	promotes_to = "LeaderLoyalists"
 	change_to_rebel_def = "GeneralRebels"
@@ -322,8 +312,8 @@ def LeaderLoyalists : GeneralLoyalists
 	rebel_type = "Loyalists"
 	change_to_rebel_def = "LeaderRebels"
 	can_attack_castle = true
-	units_max_tier = 2
-	starting_unit_cnt = 6
+	starting_unit_cnt = (map_clamp(game.time_hours, 0, 8, 6, 9))
+	units_max_tier = (map_clamp(game.time_hours, 0, 8, 2, 3))
 	chance_join_court_on_independance = 100
 	banner = "Assets/Units/Banners/banner_loyalist_leader.prefab" //GUID:67241b1b1a861fa428327ed6a8ad766d
 }

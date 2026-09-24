@@ -617,6 +617,10 @@ extend RealmFeaturesPresets
 		def WineRealmSet : RealmFeaturesPreset 
 		{
 			occurances = 3
+			required_settlements
+			{
+				Vineyard
+			}
 			required_province_fetures = [Vines]
 			desired_in_realms = 100
 			{
@@ -629,6 +633,10 @@ extend RealmFeaturesPresets
 		def PiratesAndWineRealmSet : RealmFeaturesPreset 
 		{
 			occurances = 2
+			required_settlements
+			{
+				Vineyard
+			}
 			required_province_fetures = [Pirates, Vines]
 			desired_in_realms = 100
 			{
@@ -654,6 +662,10 @@ extend RealmFeaturesPresets
 		def WineAndDyeExtractionRealmSet : RealmFeaturesPreset 
 		{
 			occurances = 1
+			required_settlements
+			{
+				Vineyard
+			}
 			required_province_fetures = [Vines, DyeExtraction]
 			desired_in_realms = 100
 			{
@@ -787,6 +799,10 @@ extend RealmFeaturesPresets
 		def PiratesWineAndCornChamberRealmSet : RealmFeaturesPreset 
 		{
 			occurances = 1
+			required_settlements
+			{
+				Vineyard
+			}
 			required_province_fetures = [Pirates, Vines]
 			required_settlements
 			{
@@ -817,6 +833,7 @@ extend RealmFeaturesPresets
 			occurances = 1
 			required_settlements
 			{
+				Vineyard
 				Quarry
 				Farm = 3
 			}
@@ -863,6 +880,7 @@ extend RealmFeaturesPresets
 			occurances = 1
 			required_settlements
 			{
+				Vineyard
 				Quarry
 				Village = 3
 			}
@@ -923,6 +941,7 @@ extend RealmFeaturesPresets
 			required_province_fetures = [Vines, PilgrimageSiteChristian]
 			required_settlements
 			{
+				Vineyard
 				Monastery = 2
 			}
 			desired_in_realms = 100
@@ -1054,6 +1073,10 @@ extend RealmFeaturesPresets
 		def WineAndTradeCenterRealmSet : RealmFeaturesPreset 
 		{
 			occurances = 2
+			required_settlements
+			{
+				Vineyard
+			}
 			required_province_fetures = [Vines]
 			features
 			{
@@ -1085,6 +1108,7 @@ extend RealmFeaturesPresets
 			occurances = 1
 			required_settlements
 			{
+				Vineyard
 				Mine
 			}
 			required_province_fetures = [SilverOre, Vines]

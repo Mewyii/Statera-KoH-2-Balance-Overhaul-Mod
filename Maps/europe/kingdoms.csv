@@ -9,9 +9,9 @@ Germany,German,Catholic,-,Rhineland,-,-,-,-,-,-,-,-,,-,Empire,-,,,,,-,Militia_CE
 Milan,Lombard,Catholic,Republic,Liguria,-,-,-,-,-,-,-,-,,Genoese,Duchy,-,,,,,ItalianUnitSet,Militia_CE
 Genoa,Genuese,Catholic,Republic,Liguria,-,-,-,-,-,-,-,-,,-,Duchy,-,,,,,ItalianUnitSet,Militia_CE
 Venice,Venetian,Catholic,Republic,Veneto,-,-,-,-,-,-,-,-,,-,Duchy,-,,,,,ItalianUnitSet,Militia_CE
+Pisa,Pisan,Catholic,Republic,Tuscany,-,-,-,-,-,-,-,-,,Genoese,Duchy,-,,,,,ItalianUnitSet,Militia_CE
 Papal_States,Roman,Catholic,Papacy,Latium,-,-,-,-,-,-,-,-,,Papal,Kingdom.H,-,,,,,ItalianUnitSet,Militia_CE
 Naples,Neapolitan,Catholic,-,Campania,-,-,-,-,-,-,-,-,,-,Kingdom,-,,,,,ItalianUnitSet,Militia_CE
-Bohemia,Bohemian,Catholic,-,Bohemia,Vladislav.A,Marshal,Richenza.A,Svatava.f.C,Vladislav.m.I,Depold.m.I,-,Germany,,-,Duchy,-,,,,,EuropeanUnitSet,Militia_CE
 Hungary,Hungarian,Catholic,-,Buda,-,-,-,-,-,-,-,-,,-,Kingdom,-,,,,,EuropeanUnitSet,Militia_CE
 Poland,Polish,Catholic,-,Malopolska,-,-,-,-,-,-,-,-,,All,Kingdom,-,,,,,EuropeanUnitSet,Militia_CE
 Poland_Lithuania,Polish,Catholic,-,-,-,-,-,-,-,-,-,-,,Baltic,Empire,-,,,,,EuropeanUnitSet,Militia_CE
@@ -58,6 +58,7 @@ Jerusalem,French,Catholic,-,Palestine,-,-,-,-,-,-,-,-,,All,Kingdom,-,,,,,Crusade
 Latin_Empire,French,Catholic,-,Constantinopolis,-,-,-,-,,-,-,-,,Latin,Empire.H,-,,,,,-,Militia_CE
 Lorraine,French,Catholic,-,Lorraine,-,-,-,-,-,-,-,-,,-,Duchy,German,,,,,,Roman_Infantry_Special
 France,French,Catholic,-,Ile_de_France,-,-,-,-,-,-,-,-,,-,Kingdom,-,,,,,-,Militia_CE
+Albon,Burgundian,Catholic,-,Lyonnais,Guigues.A,Diplomat,Mathilde.A.England,-,-,-,-,Germany,-,County,Duchy,-,,,,,-,Militia_CE
 
 // Early
 Zaragoza.E,Andalusian,Sunni,-,Zaragoza,Al_Malik.A,Diplomat,-,Ahmad.m.J,-,-,-,Castile,,Berber,Duchy,-,,,,,SaracenUnitSet,Militia_CE
@@ -68,15 +69,18 @@ Portugal.L,-,-,-,Estremadura,Pedro.1.A,Spy,Ines.A,Fernando.m.J,Joao.m.C,Dinis.m.
 Galicia.E,Galician,Catholic,-,Galicia,Alfonso.7.Y,Cleric,-,-,-,-,-,-,,-,-,-,,,,,SpanishUnitSet,Militia_CE
 Barcelona.E,Catalan,-,-,-,Ramon.3.A,Diplomat,Dulcia.Y,Ramon.m.I,-,-,-,-,,County,Duchy,-,,,,,SpanishUnitSet,Militia_CE
 Burgundy.E,Burgundian,Catholic,-,Burgundy,Hugues.2.Y,Cleric,Matilda.Y,Aigeline.f.C,Clemence.f.I,Eudes.m.I,-,France,,-,Duchy,-,,,,,-,Militia_CE
-Burgundy_Kingdom,Burgundian,Catholic,-,Lyonnais,-,-,-,-,-,-,-,-,-,-,Kingdom,-,,,,,-,Militia_CE
+
 Champagne.E,French,Catholic,-,Champagne,Thibaud.2.A,Marshal,-,-,-,-,-,France,,County,Duchy,-,,,,,-,Militia_CE
 Luxembourg.E,German,Catholic,-,Luxembourg,Wilhelm.A,Diplomat,Mathilde.A,Konrad.m.I,Wilhelm.m.I,-,-,Germany,,County,Duchy,-,,,,,,Militia_CE
 LorraineLower.E,German,Catholic,-,Rhineland,Gottfried.A,Diplomat,Ida.A,Adelheid.f.C,Gottfried.2.m.I,-,-,Germany,,-,Duchy,German,,,,,-,Militia_CE
 LorraineUpper.E,German,Catholic,-,-,Dietrich.A,Marshal,Hedwige.A,Simon.m.I,Gerdrut.f.I,-,-,Germany,,-,Duchy,German,,,,,-,Militia_CE
+Bavaria.E,Bavarian,Catholic,-,Bavaria,Welf.2.A,Diplomat,Matilde.A.Tuscany,-,-,-,-,Germany,,-,Duchy,-,,,,,-,-
+Bohemia.E,Bohemian,Catholic,-,Bohemia,Vladislav.A,Marshal,Richenza.A,Svatava.f.C,Vladislav.m.I,Depold.m.I,-,Germany,,-,Duchy,-,,,,,EuropeanUnitSet,Militia_CE
 Savoy.E,Lombard,Catholic,-,Savoy,Amadeus.3.Y,Cleric,Mahaut.Y,Matilda.f.C,Agnes.f.I,Humbert.m.I,-,Germany,,County,Duchy,German,,,,,ItalianUnitSet,Militia_CE
 Obotrites.E,Obotritian,Pagan,-,Mecklenburg,Henryk.A,Marshal,-,-,-,-,-,-,,Tribal,Kingdom,-,,,,,-,-
-Swabia.E,Swabian,Catholic,-,Swabia,Frederick.2.Y,Merchant,Judith.Y,Frederick.m.I,-,-,-,Germany,,-,Duchy,-,,,,,-,Teutonic_Knight_Mounted_Special/Teutonic_Knight_Special
+Swabia.E,Swabian,Catholic,-,Swabia,Frederick.2.Y,Merchant,Judith.Y,Frederick.m.I,-,-,-,Germany,,-,Duchy,-,,,,,-,Militia_CE
 Meissen.E,German,Catholic,-,Meissen,Heinrich.2.Y,Merchant,Adelaide.Y,-,-,-,-,Germany,-,German,Duchy,-,,,,,,
+Pisa.E,-,-,-,-,-,-,-,-,-,-,-,Germany,,-,-,-,,,,,-,-
 Makuria.E,Nubian,Orthodox.I,-,Dongola,Basileios.O,Cleric,Elene.A,Georgios.m.C,Maria.f.I,-,-,-,,-,Kingdom,Greek,,,,,-,-
 Jerusalem.E,French,-,-,-,Baudouin.A,Marshal,Arda.A,-,-,-,-,-,,-,-,-,,,,,NormanUnitSet,Militia_CE
 Antioch.E,Norman,Catholic,-,Antioch,Bohemond.A,Marshal,Constance.A,Bohemond.m.C,-,-,-,Jerusalem,,-,Kingdom,-,,,,,NormanUnitSet,Horse_Archer_CE/Norman_Special

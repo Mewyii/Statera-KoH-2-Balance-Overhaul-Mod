@@ -11,7 +11,6 @@ def ArcheryRange : Upgrade
 	flavor = "Dedicated grounds for bowmen to practice accuracy and volleys under the watch of instructors."
 	icon = "Assets/Icons/Buildings/ArcheryRange.png:ArcheryRange#1"
 
-	ai_category = "Military"
 	ai_eval = (base_ai_eval + 500)
 }
 
@@ -20,8 +19,6 @@ def MilitiaDrills : Upgrade
 	name = "Militia Drills"
 	flavor = "Regular weapons practice turns untrained townsmen into more reliable soldiers. Under the watchful eye of the arms master, they learn to fight together and hold their ranks."
 	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_TownGuardsQuarters.tga:UI_Structure_Icon_TownGuardsQuarters#2" //GUID:aad5edb51f1398f4fb75c0a35fccd4ce
-	
-	ai_category = "Military"
 }
 
 def MilitiaOffices : Upgrade
@@ -37,7 +34,6 @@ def LesserFiefs : Upgrade
 	flavor = "Fiefs are granted to lesser nobles and worthy men in service as fortified estates spread across the realm. This increases the number of men with the means to maintain themselves in permanent mounted service."
 	icon = "Assets/Icons/Buildings/KnightlyTrainingGrounds.png:KnightlyTrainingGrounds#1"
 
-	ai_category = "Military"
 	ai_eval = (base_ai_eval + 500)
 }
 
@@ -47,7 +43,6 @@ def KnightlyTrainingGrounds : Upgrade
 	flavor = "At the training grounds of castles and noble courts, knights and squires practise riding, lance fighting, and mounted combat. Regular exercises hone their skill and discipline and prepare them for war."
 	icon = "Assets/Icons/Buildings/KnightlyTrainingGrounds.png:KnightlyTrainingGrounds#1"
 
-	ai_category = "Military"
 	ai_eval = (base_ai_eval + 500)
 }
 
@@ -58,8 +53,7 @@ def LanceWarfare : Upgrade
 	icon = "Assets/Icons/Buildings/KnightlyTrainingGrounds.png:KnightlyTrainingGrounds#1"
 	add_tooltip = "Required for recruiting {clr:enables_color}High Knight Units{/clr}"
 
-	ai_category = "Military"
-	ai_eval = (base_ai_eval + 250)
+	ai_eval = (base_ai_eval + (map_clamp(game.time_hours, 0, 4, 0, 5000)))
 }
 
 def LordsHalls : Upgrade
@@ -69,8 +63,7 @@ def LordsHalls : Upgrade
 	icon = "Assets/Icons/Buildings/KnightlyTrainingGrounds.png:KnightlyTrainingGrounds#1"
 	add_tooltip = "Required for recruiting {clr:enables_color}Late Knight Units{/clr}"
 
-	ai_category = "Military"
-	ai_eval = (base_ai_eval + 250)
+	ai_eval = (base_ai_eval + (map_clamp(game.time_hours, 0, 6, 0, 5000)))
 }
 
 def Chivalry : Upgrade
@@ -78,8 +71,6 @@ def Chivalry : Upgrade
 	name = "Chivalry"
 	flavor = "Honour, courage, and duty to lord and retinue increasingly shape the ideals of knighthood. Mounted service becomes not merely a craft of war, but a distinct estate with its own virtues and expectations."
 	icon = "Assets/Icons/Buildings/KnightlyTrainingGrounds.png:KnightlyTrainingGrounds#1"
-
-	ai_category = "Military"
 }
 
 def Farrier : Upgrade
@@ -87,8 +78,6 @@ def Farrier : Upgrade
 	name = "Farriers"
 	flavor = "In the smithy, iron horseshoes are forged and fitted to the animals' hooves. Shoeing protects the hooves from wear and allows horses to endure long journeys over hard or rocky ground."
 	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Farrier.tga:UI_Structure_Icon_Farrier#2" //GUID:b4d952b7238f7e148a1858ffd314cfa9
-
-	ai_category = "Military"
 }
 
 def SaddlersShop : Upgrade
@@ -118,7 +107,6 @@ def SelectiveBreeding : Upgrade
 	flavor = "Breeders select the strongest, most enduring, and most reliable animals for further breeding. Over generations, desirable traits can be reinforced, producing horses of increasingly valued qualities."
 	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_WarStables.tga:UI_Structure_Icon_WarStables#2" //GUID:4614b122faea18e4582c4fdd671c9e5a
 
-	ai_category = "Military"
 	ai_eval = (base_ai_eval + 500)
 }
 
@@ -136,7 +124,6 @@ def MilitiaBarracks : Upgrade
 	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_TownWatch.tga:UI_Structure_Icon_TownWatch#2" //GUID:1a6e044b6de38554087fc06118a5bc99
 	add_tooltip = "Required for recruiting {clr:enables_color}Militia Units{/clr}"
 
-	ai_category = "Military"
 	ai_eval = (base_ai_eval + 1000)
 }
 
@@ -147,7 +134,6 @@ def CrossbowManufactoring : Upgrade
 	icon = "Assets/Icons/Buildings/CrossbowManufactoring.png:CrossbowManufactoring#1"
 	add_tooltip = "Required for recruiting {clr:enables_color}Crossbow Units{/clr}"
 
-	ai_category = "Military"
 	ai_eval = (kingdom.MilitiaBarracks and 1500)
 }
 
@@ -158,7 +144,6 @@ def WindlassMechanisms : Upgrade
 	icon = "Assets/Icons/Buildings/CrossbowManufactoring.png:CrossbowManufactoring#1"
 	add_tooltip = "Required for recruiting {clr:enables_color}Advanced Crossbow Units{/clr}"
 
-	ai_category = "Military"
 	ai_eval = (base_ai_eval + 500)
 }
 
@@ -169,7 +154,6 @@ def AdvancedBowmaking : Upgrade
 	icon = "Assets/Icons/Buildings/CrossbowManufactoring.png:CrossbowManufactoring#1"
 	add_tooltip = "Required for recruiting {clr:enables_color}Advanced Bow Units{/clr}"
 
-	ai_category = "Military"
 	ai_eval = (base_ai_eval + 100)
 }
 
@@ -187,6 +171,13 @@ def WatchRotations : Upgrade
 	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_MountainPassGuards.tga:UI_Structure_Icon_MountainPassGuards#2" //GUID:4db8cfeb5d63bfa4b97e9b1232dab538
 
 	ai_eval = (base_ai_eval + 250)
+}
+
+def SettlementGarrisons : Upgrade
+{
+	name = "Settlement Garrisons"
+	flavor = "Militia garrisons in settlements troughout the province reduce corruption and provide a good first defense against raids."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_MountainPassGuards.tga:UI_Structure_Icon_MountainPassGuards#2" //GUID:4db8cfeb5d63bfa4b97e9b1232dab538
 }
 
 def HeraldryChambers : Upgrade
@@ -616,8 +607,6 @@ def ArmorWeaving : Upgrade
 	name = "Armor Weaving"
 	flavor = "Reinforced textile layering used in gambesons and padded armors for soldiers."
 	icon = "Assets/Icons/Buildings/ArmorWeaving.png:ArmorWeaving#1"
-	
-	ai_category = "Military"
 }
 
 def FullingMills : Upgrade
@@ -715,7 +704,7 @@ def Craftsmenship : Upgrade
 	flavor = "Independent artisans creating everything from pottery to furniture, forming the backbone of the town’s economy."
 	icon = "Assets/Icons/Buildings/Craftsmen.png:Craftsmen#1"
 
-	ai_eval = (base_ai_eval + (map_clamp(game.time_hours, 0, 2, 500, 4000)))
+	ai_eval = (base_ai_eval + (map_clamp(game.time_hours, 0, 2, 500, 5000)))
 }
 
 def Stonemasonry : Upgrade
@@ -724,7 +713,7 @@ def Stonemasonry : Upgrade
 	flavor = "Skilled builders shaping stone for walls, churches, and fortifications, laying the foundation of lasting architecture."
 	icon = "Assets/Icons/Buildings/Stonemasons.png:Stonemasons#1"
 
-	ai_eval = (base_ai_eval + (map_clamp(game.time_hours, 0, 3, 0, 4000)))
+	ai_eval = (base_ai_eval + (map_clamp(game.time_hours, 0, 3, 0, 5000)))
 }
 
 def SimpleWeaponsmithing : Upgrade
@@ -733,8 +722,7 @@ def SimpleWeaponsmithing : Upgrade
 	flavor = "The foundations of military smithing, allowing the production of simple but reliable weapons for levies and militia. Every realm depends on skilled village blacksmiths to arm its soldiers."
 	icon = "Assets/Icons/Buildings/SimpleWeaponsmithing.png:SimpleWeaponsmithing#1"
 
-	ai_eval = (base_ai_eval + (map_clamp(game.time_hours, 0, 2, 500, 4000)))
-	ai_category = "Military"
+	ai_eval = (base_ai_eval + (map_clamp(game.time_hours, 0, 2, 1000, 5000)))
 }
 
 def SimpleArmorsmithing : Upgrade
@@ -743,8 +731,7 @@ def SimpleArmorsmithing : Upgrade
 	flavor = "The crafting of padded garments and leather armour provides affordable protection for common soldiers. These practical defences form the backbone of every early army."
 	icon = "Assets/Icons/Buildings/SimpleArmorsmithing.png:SimpleArmorsmithing#1"
 
-	ai_eval = (base_ai_eval + (map_clamp(game.time_hours, 0, 2, 500, 4000)))
-	ai_category = "Military"
+	ai_eval = (base_ai_eval + (map_clamp(game.time_hours, 0, 2, 1000, 5000)))
 }
 
 def Toolsmithing : Upgrade
@@ -763,7 +750,6 @@ def ForgeBellows : Upgrade
 	icon = "Assets/Icons/Buildings/FullingMills.png:FullingMills#1"
 
 	ai_eval = (base_ai_eval + (kingdom.AdvancedWeaponsmithing and 1000) + (kingdom.AdvancedArmorsmithing and 1000))
-	ai_category = "Military"
 }
 
 def ImprovedTanningLiquors : Upgrade
@@ -773,7 +759,6 @@ def ImprovedTanningLiquors : Upgrade
 	icon = "Assets/Icons/Buildings/ImprovedTanningLiquors.png:ImprovedTanningLiquors#1"
 	
 	ai_eval = (base_ai_eval + 500)
-	ai_category = "Military"
 }
 
 def Leatherworking : Upgrade
@@ -783,7 +768,6 @@ def Leatherworking : Upgrade
 	icon = "Assets/Icons/Buildings/Leatherworking.png:Leatherworking#1"
 	
 	ai_eval = (base_ai_eval + 1500)
-	ai_category = "Military"
 }
 
 def Glassmaking : Upgrade
@@ -800,7 +784,6 @@ def AdvancedWeaponsmithing : Upgrade
 	icon = "Assets/Icons/Buildings/AdvancedWeaponsmithing.png:AdvancedWeaponsmithing#1"
 
 	ai_eval = (base_ai_eval + 2500)
-	ai_category = "Military"
 }
 
 def AdvancedArmorsmithing : Upgrade
@@ -810,7 +793,6 @@ def AdvancedArmorsmithing : Upgrade
 	icon = "Assets/Icons/Buildings/AdvancedArmorsmithing.png:AdvancedArmorsmithing#1"
 
 	ai_eval = (base_ai_eval + 2500)
-	ai_category = "Military"
 }
 
 def LateWeaponsmithing : Upgrade
@@ -820,7 +802,6 @@ def LateWeaponsmithing : Upgrade
 	icon = "Assets/Icons/Buildings/AdvancedWeaponsmithing.png:AdvancedWeaponsmithing#1"
 
 	ai_eval = (base_ai_eval + 2500)
-	ai_category = "Military"
 }
 
 def LateArmorsmithing : Upgrade
@@ -830,14 +811,13 @@ def LateArmorsmithing : Upgrade
 	icon = "Assets/Icons/Buildings/AdvancedArmorsmithing.png:AdvancedArmorsmithing#1"
 
 	ai_eval = (base_ai_eval + 2500)
-	ai_category = "Military"
 }
 
 def Sculpting : Upgrade
 {
 	name = "Sculpting"
 	flavor = "Improved metallurgy and design produce superior plate and chain armor, granting better protection in battle."
-	icon = "Assets/Icons/Buildings/AdvancedArmorsmithing.png:AdvancedArmorsmithing#1"
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_SculpturesShop.tga:UI_Structure_Icon_SculpturesShop#2"
 }
 
 def Glassmaking_Muslim : Upgrade
@@ -851,7 +831,7 @@ def Sculpting_Muslim : Upgrade
 {
 	name = "Sculpting"
 	flavor = "Improved metallurgy and design produce superior plate and chain armor, granting better protection in battle."
-	icon = "Assets/Icons/Buildings/AdvancedArmorsmithing.png:AdvancedArmorsmithing#1"
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_SculpturesShop.tga:UI_Structure_Icon_SculpturesShop#2"
 }
 
 // RIVER
@@ -1037,27 +1017,12 @@ def ExecutionersSquare : Upgrade
 	icon = "Assets/Icons/Buildings/ExecutionersSquare.png:ExecutionersSquare#1"
 }
 
-def TortureChamber : Upgrade
-{
-	name = "Torture Chamber"
-	flavor = "Dark rooms where confession is extracted and the will of authority enforced through fear and pain."
-	icon = "Assets/Icons/Buildings/TortureChamber.png:TortureChamber#1"
-}
-
 def CityPrison : Upgrade
 {
 	name = "City Prison"
 	flavor = "A fortified complex designed for the long-term confinement of criminals and political prisoners alike."
 	icon = "Assets/Icons/Buildings/CityPrison.png:CityPrison#1"
 }
-
-def JudgesBench : Upgrade
-{
-	name = "Judges’ Bench"
-	flavor = "A raised platform symbolizing impartial rule and the solemn weight of judgment."
-	icon = "Assets/Icons/Buildings/Cataloguing.png:Cataloguing#1"
-}
-
 def RecordsArchive : Upgrade
 {
 	name = "Records Archive"
@@ -1077,7 +1042,6 @@ def TownHeralds : Upgrade
 extend ColliersKiln
 {
 	ai_eval = (base_ai_eval + (kingdom.SimpleWeaponsmithing and 1000) + (kingdom.SimpleArmorsmithing and 1000))
-	ai_category = "Military"
 }
 
 def BloomeryFurnaces : Upgrade
@@ -1087,7 +1051,6 @@ def BloomeryFurnaces : Upgrade
 	icon = "Assets/Icons/Buildings/BloomeryFurnaces.png:BloomeryFurnaces#1"
 
 	ai_eval = (base_ai_eval + (kingdom.SimpleWeaponsmithing and 1000) + (kingdom.SimpleArmorsmithing and 1000))
-	ai_category = "Military"
 }
 
 def Stücköfen : Upgrade
@@ -1112,6 +1075,60 @@ def SaltRefineries : Upgrade
 	flavor = "At salt refineries, harvested salt is washed, dried, and processed into clean crystals. Large boiling pans and drying floors remove impurities and moisture, producing high-quality salt for trade, food preservation, and everyday use."
 	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_SaltTrade.tga:UI_Structure_Icon_SaltTrade#2" //GUID:c59fd0d60f1fd7e4fa749a3ced9d2657
 }
+
+def DeepMining : Upgrade
+{
+	name = "Deep Mining"
+	flavor = "Ever-deeper shafts reach previously inaccessible layers of gold-bearing rock. Timber supports, winches, and improved lifting equipment allow mining at greater depths and increase the mine's output."
+	icon = "Assets/Icons/Buildings/DeepMining.png:DeepMining#1"
+}
+
+def DeepMining_Silver : DeepMining
+def DeepMining_Gold : DeepMining
+
+def Cupellation : Upgrade
+{
+	name = "Cupellation"
+	flavor = "Silver-bearing metal is further processed in specialized furnaces under intense heat. By carefully separating lead and other impurities, purer silver remains, suitable for coins, jewelry, and valuable objects."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_SilverSmelting.tga:UI_Structure_Icon_SilverSmelting#2" //GUID:35e81e426b31b984899fb87eba966d16
+}
+
+def GoldRefining : Upgrade
+{
+	name = "Gold Refining"
+	flavor = "The extracted gold is melted and separated from other metals and impurities. In hot furnaces and crucibles, the metal is refined into a purer and more valuable form suitable for coins, jewelry, and precious works of art."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_GoldSmelting.tga:UI_Structure_Icon_GoldSmelting#2" //GUID:0bb3d68adcf4c194b9a8c1936191e901
+}
+
+def GemstoneWorkshop : Upgrade
+{
+	name = "Gemstone Workshop"
+	flavor = "In the gemstone workshop, selected rough stones are cleaned, ground, and polished. Skilled craftsmen shape the stones into simple forms, bringing out their natural color and luster. The finest pieces are prepared for jewelry, religious art, and other precious ornaments."
+	icon = "Assets/Icons/Buildings/GemstoneWorkshop.png:GemstoneWorkshop#1"
+}
+
+def LimeKilns : Upgrade
+{
+	name = "Lime Kilns"
+	flavor = "Large lime kilns heat crushed limestone into quicklime. Mixed with water and sand, it becomes mortar used for masonry, plastering, and other demanding construction work."
+	icon = "Assets/Icons/Buildings/LimeKilns.png:LimeKilns#1"
+}
+
+def MarbleSawingWorkshop : Upgrade
+{
+	name = "Marble Sawing Workshop"
+	flavor = "Large marble blocks are cut into slabs using long saws and abrasive materials. The thin, smoothly finished surfaces are used for floors, wall coverings, altars, and prestigious buildings."
+	icon = "Assets/Icons/Buildings/MarbleSawingWorkshop.png:MarbleSawingWorkshop#1"
+}
+
+def StoneCutters : Upgrade
+{
+	name = "Stonecutters’ Workshop"
+	flavor = "Skilled stonecutters shape limestone into dressed blocks, slabs, and architectural elements. Using fine chisels and toothed tools, they produce precise pieces for churches, castles, and other stone buildings."
+	icon = "Assets/Icons/Buildings/StoneCutters.png:StoneCutters#1"
+}
+
+
 
 def WoolWeaver : Upgrade
 {
@@ -1144,6 +1161,91 @@ def DairyShop : Upgrade
 def Butcher_Cattle : Butcher
 {
 	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_CattleButcher.tga:UI_Structure_Icon_CattleButcher#2" //GUID:097ddaf3d3d196e4da040f43e14ad3de
+}
+
+def WinePresses: Upgrade
+{
+	name = "Wine Presses"
+	flavor = "Large wooden wine presses squeeze the harvested grapes and extract greater quantities of must. Improved presses allow the harvest to be processed more efficiently and increase the yield of the vineyard."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_GrapePres.tga:UI_Structure_Icon_GrapePres#2"
+}
+
+def WineCellars: Upgrade
+{
+	name = "Large Wine Cellars"
+	flavor = "Cool cellars and protected storage rooms allow wine to be kept in barrels and large vessels for longer periods. Organized storage improves preservation and quality while making the wine easier to sell later."
+	
+	icon = "Assets/Icons/Buildings/WineCellars.png:WineCellars#1"
+}
+
+extend SunDryingGrapes
+{
+	name = "Grape Sun Drying"
+	flavor = "Large drying racks exposed to the warm light of the sun, where excess yield of grapes are positioned to be turned into long-lasting raisins."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_SunDryingGrapes.tga:UI_Structure_Icon_SunDryingGrapes#2" //GUID:000424e1da0aea34bae3fb216b403a17
+}
+
+extend Distillery
+{
+	name = "Distilleries"
+	flavor = "A place where spirits are destilled for the enjoyment of the population."
+	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_Distillery.tga:UI_Structure_Icon_Distillery#2" //GUID:273da72160732024ea50fd7af29364be
+}
+
+def PilgrimageChurch: Upgrade
+{
+	name = "Pilgrimage Church"
+	flavor = "The chapel is expanded into a larger church capable of receiving more pilgrims. A special altar, saint’s tomb, or revered relic forms the center of the sanctuary."
+
+	icon = "Assets/Icons/Buildings/PilgrimageChurch.png:PilgrimageChurch#1"
+}
+
+def Basilica: Upgrade
+{
+	name = "Basilica"
+	flavor = "A large and imposing church with multiple altars, chapels, and spacious interiors. The basilica can accommodate large groups of pilgrims and emphasizes the importance of the sanctuary."
+	
+	icon = "Assets/Icons/Buildings/Basilica.png:Basilica#1"
+}
+
+def CeremonialShrine: Upgrade
+{
+	name = "Ceremonial Shrine"
+	flavor = "The shrine is developed into an important center of religious ceremonies. Processions, feast days, and solemn services attract large numbers of pilgrims and strengthen the importance of the sacred site."
+
+	icon = "Assets/Icons/Buildings/CeremonialShrine.png:CeremonialShrine#1"
+}
+
+def PilgrimHospice: Upgrade
+{
+	name = "Pilgrim Hospice"
+	flavor = "Hostels and hospices provide traveling pilgrims with shelter, food, and basic care. These facilities allow the sanctuary to accommodate and support larger numbers of pilgrims."
+
+	icon = "Assets/Icons/Buildings/PilgrimHospice.png:PilgrimHospice#1"
+}
+
+def ExpandedSacredPrecinct: Upgrade
+{
+	name = "Expanded Sacred Precinct"
+	flavor = "The sacred precinct is expanded with additional prayer areas, courtyards, and facilities for pilgrims. The larger complex can accommodate more visitors and better serve growing pilgrim crowds."
+
+	icon = "Assets/Icons/Buildings/ExpandedSacredPrecinct.png:ExpandedSacredPrecinct#1"
+}
+
+def GrandSacredPrecinct: Upgrade
+{
+	name = "Grand Sacred Precinct"
+	flavor = "A large complex of prayer halls, courtyards, hostels, and service facilities develops around the sacred site. The site becomes an important destination for pilgrims from distant regions."
+
+	icon = "Assets/Icons/Buildings/GrandSacredPrecinct.png:GrandSacredPrecinct#1"
+}
+
+def PilgrimageComplex: Upgrade
+{
+	name = "Pilgrimage Complex"
+	flavor = "The sacred precinct is expanded into a monumental religious complex. Great prayer areas, extensive courtyards, hostels, and service facilities allow the site to accommodate vast numbers of pilgrims."
+
+	icon = "Assets/Icons/Buildings/PilgrimageComplex.png:PilgrimageComplex#1"
 }
 
 // Housekeeping
@@ -1179,6 +1281,7 @@ delete CastleGuards
 delete HerbalistShacks
 delete SpiceShop
 delete InkMaker_Christian
+def SmallLibrary_Christian: Upgrade
 delete SmallLibrary_Christian
 delete Apothecary_Christian
 delete ManurePits
@@ -1192,11 +1295,15 @@ delete FishMarket
 delete InkMaker_Muslim
 delete Orphanage_Muslim
 delete Schools_Muslim
+def SmallLibrary_Muslim: Upgrade
 delete SmallLibrary_Muslim
 delete MuslimDecoration
 delete Apothecary_Muslim
 delete Hospital_Muslim
 delete Bazaar
+def SmallLibrary_Pagan: Upgrade
+delete SmallLibrary_Pagan
+delete SmallLibrary
 delete CoopersShop
 delete Glassworks
 delete Machinery_Mine
@@ -1243,3 +1350,9 @@ delete CattleMarket
 delete SausageMaker
 delete SpinningMill
 delete Butcher_Sheep
+delete GrapePress
+delete Winery
+delete SculpturesShop
+delete MasonsGuild
+delete Machinery_Quarry
+delete MinersShacks_Quarry

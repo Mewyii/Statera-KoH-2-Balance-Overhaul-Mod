@@ -35,7 +35,7 @@ extend KingdomStats
     ks_max_piety = 900
     ks_max_books = 600
     ks_vassal_tax_perc = 12.5
-    ks_base_gold_income = 100
+    ks_base_gold_income = 90
     ks_base_commerce = 10
     ks_base_levy_income = 0
     ks_prod_books_flat = 5
@@ -43,7 +43,7 @@ extend KingdomStats
     ks_max_levy = 300
     ks_books_per_cleric = 1
     ks_corruption = 25
-    ks_stability = (If(kingdom.is_ai, -3, -6))
+    ks_stability = (If(kingdom.is_ai, -2, -5))
 }
 
 extend RealmStats {

@@ -15,11 +15,11 @@ def DevSettings
 	// values are per difficulty: <easy>/<normal>/<hard>/<very_hard>
 	float ai_resource_boost = 1.0 / 1.2 / 1.5 / 1.8
 	{
-		gold = 1.0 / 1.2 / 1.5 / 1.8
-		books = 0.9 / 1.1 / 1.2 / 1.4
-		piety = 0.9 / 1.1 / 1.2 / 1.4
-		food = 0.9 / 1.1 / 1.2 / 1.4
-		levy = 0.9 / 1.1 / 1.2 / 1.4
+		gold = 1.2 / 1.4 / 1.6 / 2.0
+		books = 1.1 / 1.2 / 1.3 / 1.4
+		piety = 1.1 / 1.2 / 1.3 / 1.4
+		food = 1.1 / 1.2 / 1.3 / 1.4
+		levy = 1.1 / 1.2 / 1.3 / 1.4
 	}
 
 	float min_rebel_pop_time = 30 / 15 / 5 / 0 // in minutes, depending on difficulty settings
@@ -40,6 +40,138 @@ def DevSettings
 
 extend AI 
 {
+	// used to calculate "production score" for a building / upgrade
+	province_specialization_resource_weights
+	{
+		resources General
+		{
+			Gold = 100
+			Food = 50
+			Books = 500
+			Piety = 250
+			Levy = 100
+			TownGuards = 50
+			WorkerSlots = 100
+			Trade = 50
+			Goods = 100
+			UniqueGoods = 5000
+		}
+
+		resources Military : General
+		{
+			Levy = 500
+		}
+
+		resources Gold : General
+		{
+			Gold = 200
+			Food = 50
+			Trade = 50
+			Books = 50
+			Piety = 50
+			Levy = 50
+			TownGuards = 50
+			WorkerSlots = 50
+		}
+
+		resources Food : General
+		{
+			Food = 1000			
+			Gold = 50
+			Books = 50
+			Piety = 50
+			Levy = 50
+			TownGuards = 50
+			WorkerSlots = 50
+			Trade = 25
+		}
+
+		resources Religion : General
+		{
+			Books = 1000
+			Piety = 500
+			Gold = 50
+			Food = 50
+			Levy = 50
+			TownGuards = 50
+			WorkerSlots = 50
+			Trade = 25
+		}
+
+		//resources Trade
+		//resources Crafts
+
+		resources GeneralSpec : General
+		{
+			Gold = 225
+			Food = 50
+			Books = 500
+			Piety = 250
+			Levy = 100
+			TownGuards = 50
+			WorkerSlots = 100
+			Trade = 50
+			Goods = 100
+			UniqueGoods = 5000
+		}
+
+		resources MilitarySpec : General
+		{
+			Gold = 125
+			Food = 100
+			Books = 250
+			Piety = 100
+			Levy = 500
+			//TownGuards
+			WorkerSlots = 500
+			Trade = 50
+			Goods = 50
+			//UniqueGoods
+		}
+
+		resources TradeSpec : General
+		{
+			Gold = 350
+			//Food
+			Books = 250
+			Piety = 100
+			Levy = 50
+			//TownGuards
+			//WorkerSlots
+			Trade = 400
+			Goods = 250
+			//UniqueGoods
+		}
+
+		resources FoodSpec : General
+		{		
+			Gold = 125
+			Food = 600	
+			Books = 250
+			Piety = 100
+			Levy = 50
+			//TownGuards
+			//WorkerSlots
+			Trade = 50
+			Goods = 50
+			//UniqueGoods
+		}
+
+		resources ReligionSpec : General
+		{
+			Gold = 125
+			//Food
+			Books = 800
+			Piety = 600
+			Levy = 50
+			//TownGuards
+			WorkerSlots = 50
+			Trade = 50
+			Goods = 50
+			//UniqueGoods
+		}
+	}
+
 	non_governed_production_eval_mul = 0.25
 
 	// per number of buildings built, value is immediate / near future / far future

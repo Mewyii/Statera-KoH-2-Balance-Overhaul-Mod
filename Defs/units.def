@@ -17,16 +17,16 @@ def Army
 	water_exit_duration = 10
 	supplies_consumption_interval = 5
 
-	supplies_consumption = 0.25
+	supplies_consumption = 1
 	{
 		//Kingdom stances
-		War = 3
-		Peace = 3
-		NonAggression = 1.5
-		Alliance = 1
-		Vassalage = 1
-		Own = 0.25
-		Sailing = 4
+		War = 1
+		Peace = 1
+		NonAggression = 0.5
+		Alliance = 0.5
+		Vassalage = 0.5
+		Own = 0.2
+		Sailing = 1
 		
 		//       Modifiers
 		NeighbouringProvinceMod = 0.75
@@ -106,8 +106,8 @@ extend Infantry
 {
 	delete counter
 	delete countered
-	counter = []
-	countered = ["HeavyCavalry","Ranged","HeavyRanged","RangedCavalry","HeavyRangedCavalry"]
+	counter = ["Defense"]
+	countered = ["HeavyInfantry","Cavalry","HeavyCavalry","Ranged","HeavyRanged","RangedCavalry","HeavyRangedCavalry"]
 
 	delete upgrade_to
 	upgrade_to = [
@@ -120,8 +120,8 @@ extend HeavyInfantry
 {
 	delete counter
 	delete countered
-	counter = ["Infantry","Defense"]
-	countered = ["HeavyCavalry","HeavyRanged"]
+	counter = ["Infantry","Defense","HeavyDefense"]
+	countered = ["HeavyRanged"]
 
 	delete upgrade_to
 	upgrade_to = []
@@ -132,7 +132,7 @@ extend Defense
 	delete counter
 	delete countered
 	counter = ["Cavalry"]
-	countered = ["HeavyInfantry"]
+	countered = ["Infantry","HeavyInfantry","RangedCavalry"]
 }
 
 extend HeavyDefense
@@ -147,8 +147,8 @@ extend Cavalry
 {
 	delete counter
 	delete countered
-	counter = ["Ranged"]
-	countered = ["Defense","HeavyCavalry"]
+	counter = ["Infantry","Ranged"]
+	countered = ["Defense","HeavyDefense","HeavyCavalry","RangedCavalry"]
 
 	delete upgrade_to
 	upgrade_to = [
@@ -168,7 +168,7 @@ extend HeavyCavalry
 {
 	delete counter
 	delete countered
-	counter = ["Infantry","HeavyInfantry","Cavalry","Ranged","HeavyRanged"]
+	counter = ["Infantry","Cavalry","Ranged","HeavyRanged"]
 	countered = ["HeavyDefense"]
 }
 
@@ -204,15 +204,15 @@ extend RangedCavalry
 {
 	delete counter
 	delete countered
-	counter = ["Infantry"]
-	countered = ["Ranged","HeavyRanged"]
+	counter = ["Infantry","Defense","Cavalry"]
+	countered = ["Ranged","HeavyRanged","HeavyRangedCavalry"]
 }
 
 extend HeavyRangedCavalry
 {
 	delete counter
 	delete countered
-	counter = ["Infantry","Ranged"]
+	counter = ["Infantry","Ranged","RangedCavalry"]
 	countered = ["HeavyRanged"]
 }
 
@@ -481,7 +481,7 @@ extend HeavyCavalry
 		Cataphract_Special,
 		Norman_Special,
 		Ghulam_Cavalry_Special,
-		Pronoia_Special,
+		Pronoia_Special
 	]
 }
 extend HeavyRanged
@@ -721,10 +721,31 @@ extend Heavy_Cavalry_Slav
 // NEW UNITS
 // LEVY
 
+extend Militia_CE
+{
+	icon = "Assets/Icons/Units/Levy.png:Levy#1"
+}
+
+extend Light_Spearman_CE
+{
+	icon = "Assets/Icons/Units/LevySpear.png:LevySpear#1"
+}
+
+extend Light_Cavalry_CE
+{
+	icon = "Assets/Icons/Units/LevyCavalry.png:LevyCavalry#1"
+}
+
+extend Light_Archer_CE
+{
+	icon = "Assets/Icons/Units/LevyBow.png:LevyBow#1"
+}
+
+
 def Levy_Axemen : Infantry
 {
 	model = ["Assets/Units/Axeman_Slavic_Special/Axeman_Slavic_Special.prefab"]
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Axeman_Special.tga:Icon_Unit_Axeman_Special#2"
+	icon = "Assets/Icons/Units/LevyAxe.png:LevyAxe#1"
 
 	require
 	{
@@ -740,7 +761,7 @@ def Early_Knights_Dismounted : HeavyInfantry
 {
 	description = "Early heavily armored dismounted knights representing a switch from the earlier northern fighting tradition towards the central european knighthood."
 	model = "Assets/Units/Man_At_Arms_Special_01/Man_At_Arms_Special_01.prefab"
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_ManAtArms_Special.tga:Icon_Unit_ManAtArms_Special#2"
+	icon = "Assets/Icons/Units/EarlyKnightDismounted.png:EarlyKnightDismounted#1"
 
 	bonuses
 	{
@@ -764,7 +785,7 @@ def Early_Knights : HeavyCavalry
 {
 	description = "Early heavily armored mounted knights representing a switch from the northern infantry fighting tradition towards the central european knighthood."
 	model = "Assets/Units/Heavy_Cavalry_CE_01/Heavy_Cavalry_CE_01.prefab" //GUID:fe0549b7561b18a4382ff700e57beae9
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Heavy_Cavalry_CE.tga:Icon_Unit_Heavy_Cavalry_CE#2" //GUID:de937a70321dde04ea51552d6f23648d
+	icon = "Assets/Icons/Units/EarlyKnight.png:EarlyKnight#1"
 
 	bonuses
 	{
@@ -788,7 +809,7 @@ def High_Knights_Dismounted : HeavyInfantry
 {
 	description = "Well trained and heavily armoured soldiers, skilled both in attack and defense when it comes to close combat."
 	model = "Assets/Units/Man_At_Arms_Special_01/Man_At_Arms_Special_01.prefab"
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_ManAtArms_Special.tga:Icon_Unit_ManAtArms_Special#2"
+	icon = "Assets/Icons/Units/HighKnightDismounted.png:HighKnightDismounted#1"
 
 	bonuses
 	{
@@ -814,7 +835,7 @@ def High_Knights_Dismounted : HeavyInfantry
 def High_Knights : HeavyCavalry
 {
 	model = "Assets/Units/Heavy_Cavalry_CE_01/Heavy_Cavalry_CE_01.prefab" //GUID:fe0549b7561b18a4382ff700e57beae9
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Heavy_Cavalry_CE.tga:Icon_Unit_Heavy_Cavalry_CE#2" //GUID:de937a70321dde04ea51552d6f23648d
+	icon = "Assets/Icons/Units/HighKnight.png:HighKnight#1"
 
 	bonuses
 	{
@@ -839,6 +860,8 @@ def High_Knights : HeavyCavalry
 
 extend Norman_Special
 {
+	icon = "Assets/Icons/Units/NormanKnight.png:NormanKnight#1"
+
 	delete require
 	require
 	{
@@ -852,7 +875,7 @@ def Late_Knights_Dismounted : HeavyInfantry
 {
 	description = "Well trained and heavily armoured soldiers, skilled both in attack and defense when it comes to close combat."
 	model = "Assets/Units/Man_At_Arms_Special_01/Man_At_Arms_Special_01.prefab"
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_ManAtArms_Special.tga:Icon_Unit_ManAtArms_Special#2"
+	icon = "Assets/Icons/Units/LateKnightDismounted.png:LateKnightDismounted#1"
 	
 	max_acceleration = 4
 	max_deceleration = 4
@@ -880,7 +903,7 @@ def Late_Knights : HeavyCavalry
 	description = "Extremely heavily armoured cavalrymen, whose training in the art of war matches the quality of their equipment."
 	special = true
 	model = "Assets/Units/Feudal_Knight_Special_01/Feudal_Knight_Special_01.prefab" //GUID:38c8dc2c793b15e47b50459988fa7644
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Feudal_Knight_Special.tga:Icon_Unit_Feudal_Knight_Special#2" //GUID:989914db51388964c9d021174bf9c65a
+	icon = "Assets/Icons/Units/LateKnight.png:LateKnight#1"
 	
 	max_acceleration = 4.5
 	max_deceleration = 10
@@ -1406,10 +1429,15 @@ def Heavy_Lancers_Cuman : HeavyRangedHorseCavalry
 def Levies_Baltic : Militia
 {
 
+	icon = "Assets/Icons/Units/BalticLevy.png:BalticLevy#1"
+
 }
 
 def Infantry_Baltic : Infantry
 {
+
+	icon = "Assets/Icons/Units/BalticTribalWarrior.png:BalticTribalWarrior#1"
+
 	require
 	{
 		SimpleWeaponsmithing
@@ -1419,17 +1447,23 @@ def Infantry_Baltic : Infantry
 
 def Spearmen_Baltic : Defense
 {
+
+	icon = "Assets/Icons/Units/BalticLevySpear.png:BalticLevySpear#1"
 	
 }
 
 def Archers_Baltic : Ranged
 {
+
+	icon = "Assets/Icons/Units/BalticLevyBow.png:BalticLevyBow#1"
+
 	model = "Assets/Units/Light_Archer_Slavic/Light_Archer_Slavic.prefab" //GUID:409234aecb6b6b741b1170f8098c337e
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Light_Archer_Slav.tga:Icon_Unit_Light_Archer_Slav#2" //GUID:5b4207fbc2f1a06488e08ed57f15ebf3
 }
 
 def Cavalry_Baltic : HorseCavalry
 {
+
+	icon = "Assets/Icons/Units/BalticLevyCavalry.png:BalticLevyCavalry#1"
 	require
 	{
 		ArmyStables
@@ -1437,6 +1471,7 @@ def Cavalry_Baltic : HorseCavalry
 		SimpleArmorsmithing
 	}
 }
+
 def AdvancedMilitia_Baltic : AdvancedMilitia
 {
 	model = "Assets/Units/Militia_CE_03/Militia_CE_03.prefab" //GUID:5de2656d1a8e6614f9d9175e7db57cfc
@@ -1512,13 +1547,14 @@ def Cavalry_Militia_Baltic : HorseCavalry
 
 def Warrior_Retainers_Baltic : HeavyInfantry
 {
+
+	icon = "Assets/Icons/Units/BalticWarriorRetainer.png:BalticWarriorRetainer#1"
+
 	model = [
 		"Assets/Units/Light_Infantry_Slav_01/Light_Infantry_Slav_01.prefab", //GUID:f59e885fc65653146bfc2a87d8d70e2c
 		"Assets/Units/Light_Infantry_Slav_02/Light_Infantry_Slav_02.prefab", //GUID:8b573693ca79ad64aa0e80be9a3082c5
 		"Assets/Units/Light_Infantry_Slav_03/Light_Infantry_Slav_03.prefab" //GUID:bf3f5473d0e43924b935e94ce4606f9c
 	]
-
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Light_Infantry_Slav.tga:Icon_Unit_Light_Infantry_Slav#2" //GUID:5f758b6d532295f4bba8d9575861407e
 
 	delete require
 	require
@@ -1530,8 +1566,10 @@ def Warrior_Retainers_Baltic : HeavyInfantry
 
 def Mounted_Warrior_Retainers_Baltic : HeavyCavalry
 {
+
+	icon = "Assets/Icons/Units/BalticWarriorRetainerMounted.png:BalticWarriorRetainerMounted#1"
+
 	model = "Assets/Units/Heavy_Cavalry_Slavic/Heavy_Cavalry_Slavic.prefab" //GUID:4daf7469caac006418c56bdbab7742cf
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Heavy_Cavalry_Slav.tga:Icon_Unit_Heavy_Cavalry_Slav#2" //GUID:89db483db0259bc408505bff2cfa494b
 
 	delete require
 	require
@@ -1543,13 +1581,14 @@ def Mounted_Warrior_Retainers_Baltic : HeavyCavalry
 
 def Late_Warrior_Retainers_Baltic : HeavyInfantry
 {
+	icon = "Assets/Icons/Units/Kariauna.png:Kariauna#1"
+
 	model = [
 		"Assets/Units/Light_Infantry_Slav_01/Light_Infantry_Slav_01.prefab", //GUID:f59e885fc65653146bfc2a87d8d70e2c
 		"Assets/Units/Light_Infantry_Slav_02/Light_Infantry_Slav_02.prefab", //GUID:8b573693ca79ad64aa0e80be9a3082c5
 		"Assets/Units/Light_Infantry_Slav_03/Light_Infantry_Slav_03.prefab" //GUID:bf3f5473d0e43924b935e94ce4606f9c
 	]
 
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Light_Infantry_Slav.tga:Icon_Unit_Light_Infantry_Slav#2" //GUID:5f758b6d532295f4bba8d9575861407e
 
 	delete require
 	require
@@ -1563,8 +1602,10 @@ def Late_Warrior_Retainers_Baltic : HeavyInfantry
 
 def Late_Mounted_Warrior_Retainers_Baltic : HeavyCavalry
 {
+
+	icon = "Assets/Icons/Units/KariaunaMounted.png:KariaunaMounted#1"
+
 	model = "Assets/Units/Boyar_Special_01/Boyar_Special_01.prefab" //GUID:537ef0889f84afc428f82a2d0c461f37
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Boyar_Special.tga:Icon_Unit_Boyar_Special#2" //GUID:61b24fa25e8b035459cf89618b0fb8c3
 
 	delete require
 	require
@@ -1582,20 +1623,20 @@ def Javelinmen_Lithuania : Ranged
 	description = "Lithuanian warriors armed with throwing spears, axes, and shields. Swift and versatile, they harass their enemies before closing into the melee."
 	
 	model = "Assets/Units/Light_Archer_Slavic/Light_Archer_Slavic.prefab" //GUID:409234aecb6b6b741b1170f8098c337e
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Light_Archer_Slav.tga:Icon_Unit_Light_Archer_Slav#2" //GUID:5b4207fbc2f1a06488e08ed57f15ebf3
+	icon = "Assets/Icons/Units/LithuanianJavelinman.png:LithuanianJavelinman#1"
 }
 
 def Kariauna : HeavyInfantry
 {
 	description = "The sworn companions of Lithuanian rulers, bound by loyalty and warfare. Better equipped and more experienced than the common tribal host, they form the hardened core of a prince's army."
+
+	icon = "Assets/Icons/Units/Kariauna.png:Kariauna#1"
 	
 	model = [
 		"Assets/Units/Light_Infantry_Slav_01/Light_Infantry_Slav_01.prefab", //GUID:f59e885fc65653146bfc2a87d8d70e2c
 		"Assets/Units/Light_Infantry_Slav_02/Light_Infantry_Slav_02.prefab", //GUID:8b573693ca79ad64aa0e80be9a3082c5
 		"Assets/Units/Light_Infantry_Slav_03/Light_Infantry_Slav_03.prefab" //GUID:bf3f5473d0e43924b935e94ce4606f9c
 	]
-
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Light_Infantry_Slav.tga:Icon_Unit_Light_Infantry_Slav#2" //GUID:5f758b6d532295f4bba8d9575861407e
 
 	delete require
 	require
@@ -1612,7 +1653,7 @@ def Mounted_Kariauna : HeavyCavalry
 	description = "Mounted companions of Lithuanian princes, combining the mobility of the Baltic warrior with the discipline and experience of a permanent retinue."
 
 	model = "Assets/Units/Boyar_Special_01/Boyar_Special_01.prefab" //GUID:537ef0889f84afc428f82a2d0c461f37
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Boyar_Special.tga:Icon_Unit_Boyar_Special#2" //GUID:61b24fa25e8b035459cf89618b0fb8c3
+	icon = "Assets/Icons/Units/KariaunaMounted.png:KariaunaMounted#1"
 
 	delete require
 	require
@@ -1630,7 +1671,7 @@ def Horsemen_Prussian : RangedHorseCavalry
 	description = "Tribal warriors armed with spears and throwing javelins, striking at their enemies from a distance before closing into brutal hand-to-hand combat."
 	special = true
 	model = "Assets/Units/Horse_Archer_CE_01/Horse_Archer_CE_01.prefab" //GUID:64e552fb207019245b105075aa9f25aa
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Jinetes_Special.tga:Icon_Unit_Jinetes_Special#2" //GUID:7b3f460cda735d8469c2748a4409aed6
+	icon = "Assets/Icons/Units/PrussianHorseman.png:Prussian_Horseman#1"
 
 	max_acceleration = 7
 	max_deceleration = 10
@@ -1640,6 +1681,24 @@ def Horsemen_Prussian : RangedHorseCavalry
 	{
 		ArmyStables
 	}
+}
+
+def Raiders_Curonian : Infantry
+{
+	description = "Seasoned warriors of the Curonian coast, accustomed to swift raids both across the Baltic Sea and on land. Armed with spear, axe, and shield, they excel at sudden attacks and seaborne campaigns."
+	special = true
+	icon = "Assets/Icons/Units/CuronianRaider.png:CuronianRaider#1"
+	
+	model = ["Assets/Units/Axeman_Slavic_Special/Axeman_Slavic_Special.prefab"]
+
+	require
+	{
+		SimpleWeaponsmithing
+	}
+
+	kingdom_religion = Pagan
+
+	hide_in_wiki = false
 }
 
 // SPECIAL
@@ -1743,6 +1802,22 @@ extend Longbowman_Special
 	}
 }
 
+def Spearmen_Welsh : Defense
+{
+	description = "Experienced warriors from Wales, particularly the northern regions where long spears were especially prominent. Lightly equipped and highly mobile, they fight with long spears and simple shields, excelling in attacks and combat across difficult terrain."
+
+	icon = "Assets/Icons/Units/WelshSpearman.png:WelshSpearman#1"
+
+	model = "Assets/Units/Light_Spearman_CE_01/Light_Spearman_CE_01.prefab" //GUID:3924f21e679e83f49858d1a6cd9d116a
+
+	special = true
+	require
+	{
+	}
+
+	hide_in_wiki = false
+}
+
 def Welsh_Longbowman_Special : HeavyRanged
 {
 	description = "Highly trained archers, armed with a powerful wooden bow, effective even against armoured enemies. Welsh longbowmen are lighter and faster than english longbowmen."
@@ -1758,6 +1833,22 @@ def Welsh_Longbowman_Special : HeavyRanged
 		ArcheryRange
 		AdvancedBowmaking
 		Leatherworking
+	}
+
+	hide_in_wiki = false
+}
+
+def Spearmen_Galwegian : Defense
+{
+	description = "Lightly equipped warriors from Galloway, known for their long spears and large shields. They largely forgo armor, relying instead on mobility, determination and aggressive attacks."
+
+	icon = "Assets/Icons/Units/GalwegianSpearman.png:GalwegianSpearman#1"
+
+	model = "Assets/Units/Light_Spearman_CE_01/Light_Spearman_CE_01.prefab" //GUID:3924f21e679e83f49858d1a6cd9d116a
+
+	special = true
+	require
+	{
 	}
 
 	hide_in_wiki = false
@@ -1803,6 +1894,15 @@ def Gallowglass : Infantry
 	retreat_damage_mod = 10
 
 	hide_in_wiki = false
+}
+
+def Kern_Irish : Ranged
+{
+	description = "Lightly armed Irish warriors who rely on mobility, javelins and swift attacks. Lacking heavy armor and usually protected only by a small round shield, they excel at raiding, skirmishing and fighting in difficult terrain."
+	
+	icon = "Assets/Icons/Units/IrishKern.png:IrishKern#1"
+	
+	model = "Assets/Units/Light_Archer_Slavic/Light_Archer_Slavic.prefab" //GUID:409234aecb6b6b741b1170f8098c337e
 }
 
 extend Horse_Archer_CE : RangedHorseCavalry
