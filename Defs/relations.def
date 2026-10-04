@@ -33,7 +33,7 @@ extend RelationUtils
 
 	fade_settings
 	{
-		fade_temp_per_sec = 0.2
+		fade_temp_per_sec = 0.1
 		fade_far_per_sec = 0.05  
 
 		fade_on_new_king_near = 0.15
@@ -43,7 +43,22 @@ extend RelationUtils
 
 extend RelationModifiers
 {
+
 	// First is a a permanent relation change, second one fades after time. Both are immediate.
-	rel_mod rel_sign_peace = [(250 - (100 * tgt_kingdom.is_player)), 50, (1 * !leader_signed_peace)]
-	rel_mod rel_decline = [(-10 - (10 * tgt_kingdom.is_player)), (-10 - (10 * tgt_kingdom.is_player)), 0]
+	// diplomacy
+	rel_mod rel_sign_trade = [50, 50, 0]
+	rel_mod rel_sign_nonagression = [100, 100]
+
+	// war and peace
+	rel_mod rel_declare_war = [-200, -200, 0.5]
+	rel_mod rel_sign_peace = [200, (200 - (100 * tgt_kingdom.is_player)), 0.25]
+
+	// battle
+	rel_mod rel_battle_siege = [-75, -75, 0.25]
+
+	// general
+	rel_mod rel_decline = [(-10 - (15 * tgt_kingdom.is_player)), (-10 - (5 * tgt_kingdom.is_player)), 0]
+	rel_mod rel_bordercross_enter_enemy = [-20, -40, 0]
+	rel_mod rel_bordercross_enter_neutral = [-10, -20, 0]
+	rel_mod rel_bordercross_leave = [(-perm_cache_value), (-temp_cache_value), 0]
 }

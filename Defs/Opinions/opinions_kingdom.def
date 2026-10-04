@@ -1,0 +1,347 @@
+// FOOD
+
+def KingdomFoodNegativePeasantryOpinionRule : OpinionChangeRule
+{
+	opinion = "PeasantryOpinion"
+	amount = -1
+	reason = "food_negative_peasantry"
+	flavor = "Hunger spreads troughout our kingdom! The peasants are starving the most, unrest is growing and the common people are getting desperate."
+	
+	triggers
+	{
+		kingdom negative_kingdom_food_penalty
+	}
+}
+
+def KingdomFoodNegativeArmyOpinionRule : OpinionChangeRule
+{
+	opinion = "ArmyOpinion"
+	amount = -1
+	reason = "food_negative_army"
+	flavor = "Our soldiers all over the kingdom are unsatisfied, to say the least, by the insufficient kingdom food supplies. Our generals are getting worried."
+	
+	triggers
+	{
+		kingdom negative_kingdom_food_penalty
+	}
+}
+
+// GOLD
+
+def KingdomGoldNegativeMerchantsOpinionRule : OpinionChangeRule
+{
+	opinion = "MerchantsOpinion"
+	amount = -1
+	reason = "gold_negative_merchants"
+	flavor = "The kingdom's negative gold income balance has negatively impacted our merchants, who are seeing reduced profits and trading opportunities."
+	
+	triggers
+	{
+		kingdom negative_kingdom_gold_income_penalty
+	}
+}
+
+def KingdomGoldNegativeNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = -1
+	reason = "gold_negative_nobility"
+	flavor = "The kingdom's negative gold income balance has negatively impacted our nobility, who are seeing reduced incomes and luxury goods."
+	
+	triggers
+	{
+		kingdom negative_kingdom_gold_income_penalty
+	}
+}
+
+def GetBankruptNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = -2
+	reason = "getting_bankrupt"
+	flavor = "The disastrous state of our economy led to enormous distrust of the capabilities of our current royal court to rule over {kingdom}."
+	
+	triggers { kingdom getting_bankrupt }
+}
+
+def GetBankruptMerchantsOpinionRule : OpinionChangeRule
+{
+	opinion = "MerchantsOpinion"
+	amount = -2
+	reason = "getting_bankrupt"
+	flavor = "Our financial crisis prevents us from paying for the goods some of our merchants provided and stops foreign traders to make any dealings in {st_sender}"
+	
+	triggers { kingdom getting_bankrupt }
+}
+
+// RELIGION
+
+def ChangeReligionNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = 2
+	reason = "religion_changed_nobility"
+	flavor = "Our nobility welcomes our new religion. Sometimes, change is important for a kingdom to truly thrive."
+	
+	triggers
+	{
+		kingdom religion_changed
+		{
+			condition = (param != null) // if there is a valid previous religion
+		}
+	}
+}
+
+def ChangeReligionMerchantsOpinionRule : OpinionChangeRule
+{
+	opinion = "MerchantsOpinion"
+	amount = 2
+	reason = "religion_changed_merchants"
+	flavor = "Our merchants accept our new religion. They are hoping that this change will bring stability, new trading opportunities and more wealth to the kingdom."
+	
+	triggers
+	{
+		kingdom religion_changed
+		{
+			condition = (param != null) // if there is a valid previous religion
+		}
+	}
+}
+
+def ChangeReligionClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = -4
+	reason = "religion_changed_clergy"
+	flavor = "Changing the religion of our kingdom has shaken the people! The roots of our former beliefs must be eradicated if we want our lands to be truly stable."
+	
+	triggers
+	{
+		kingdom religion_changed
+		{
+			condition = (param != null) // if there is a valid previous religion
+		}
+	}
+}
+
+def ChangeReligionPeasantryOpinionRule : OpinionChangeRule
+{
+	opinion = "PeasantryOpinion"
+	amount = -2
+	reason = "religion_changed_peasantry"
+	flavor = "Our peasants are confused and scared by the change of religion in our kingdom. They are worried about their future and the future of their children."
+	
+	triggers
+	{
+		kingdom religion_changed
+		{
+			condition = (param != null) // if there is a valid previous religion
+		}
+	}
+}
+
+// INDEPENDENCE
+
+def IndependenceClaimNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = 1
+	reason = "nobility_opinion_independence"
+	flavor = "Our nobility is pleased that our {king} has decided to pursue independence from the foreign overlord. They are hoping that this will bring more power and wealth to our kingdom."
+	
+	triggers
+	{
+		kingdom independence
+	}
+}
+
+def IndependenceClaimArmyOpinionRule : OpinionChangeRule
+{
+	opinion = "ArmyOpinion"
+	amount = 1
+	reason = "army_opinion_independence"
+	flavor = "Our army is proud of our {king} for leading us towards independence. They believe this will bring honor and prosperity to our kingdom."
+	
+	triggers
+	{
+		kingdom independence
+	}
+}
+
+def FailedIndependenceClaimClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = 1
+	reason = "failed_independence_clergy"
+	flavor = "Our clergy is relieved that our {king} is a man of reason and decided not to pursue independence trough bloodshed. They are hoping that our kingdom will be able to recover from this crisis and prosper in the future."
+
+	triggers
+	{
+		kingdom failed_independence	
+	}
+}
+
+// TRADITIONS
+
+def DiplomatTraditionAdoptedNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = 1
+	reason = "diplomat_tradition_adopted_nobility"
+	flavor = "Our noblemen are happy that the people of {st_sender} have accepted {st_param.name} as one of their core values."
+	
+	triggers = 60
+	{
+		kingdom new_tradition
+		{
+			condition = (param.def.skill.def.class_gradient_key == "Diplomat")
+		}
+	}
+}
+
+def DiplomatTraditionAdoptedClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = 1
+	reason = "diplomat_tradition_adopted_clergy"
+	flavor = "Our clergy is happy that the people of {st_sender} have accepted {st_param.name} as one of their core values."
+	
+	triggers = 60
+	{
+		kingdom new_tradition
+		{
+			condition = (param.def.skill.def.class_gradient_key == "Diplomat")
+		}
+	}
+}
+
+def DiplomatTraditionAdoptedMerchantsOpinionRule : OpinionChangeRule
+{
+	opinion = "MerchantsOpinion"
+	amount = 1
+	reason = "diplomat_tradition_adopted_merchants"
+	flavor = "Our merchants are happy that the people of {st_sender} have accepted {st_param.name} as one of their core values."
+	
+	triggers = 60
+	{
+		kingdom new_tradition
+		{
+			condition = (param.def.skill.def.class_gradient_key == "Diplomat")
+		}
+	}
+}
+
+def DiplomatTraditionAdoptedPeasantryOpinionRule : OpinionChangeRule
+{
+	opinion = "PeasantryOpinion"
+	amount = 1
+	reason = "diplomat_tradition_adopted_peasantry"
+	flavor = "Our peasants are happy that the people of {st_sender} have accepted {st_param.name} as one of their core values."
+	
+	triggers = 60
+	{
+		kingdom new_tradition
+		{
+			condition = (param.def.skill.def.class_gradient_key == "Diplomat")
+		}
+	}
+}
+
+
+def ClericTraditionAdoptedClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = 2
+	reason = "cleric_tradition_adopted_clergy"
+	flavor = "Our {kingdom.cleric_title:s} are happy that the people of {st_sender} have {st_param.name} among their core values."
+	
+	triggers
+	{
+		kingdom new_tradition
+		{
+			condition = (param.def.skill.def.class_gradient_key == "Cleric")
+		}
+	}
+}
+
+def ClericTraditionAdoptedNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = -1
+	reason = "cleric_tradition_adopted_nobility"
+	flavor = "Our nobility is concerned about the religious focus of {st_param.name} and worry it might diminish their influence and power."
+	
+	triggers
+	{
+		kingdom new_tradition
+		{
+			condition = (param.def.skill.def.class_gradient_key == "Cleric")
+		}
+	}
+}
+
+def MarshalTraditionAdoptedArmyOpinionRule : OpinionChangeRule
+{
+	opinion = "ArmyOpinion"
+	amount = 2
+	reason = "marshal_tradition_adopted_army"
+	flavor = "Our military leaders appreciate the better preparation our soldiers will have with {st_param.name} accepted as one of our traditions."
+	
+	triggers
+	{
+		kingdom new_tradition
+		{
+			condition = (param.def.skill.def.class_gradient_key == "Marshal")
+		}
+	}
+}
+
+def MarshalTraditionAdoptedMerchantsOpinionRule : OpinionChangeRule
+{
+	opinion = "MerchantsOpinion"
+	amount = -1
+	reason = "marshal_tradition_adopted_merchants"
+	flavor = "Our merchants are concerned about the military focus of {st_param.name} and worry it might divert resources from commercial development."
+	
+	triggers
+	{
+		kingdom new_tradition
+		{
+			condition = (param.def.skill.def.class_gradient_key == "Marshal")
+		}
+	}
+}
+
+def MerchantTraditionAdoptedMerchantsOpinionRule : OpinionChangeRule
+{
+	opinion = "MerchantsOpinion"
+	amount = 2
+	reason = "merchant_tradition_adopted_merchants"
+	flavor = "Establishing {st_param.name} as one of our traditions is really appreciated by our merchants. More and more do they see {kingdom} as a kingdom where trading prospers."
+	
+	triggers
+	{
+		kingdom new_tradition
+		{
+			condition = (param.def.skill.def.class_gradient_key == "Merchant")
+		}
+	}
+}
+
+def MerchantTraditionAdoptedArmyOpinionRule : OpinionChangeRule
+{
+	opinion = "ArmyOpinion"
+	amount = -1
+	reason = "merchant_tradition_adopted_army"
+	flavor = "Our military leaders are concerned about the commercial focus of {st_param.name} and worry it might divert resources from military development."
+	
+	triggers
+	{
+		kingdom new_tradition
+		{
+			condition = (param.def.skill.def.class_gradient_key == "Merchant")
+		}
+	}
+}
+
+// PRISON

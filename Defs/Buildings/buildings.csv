@@ -17,7 +17,7 @@ RiverDocks,Building,890,1100,,,,0.5 Gold in All 5 rs_growth_rate_perc
 Irrigation,Building,1100,2000,,,,2 Food in Town 2 Food in Farm,Rivers
 // Sea
 Harbor,Building,1320,1400,,,,1 Gold in All 5 rs_growth_rate_perc,Craftsmen
-FishingDocks,Building,660,600,,,,3 Food in Town
+FishingDocks,Building,450,650,,,,3 Food in Town
 TradePort,Building,2750,3500,,,,2 Gold in Town 1 Gold in All 15 rs_growth_rate_perc,Craftsmen Timber
 Shipyard,Building,2200,3000,,,,6 Trade in Town 20 rs_siege_defense,Craftsmen Timber Tar
 // Crafting
@@ -244,6 +244,7 @@ ClothManufacturing,Upgrade,2200,4500,200,,,2 Gold in Town 2 WorkerSlots in Town 
 ArmorWeaving,Upgrade,2640,4500,500,,,1 Trade in Town 10 rs_light_discount_perc 10 rs_heavy_discount_perc produces Gambeson,IronTools
 // Culture
 // Education
+Observatory,Upgrade,2750,6000,200,,,1 WorkerSlots in Town 2 ks_army_speed_world_perc if Governed 2 ks_ships_speed_perc if Governed produces Compasses,Scholars
 //Christian
 EarlyScholasticism,Upgrade,1100,4000,100,,,1 Books in Town produces EarlyScholars
 TriviumCurriculum,Upgrade,2750,6000,500,,,1 Gold in Village 1 Levy in Keep 1 Food in Farm 1 Books in Monastery 1 Gold in Mine 1 Trade in Quarry 1 Trade in Vineyard 1 Trade in HorseFarm
@@ -255,7 +256,7 @@ FacultyMedicine,Upgrade,2200,5000,500,,,-2 rs_stability_buildings 1 WorkerSlots 
 FacultyArts,Upgrade,1660,5000,200,,,-2 rs_stability_buildings 4 Trade in Town 1 WorkerSlots in Town 1 Trade in Village produces Artists
 HighScholasticism,Upgrade,2200,6000,500,,,-2 rs_stability_buildings produces Scholars
 AcademicCharter,Upgrade,1100,5000,100,,,-4 rs_stability_buildings 4 Books in Town 2 Books in Village
-Observatory_Christian,Upgrade,2750,6000,200,,,1 WorkerSlots in Town 2 ks_army_speed_world_perc if Governed 2 ks_ships_speed_perc if Governed produces Compasses,Christian
+Observatory_Christian,,,,,,,,Christian
 // Muslim
 QuranicStudies,Upgrade,550,3000,,,,1 Piety in Town
 LogicPhilosophy,Upgrade,1100,4000,100,,,1 Books in Town produces EarlyScholars
@@ -268,7 +269,7 @@ ScientificNotation,Upgrade,2200,5000,500,,,2 Hammers in Town 5 ks_culture_from_b
 MedicinePharmacy,Upgrade,2200,5000,500,,,-2 rs_stability_buildings 5 rs_growth_rate_perc 3 Trade in Town 1 WorkerSlots in Town produces Medicine
 MathematicsEngineering,Upgrade,2200,5000,500,,,-2 rs_stability_buildings 4 Hammers in Town 1 WorkerSlots in Town 3 ks_build_cost_discount_perc if Governed 1 Hammers in Village
 AdvancedPhilosophy,Upgrade,2750,6000,500,,,-2 rs_stability_buildings 2 Books in Town 1 Books in Village produces Scholars
-Observatory_Muslim,Upgrade,2750,6000,200,,,1 WorkerSlots in Town 2 ks_army_speed_world_perc if Governed 2 ks_ships_speed_perc if Governed produces Compasses,Muslim
+Observatory_Muslim,Observatory,,,,,,,Muslim
 // Punishment
 ExecutionersSquare,Upgrade,550,1500,,,,2 Gold in Town 4 rs_stability_buildings -1 ks_stability,
 CityPrison,Upgrade,1550,3000,,,,2 rs_stability_buildings 2 TownGuards in Town -2 Gold in Town,

@@ -42,8 +42,40 @@ extend KingdomStats
     ks_prod_piety_flat = 5
     ks_max_levy = 300
     ks_books_per_cleric = 1
-    ks_corruption = 25
-    ks_stability = (If(kingdom.is_ai, -2, -5))
+    ks_corruption = 20
+	{
+		mod kingdom_size = (round(map_clamp(game.time_hours, 0, 2, 0.33, 1) * kingdom.num_realms))
+		mod great_power = (is_great_power * (round(map_clamp(game.time_hours, 0, 2, 0.33, 1) * (kingdom.num_realms/2))))
+	}
+
+    ks_stability = 0
+	{
+		mod initial = (If(kingdom.is_ai, -2, -5))
+		mod taxes = (tax_level * -10) 									// RebellionRiskCategoryTaxes
+		mod wars = (round(-1 * ks_war_exhaustion))						// RebellionRiskCategoryWarExhaustion
+		mod dead_king = (ks_king_death * -1) 							// RebellionRiskCategoryDeadKing
+		mod hunger = #StabilityFromHunger 								// RebellionRiskCategoryHunger
+		mod crown_authority = #StabilityFromCrownAuthority 				// RebellionRiskCategoryCrownAuthority
+		mod traditions = (ks_kingdom_stability_from_traditions) 		// RebellionRiskCategoryTraditions
+		mod cleric = #StabilityFromHelpTheWeak 							// RebellionRiskCategoryHelpTheWeak
+		mod opinions = (round(ks_stability_from_opinions)) 				// RebellionRiskCategoryOpinions
+		mod rebel_leaders = #StabilityFromRebelLevels					// RebellionRiskCategoryRebelLeaders
+		mod defeated_rebels = (ks_defeated_rebellion)					// RebellionRiskCategoryDefeatedRebels
+		mod religous_bonuses = (ks_stability_religion)					// RebellionRiskCategoryReligionBonuses
+		mod religious_differences = #StabilityFromReligiousDifferences	// RebellionRiskCategoryReligionDifferences
+		mod cultural_differences = (round(#StabilityFromCultureDifferences))		// RebellionRiskCategoryCultureDifferences
+		mod own_spies = #StabilityFromOwnSpies                          // RebellionRiskCategoryOwnSpies
+		mod kingdom_size = (-round(map_clamp(game.time_hours, 0, 2, 0.33, 1) * (kingdom.num_realms/2)))
+	}
+
+	delete ks_army_morale
+	stat ks_army_morale = 0
+	{
+		text name = "army morale"
+		max = 30
+		
+		mod important_relatives = (morale_from_relatives) { text mod_name = "Important relative marshals"}
+	}
 }
 
 extend RealmStats {

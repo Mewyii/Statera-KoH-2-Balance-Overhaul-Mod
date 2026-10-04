@@ -1,0 +1,30 @@
+def KingodmStabilityTooltip : Tooltip
+{
+	caption = "Kingdom stability:{/b} {stability:bonus}{p}"
+	text = $[
+		"Various factors play a role in determining the contentment of the population with your rule. Neglecting those can be detrimental, as negative stability may lead to rebellions."
+		"[{has_stability_factors:if}{p}{p}{b}Stability factors:{/b}{p}]"
+		"[{has_stability_factors:if}{blt} {stability_taxes:if}Taxes: {stability_taxes:bonus}{p}]"
+		"[{has_stability_factors:if}{blt} {stability_kingdom_size:if}Kingdom Size: {stability_kingdom_size:bonus}{p}]"
+		"[{has_stability_factors:if}{blt} {stability_wars:if}War exhaustion: {stability_wars:bonus}{p}]"
+		"[{has_stability_factors:if}{blt} {stability_dead_king:if}Recently deceased king: {stability_dead_king:bonus}{p}]"
+		"[{has_stability_factors:if}{blt} {stability_hunger:if}Hunger: {stability_hunger:bonus}{p}]"
+		"[{has_stability_factors:if}{blt} {stability_crown_authority:if}Crown authority: {stability_crown_authority:bonus}{p}]"
+		"[{has_stability_factors:if}{blt} {stability_rel_difference:if}Religious differences: {stability_rel_difference:bonus}{p}]"
+		"[{has_stability_factors:if}{blt} {stability_cul_difference:if}Cultural differences: {stability_cul_difference:bonus}{p}]" 
+		"[{has_stability_factors:if}{blt} {stability_traditions:if}Traditions: {stability_traditions:bonus}{p}]" 
+		"[{has_stability_factors:if}{blt} {stability_cleric:if}Cleric actions: {stability_cleric:bonus}{p}]"
+		"[{has_stability_factors:if}{blt} {stability_opinions:if}Opinions : {stability_opinions:bonus}{p}]"
+		"[{has_stability_factors:if}{blt} {stability_rebel_leaders:if}Rebel leaders: {stability_rebel_leaders:bonus}{p}]"
+		"[{has_stability_factors:if}{blt} {stability_defeated_rebels:if}Recently defeated rebellions: {stability_defeated_rebels:bonus}{p}]"
+		"[{has_stability_factors:if}{blt} {stability_religous_bonuses:if}Religion: {stability_religous_bonuses:bonus}{p}]"
+		"[{has_stability_factors:if}{blt} {stability_own_spies:if}Spies: {stability_own_spies:bonus}{p}]"
+		"[{has_stability_factors:if}{blt} {stability_stability:if}Other stability effects: {stability_stability:bonus}{p}]"
+		"{p}{b}Kingdom happiness: {ks_happiness:bonus}{/b}" 
+		"{p}{p}{b}{KingdomStats.ks_espionage_defense_TT.name}: {ks_espionage_defense_TT:bonus}{/b}"
+		"[{worst_realm_0:if}{p}{p}{b}Realms with lowest stability:{/b}{p}]"
+		"[{worst_realm_0}{p}]"
+		"[{worst_realm_1}{p}]"
+		"[{worst_realm_2}{p}]"
+	]
+}

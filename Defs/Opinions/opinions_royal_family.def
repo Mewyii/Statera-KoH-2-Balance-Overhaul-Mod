@@ -1,0 +1,283 @@
+// KING DEATH
+
+def KingChangeNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	var new_king_skill_level = (round((kingdom.king_warfare_ability + kingdom.king_economy_ability + kingdom.king_espionage_ability + kingdom.king_religion_ability + kingdom.king_diplomacy_ability)/5))
+	var opinion_change = (((trigger.change_type == "new_dynasty") && -4 || -3) + new_king_skill_level)
+	amount = (opinion_change)
+	reason = "new_king_nobility"
+
+	case high_skill_level = (opinion_change > 0)
+	{
+		flavor = "The great houses of the realm mourn the passing of our late {king.title}, yet they are heartened by the news that {kingdom.king} has proven himself a capable and worthy successor. The lords pledge their loyalty to the new ruler, and hope that he will lead the realm to glory."
+	}
+	case low_skill_level = (opinion_change < 0)
+	{
+		flavor = "The great houses of the realm mourn the passing of our late {king.title}, yet they are troubled by the news that {kingdom.king} has proven himself unfit to rule. The lords fear that the new ruler will lead the realm to ruin, and wonder whether they should bend the knee out of duty or defiance."
+	}
+	
+	triggers {
+		kingdom king_changed
+		{
+			condition = ((opinion_change != 0) && is_old_king_death)
+		}
+	}
+}
+
+def KingChangeArmyOpinionRule : OpinionChangeRule
+{
+	opinion = "ArmyOpinion"
+	var new_king_skill_level = (kingdom.king_warfare_ability)
+	var opinion_change = (((trigger.change_type == "new_dynasty") && -4 || -3) + new_king_skill_level)
+	amount = (opinion_change)
+	reason = "new_king_army"
+
+	case high_skill_level = (opinion_change > 0)
+	{
+		flavor = "Banners are lowered and drums fall silent as our soldiers honour their fallen {king.title}. Yet around the campfires, the veterans speak with pride of {kingdom.king}'s skill in the art of war - here is a commander worth following into battle, and the troops are eager to march under his banner."
+	}
+	case low_skill_level = (opinion_change < 0)
+	{
+		flavor = "Banners are lowered and drums fall silent as our soldiers honour their fallen {king.title}. Around the campfires, the veterans shake their heads - {kingdom.king} knows little of war, and the troops fear that he will lead them into ruin on some distant battlefield."
+	}
+	
+	triggers {
+		kingdom king_changed
+		{
+			condition = ((opinion_change != 0) && is_old_king_death)
+		}
+	}
+}
+
+def KingChangeMerchantsOpinionRule : OpinionChangeRule
+{
+	opinion = "MerchantsOpinion"
+	var new_king_skill_level = (kingdom.king_economy_ability)
+	var opinion_change = (((trigger.change_type == "new_dynasty") && -4 || -3) + new_king_skill_level)
+	amount = (opinion_change)
+	reason = "new_king_merchants"
+
+	case high_skill_level = (opinion_change > 0)
+	{
+		flavor = "The market stalls close for a day of mourning for our late {king.title}, yet in the counting houses the mood is hopeful. {kingdom.king} is known for his sound judgement in matters of coin and commerce, and our merchants expect safe roads, stable prices and flourishing trade."
+	}
+	case low_skill_level = (opinion_change < 0)
+	{
+		flavor = "The market stalls close for a day of mourning for our late {king.title}, and in the counting houses the ledgers are closed with a sigh. {kingdom.king} has little understanding of trade and treasury, and our merchants fear debased coin, neglected roads and ever heavier tolls and taxes."
+	}
+	
+	triggers {
+		kingdom king_changed
+		{
+			condition = ((opinion_change != 0) && is_old_king_death)
+		}
+	}
+}
+
+def KingChangeClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	var new_king_skill_level = (kingdom.king_religion_ability)
+	var opinion_change = (((trigger.change_type == "new_dynasty") && -4 || -3) + new_king_skill_level)
+	amount = (opinion_change)
+	reason = "new_king_clergy"
+
+	case high_skill_level = (opinion_change > 0)
+	{
+		flavor = "Church bells toll throughout the land and masses are held for the soul of our late {king.title}. From the pulpits, the clergy gives thanks to the Lord, for {kingdom.king} is known as a pious and devout soul - a true defender of the faith who will keep the Church close to the throne."
+	}
+	case low_skill_level = (opinion_change < 0)
+	{
+		flavor = "Church bells toll throughout the land and masses are held for the soul of our late {king.title}. Yet the clergy prays with heavy hearts, for {kingdom.king} shows little devotion to the faith, and they fear he will stray from the path of the Lord and neglect the Church."
+	}
+	
+	triggers {
+		kingdom king_changed
+		{
+			condition = ((opinion_change != 0) && is_old_king_death)
+		}
+	}
+}
+
+def KingChangePeasantryOpinionRule : OpinionChangeRule
+{
+	opinion = "PeasantryOpinion"
+	var new_king_skill_level = (kingdom.king_diplomacy_ability)
+	var opinion_change = (((trigger.change_type == "new_dynasty") && -4 || -3) + new_king_skill_level)
+	amount = (opinion_change)
+	reason = "new_king_peasantry"
+
+	case high_skill_level = (opinion_change > 0)
+	{
+		flavor = "In the villages and fields, the common folk pause their toil to mourn our late {king.title}. Word has spread that {kingdom.king} is a wise peacemaker who keeps good relations with our neighbours, and the peasants hope for years of peace and bread on their tables."
+	}
+	case low_skill_level = (opinion_change < 0)
+	{
+		flavor = "In the villages and fields, the common folk pause their toil to mourn our late {king.title}. They have seen rulers come and go, and they fear {kingdom.king} lacks the wisdom to keep the peace - bringing only war, hunger and heavier burdens upon their shoulders."
+	}
+	
+	triggers {
+		kingdom king_changed
+		{
+			condition = ((opinion_change != 0) && is_old_king_death)
+		}
+	}
+}
+
+// HEIR
+
+def AssignNewHeirNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = -1
+	flavor = "Our {kingdom.king} is old and frail, and his days are surely numbered - yet he casts aside {st_param}, the heir the realm had long prepared for. The lords are dismayed by such a hasty change so close to the end, and fear that {kingdom.heir} will take the throne unready and without the loyalty of the great houses."
+	
+	triggers
+	{
+		kingdom heir_changed
+		{
+			condition = (kingdom.king.is_venerable)
+		}
+	}
+}
+
+// CHILD BIRTH
+
+def HoldAFeastNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = 1
+	reason = "hold_feast_nobility"
+	flavor = "Our noblemen greatly enjoyed the generous feast {kingdom.king} organized recently and still praise the royal cooks and entertainers."
+	
+	triggers = 65
+	{
+		kingdom hold_feast
+	}
+}
+
+def HoldAFeastPeasantryOpinionRule : OpinionChangeRule
+{
+	opinion = "PeasantryOpinion"
+	amount = 1
+	reason = "hold_feast_peasantry"
+	flavor = "Besides the glorious feast to which {kingdom.king} invited all prominent nobles, free food and some coin were given to the poor and ordinary people throughout the kingdom, which they greatly appreciated."
+	
+	triggers = 80
+	{
+		kingdom hold_feast
+	}
+}
+
+def HoldAFeastMerchantsOpinionRule : OpinionChangeRule
+{
+	opinion = "MerchantsOpinion"
+	amount = 1
+	reason = "hold_feast_merchants"
+	flavor = "Our merchants greatly enjoyed the generous feast {kingdom.king} organized recently and still praise the trading opportunities it provided."
+	
+	triggers = 80
+	{
+		kingdom hold_feast
+	}
+}
+
+def HoldAFeastClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = 1
+	reason = "hold_feast_clergy"
+	flavor = "Our clergy appreciated the generous feast {kingdom.king} organized recently and still praise the royal cooks and pious ceremonies."
+	
+	triggers = 80
+	{
+		kingdom hold_feast
+	}
+}
+
+def HoldAFeastArmyOpinionRule : OpinionChangeRule
+{
+	opinion = "ArmyOpinion"
+	amount = 1
+	reason = "hold_feast_army"
+	// Vary this a bit
+	flavor = "The army greatly enjoyed the generous feast {kingdom.king} organized recently and still praise the ale and mead."
+	
+	triggers = 80
+	{
+		kingdom hold_feast
+	}
+}
+
+// MARRIAGE
+
+def MarriageNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	var opinion_change = ((sender.culture_group == param.spouse.kingdom_before_marriage.culture_group) && 2 || -1)
+	amount = (opinion_change)
+	reason = "marriage_nobility"
+	
+	case same_culture = (opinion_change > 0)
+	{
+		flavor = "Our nobility rejoices at the news that {kingdom.king} has found a suitable bride, and hope that the union will bring unity and prosperity to the realm."
+	}
+	case different_culture = (opinion_change < 0)
+	{
+		flavor = "Our nobility is troubled by the news that {kingdom.king} has married a foreigner with a different culture. They are concerned about the potential consequences."
+	}
+	
+	triggers
+	{
+		kingdom character_married
+	}
+}
+
+def MarriagePeasantryOpinionRule : OpinionChangeRule
+{
+	opinion = "PeasantryOpinion"
+	var opinion_change = ((sender.culture_group == param.spouse.kingdom_before_marriage.culture_group) && 1 || -2)
+	amount = (opinion_change)
+	reason = "marriage_peasantry"
+
+	case same_culture = (opinion_change > 0)
+	{
+		flavor = "Our common folk rejoice at the news that {kingdom.king} has found a suitable bride, and hope that the union will bring peace and prosperity to the realm."
+	}
+	case different_culture = (opinion_change < 0)
+	{
+		flavor = "Our common folk are troubled by the news that {kingdom.king} has married a foreigner with a vastly different culture. They don't think this is a wise decision and are concerned about the potential consequences."
+	}
+	
+	triggers
+	{
+		kingdom character_married
+		{
+		}
+	}
+}
+
+def MarriageClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	var opinion_change = ((sender.religion != param.spouse.kingdom_before_marriage.religion) && 1 || -2)
+	amount = (opinion_change)
+	reason = "marriage_clergy"
+
+	case same_religion = (opinion_change > 0)
+	{
+		flavor = "Forming a royal marriage with {st_param.spouse.kingdom_before_marriage} was seen by many as a wise and pious move. The clergy is pleased that our {king} has chosen a spouse who shares our faith."
+	}
+	case different_religion = (opinion_change < 0)
+	{
+		flavor = "Forming a royal marriage with {st_param.spouse.kingdom_before_marriage} was seen by many as an ill-advised move. The clergy is concerned that our {king} has chosen a spouse who does not share our faith."
+	}
+	
+	triggers
+	{
+		kingdom character_married
+		{
+		}
+	}
+}

@@ -1,0 +1,1106 @@
+// CLEANUP
+
+delete DeclareWarMerchantsOpinionRule
+delete WinWarPaganClergyOpinionRule
+delete AttackingCatholicKingdomClergyOpinionRule
+delete AttackingByzantiumClergyOpinionRule
+delete AttackingInfidelsClergyOpinionRule
+delete TakeLoanNobilityOpinionRule
+delete RepayLoanNobilityOpinionRule
+delete LosingWarPaganClergyOpinionRule
+delete NewKingNobilityOpinionRule
+delete ChangeHeirNobilityOpinionRule
+delete PeaceWithInfidelsClergyOpinionRule
+delete LoseBattleClergyOpinionRule
+delete FailedIndependenceNobilityOpinionRule
+delete NobilityDeclareIndependenceOpinionRule
+delete MarriageWithOtherReligionClergyOpinionRule
+
+
+
+
+
+// OLD
+// NOBILITY
+
+def LoseProvinceNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = (st_sender.is_pagan && -2 || -1)
+	reason = "province_lost"
+	flavor = "Losing control over the province of {st_param} has shaken the nobles in your kingdom."
+	
+	triggers {
+		kingdom realm_deleted
+		{
+			condition = (!param.kingdom.is_papacy || param.kingdom.num_realms > 1) //dont trigger when restoring papacy
+		}
+	}
+}
+
+def RebelsOccupyProvinceNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = -3
+	reason = "rebels_occupy_province"
+	flavor = "The inability of {king} to take care of the rebel armies and stop their advances is considered as a sign of weakness by the nobility."
+	
+	triggers
+	{
+		realm controlling_obj_changed
+		{
+			condition = (sender.is_rebel_occupied)
+		}
+	}
+}
+
+def DefeatRebelNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = 1
+	reason = "defeat_rebel"
+	flavor = "The victory over the rebel scum, previously pillaging our lands, is appreciated by the nobility."
+	
+	triggers
+	{
+		realm rebel_defeated
+	}
+}
+
+
+def RefuseOfferNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	
+	float our_influence = (trigger.param.to.GetInfluenceIn(trigger.param.from))
+	float their_influence = (trigger.param.from.GetInfluenceIn(trigger.param.to))
+	int amount_influence = (min(0, round((our_influence - their_influence)/20)))
+	
+	float pc_accept_ratio_above_threshold = (st_param.pc_accept_ratio_above_threshold)
+	int t1 = ((pc_accept_ratio_above_threshold > 0) && -1)
+	int t2 = ((pc_accept_ratio_above_threshold > 0.3) && -2)
+	int t3 = ((pc_accept_ratio_above_threshold > 0.6) && -3)
+	int amount_accept_ratio = (t3 || t2 || t1)
+	
+	amount = (max(-3, amount_influence + amount_accept_ratio))
+	reason = "refuse_offer"
+	flavor = "Our noblemen dislike that we rejected the recent diplomatic offer of {st_param.src_kingdom} so lightly."
+	cooldown = 900
+	
+	triggers = 5
+	{
+		kingdom recieved_offer_declined
+		{
+			condition = (amount < 0 && !param.def.is_catholic_church_offer)
+		}
+	}
+}
+
+def AcceptVassalityNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = -5
+	reason = "accept_vassality"
+	flavor = "Our acceptance of {kingdom.vassal_of:s} sovereignty was met with disapproval."
+	
+	triggers { kingdom became_vassal_opinion }
+}
+
+def PalaceFinishedNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = 2
+	reason = "commercial_building_finished"
+	flavor = "The completion of our {st_param.name} in {st_param.realm} demonstrated the greatness of {king} and his ability to lead our kingdom to glory!"
+	
+	triggers
+	{
+		kingdom build_finished
+		{
+			condition = (param.def.id == "#RoyalPalace")
+		}
+	}
+}
+
+def PalaceDestroyedNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	
+	amount = -2
+	flavor = "The destruction of the once great {st_param.name} in {st_param.realm} undoubtedly lowered the opinion of our noblemen towards {king}. They wonder what could possibly explain such deed."
+	
+	triggers
+	{
+		kingdom building_destroyed
+		{
+			condition = (param.def.id == "#RoyalPalace")
+		}
+	}
+}
+
+def UpgradeCompletedNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = 1
+	reason = "complete_nobility_upgrade"
+	
+	bool building_is_queens = (st_param.id == "#QueensChambers")
+	bool building_is_harem = (st_param.id == "#Harem")
+	bool building_is_status = ((st_param.id == "#GreatHall") || (st_param.id == "#SeatOfPower"))
+	bool building_is_court = (st_param.id == "#Courthouse")
+	
+	flavor = $["Our noblemen are impressed by the greatness and prosperity we demonstrate to the other kingdoms with our recent improvements."
+			   "[{building_is_queens:if} There are some that mutter {kingdom.queen} has too much control over {kingdom.king}, but none of them dares to say it out loud.]"
+			   "[{building_is_harem:if} Some of the noblemen are a bit worried that {kingdom.king} might spend too much of his time new {st_param.name}, though.]"
+			   "[{building_is_status:if} Surely, only few kingdoms have such marvelous {st_param.name} as ours.]"
+			   "[{building_is_court:if} Building {st_param.name} is an important step for brining order and prosperity in our towns and increasing our authority.]"
+			  ]
+	
+	triggers
+	{
+		kingdom building_upgrade_unlocked
+		{
+			//condition = (param.stat_modifiers.rs_happiness > 0)
+			condition = (param.id == "#QueensChambers" || param.name == "#Harem" || param.name == "#GreatHall" || param.name == "#SeatOfPower" || param.id == "#Courthouse")
+		}
+	}
+}
+
+def WonLoyalRealmNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = 1
+	reason = "won_loyal_realm"
+	flavor = "Our noblemen congratulate {kingdom.king} that he finally freed our people in {st_param.realm_in}!"
+	
+	triggers
+	{
+		kingdom battle_won
+		{
+			condition = (param.castle != null && param.attacker_kingdom == sender  && param.realm_in.majority_kingdom == sender)
+		}
+	}
+}
+
+def PrisonerRecoveredNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	var t3 = ((st_sender.class_level > 10) && 3)
+	var t2 = ((st_sender.class_level > 5) && 2)
+	var t1 = 1
+	var king_bonus = (st_sender.is_king && 2)
+	var prince_bonus = (st_sender.is_prince && 1)
+	amount = ((t3 || t2 || t1) + king_bonus + prince_bonus)
+	reason = "prisoner_recovered"
+	flavor = "Our nobility is delighted to welcome {st_sender} back to the royal court. They really respect {kingdom.king:s} efforts to free him."
+	
+	triggers
+	{
+		character prisoner_released
+		character prisoner_ransomed
+	}
+}
+
+
+// RELIGION
+
+def ChristianJoinJihadChristianSideOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = 3
+	reason = "joined_against_jihad"
+	flavor = "Our priests welcome our decision to aid our Christian bretheren in the {st_param}! Uniting in the face of an incoming Muslim invasion was the right choice."
+	
+	triggers
+	{
+		kingdom joined_war
+		{
+			condition = (sender.is_christian && param.is_jihad && GetEnemyLeader(param, sender).is_caliphate)
+		}
+	}
+}
+
+def ChristianLeaveJihadChristianSideOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = -3
+	reason = "joined_against_jihad"
+	flavor = "Our priests condemn our decision to abandon the war of our Chirstian bretheren. Withdrawing from the {st_param.war} has given a hefty advantage to the Muslim invaders."
+	
+	triggers
+	{
+		kingdom left_war
+		{
+			condition = (sender.is_christian && param.war.is_jihad &&param.enemy_leader.is_caliphate)
+		}
+	}
+}
+
+def AgreeToLeadCrusadeClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = (trigger.param.reason != "forced" and 5 or 3)
+	reason = "agree_lead_crusade"
+	flavor = "Our clergy wishes to reassure you of their full support for the crusade! Deus vult!"
+	
+	triggers
+	{
+		character crusade_started
+	}
+}
+
+def RefuseToLeadCrusadeClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = -2
+	reason = "refuse_lead_crusade"
+	flavor = "Refusing to lead a crusade has infuriated our clergymen! They're openly questioning {st_param.tgt_kingdom.king:s} faith, courage, and capacity to rule."
+	
+	triggers
+	{
+		kingdom recieved_offer_declined
+		{
+			condition = (param.name == "LeadCrusadeOffer")
+		}
+	}
+}
+
+def DestroyingPapacyCatholicsClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = -10
+	reason = "destroying_papacy"
+	flavor = "Our {kingdom.cleric_title:s} are speachless. They neither dare to raise their voices nor have words to express their dispair of {kingdom.king:s} devastating actions against the Holy See."
+	
+	triggers 
+	{ 
+		kingdom destroyed_papacy 
+		{
+			condition = (kingdom.is_catholic)
+		}
+	}
+}
+
+def DestroyingPapacyMuslimsAndPagansClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = 5
+	reason = "destroying_papacy"
+	flavor = "Today, we achieved a great victory against those who looked down upon us and zealously called us heathens! Where is their God now?! Our {kingdom.cleric_title:s} will forever praise {kingdom.king}!"
+	
+	triggers 
+	{ 
+		kingdom destroyed_papacy 
+		{
+			condition = (kingdom.is_pagan || kingdom.is_muslim)
+		}
+	}
+}
+
+def StoppingForeignCrusadeCatholicsClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = -3
+	reason = "stopping_crusade"
+	flavor = "It shall come as no surprise, but our clergy unquestionably disapproves of our actions against the armies of Christ. We are quickly losing the benevolence of the Papacy and the entire catholic world."
+
+	triggers 
+	{ 
+		kingdom stoped_crusade 
+		{
+			condition = (kingdom.is_catholic && (param != kingdom))
+		}
+	}
+}
+
+def StoppingCrusadeMuslimsAndPagansClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = 3
+	reason = "stopping_crusade"
+	flavor = "Our {kingdom.cleric_title:s} praise and sing for our glorious victory against the warriors of the false god!"
+
+	triggers 
+	{ 
+		kingdom stoped_crusade 
+		{
+			condition = (kingdom.is_pagan || kingdom.is_muslim)
+		}
+	}
+}
+
+
+def CatholicRefusePeaceWithPopeClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = -5
+	reason = "catholic_refuse_peace_with_pope"
+	flavor = "Our priest condemn the refusal of {king} to sign peace with the Papal States. They say he is an utter disgrace to {kingdom}."
+	cooldown = 900
+	
+	triggers
+	{
+		kingdom recieved_offer_declined
+		{
+			var is_peace_offer = (param.name == "WhitePeaceOffer" || param.name = "PeaceDemandTribute" || param.name = "PeaceOfferTribute")
+			condition = (is_peace_offer && param.from.is_papacy && param.to.is_catholic)
+		}
+	}
+}
+
+
+def PopeEntersCourtClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = 5
+	reason = "pope_enters_court"
+	flavor = "Our people rejoice - the Pope has arrived in our kingdom and fulfills his holy duties from within our court!"
+	triggers { kingdom cleric_elected_pope }
+}
+
+def RivalPlaceOfWorshipDestroyedClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = 3
+	reason = "rival_place_of_worship_destroyed"
+	flavor = "Our {kingdom.cleric_title:s} celebrated the destruction of {st_param.name} in {st_param.realm}. Such places, supporting unrighteous and shameful beliefs within our kingdom, should all be reduced to rubble, they say."
+	
+	triggers
+	{
+		kingdom building_destroyed
+		{
+			var rival_christian = (!sender.is_christian && param.name == "Cathedral") //(!sender.is_christian && (param.name == "Church" || param.name == "Cathedral"))
+			var rival_muslim = (!sender.is_muslim && param.name == "GreatMosque") //(!sender.is_muslim && (param.name == "Masjid" || param.name == "GreatMosque"))
+			//var rival_pagan = (!sender.is_pagan && param.name == "Temple")
+			condition = (rival_christian || rival_muslim || rival_pagan)
+		}
+	}
+}
+
+def GreatPlaceOfWorshipDestroyedClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = -2
+	reason = "great_place_of_worship_destroyed"
+	flavor = "Our {kingdom.cleric_title:s} are furious about the destruction of the emblematic {st_param.name} in {st_param.realm}. They demand its immediate restoration or threaten to withdraw their support of {king}."
+	
+	triggers
+	{
+		kingdom building_destroyed
+		{
+			condition = ((sender.is_christian && param.name == "Cathedral") || (sender.is_muslim && param.name == "GreatMosque"))
+		}
+	}
+}
+
+def GreatPlaceOfWorshipFinishedClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = 2
+	reason = "great_place_of_worship_finished"
+	flavor = "Our {kingdom.cleric_title:s} praise {king} for the glorious {st_param.name} in {st_param.realm} that was recently built."
+	
+	triggers
+	{
+		kingdom build_finished
+		{
+			condition = ((sender.is_christian && param.def.id == "#Cathedral") || (sender.is_muslim && param.def.id == "#GreatMosque"))
+		}
+	}
+}
+
+def OrthodoxRefusePeaceWithEcumenicalPatriarchClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	var clergy_opinion = (kingdom.opinions[opinion].value)
+	amount = (clergy_opinion >= 0 && -5 || -3)
+	reason = "orthodox_refuse_peace_with_ecumenical_patriarch"
+	flavor = "Our priest condemn the refusal of {king} to sign peace with {st_param.tgt_kingdom} and thus worsen our relations with the Ecumenical Patriarchate of Constantinople."
+	cooldown = 900
+	
+	triggers
+	{
+		kingdom recieved_offer_declined
+		{
+			var is_peace_offer = (param.name == "WhitePeaceOffer" || param.name = "PeaceDemandTribute" || param.name = "PeaceOfferTribute")
+			condition = (is_peace_offer && param.from.has_ecumenical_patriarch && param.to.is_orthodox)
+		}
+	}
+}
+
+
+def AcceptOfferFromPapacyClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = 1
+	reason = "accept_offer"
+	flavor = "Our clergymen cordially congratulated {king} for his wise decision to accept a diplomatic request from the Holy See."
+	
+	triggers
+	{
+		kingdom recieved_offer_accepted
+		{
+			condition = (param.to.is_catholic && param.from.is_papacy)
+		}
+	}
+}
+
+def DeclinedOfferFromPapacyClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = -1
+	reason = "declined_offer"
+	flavor = "After a gathering, many of our bishops signed under an angry letter to {king}. They are unhappy that we disrespected and denied a diplomatic request of the Holy See."
+	
+	triggers
+	{
+		kingdom recieved_offer_declined
+		{
+			condition = (param.to.is_catholic && param.from.is_papacy)
+		}
+	}
+}
+
+def NewJihadClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = 3
+	reason = "start_jihad"
+	flavor = "The decision of our {king.title} to lead a jihad against {st_param} was greeted with unanimous approval by all of our scholars!"
+	
+	triggers
+	{
+		kingdom new_jihad
+		{
+			condition = (sender.is_caliphate)
+		}
+	}
+}
+
+def LoseMuslimHolyCityToInfidelsClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = -10
+	reason = "muslim_holy_city_lost_to_infidels"
+	flavor = "Our religious leaders say we have failed Allah by losing our holiest city to the infidels. They are resolute - we must win it back or die trying."
+	
+	triggers
+	{
+		kingdom realm_deleted
+		{
+			var muslim_holy_land = (!param.is_catholic_holy_land && (param.is_shia_holy_land || param.is_sunni_holy_land))
+			condition = (sender.is_muslim && !param.GetKingdom().is_muslim && muslim_holy_land)
+		}
+	}
+}
+
+def RefuseJoinJihadAsMuslimOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = -2
+	reason = "refuse_join_jihad"
+	flavor = "Refusing to join a holy jihad has infuriated our scholars! They're openly questioning {st_param.tgt_kingdom.king:s} faith, courage, and capacity to rule."
+	
+	triggers
+	{
+		kingdom recieved_offer_declined
+		{
+			condition = (param.name == "DemandSupportInWar" && param.arg.is_jihad && sender.is_muslim)
+		}
+	}
+}
+
+def JoinJihadOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = 3
+	reason = "join_jihad"
+	flavor = "Our Scholars are exalted by the decision of their {kingdom.king} to offer his armies in support of the {st_param}!"
+	triggers {
+		kingdom joined_war
+		{
+			condition = (param.is_jihad && sender.is_muslim && GetEnemyLeader(param, sender) == param.jihad_target)
+		}
+	}
+}
+
+def JoinJihadWrongSideOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = -5
+	reason = "join_jihad_wrong_side"
+	flavor = "Our Scholars will not stand the decision of their {kingdom.king} to stand against Muslim armies in the {st_param}."
+	triggers {
+		kingdom joined_war
+		{
+			condition = (param.is_jihad && sender.is_muslim && GetEnemyLeader(param, sender).is_caliphate)
+		}
+	}
+}
+
+def ConqueringJerusalemClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = 5
+	reason = "conquer_jerusalem"
+	flavor = "A momentous day is upon us, as people in our provinces and across distant lands praise our successful invasion of {st_param}!"
+	
+	triggers
+	{
+		kingdom realm_added
+		{
+			condition = (!sender.is_pagan && param == sender.religions.catholic.holy_lands_realm)
+		}
+	}
+}
+
+def ConqueringProvinceClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = (st_param.is_important && 5 || 1)
+	reason = "conquer_province_pagan"
+	flavor = "Our warriors have yet again proven that they are favored by the Gods, as they crushed their opposition in the battle for {st_param.realm_in}!"
+	
+	triggers
+	{
+		kingdom battle_won
+		{
+			condition = (param.castle != null && param.attacker_kingdom == sender && sender.is_pagan)
+		}
+	}
+}
+
+
+
+def LoseProvinceClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = -3
+	reason = "lose_province_pagan"
+	flavor = "Today, the Gods turned their back on our people, as we lost control over the lands of {st_param}. Some even dare to say the Gods are displeased by our ruler."
+	
+	triggers
+	{
+		kingdom realm_deleted
+		{
+			condition = (sender.is_pagan)
+		}
+	}
+}
+
+def UpgradeCompletedClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = 1
+	reason = "complete_clergy_upgrade"
+	flavor = "Our {kingdom.cleric_title:s} rejoice upon the glorious improvements of our holy sites and practices! 'That brings us closer to God', they say, marvelling the new {st_param.name}."
+	
+	triggers
+	{
+		kingdom building_upgrade_unlocked
+		{
+			//condition = (param.stat_modifiers.rs_happiness > 0)
+			condition = (param.id == "#ChristianDecoration" || param.id == "#MuslimDecoration" || param.id == "#ChristianCeremonies"  || param.id == "#MuslimCeremonies" || param.id == "#PaganCeremonies" || param.id == "#ArtsSchool")
+		}
+	}
+}
+
+def WeWereUnexcommunicatedClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = 5
+	reason = "unexcommunicated"
+	
+	switch_value = (st_sender.religion.head.is_dead)
+	case 1
+	{
+		flavor = ["With the fall of Rome, our {st_sender.kingdom.KingdomType} is no longer excommunicated. Thus, our clergy rejoices, as the stigma over our people has been lifted once and for all.",
+		"Our clergymen mourn the fall of Rome, yet they seem to have forgiven their {st_sender.kingdom.king.title} for allowing our {st_sender.kingdom.KingdomType} to be excommunicated in the first place."]
+	}
+	case default
+	{
+		flavor = "By convincing {pope} to lift the stigma of excommunication over our {st_sender.kingdom.KingdomType}, {st_sender.king} showed our clergy that he is a holy man acting under the guidance of God."
+	}
+
+	triggers
+	{
+		kingdom unexcommunicated
+		{
+			condition = (sender.is_catholic)
+		}
+	}
+}
+
+def ConvertRealmClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = 1
+	reason = "convert_realm"
+	flavor = "The people in {st_param} have welcomed {st_sender.kingdom.religion:ism} into their lives. This fills the hearts of our {kingdom.cleric_title:s} with warmth and pride!"
+	
+	triggers
+	{
+		character converted_realm
+	}
+}
+
+def OrthodoxDeclaredWarClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = -1
+	reason = "declared_war"
+	flavor = "Our clergy issued a stern reminder that despite what a certain {st_sender.kingdom.king.title} might believe, war is never the answer!"
+	
+	triggers
+	{
+		kingdom declared_war
+		{
+			condition = (sender.is_orthodox)
+		}
+	}
+}
+
+def OrthodoxRefusedPeaceClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = -1
+	reason = "refused_peace"
+	flavor = "{st_sender.kingdom:ian} clerics are frustrated that {st_sender.kingdom.king:s} bloodthirst stands in the way of a peaceful conflict resolution!"
+	cooldown = 1800
+	
+	triggers = 50
+	{
+		kingdom recieved_offer_declined
+		{
+			condition = (param.name == "PeaceOfferTribute" || param.name == "WhitePeaceOffer")
+		}
+	}
+}
+
+
+
+// ARMY
+
+def StoppingCrusadeArmyOpinionRule : OpinionChangeRule
+{
+	opinion = "ArmyOpinion"
+	amount = 2
+	reason = "stopping_crusade"
+	flavor = "Our generals stand proud on the pitiful remains of what was once the united army of the catholic world! We've proven ourselves as mighty and cunning warriors no one should trifle with."
+
+	triggers { kingdom stoped_crusade }
+}
+
+def UpgradeCompletedArmyOpinionRule : OpinionChangeRule
+{
+	opinion = "ArmyOpinion"
+	amount = 1
+	reason = "complete_army_upgrade"
+	
+	bool building_is_artillery = (st_param.id == "#Artillery")
+	bool building_is_keeps = (st_param.id == "#LargeKeeps")
+	bool building_is_gear = ((st_param.id == "#MasterArmorer") || (st_param.id == "#HeavyArmorsmith") || (st_param.id == "#MasterWeaponsmith"))
+	bool building_is_stables = (st_param.id == "#WarStables")
+	bool building_is_town_siege = (st_param.id == "#SiegeWorkshop")
+	
+	flavor = $["Our soldiers greatly appreciate our military advancements, that will save thousands of lives and make our enemies tremble!"
+			   "[{building_is_artillery:if} We will blow to smithereens all who face our keeps and ships with this innovation in warfare, more destructive than anything seen before.]"
+			   "[{building_is_keeps:if} Let them come and try to assault our keeps now!]"
+			   "[{building_is_gear:if} Few other kingdoms have their soldiers equiped whith such a fine gear, as the one our masterful blacksmiths forge.]"
+			   "[{building_is_stables:if} Our armies are ready to ride like the wind and fight proud from the backs of their mighty destriers!]"
+			   "[{building_is_town_siege:if} Now if we can supply our marshals with siege equipment, no castle wall can stand in their way for long.]"
+			  ]
+	
+	
+	triggers
+	{
+		kingdom building_upgrade_unlocked
+		{
+			//condition = (param.stat_modifiers.rs_happiness > 0)
+			condition = (param.id == "#Artillery" || param.id == "#LargeKeeps" || param.id == "#SiegeWorkshop" || param.id == "#WarStables" || param.id == "#MasterArmorer" || param.id == "#HeavyArmorsmith" || param.id == "#MasterWeaponsmith")
+		}
+	}
+}
+
+// MERCHANTS
+
+def PillagedSettlemenMerchantsOpinionRule : OpinionChangeRule
+{
+	opinion = "MerchantsOpinion"
+	amount = -1
+	reason = "pillage_settlement"
+	flavor = "Merchants are unhappy that hostile armies freely pillage our settlements and foreign traders refuse to pass through our lands. They claim they have suffered great losses and demand compensation."
+	
+	triggers = 5
+	{
+		settlement razed
+		{
+			condition = (param)
+		}
+	}
+}
+
+def RebelsOccupyProvinceMerchantsOpinionRule : OpinionChangeRule
+{
+	opinion = "MerchantsOpinion"
+	amount = -3
+	reason = "rebels_occupy_province"
+	flavor = "Merchants reported that more and more traders refuse to deal with our kingdom, since rebels rule over our lands, distrupt production and threaten the honest men."
+	
+	triggers
+	{
+		realm controlling_obj_changed
+		{
+			condition = (sender.is_rebel_occupied)
+		}
+	}
+}
+
+def CommercialBuildingFinishedMerchantsOpinionRule : OpinionChangeRule
+{
+	opinion = "MerchantsOpinion"
+	amount = 2
+	reason = "commercial_building_finished"
+	flavor = "The completion of our {st_param.name} in {st_param.realm} was greeted with standing ovation by our merchants. They are already calculating their new profits and planning how they can make use of it."
+	
+	triggers
+	{
+		kingdom build_finished
+		{
+			condition = (param.def.id == "#TradePort" || param.def.id == "#MerchantsGuild" || param.def.id == "#GrainMarket")
+		}
+	}
+}
+
+def DemolishCommercialBuildingMerchantsOpinionRule : OpinionChangeRule
+{
+	opinion = "MerchantsOpinion"
+	
+	amount = -2
+	flavor = "The destruction of {st_param.name} in {st_param.realm}, made some merchants unhappy, since it was important hub for the regional trade. They complain their profits will surely decrease and demand compensation."
+	
+	triggers
+	{
+		kingdom building_destroyed
+		{
+			condition = (param.def.id == "#TradePort" || param.def.id == "#MerchantsGuild" || param.def.id == "#GrainMarket")
+			
+			// chance = (sender.king.GetStat("cs_merchant_opinion_penalty_on_destroyed_commercial_building_chance"))
+			// condition = (trigger.param.commerce >= 3)
+		}
+	}
+}
+
+def UpgradeCompletedMerchantsOpinionRule : OpinionChangeRule
+{
+	opinion = "MerchantsOpinion"
+	amount = 1
+	reason = "complete_merchants_upgrade"
+	flavor = "Our merchants highly appreciate the substantial improvements of our commercial capabilities! We can expect more gold from their activities from now on."
+	
+	triggers
+	{
+		kingdom building_upgrade_unlocked
+		{
+			//condition = (param.stat_modifiers.rs_happiness > 0)
+			condition = (param.id == "#TradeFair" || param.id == "#Caravanserai" || param.id == "#TradeCompanies" || param.id == "#TradeColonies")
+		}
+	}
+}
+
+def TradeExpeditionColonySuccessMerchantsOpinionRule : OpinionChangeRule
+{
+	opinion = "MerchantsOpinion"
+	amount = 1
+	reason = "trade_success"
+	
+	flavor = "Our merchants were thrilled by the news that {st_sender:s} expedition resulted in the foundation of a colony! They are already planning how we can further expand our trading network."
+	
+	
+	triggers
+	{
+		character trade_expedition_suceeded_colony
+		//character trade_expedition_suceeded_gold
+	}
+}
+
+
+// PEASANTRY
+def PillagedSettlemenPeasantryOpinionRule : OpinionChangeRule
+{
+	opinion = "PeasantryOpinion"
+	amount = -1
+	reason = "pillage_settlement"
+	flavor = "We should tend to our settlements more - people are living in fear due to recent pillages. They demand protection!"
+	
+	triggers = 5
+	{
+		settlement razed
+		{
+			condition = (param)
+		}
+	}
+}
+
+def UpgradeCompletedPeasantryOpinionRule : OpinionChangeRule
+{
+	opinion = "PeasantryOpinion"
+	amount = 1
+	reason = "complete_peasantry_upgrade"
+	
+	bool building_is_brothel = (st_param.id == "#Brothels")
+	bool building_is_aqueduct = (st_param.id == "#Aqueduct")
+	bool building_is_healthcare = ((st_param.id == "#Apothecary") || (st_param.id == "#Hospital"))
+	bool building_is_school = (st_param.id == "#Schools")
+	bool building_is_town_charter = (st_param.id == "#TownsCharter")
+	
+	flavor = $["People appreciate that there are great new establishments in {kingdom} that make their lives better."
+			   "[{building_is_brothel:if} There are some rumours that the noblemen also enjoy our new {st_param.name}, but none of them has personally expressed his grattitude yet.]"
+			   "[{building_is_aqueduct:if} The {st_param.name}, supplying clean water near their homes, will definitely improve their well-being and hygiene.]"
+			   "[{building_is_healthcare:if} They are really thankful to {kingdom.king} for spending the resources for {st_param.name}, greatly improving our healthcare.]"
+			   "[{building_is_school:if} Hopefully with our new {st_param.name} they will act at least a bit more productive.]"
+			   "[{building_is_town_charter:if} With more {st_param.name} issued, their self esteem and loyalty to {kingdom.king} has risen to the sky.]"
+			  ]
+	
+	triggers
+	{
+		kingdom building_upgrade_unlocked
+		{
+			//condition = (param.stat_modifiers.rs_happiness > 0)
+			condition = (param.id == "#Brothels" || param.id == "#Aqueduct" || param.id == "#Schools" || param.id == "#Apothecary" || param.id == "#Hospital" || param.id == "#TownsCharter")
+		}
+	}
+}
+
+def SackedTownPeasantryOpinionRule : OpinionChangeRule
+{
+	opinion = "PeasantryOpinion"
+	amount = -5
+	reason = "structures_sacked"
+	flavor = "The recent sacking of {st_sender.realm} has left our population helpless, thinking their {kingdom.king.title} has abandoned them. Our towns need better protection and defense!"
+	
+	triggers { castle structures_sacked }
+}
+
+
+
+
+
+def ReleaseNonCourtRebelPeasantryOpinionRule : OpinionChangeRule
+{
+	opinion = "PeasantryOpinion"
+	amount = (round(map(st_param.class_level, 0, 15, 1, 3)))
+	flavor = "The release of {st_param} has shown your people that you care for them, even when things get 'slightly' out of hand."
+	
+	triggers
+	{
+		kingdom free_non_court_rebel_prisoner_trigger
+	}
+}
+
+
+def ReleaseNonCourtRebelClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = 1
+	flavor = "Showing mercy on {st_param} has received vast approval from our {kingdom.cleric_title:s}!"
+	
+	triggers = 50
+	{
+		kingdom free_non_court_rebel_prisoner_trigger
+	}
+}
+
+def ReleaseNonCourtRebelNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = (round(-1 * map(st_param.class_level, 0, 15, 1, 3)))
+	flavor = "Our nobility wasn't so happy about the release of {st_param}... Perhaps we should've used the rebel's services somewhere else instead."
+	
+	triggers = 50
+	{
+		kingdom free_non_court_rebel_prisoner_trigger
+	}
+}
+
+def ForgiveCourtRebelNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = (round(map(st_param.class_level, 0, 15, 1, 3)))
+	flavor = "The nobles in our kingdom deem the release of {st_param} a good move! Let's hope our newly returned knight is also content and doesn't rebel against us once more..."
+	
+	triggers
+	{
+		kingdom free_court_rebel_prisoner_trigger
+	}
+}
+
+def ReleaseKnightNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = 1
+	flavor = "Some might think the release of {st_param} was an ill-advised move, but our nobles applaud {kingdom.king:s} decision."
+	
+	triggers
+	{
+		kingdom free_prisoner_kingdom_trigger
+		{
+			condition = (!param.is_rebel && !sender.IsEnemy(param)) //!param.is_mercenary
+		}
+	}
+}
+
+def ReleasePatriarchClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = 2
+	flavor = "In the eyes of our {kingdom.cleric_title:s}, releasing {st_param} was the right move."
+	
+	triggers
+	{
+		kingdom free_prisoner_kingdom_trigger
+		{
+			condition = (param.is_patriarch && !param.is_ecumenical_patriarch)
+		}
+	}
+}
+
+def ReleaseEcumenicalPatriarchClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = 5
+	flavor = "Freeing a famed prisoner such as {st_param} has gained the unanimous approval of our {kingdom.cleric_title:s}!"
+	
+	triggers
+	{
+		kingdom free_prisoner_kingdom_trigger
+		{
+			condition = (param.is_ecumenical_patriarch)
+		}
+	}
+}
+
+
+def ExecuteNonCourtRebelPeasantryOpinionRule : OpinionChangeRule
+{
+	opinion = "PeasantryOpinion"
+	amount = (round(-1 * map(st_param.class_level, 0, 15, 1, 3)))
+	flavor = "Executing {st_param} has put fear into the hearts of our people! Perhaps a softer approach would be better next time..."
+	
+	triggers
+	{
+		kingdom execute_non_court_rebel_prisoner_trigger
+	}
+}
+
+
+def ExecuteNonCourtRebelClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = -1
+	flavor = "Our {kingdom.cleric_title:s} are unhappy that you executed {st_param}, even if he was a filthy rebel."
+	
+	triggers = 50
+	{
+		kingdom execute_non_court_rebel_prisoner_trigger
+	}
+}
+
+def ExecuteNonCourtRebelNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = (round(1 * map(st_param.class_level, 0, 15, 1, 3)))
+	flavor = "Our nobility deemed the execution of {st_param} to be the right move, as masses gathered to witness the execution of the backstabbing rebel."
+	
+	triggers = 50
+	{
+		kingdom execute_non_court_rebel_prisoner_trigger
+	}
+}
+
+def ExecuteCourtRebelNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = (round(-1 * map(st_param.class_level, 0, 15, 1, 3)))
+	flavor = "Executing {st_param}, once a proud member of {kingdom:s} royal court, shook our noblemen. Now, they wonder if fate would have the same in store for them."
+	
+	triggers
+	{
+		kingdom execute_court_rebel_prisoner_trigger
+	}
+}
+
+def ExecuteExileOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = -2
+	flavor = "Some of our nobles are furious about the execution of {st_param}, who was once a royal knight in another kingdom. Perhaps they see themselves in him..."
+	
+	triggers
+	{
+		kingdom execute_exile_prisoner_trigger
+		{
+			condition = (param.is_exile)
+		}
+	}
+}
+
+def ExecuteMercenaryRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = -2
+	flavor = "Our noblemen deem the execution of {st_param} unnecessary. Perhaps accepting the former mercenary into our court would have been a better decision."
+	
+	triggers
+	{
+		kingdom execute_mercenary_prisoner_trigger
+		{
+			condition = (param.is_mercenary)
+		}
+	}
+}
+
+def ExecutedKnightNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = (round(-1 * map(st_param.class_level, 0, 15, 1, 3)))
+	flavor = "As news about the execution of our {st_param} has reached us, word has spread quickly amongst our nobles. They blame their {kingdom.king.title} for letting this happen!"
+	
+	triggers
+	{
+		kingdom execute_prisoner_their_kingdom_trigger
+		{
+			condition = (!param.is_rebel && !param.is_mercenary && !sender.IsEnemy(param))
+		}
+	}
+}
+
+def ExecutedPatriarchClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = -3
+	flavor = "Executing {st_param} has shaken our {kingdom.cleric_title:s}, who deem the decision of their {kingdom.king.title} to be irresponsible and sacreligious."
+	
+	triggers
+	{
+		kingdom execute_prisoner_our_kingdom_trigger
+		{
+			condition = (param.is_patriarch && !param.is_ecumenical_patriarch && sender.is_orthodox)
+		}
+	}
+}
+
+def ExecutedEcumenicalPatriarchClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = -5
+	flavor = "Our {kingdom.cleric_title:s} mourn the death of {st_param} and cannot fathom the decision of their {kingdom.king.title} to order the execution! The Orthodox church has suffered a devastating blow."
+	
+	triggers
+	{
+		kingdom execute_prisoner_our_kingdom_trigger
+		{
+			condition = (param.is_ecumenical_patriarch  && sender.is_orthodox)
+		}
+	}
+}

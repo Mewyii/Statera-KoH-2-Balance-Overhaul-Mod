@@ -46,54 +46,53 @@ extend AI
 		resources General
 		{
 			Gold = 100
-			Food = 50
-			Books = 500
-			Piety = 250
-			Levy = 100
-			TownGuards = 50
-			WorkerSlots = 100
-			Trade = 50
-			Goods = 100
-			UniqueGoods = 5000
+			Food = 60
+			Books = 250
+			Piety = 200
+			Levy = 150
+			TownGuards = 40
+			WorkerSlots = 150
+			Trade = 70
+			Goods = 150
+			UniqueGoods = 2000
 		}
 
 		resources Military : General
 		{
-			Levy = 500
+			Levy = 400
+			WorkerSlots = 250
 		}
 
 		resources Gold : General
 		{
-			Gold = 200
-			Food = 50
-			Trade = 50
-			Books = 50
-			Piety = 50
-			Levy = 50
-			TownGuards = 50
-			WorkerSlots = 50
+			Gold = 250
+			Trade = 150
+			Books = 80
+			Piety = 150
+			Levy = 40
+			WorkerSlots = 300
 		}
 
 		resources Food : General
 		{
-			Food = 1000			
+			Food = 400			
 			Gold = 50
-			Books = 50
+			Books = 100
 			Piety = 50
 			Levy = 50
-			TownGuards = 50
+			TownGuards = 25
 			WorkerSlots = 50
 			Trade = 25
 		}
 
 		resources Religion : General
 		{
-			Books = 1000
-			Piety = 500
+			Books = 400
+			Piety = 400
 			Gold = 50
 			Food = 50
 			Levy = 50
-			TownGuards = 50
+			TownGuards = 25
 			WorkerSlots = 50
 			Trade = 25
 		}
@@ -103,72 +102,60 @@ extend AI
 
 		resources GeneralSpec : General
 		{
-			Gold = 225
-			Food = 50
-			Books = 500
-			Piety = 250
-			Levy = 100
-			TownGuards = 50
-			WorkerSlots = 100
-			Trade = 50
-			Goods = 100
-			UniqueGoods = 5000
+			Gold = 100
+			Food = 60
+			Books = 250
+			Piety = 200
+			Levy = 150
+			TownGuards = 40
+			WorkerSlots = 150
+			Trade = 70
+			Goods = 150
+			UniqueGoods = 2000
 		}
 
 		resources MilitarySpec : General
 		{
-			Gold = 125
+			Gold = 100
 			Food = 100
-			Books = 250
+			Books = 200
 			Piety = 100
-			Levy = 500
-			//TownGuards
-			WorkerSlots = 500
+			Levy = 400
+			WorkerSlots = 350
 			Trade = 50
-			Goods = 50
-			//UniqueGoods
+			Goods = 100
 		}
 
 		resources TradeSpec : General
 		{
-			Gold = 350
-			//Food
+			Gold = 300
 			Books = 250
 			Piety = 100
 			Levy = 50
-			//TownGuards
-			//WorkerSlots
 			Trade = 400
-			Goods = 250
-			//UniqueGoods
+			Goods = 300
 		}
 
 		resources FoodSpec : General
 		{		
-			Gold = 125
-			Food = 600	
+			Gold = 150
+			Food = 400	
 			Books = 250
 			Piety = 100
 			Levy = 50
-			//TownGuards
-			//WorkerSlots
 			Trade = 50
 			Goods = 50
-			//UniqueGoods
 		}
 
 		resources ReligionSpec : General
 		{
-			Gold = 125
-			//Food
-			Books = 800
-			Piety = 600
+			Gold = 150
+			Books = 400
+			Piety = 400
 			Levy = 50
-			//TownGuards
 			WorkerSlots = 50
 			Trade = 50
 			Goods = 50
-			//UniqueGoods
 		}
 	}
 
@@ -194,8 +181,8 @@ extend AI
 	budget
 	{
 		None = (map_clamp(game.time_hours, 0, 4, 0, 20)) // reserves
-		Military = (15 + (king_warfare_ability * 1.5) + min(num_wars, 1) * 20)
-		Economy = (60 + (king_economy_ability * 1.5) - min(num_wars, 1) * 20)
+		Military = (15 + (king_warfare_ability * 1.5) + min(num_wars, 1) * 10)
+		Economy = (60 + (king_economy_ability * 1.5) - min(num_wars, 1) * 10)
 		Diplomacy = (2 + (king_diplomacy_ability * 1.5) - min(num_wars, 1) * 5)
 		Espionage = (1 + (king_espionage_ability * 1.5) + min(num_wars, 1) * 5)
 		Religion = (3 + (king_religion_ability * 1.5))
@@ -240,10 +227,10 @@ extend AI
 	// used to calculate "production score" for a building / upgrade
 	province_specialization_resource_weights
 	{
-		food_reserve = 8
+		food_reserve = 5
 	{
-		critical_weight = 10000  // alter food weight if bellow 0
-		low_weight = 200        // alter food weight if bellow reserve
+		critical_weight = 1000  // alter food weight if bellow 0
+		low_weight = 100        // alter food weight if bellow reserve
 	}
 	}
 }

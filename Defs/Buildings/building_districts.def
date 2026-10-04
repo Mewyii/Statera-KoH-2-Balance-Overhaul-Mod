@@ -37,8 +37,6 @@ def PFDistrict : District
 	delete buildings
 	buildings
 	{
-		LimeTrade { prerequisites { Stoneworking; MarketSquare } }
-
 		SilverMines
 		GoldMines
 		GemstoneMines

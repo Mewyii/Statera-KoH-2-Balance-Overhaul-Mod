@@ -33,35 +33,35 @@ def Economy {
 		level_1 : trade_level
 		{
 			name = "Small Scale Trade"
-			commerce = (10 - (tgt_kingdom.kingdom.vassal_of == src_kingdom) * 3)
+			commerce = (10 - (tgt_kingdom.kingdom.vassal_of == src_kingdom) * 2)
 			income_modifier = 1
 		}
 		level_2 : trade_level
 		{
 			name = "Medium Scale Trade"
 			upgrade_gold_cost = 100
-			commerce = (20 - (tgt_kingdom.kingdom.vassal_of == src_kingdom) * 7)
+			commerce = (20 - (tgt_kingdom.kingdom.vassal_of == src_kingdom) * 4)
 			income_modifier = 1.5
 		}
 		level_3 : trade_level
 		{
 			name = "Large Scale Trade"
 			upgrade_gold_cost = 200
-			commerce = (40 - (tgt_kingdom.kingdom.vassal_of == src_kingdom) * 13)
+			commerce = (40 - (tgt_kingdom.kingdom.vassal_of == src_kingdom) * 8)
 			income_modifier = 2.0
 		}
 		level_4 : trade_level
 		{
 			name = "Exclusive Trade"
 			upgrade_gold_cost = 300
-			commerce = (60 - (tgt_kingdom.kingdom.vassal_of == src_kingdom) * 20)
+			commerce = (60 - (tgt_kingdom.kingdom.vassal_of == src_kingdom) * 12)
 			income_modifier = 2.5
 		}
 		level_5 : trade_level
 		{
 			name = "Imperial Trade"
 			upgrade_gold_cost = 500
-			commerce = (100 - (tgt_kingdom.kingdom.vassal_of == src_kingdom) * 33)
+			commerce = (100 - (tgt_kingdom.kingdom.vassal_of == src_kingdom) * 20)
 			income_modifier = 3.0
 		}
 	}

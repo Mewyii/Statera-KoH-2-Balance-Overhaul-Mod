@@ -1224,6 +1224,33 @@ def Bill_Militia : HeavyDefense
 	hide_in_wiki = false
 }
 
+def Goedendag_Militia : HeavyInfantry
+{
+	description = "Flemish Goedendag militiamen are well-organized urban infantry from the wealthy towns of Flanders. They fight in disciplined formations with the heavy goedendag, a sturdy wooden club-like polearm with an iron point."
+	
+	icon = "Assets/Icons/Units/GoedendagMilitia.png:GoedendagMilitia#1"
+
+	model = "Assets/Units/Halberdier_Special_01/Halberdier_Special_01.prefab" //GUID:61c4ebf12a68aa94da8465108790632f
+	
+	max_acceleration = 3.5
+	max_deceleration = 3.5
+	special = true
+
+	bonuses
+	{
+		defense_flat = "cs_elite_unit_defense_flat"
+	}
+	
+	require
+	{
+		InfantryFormations
+		AdvancedWeaponsmithing
+		SimpleArmorsmithing
+	}
+
+	hide_in_wiki = false
+}
+
 def Heavy_Cavalry_Militia : HeavyCavalry
 {
 	description = "Early heavily armored mounted knights representing a switch from the northern infantry fighting tradition towards the central european knighthood."
@@ -1243,7 +1270,6 @@ def Heavy_Cavalry_Militia : HeavyCavalry
 
 def Pavise_Crossbow_Militia : HeavyRanged
 {
-	//csv://csv: name = "Pavise Crossbowmen"
 	description = "Professional archers, protected in battle by their formidable shields. They can shoot at a long distance, but only a few bolts per minute."
 	special = true
 	model = "Assets/Units/Pavise_Crossbowman_Special_01/Pavise_Crossbowman_Special_01.prefab" //GUID:d15ca6a98b7e69448b83fb3180ccabec
@@ -1905,6 +1931,46 @@ def Kern_Irish : Ranged
 	model = "Assets/Units/Light_Archer_Slavic/Light_Archer_Slavic.prefab" //GUID:409234aecb6b6b741b1170f8098c337e
 }
 
+def Cavalry_Breton : RangedHorseCavalry
+{
+	description = "Regional mounted warriors from Brittany, accustomed to fighting with javelins and spears. They rely on mobility, aggressive attacks and repeated charges rather than the heavy armor and shock tactics of fully equipped knights. They are particularly effective in skirmishing, pursuit and mobile attacks."
+
+	icon = "Assets/Icons/Units/BretonCavalry.png:BretonCavalry#1"
+
+	model = "Assets/Units/Horse_Archer_CE_01/Horse_Archer_CE_01.prefab" //GUID:64e552fb207019245b105075aa9f25aa
+	
+	special = true
+	max_acceleration = 7
+	max_deceleration = 10
+	
+	require
+	{
+		SimpleWeaponsmithing
+		SimpleArmorsmithing
+		ArmyStables
+	}
+}
+
+def Crossbowmen_Gascon : HeavyRanged
+{
+	description = "Gascon crossbowmen are experienced missile troops from Gascony, renowned for their skill with the crossbow and frequently employed as professional soldiers and mercenaries. They are well equipped for infantry combat, combining a powerful crossbow with practical protection such as padded armor, a simple helmet and sometimes mail."
+	
+	icon = "Assets/Icons/Units/GasconCrossbowman.png:GasconCrossbowman#1"
+
+	model = "Assets/Units/Crossbowman_Special_01/Crossbowman_Special_01.prefab" //GUID:0c20f0b0e1eafdb45849cd5646d8655c
+	
+	special = true
+	
+	require
+	{
+		SimpleArmorsmithing
+		CrossbowManufactoring
+		WindlassMechanisms
+	}
+
+	hide_in_wiki = false
+}
+
 extend Horse_Archer_CE : RangedHorseCavalry
 {
 	description = "Cavalrymen, armed with bows and arrows and trained to shoot from the saddles. Mounted archers are extremely effective in harrasment of the enemy troops, especially foot soldiers."
@@ -2196,7 +2262,7 @@ extend Pronoia_Special
 		Pronoia
 	}
 	
-	kingdom_religion = Catholic
+	kingdom_religion = Orthodox
 	realm_religion = Orthodox
 
 	hide_in_wiki = false
@@ -2217,7 +2283,7 @@ extend Roman_Infantry_Special
 		Pronoia
 	}
 	
-	kingdom_religion = Catholic
+	kingdom_religion = Orthodox
 	realm_religion = Orthodox
 
 	hide_in_wiki = false
@@ -2244,7 +2310,7 @@ def Oikeioi : HeavyCavalry
 		AdvancedArmorsmithing
 	}
 
-	kingdom_religion = Catholic
+	kingdom_religion = Orthodox
 	realm_religion = Orthodox
 
 	hide_in_wiki = false
@@ -2271,7 +2337,7 @@ def Oikeioi_Dismounted : HeavyInfantry
 		AdvancedArmorsmithing
 	}
 	
-	kingdom_religion = Catholic
+	kingdom_religion = Orthodox
 	realm_religion = Orthodox
 
 	hide_in_wiki = false
@@ -2302,6 +2368,9 @@ def Latinikon: Norman_Special
 	{
 		MercenaryHiringOffice
 	}
+
+	kingdom_religion = Orthodox
+	realm_religion = Orthodox
 }
 
 def Skythikon : Light_Horse_Archers_Cuman

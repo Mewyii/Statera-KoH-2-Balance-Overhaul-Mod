@@ -74,7 +74,7 @@ def RebellionRisk
 	float risk_per_occupied_realms_min = -1000000
 	float risk_per_occupied_realms_max = 0
 	
-	float risk_dead_king = (min((20 + (kingdom.num_realms * 2)), 75)) // !!! for future - increase this a lot (e.g. 30) - we want this an instant spawn check with no fading over-time
+	float risk_dead_king = (min((25 + kingdom.num_realms), 50)) // !!! for future - increase this a lot (e.g. 30) - we want this an instant spawn check with no fading over-time
 	float dead_king_risk_period = 600 // !!! for future - remove this so it's not a fading modifier
 	
 	

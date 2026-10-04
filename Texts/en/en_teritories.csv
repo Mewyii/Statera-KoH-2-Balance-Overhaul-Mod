@@ -2,29 +2,31 @@
 default;;{base};{base}'s;a {ian};{base}
 tn_LorraineLower;Lower Lorraine;Lower Lorrainer;Lower Lorraine's;a Lower Lorrainer;Lower Lorrainers
 tn_LorraineUpper;Upper Lorraine;Upper Lorrainer;Upper Lorraine's;a Upper Lorrainer;Upper Lorrainers
-tn_Obotrites;the Obotrites;Obotrite;Obotrites;an Obotrite;Obotrites
-tn_Almoravids;the Almoravids;Almoravid;Almoravids';an Almoravid;Almoravids
-tn_Massufa;the Massufa;Massufad;Massufad';a Massufad;Massufads
-tn_Hawwara;the Hawwara;Hawwara;Hawwara's;a Hawwaran;Hawwarans
-tn_Lamtuna;the Lamtūna;Lamtūnan;Lamtūnan';a Lamtūnan;Lamtūnans
-tn_Lamta;the Lamta;Lamtan;Lamtan';a Lamtan;Lamtans
-tn_Hammamids;the Hammamids;Hammamid;Hammamids';a Hammamid;Hammamids
-tn_Zirids;the Zirids;Zirid;Zirids';a Zirid;Zirids
-tn_BanuHilal;the Banu Hilal;Banu Hilal;Banu Hilal';a Banu Hilal;Banu Hilals
-tn_BanuSulaym;the Banu Sulaym;Banu Sulaym;Banu Sulaym';a Banu Sulaym;Banu Sulayms
-tn_BanuKhazrun;the Banu Khazrun;Banu Khazrun;Banu Khazrun';a Banu Khazrun;Banu Khazrun
+tn_Obotrites;The Obotrites;Obotrite;Obotrites;an Obotrite;Obotrites
+tn_Abbasids;The Abbasids;Abbasid;Abbasids';an Abbasid;Abbasids
+tn_Almoravids;The Almoravids;Almoravid;Almoravids';an Almoravid;Almoravids
+tn_Massufa;The Massufa;Massufad;Massufad';a Massufad;Massufads
+tn_Hawwara;The Hawwara;Hawwara;Hawwara's;a Hawwaran;Hawwarans
+tn_Lamtuna;The Lamtūna;Lamtūnan;Lamtūnan';a Lamtūnan;Lamtūnans
+tn_Lamta;The Lamta;Lamtan;Lamtan';a Lamtan;Lamtans
+tn_Hammamids;The Hammamids;Hammamid;Hammamids';a Hammamid;Hammamids
+tn_Zirids;The Zirids;Zirid;Zirids';a Zirid;Zirids
+tn_BanuHilal;The Banu Hilal;Banu Hilal;Banu Hilal';a Banu Hilal;Banu Hilals
+tn_BanuSulaym;The Banu Sulaym;Banu Sulaym;Banu Sulaym';a Banu Sulaym;Banu Sulayms
+tn_BanuKhazrun;The Banu Khazrun;Banu Khazrun;Banu Khazrun';a Banu Khazrun;Banu Khazrun
 tn_SicilyNorman;Norman Sicily;Norman Sicilian;Norman Sicily's;a Norman Sicilian;Norman Sicilians
 tn_Jarin;Jarin;Jarin;Jarin's;a Jarin;Jarins
 tn_Assassin_Order;Assassin Order;Assassin Order;Assassin Order's;an Assassin Orders;Assassin Orders
 tn_Kerman;Kerman;Kerman;Kerman's;a Kerman;Kermans
-tn_BanuAmir;the Banu Amir;Banu Amir;Banu Amir';a Banu Amir;Banu Amirs
-tn_Uyunids;the Uyunids;Uyunid;Uyunid's;a Uyunid;Uyunids
-tn_Sulayhids;the Sulayhids;Sulayhid;Sulayhid's;a Sulayhid;Sulayhids
-tn_Olberli;the Olberli;Olberli;Olberli's;an Olberli;Olberlis
-tn_Toksoba;the Toksoba;Toksoba;Toksoba's;a Toksoba;Toksobas
-tn_Borcogli;the Borčogli;Borčogli;Borčogli's;a Borčogli;Borčoglis
-tn_Kipchak;the Kipchak;Kipchak;Kipchak's;a Kipchak;Kipchaks
-tn_Mari;the Mari;Mari;Mari's;a Mari;Maris
+tn_BanuAmir;The Banu Amir;Banu Amir;Banu Amir';a Banu Amir;Banu Amirs
+tn_Uyunids;The Uyunids;Uyunid;Uyunid's;a Uyunid;Uyunids
+tn_Sulayhids;The Sulayhids;Sulayhid;Sulayhid's;a Sulayhid;Sulayhids
+tn_Saltuqids;The Saltuqids;Saltuqid;Saltuqids';a Saltuqid;Saltuqids
+tn_Olberli;The Olberli;Olberli;Olberli's;an Olberli;Olberlis
+tn_Toksoba;The Toksoba;Toksoba;Toksoba's;a Toksoba;Toksobas
+tn_Borcogli;The Borčogli;Borčogli;Borčogli's;a Borčogli;Borčoglis
+tn_Kipchak;The Kipchak;Kipchak;Kipchak's;a Kipchak;Kipchaks
+tn_Mari;The Mari;Mari;Mari's;a Mari;Maris
 tn_Duklja;Duklja;Duklja;Duklja's;a Dukljan;Dukljas
 tn_Virumaa;Virumaa;Virumaa;Virumaa's;a Virumaan;Virumaas
 tn_Laanemaa;Läänemaa;Läänemaa;Läänemaa's;a Läänemaan;Läänemaas
@@ -32,16 +34,17 @@ tn_Tavastians;Tavastians;Tavastians;Tavastian's;a Tavastian;Tavastians
 tn_Alba;Alba;Alba;Alba's;an Alban;Albas
 tn_Cumbria;Cumbria;Cumbria;Cumbria's;a Cumbrian;Cumbrias
 tn_Moray;Moray;Moray;Moray's;a Moray;Morays
-tn_Seljuks;the Seljuks;Seljuk;Seljuks';a Seljuk;Seljuk
-tn_Fatimids;the Fatimids;Fatimid;Fatimids';a Fatimid;Fatimids
-tn_Danishmends;the Danishmends;Danishmend;Danishmends';a Danishmend;Danishmends
-tn_Kakuyids;the Kakuyids;Kakuyid;Kakuyids';a Kakuyid;Kakuyids
-tn_Artuqids;the Artuqids;Artuqid;Artuqids';an Artuqid;Artuqids
-tn_Shaddadids;the Shaddadids;Shaddadid;Shaddadids';a Shaddadid;Shaddadids
+tn_Seljuks;The Seljuks;Seljuk;Seljuks';a Seljuk;Seljuk
+tn_Fatimids;The Fatimids;Fatimid;Fatimids';a Fatimid;Fatimids
+tn_Danishmends;The Danishmends;Danishmend;Danishmends';a Danishmend;Danishmends
+tn_Kakuyids;The Kakuyids;Kakuyid;Kakuyids';a Kakuyid;Kakuyids
+tn_Artuqids;The Artuqids;Artuqid;Artuqids';an Artuqid;Artuqids
+tn_Shaddadids;The Shaddadids;Shaddadid;Shaddadids';a Shaddadid;Shaddadids
 tn_Germany;Rome;Roman;Roman's;a Roman;Romans
 tn_Byzantium;Eastern Rome;Eastern Roman;Eastern Roman's;an Eastern Roman;Eastern Romans
 tn_Rum;Rum;Rum Seljuk;Rum Seljuks's;a Rum Seljuk;Rum Seljuks
 tn_Albon;Albon;Albonian;Albon's;an Albon;Albonian
 tn_Leon_Kingdom;Leon;Leonese;Leon's;a Leonese;Leonesians
-tn_BanuMarin;the Banu Marin;Banu Marin;Banu Marin';a Banu Marin;Banu Marin
+tn_BanuMarin;The Banu Marin;Banu Marin;Banu Marin';a Banu Marin;Banu Marin
 tn_Pisa;Pisa;Pisan;Pisa's;a Pisan;Pisan
+tn_Denmark;Denmark;Danish;Denmark's;a Danish;Danish

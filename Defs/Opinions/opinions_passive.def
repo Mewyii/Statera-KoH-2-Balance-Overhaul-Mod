@@ -1,0 +1,75 @@
+// RANDOM PASSIVE CHANGES
+
+def PassiveIncreaseOpinionRule : OpinionChangeRule
+{
+	opinion = (st_param.opinion_id)
+	amount = (st_param.opinion_amount)
+	reason = "passive_increase"
+	
+	triggers { kingdom dummy_trigger }
+}
+
+def PassiveIncreaseNobilityOpinionRule : PassiveIncreaseOpinionRule
+{
+	flavor = "The nobility seems to like the latest decisions, that {king} made and is a bit less worried for the way the kingdom is ruled. They are yet not very optimistic, though."
+	
+	triggers
+	{
+		kingdom passive_increase_opinion
+		{
+			condition = (param.opinion_id = "NobilityOpinion")
+		}
+	}
+}
+
+def PassiveIncreaseArmyOpinionRule : PassiveIncreaseOpinionRule
+{
+	flavor = "Out military leaders managed to calm their soldiers a bit and now they are less frustrated with {king:s} actions, though there is still some tension in the army."
+	
+	triggers
+	{
+		kingdom passive_increase_opinion
+		{
+			condition = (param.opinion_id = "ArmyOpinion")
+		}
+	}
+}
+
+def PassiveIncreaseMerchantsOpinionRule : PassiveIncreaseOpinionRule
+{
+	flavor = "After a gathering of our richest merchants, they decided the rulership of {king} is not so unbearable, but there is still a long way to go to earn back their trust."
+	
+	triggers
+	{
+		kingdom passive_increase_opinion
+		{
+			condition = (param.opinion_id = "MerchantsOpinion")
+		}
+	}
+}
+
+def PassiveIncreaseClergyOpinionRule : PassiveIncreaseOpinionRule
+{
+	flavor = "Our religious leaders decided, that they can forgive some of the ungodly deeds of the crown, but  they are still unsatisfied by the ignorance towards them."
+	
+	triggers
+	{
+		kingdom passive_increase_opinion
+		{
+			condition = (param.opinion_id = "ClergyOpinion")
+		}
+	}
+}
+
+def PassiveIncreasePeasantryOpinionRule : PassiveIncreaseOpinionRule
+{
+	flavor = "The uproar of the crowds, caused by the negligence of {king} towards them, has died off a bit, but they are still unhappy with the way {kingdom} is ruled."
+	
+	triggers
+	{
+		kingdom passive_increase_opinion
+		{
+			condition = (param.opinion_id = "PeasantryOpinion")
+		}
+	}
+}

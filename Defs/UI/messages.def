@@ -1,0 +1,15 @@
+def WeAreGreatPowerMessage : RankingsMessage
+{
+	caption = "We became a great power"
+	radio = "We became a great power"
+	category = "common"
+	body = $["The might of our empire is now undeniable - we are recognized as a great power by the rulers of the other kingdoms.{p}{p}"
+	"{ks_influence.great_power:value:bonus_dark:%} Kingdom Influence{p}"
+	"{ks_culture.great_power:value:bonus_dark:%} Culture{p}"
+	"{ks_corruption.great_power:value:bonus:%} Corruption{p}"]
+	voice_line = "narrator_voice:we_are_great_power"
+	illustration = "Assets/UI/Messages/Illustrations/UI_Illustration_WeAreGreatPower.tga:UI_Illustration_WeAreGreatPower#2" //GUID:9a1c14a6cbb8eae428269e52e89a2a33
+	icon = "Assets/UI/Elements/msg_icons/Icon_Message_Rankings_Positive.png:Icon_Message_Rankings_Positive#2" //GUID:fdd6ebc3aef88a849ac98876429af0c8
+	
+	stack_priority = 50
+}

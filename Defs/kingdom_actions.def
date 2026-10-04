@@ -205,3 +205,11 @@ def BecomePaganAction : ChangeReligionAction
 		}
 	}
 }
+
+def HoldAFeastAction : KingdomAction
+{
+	cost
+	{
+		gold = (own_kingdom.S1 * (1.66 + own_kingdom.num_realms/10))
+	}
+}

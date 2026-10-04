@@ -11,7 +11,7 @@ extend Building
 
 	bool is_capital_region = (realm.province_name == "Lothian" or realm.province_name == "Leinster" or realm.province_name == "London" or realm.province_name == "Ile_de_France" or realm.province_name == "Damascus" or realm.province_name == "Constantinopolis" or realm.province_name == "Toulouse" or realm.province_name == "Catalonia")
 	
-	float base_ai_eval = (200 + (realm.settlements_count * 25) + (If(is_capital_region, 200, 0)))
+	float base_ai_eval = (200 + (realm.settlements_count * 25) + (If(is_capital_region, 250, 0)))
 	ai_eval = base_ai_eval
 
 	conditions
@@ -1730,8 +1730,6 @@ delete HerbGardening
 delete TrainingGrounds
 delete SiegeWorkshop
 delete Stables
-delete University.upgrades
-delete Madrasah.upgrades
 delete Barracks.upgrades
 delete MineralsTrade
 delete LodestoneTrade
@@ -1741,3 +1739,5 @@ delete GoldSmelting
 delete Viticulture
 delete Stoneworking
 delete LimeTrade
+delete University
+delete Madrasah

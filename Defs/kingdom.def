@@ -15,7 +15,7 @@ extend Kingdom {
 	}
 
     // % from max treasury, used to calculate possible gold amounts in diplomatic negotiations, i.e. S1 .. S5
-	diplomatic_gold_perc = 10/20/40/60/80
+	diplomatic_gold_perc = 5/10/15/25/50
 
 	mp_levies_weight = 1
 
@@ -23,6 +23,11 @@ extend Kingdom {
 
 	traditions_slots = ["All","All","All","All","All","All","All","All","All"]
 	traditions_slots_tiers = [0,1,1,2,2,2,3,3,3]
+
+	float threats_max_distance = 3
+	float threats_max_relationship = -200
+	float friends_max_distance = 3
+	float friends_min_relationship = 200
 }
 
 
@@ -122,4 +127,11 @@ extend WarExhaustionModifier : FadingModifier
 	increase_per_war = 0.25;
 	time_period_decrease = 30;
 	decrease_base = 1;
+}
+
+def KingDeathModifier : FadingModifier
+{
+	stat = "ks_king_death"
+	duration = 600 // 10 minutes
+	value = (min((20 + kingdom.num_realms), 40))
 }

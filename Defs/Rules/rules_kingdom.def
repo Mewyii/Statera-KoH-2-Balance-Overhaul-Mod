@@ -1,0 +1,71 @@
+extend NegativeFoodRule
+{
+	target { kingdom k }
+	triggers
+	{
+		kingdom income_tick
+	}
+	
+	condition active = (k.food < 0)
+
+	timer ArmyOpinionDecreaseTimer = 120/420
+	{
+		outcomes
+		{
+			main negative_kingdom_food_penalty = 100
+			option default
+		}
+	}
+}
+
+extend NegativeIncomeRule
+{
+	target { kingdom k }
+	triggers
+	{
+		kingdom income_tick
+	}
+	
+	condition active = (k.income.gold < 0)
+
+	timer MerchantsOpinionDecreaseTimer = 120/420
+	{
+		outcomes
+		{
+			main negative_kingdom_gold_income_penalty = 100
+			option default
+		}
+	}
+}
+
+def FailedIndependenceClaimRule : GameRule
+{
+	target { kingdom k }
+	triggers
+	{
+		kingdom failed_independence	
+	}
+	
+	condition execute = true
+
+	outcomes
+	{
+		also crown_authority = -1
+	}
+}
+
+def SuccessfulIndependenceClaimRule : GameRule
+{
+	target { kingdom k }
+	triggers
+	{
+		kingdom independence
+	}
+	
+	condition execute = true
+
+	outcomes
+	{
+		also crown_authority = 1
+	}
+}

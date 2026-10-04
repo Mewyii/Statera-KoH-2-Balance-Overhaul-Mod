@@ -1,0 +1,532 @@
+// DECLARING WAR
+
+def DeclaringWarNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+    var too_many_wars = (trigger.param.from.num_wars > 0)
+	var rel = (trigger.param.from.GetRelationship(trigger.param.to))
+	var f4 = ((rel > 750) && -3)
+	var f3 = (((rel > 500) || too_many_wars) && -2)
+	var f2 = ((rel > 250) && -1)
+	var f1 = ((rel > 0) && 0)
+	var h3 = ((rel < (-750)) && 3)
+	var h2 = ((rel < (-500)) && 2)
+	var h1 = ((rel < (-250)) && 1)
+	var opinion_change = (f4 || f3 || f2 || f1 || h3 || h2 || h1)
+	amount = (opinion_change)
+	reason = "declare_just_or_unjust_war"
+
+	case attacking_enemy_neighbour = (opinion_change > 0)
+	{
+		flavor = "Our nobility applauds finally going to war against {st_param.tgt_kingdom}, a kingdom that has long been a thorn in our side. The lords are pleased to see that {king} is taking decisive action against our enemies."
+	}
+	case attacking_friendly_neighbour = (opinion_change < 0)
+	{
+		flavor = "Our nobility is concerned about the decision to go to war against {st_param.tgt_kingdom}, a kingdom that has been friendly. The lords are worried that this action may lead to unnecessary conflict."
+	}
+	
+	triggers
+	{
+		kingdom sent_offer_accepted
+		{
+			condition = (amount != 0 && param.name == "DeclareWar")
+		}
+	}
+}
+
+def DeclareWarArmyOpinionRule : OpinionChangeRule
+{
+	opinion = "ArmyOpinion"
+	amount = (RndI(1, 2))
+	reason = "attack_kingdom"
+	flavor = "Declaring war against {st_param.tgt_kingdom} has motivated our army to prepare for the upcoming battles."
+	
+	triggers
+	{
+		kingdom sent_offer_accepted
+		{
+			condition = (param.name == "DeclareWar" && (sender.num_wars < 1))
+		}
+	}
+}
+
+// Trade Agreements are broken when declaring war
+def BreakingTradeAgreementMerchantsOpinionRule : OpinionChangeRule
+{
+	opinion = "MerchantsOpinion"
+	amount = -2
+	reason = "break_trade_agreement"
+	flavor = "Our merchants are unhappy and blame our diplomats and {king} for the broken trade agreement with {st_param}."
+	
+	triggers { kingdom break_trade }
+}
+
+def AttackingSameReligionClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = -2
+	reason = "attack_same_religion_kingdom"
+	flavor = "Declaring war against {st_param.tgt_kingdom} has angered our clergy. Spilling the blood of our religious brethren is sinful."
+	
+	triggers
+	{
+		kingdom sent_offer_accepted
+		{
+			condition = (param.name == "DeclareWar" && (sender.religion == param.tgt_kingdom.religion) && !param.tgt_kingdom.excommunicated)
+		}
+	}
+}
+
+def AttackingDifferentReligionClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = 2
+	reason = "attack_different_religion_kingdom"
+	flavor = "Declaring war against {st_param.tgt_kingdom} has pleased our clergy. Spilling the blood of those false believers is commendable."
+	
+	triggers
+	{
+		kingdom sent_offer_accepted
+		{
+			condition = (param.name == "DeclareWar" && (sender.religion_family != param.tgt_kingdom.religion_family))
+		}
+	}
+}
+
+def AttackingPopeClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = -4
+	reason = "attack_pope"
+	flavor = "Declaring war against {st_param.tgt_kingdom} has wounded our relations with our Clergy greatly! We should be more careful when showing aggression against the Pope."
+	
+	triggers
+	{
+		kingdom sent_offer_accepted
+		{
+			condition = (param.name == "DeclareWar" && sender.is_catholic && param.tgt_kingdom == sender.papacy)
+		}
+	}
+}
+
+def AttackingCaliphateClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = -2
+	reason = "attack_caliphate"
+	flavor = "Attacking {st_param.tgt_kingdom} might have been a sound tactical choice, but it was deemed as a mistake by our Scholars."
+	
+	triggers
+	{
+		kingdom sent_offer_accepted
+		{
+			condition = (param.name == "DeclareWar" && sender.is_muslim && param.tgt_kingdom.is_caliphate)
+		}
+	}
+}
+
+def AttackingConquerorOfRomeClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = 2
+	reason = "attack_conqueror_of_rome"
+	flavor = "Declaring war on {st_param.tgt_kingdom} was the right thing to do, as it has shown our commitment to liberating Rome from the clutches of its unrightful holders!"
+	triggers
+	{
+		kingdom sent_offer_accepted
+		{
+			condition = (param.name == "DeclareWar" && sender.is_catholic && param.tgt_kingdom == sender.rome_kingdom && sender.rome_kingdom != sender.papacy)
+		}
+	}
+}
+
+def AttackingConquerorOfConstantinopleClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = 2
+	reason = "attack_conqueror_of_constantinople"
+	flavor = "Our war declaration against {st_param.tgt_kingdom}, the unrightful owners of Constantinople, was met with unanimous applaud!"
+	triggers
+	{
+		kingdom sent_offer_accepted
+		{
+			condition = (param.name == "DeclareWar" && sender.is_orthodox && param.tgt_kingdom == sender.constantinople_kingdom && !sender.constantinople_kingdom.is_orthodox)
+		}
+	}
+}
+
+def DeclareWarOnNonMuslimOwnerOfMuslimHolyCityClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = 2
+	reason = "declare_war_on_non_muslim_owner_of_muslim_holy_city"
+	flavor = "Imams and {kingdom.cleric_title:s} of {kingdom} stands behind the decision of {king} - we must wage war and free the holy lands from the infidels."
+	
+	triggers
+	{
+		kingdom sent_offer_accepted
+		{
+			condition = (param.name == "DeclareWar" && param.from.is_muslim && !param.to.is_muslim && (param.to.HasRealm("Baghdad") || param.to.HasRealm("Yathrib") || param.to.HasRealm("Al_Maqqah")))
+		}
+	}
+}
+
+def DeclareWarPeasantryOpinionRule : OpinionChangeRule
+{
+	opinion = "PeasantryOpinion"
+	amount = -1
+	reason = "declare_unnecessary_war"
+	flavor = "Our war declaration against {st_param.tgt_kingdom} has stricken fear into the hearts of our people. Cruel war is what they fear most."
+	
+	triggers
+	{
+		kingdom sent_offer_accepted
+		{
+			condition = (param.name == "DeclareWar" && ((GetRelationship(param.from, param.to) > -750) || (trigger.param.from.num_wars > 0)))
+		}
+	}
+}
+
+
+
+// ENDING WAR
+
+def WinWarNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = 1
+	reason = "war_won_nobility"
+	flavor = "Winning the war against {st_param.loser} has proven to our nobility that their {kingdom.king.title} possesses a sharp military mind, capable of taking swift care of all who stand in his path!"
+	
+	triggers { kingdom war_won }
+}
+
+def LoseWarNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = (st_param.attacker == st_sender && -2 || -1)
+	reason = "war_lost_nobility"
+	flavor = "Losing the war against {st_param.winner} has put doubt within few of your high-standing nobles."
+	
+	triggers { kingdom war_lost }
+}
+
+def SignDisadvantageousPeaceNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = -1
+	reason = "sign_disadvantageous_peace"
+	flavor = "Signing this peace with {st_param.tgt_kingdom} has disappointed many in our nobility."
+	
+	var is_negative_peace_offer = (trigger.param.name = "PeaceOfferTribute")
+	triggers
+	{
+		kingdom sent_offer_accepted
+		{
+			condition = (is_negative_peace_offer)
+		}
+	}
+}
+
+def WinWarArmyOpinionRule : OpinionChangeRule
+{
+	opinion = "ArmyOpinion"
+	amount = (st_param.attacker == st_sender && 3 || 1)
+	reason = "war_won_army"
+	flavor = "The successful war against {st_param.loser} has proven to our military that their {st_param.winner.king.title} is an expert tactician capable of leading his armies to triumph!"
+	
+	triggers { kingdom war_won }
+}
+
+def LoseWarArmyOpinionRule : OpinionChangeRule
+{
+	opinion = "ArmyOpinion"
+	amount = (st_param.attacker == st_sender && -3 || -1)
+	reason = "war_lost_army"
+	flavor = "Losing the war against {st_param.winner} has demoralized our army deeply, sowing doubt amongst our commanding ranks."
+	
+	triggers { kingdom war_lost }
+}
+
+def SignDisadvantageousPeaceArmyOpinionRule : OpinionChangeRule
+{
+	opinion = "ArmyOpinion"
+	amount = -1
+	reason = "sign_disadvantageous_peace"
+	flavor = "Signing this peace with {st_param.tgt_kingdom} has disappointed many in our army, sowing doubt amongst our commanding ranks."
+	
+	var is_negative_peace_offer = (trigger.param.name = "PeaceOfferTribute")
+	triggers
+	{
+		kingdom sent_offer_accepted
+		{
+			condition = (is_negative_peace_offer)
+		}
+	}
+}
+
+def SignPeaceMerchantsOpinionRule : OpinionChangeRule
+{
+	opinion = "MerchantsOpinion"
+	amount = 1
+	reason = "restored_peace"
+	flavor = "Our merchants are pleased with the restored peace in our kingdom and appreciate the diplomatic efforts."
+	
+	var is_peace_offer = (trigger.param.name == "WhitePeaceOffer" || trigger.param.name == "PeaceDemandTribute" || trigger.param.name == "PeaceOfferTribute")
+	triggers
+	{
+		kingdom sent_offer_accepted
+		{
+			condition = (is_peace_offer && (sender.num_wars < 2))
+		}
+		kingdom recieved_offer_accepted
+		{
+			condition = (is_peace_offer && (sender.num_wars < 2))
+		}
+	}
+}
+
+def WinWarAgainstDifferentReligionClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = 2
+	reason = "war_won_clergy"
+	flavor = "The successful war against {st_param.loser} has proven to our clergy that it was just and righteous!"
+	
+	triggers { 
+        kingdom war_won
+        {
+            condition = (sender.religion_family != param.tgt_kingdom.religion_family)
+        }
+    }
+}
+
+def LoseWarAgainstDifferentReligionClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = (st_param.attacker == st_sender && -2 || -1)
+	reason = "war_lost_clergy"
+	flavor = "Not winning the war against {st_param.winner} has demoralized our clergy deeply, sowing doubt amongst our religious ranks."
+	
+	var is_peace_offer = (trigger.param.name == "WhitePeaceOffer" || trigger.param.name == "PeaceOfferTribute")
+	var is_different_religion = (sender.religion_family != param.tgt_kingdom.religion_family)
+	triggers { 
+        kingdom war_lost
+        {
+            condition = (is_different_religion)
+        }
+        kingdom sent_offer_accepted
+		{
+			condition = (is_peace_offer && is_different_religion)
+		}
+		kingdom recieved_offer_accepted
+		{
+			condition = (is_peace_offer && is_different_religion)
+		}
+    }
+}
+
+def SignPeaceMerchantsOpinionRule : OpinionChangeRule
+{
+	opinion = "MerchantsOpinion"
+	amount = 1
+	reason = "sign_peace_same_religion"
+	flavor = "Our clery is pleased that the bloodshed between our faithful brethren has come to an end."
+	
+	var is_peace_offer = (trigger.param.name == "WhitePeaceOffer" || trigger.param.name == "PeaceDemandTribute" || trigger.param.name == "PeaceOfferTribute")
+	var is_same_religion = (sender.religion == param.tgt_kingdom.religion)
+	triggers
+	{
+		kingdom sent_offer_accepted
+		{
+			condition = (is_peace_offer && is_same_religion)
+		}
+		kingdom recieved_offer_accepted
+		{
+			condition = (is_peace_offer &&is_same_religion)
+		}
+	}
+}
+
+
+def SignPeacePeasantryOpinionRule : OpinionChangeRule
+{
+	opinion = "PeasantryOpinion"
+	amount = 1
+	reason = "restored_peace"
+	flavor = "Our peasantry are pleased with the restored peace in our kingdom and are happy to see an end to cruesome battles, sieges and death."
+	
+	var is_peace_offer = (trigger.param.name == "WhitePeaceOffer" || trigger.param.name == "PeaceDemandTribute" || trigger.param.name == "PeaceOfferTribute")
+	triggers
+	{
+		kingdom sent_offer_accepted
+		{
+			condition = (is_peace_offer && (sender.num_wars < 2))
+		}
+		kingdom recieved_offer_accepted
+		{
+			condition = (is_peace_offer && (sender.num_wars < 2))
+		}
+	}
+}
+
+
+
+// BATTLES
+
+def WinBattleNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = ((st_param.loser_kingdom.is_rebel && 0) || 1)
+	reason = "battle_won_nobility"
+	flavor = "Our Nobility is impressed with the recent victory in battle against the {st_param.loser_kingdom:ians}."
+	cooldown = 300
+	
+	triggers = ((sender.is_player && 20) || 25)
+	{
+		character battle_won
+		{
+			condition = ((amount > 0) && (!sender.is_crusader && (sender.food > -1)))
+		}
+	}
+}
+
+def LoseBattleNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = ((st_param.winner_kingdom.is_rebel && -2) || -1)
+	reason = "battle_lost_nobility"
+	flavor = "Our Nobility is disappointed with the recent loss in battle against the {st_param.winner_kingdom:ians}."
+	cooldown = 300
+
+	triggers = ((sender.is_player && 25) || 20)
+	{
+		character battle_lost
+		{
+			condition = (!sender.is_crusader)
+		}
+	}
+}
+
+def WinBattleArmyOpinionRule : OpinionChangeRule
+{
+	opinion = "ArmyOpinion"
+	amount = ((st_param.loser_kingdom.is_rebel && 0) || 1)
+	reason = "battle_won_army"
+	flavor = "Our recent victory in battle has improved the standing of our {kingdom.king.title} with the Army!"
+	cooldown = 300
+
+	triggers = ((sender.is_player && 50) || 60)
+	{
+		character battle_won
+		{
+			condition = ((amount > 0) && (!sender.is_crusader && (sender.food > -1)))
+		}
+	}
+}
+
+def LoseBattleArmyOpinionRule : OpinionChangeRule
+{
+	opinion = "ArmyOpinion"
+	amount = ((st_param.winner_kingdom.is_rebel && -2) || -1)
+	reason = "battle_lost_army"
+	flavor = "Our recent loss in battle has crippled the standing of our {kingdom.king.title} with the Army."
+	cooldown = 300
+
+	triggers = ((sender.is_player && 50) || 40)
+	{
+		character battle_lost
+		{
+			condition = (!sender.is_crusader)
+		}
+	}
+}
+
+def MarshalKilledInBattleArmyOpinionRule : OpinionChangeRule
+{
+	opinion = "ArmyOpinion"
+	var level = (st_sender.level)
+	amount = (((level >= 10) && -2) || ((level >= 5) && -1))
+	reason = "marshal_killed_in_battle"
+	flavor = "Our armies are mourning the death of {st_sender}."
+	
+	triggers
+	{
+		character killed_in_battle
+		{
+			condition = (amount < 0)
+		}
+	}
+}
+
+def MarshalCapturedInBattleArmyOpinionRule : OpinionChangeRule
+{
+	opinion = "ArmyOpinion"
+	var level = (st_sender.level)
+	amount = (((level >=10) && -3) || ((level >= 5) && -2) || ((level >= 3) && -1))
+	reason = "marshal_captured_in_battle"
+	flavor = "The imprisonment of {st_sender} has further demoralized our troops and worsened our standing with the Army!"
+	
+	triggers
+	{
+		character imprisoned_in_battle
+		{
+			condition = (amount < 0)
+		}
+	}
+}
+
+def EndBattleAgainstSameReligionClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = -1
+	reason = "battle_end_same_religion"
+	flavor = "Our clergy is worried about the recent bloodshed between our religious brethren of {st_param.tgt_kingdom}. This is not the will of God."
+	cooldown = 300
+	
+	triggers = ((sender.is_player && 50) || 40)
+	{
+		character battle_won
+		{
+			condition = ((sender.religion_family == param.tgt_kingdom.religion_family) && (!sender.is_crusader))
+		}
+		character battle_lost
+		{
+			condition = ((sender.religion_family == param.tgt_kingdom.religion_family) && (!sender.is_crusader) && (param.defeated_armies_count > 1))
+		}
+	}
+}
+
+def WonBattleAgainstDifferentReligionClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = 1
+	reason = "battle_won_different_religion"
+	flavor = "The clergy is pleased with the recent victory in battle against {st_param.tgt_kingdom}. This is a righteous war against the infidels."
+	cooldown = 300
+
+	triggers = ((sender.is_player && 50) || 60)
+	{
+		character battle_won
+		{
+			condition = ((sender.religion_family != param.tgt_kingdom.religion_family))
+		}
+	}
+}
+
+def LostBattleAgainstDifferentReligionClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = 1
+	reason = "battle_lost_different_religion"
+	flavor = "Our clergy mourns the tragic loss in the recent battle against {st_param.tgt_kingdom}. In these trying times, ones courage and faith is tested. A strong will and unity is needed to prevail."
+	cooldown = 300
+
+	triggers = 25
+	{
+		character battle_lost
+		{
+			condition = ((sender.religion_family != param.tgt_kingdom.religion_family) && (param.defeated_armies_count > 1))
+		}
+	}
+}

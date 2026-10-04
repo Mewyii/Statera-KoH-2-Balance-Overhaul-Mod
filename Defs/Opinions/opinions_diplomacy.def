@@ -1,0 +1,141 @@
+// TRADE
+
+def SignTradeAgreementMerchantsOpinionRule : OpinionChangeRule
+{
+	opinion = "MerchantsOpinion"
+	amount = 1
+	reason = "sign_trade"
+	flavor = "The trading elite within our kingdom applauds the decision of their {st_sender.king.title} to sign a trade agreement with {st_param.tgt_kingdom}."
+	triggers
+	{
+		kingdom sent_offer_accepted
+		{
+			condition = (param.name == "SignTrade")
+		}
+	}
+}
+
+def AcceptTradeAgreementMerchantsOpinionRule : OpinionChangeRule
+{
+	opinion = "MerchantsOpinion"
+	amount = 1
+	reason = "accept_trade"
+	flavor = "The trading elite within our kingdom applauds the decision of their {st_sender.king.title} to sign a trade agreement with {st_param.src_kingdom}."
+	triggers
+	{
+		kingdom recieved_offer_accepted
+		{
+			condition = (param.name == "SignTrade")
+		}
+	}
+}
+
+def TradeSuccessMerchantsOpinionRule : OpinionChangeRule
+{
+	opinion = "MerchantsOpinion"
+	amount = 1
+	reason = "trade_success"
+	
+	case merchant_is_in_kingdom = (st_sender.mission_kingdom != null)
+	{
+		flavor = "Our merchants as always appreciated the broadened opportunities for trade with {st_sender.mission_kingdom} and already started planning new deals and shipments of goods."
+	}
+	case merchant_founded_colony = (st_sender.mission_kingdom = null)
+	{
+		flavor = "Our merchants were thrilled by the news that {st_sender:s} expedition resulted in the foundation of a colony! They are already planning how we can further expand our trading network."
+	}
+	
+	triggers
+	{
+		character trade_level_changed
+		{
+			condition = (sender.trade_level > 1)
+		}
+		character trade_expedition_suceeded
+	}
+}
+
+def SuccessfulTradeEndedMerchantsOpinionRule : OpinionChangeRule
+{
+	opinion = "MerchantsOpinion"
+	amount = (-1 * (st_param.trade_level - 1))
+	reason = "successful_trade_ended"
+	flavor = "Our merchants are greatly disappointed the trade opportunities we had in {st_param.mission_kingdom} are now over. They blame {kingdom.king} for letting this happen."
+	
+	triggers
+	{
+		kingdom trade_stopped
+		{
+			condition = (!param.mission_kingdom.is_defeated)
+		}
+	}
+}
+
+// VASSALAGE
+
+def RejectVassalDefenceNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = -1
+	reason = "reject_vassal_defence_nobility"
+	flavor = "Our refusal to aid our vassal was met with disapproval."
+	
+	triggers { kingdom reject_vassal_defence_opinion }
+}
+
+def RejectVassalDefenceClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = -1
+	reason = "reject_vassal_defence_clergy"
+	flavor = "Our refusal to aid our vassal was met with disapproval."
+	
+	triggers { kingdom reject_vassal_defence_opinion }
+}
+
+// PAPACY
+
+def RestorePapacyClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	var clergy_opinion = (kingdom.opinions[opinion].value)
+	amount = (10 - clergy_opinion)
+	reason = "papacy_restored"
+	flavor = "Our clergy is delighted that {st_sender.king} has restored the Papacy, not that something else could have been expected. {st_sender} is truly a bastion of the Catholic faith!"
+	
+	triggers
+	{
+		kingdom restored_papacy
+		{
+			condition = (sender.is_catholic)
+		}
+	}
+}
+
+def GiveGoldToPapacyClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	var clergy_opinion = (kingdom.opinions[opinion].value)
+
+	var s5 = ((clergy_opinion < 6) && (st_param.gold_amount >= st_param.donor.S5) && 3)
+	var s4 = ((clergy_opinion < 3) && (st_param.gold_amount >= st_param.donor.S4) && 2)
+	var s3 = ((clergy_opinion < 0) && (st_param.gold_amount >= st_param.donor.S3) && 1)
+	var s2 = ((clergy_opinion < -3) && (st_param.gold_amount >= st_param.donor.S2) && 1)
+	var s1 = ((clergy_opinion < -6) && (st_param.gold_amount >= st_param.donor.S1) && 1)
+	amount = (s5 || s4 || s3 || s2 || s1)
+	reason = "give_gold_to_papacy"
+	flavor = "Our clergymen are proud that {st_sender} is able and willing to help the papacy with a proper donation, sent to {st_param.recipient.king}!"
+	
+	triggers
+	{
+		kingdom sent_offer_accepted
+		{
+			condition = (param.name == "OfferGold" && param.recipient.is_papacy && param.donor.is_catholic)
+		}
+		
+		kingdom recieved_offer_accepted
+		{
+			condition = (param.name == "DemandGold" && param.recipient.is_papacy && param.donor.is_catholic)
+		}
+	}
+}

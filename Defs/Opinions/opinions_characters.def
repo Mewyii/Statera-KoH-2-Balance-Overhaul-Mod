@@ -1,0 +1,118 @@
+// EXILE
+
+def ExileNobleNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = (-1 * round((sender.class_level / 3)))
+	reason = "exiled_noble"
+	flavor = "Exiling {st_sender}, a prominent aristocrat and a member of the royal court, led to notable discontent amongst our noblemen."
+	
+	triggers
+	{
+		character exiled
+		{
+			condition = (!sender.is_cleric && !kingdom.ks_discard_exile_abandon_penalties)
+		}
+	}
+}
+
+def ExileClericClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = (-1 * round((sender.class_level / 3)))
+	reason = "exiled_cleric"
+	flavor = "News about the exile of one of the holiest men in our kingdom has reached the religious echelons within our court. Needless to say, they aren't so happy." //!!! add reference to exiled character name
+	
+	triggers
+	{
+		character exiled
+		{
+			condition = (sender.is_cleric && !kingdom.ks_discard_exile_abandon_penalties)
+		}
+	}
+}
+
+// ABANDON
+
+def AbandonPrisonerNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = (-1 * round((st_param.class_level / 3)))
+	reason = "abandon_prisoner"
+	flavor = "Our decision to abandon the respected {st_param} in a foreign dungeon was met with disapproval and has caused some uproar amongst our nobility."
+	
+	triggers
+	{
+		kingdom character_abandoned
+		{
+			condition = (!kingdom.ks_discard_exile_abandon_penalties)
+		}
+	}
+}
+
+// DIPLOMAT OPINION INCREASE
+
+def PassiveIncreaseDiplomatNobilityOpinionRule : PassiveIncreaseOpinionRule
+{
+	flavor = "{st_param.diplomat} managed to convince some of our most prominent noblemen, that our {king.title} is following the necessary policies for the triumph of {kingdom}."
+	
+	triggers
+	{
+		kingdom passive_increase_opinion_diplomat
+		{
+			condition = (param.opinion_id = "NobilityOpinion")
+		}
+	}
+}
+
+def PassiveIncreaseDiplomatArmyOpinionRule : PassiveIncreaseOpinionRule
+{
+	flavor = "{st_param.diplomat} managed to convince some of our military leaders, that {king} is taking the proper steps for the defense of {kingdom} and better conditions for the army."
+	
+	triggers
+	{
+		kingdom passive_increase_opinion_diplomat
+		{
+			condition = (param.opinion_id = "ArmyOpinion")
+		}
+	}
+}
+
+def PassiveIncreaseDiplomatMerchantsOpinionRule : PassiveIncreaseOpinionRule
+{
+	flavor = "{st_param.diplomat} managed to convince some of the richest merchants in {kingdom}, that we are on the path of economical growth."
+	
+	triggers
+	{
+		kingdom passive_increase_opinion_diplomat
+		{
+			condition = (param.opinion_id = "MerchantsOpinion")
+		}
+	}
+}
+
+def PassiveIncreaseDiplomatClergyOpinionRule : PassiveIncreaseOpinionRule
+{
+	flavor = "{st_param.diplomat} managed to convince some of our religious leaders, that {king:s} deeds are godly and necessary."
+	
+	triggers
+	{
+		kingdom passive_increase_opinion_diplomat
+		{
+			condition = (param.opinion_id = "ClergyOpinion")
+		}
+	}
+}
+
+def PassiveIncreaseDiplomatPeasantryOpinionRule : PassiveIncreaseOpinionRule
+{
+	flavor = "{st_param.diplomat} managed to convince many of the common people, that {king} cares for each man and is doing all we can to ensure peace and prosperity."
+	
+	triggers
+	{
+		kingdom passive_increase_opinion_diplomat
+		{
+			condition = (param.opinion_id = "PeasantryOpinion")
+		}
+	}
+}
