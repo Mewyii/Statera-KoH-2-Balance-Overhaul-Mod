@@ -236,6 +236,24 @@ extend SaltTrade : Building
 	ai_eval = (base_ai_eval + (!kingdom.SaltTrade and 250))
 }
 
+def SulfurMines : Building
+{
+	name = "Sulfur Mines"
+	flavor = "Sulfur-bearing rock is extracted from open pits and shallow shafts using hammers, chisels, and picks. The ore is broken, sorted, and prepared for further processing."
+	icon = "Assets/Icons/Buildings/SulfurMines.png:SulfurMines#1"
+	illustration = "Assets/Icons/Buildings/SulfurMines.png:SulfurMines#1"
+
+	upgrades
+	{
+		buildings
+		{
+			SulfurSmelters = 1,1
+		}
+	}
+	
+	ai_eval = (base_ai_eval + (!kingdom.SulfurMines and map_clamp(game.time_hours, 3, 6, 0, 100)))
+}
+
 def SilverMines : Building
 {
 	name = "Silver Mines"
@@ -1741,3 +1759,4 @@ delete Stoneworking
 delete LimeTrade
 delete University
 delete Madrasah
+delete SulfurTrade

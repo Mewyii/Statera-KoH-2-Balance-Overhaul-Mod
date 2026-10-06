@@ -8,7 +8,7 @@ extend NegativeFoodRule
 	
 	condition active = (k.food < 0)
 
-	timer ArmyOpinionDecreaseTimer = 120/420
+	timer ArmyOpinionDecreaseTimer = 240/360
 	{
 		outcomes
 		{
@@ -28,12 +28,56 @@ extend NegativeIncomeRule
 	
 	condition active = (k.income.gold < 0)
 
-	timer MerchantsOpinionDecreaseTimer = 120/420
+	timer MerchantsOpinionDecreaseTimer = 240/360
 	{
 		outcomes
 		{
 			main negative_kingdom_gold_income_penalty = 100
 			option default
+		}
+	}
+}
+
+def CourtClericsUnderRepresentedRule : GameRule
+{
+	target { kingdom k }
+	triggers
+	{
+		kingdom income_tick
+	}
+	
+	condition active = (k.is_player && (k.clerics_count < (If((k.court_members_count < 6), 1, 2))))
+
+	timer ClericsOpinionDecreaseTimer = 720/1080
+	{
+		outcomes
+		{
+			trigger court_clergy_underrepresented_penalty
+			{
+				target = (kingdom)
+			}
+		}
+	}
+}
+
+def CourtMerchantsUnderRepresentedRule : GameRule
+{
+	target { kingdom k }
+	triggers
+	{
+		kingdom income_tick
+	}
+	
+	condition active = (k.is_player && (k.merchants_count < (If((k.court_members_count < 6), 1, 2))))
+
+	timer MerchantsOpinionDecreaseTimer = 720/1080
+	{
+		outcomes
+		{
+			trigger court_merchants_underrepresented_penalty
+			{
+				target = (kingdom)
+			}
 		}
 	}
 }

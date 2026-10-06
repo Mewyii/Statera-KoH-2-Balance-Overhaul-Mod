@@ -15,7 +15,7 @@ delete LoseBattleClergyOpinionRule
 delete FailedIndependenceNobilityOpinionRule
 delete NobilityDeclareIndependenceOpinionRule
 delete MarriageWithOtherReligionClergyOpinionRule
-
+delete DeclaringWarNobilityOpinionRule
 
 
 

@@ -1,6 +1,29 @@
 // DECLARING WAR
 
-def DeclaringWarNobilityOpinionRule : OpinionChangeRule
+def DeclaringWarPositiveNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+    var too_many_wars = (trigger.param.from.num_wars > 0)
+	var rel = (trigger.param.from.GetRelationship(trigger.param.to))
+	var h3 = ((rel < (-750)) && 3)
+	var h2 = ((rel < (-500)) && 2)
+	var h1 = ((rel < (-250)) && 1)
+	var rest = ((rel <= (-250)) && 0)
+	amount = (h3 || h2 || h1 || rest)
+	reason = "declare_just_or_unjust_war"
+
+	flavor = "Our nobility applauds finally going to war against {st_param.tgt_kingdom}, a kingdom that has long been a thorn in our side. The lords are pleased to see that {king} is taking decisive action against our enemies."
+	
+	triggers
+	{
+		kingdom sent_offer_accepted
+		{
+			condition = (amount > 0 && param.name == "DeclareWar")
+		}
+	}
+}
+
+def DeclaringWarNegativeNobilityOpinionRule : OpinionChangeRule
 {
 	opinion = "NobilityOpinion"
     var too_many_wars = (trigger.param.from.num_wars > 0)
@@ -8,28 +31,17 @@ def DeclaringWarNobilityOpinionRule : OpinionChangeRule
 	var f4 = ((rel > 750) && -3)
 	var f3 = (((rel > 500) || too_many_wars) && -2)
 	var f2 = ((rel > 250) && -1)
-	var f1 = ((rel > 0) && 0)
-	var h3 = ((rel < (-750)) && 3)
-	var h2 = ((rel < (-500)) && 2)
-	var h1 = ((rel < (-250)) && 1)
-	var opinion_change = (f4 || f3 || f2 || f1 || h3 || h2 || h1)
-	amount = (opinion_change)
+	var rest = ((rel <= 250) && 0)
+	amount = (f4 || f3 || f2 || rest)
 	reason = "declare_just_or_unjust_war"
 
-	case attacking_enemy_neighbour = (opinion_change > 0)
-	{
-		flavor = "Our nobility applauds finally going to war against {st_param.tgt_kingdom}, a kingdom that has long been a thorn in our side. The lords are pleased to see that {king} is taking decisive action against our enemies."
-	}
-	case attacking_friendly_neighbour = (opinion_change < 0)
-	{
-		flavor = "Our nobility is concerned about the decision to go to war against {st_param.tgt_kingdom}, a kingdom that has been friendly. The lords are worried that this action may lead to unnecessary conflict."
-	}
-	
+	flavor = "Our nobility is concerned about the decision to go to war against {st_param.tgt_kingdom}, a kingdom that has been friendly. The lords are worried that this action may lead to unnecessary conflict."
+
 	triggers
 	{
 		kingdom sent_offer_accepted
 		{
-			condition = (amount != 0 && param.name == "DeclareWar")
+			condition = (amount < 0 && param.name == "DeclareWar")
 		}
 	}
 }

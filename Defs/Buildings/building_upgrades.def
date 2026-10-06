@@ -1076,6 +1076,15 @@ def SaltRefineries : Upgrade
 	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_SaltTrade.tga:UI_Structure_Icon_SaltTrade#2" //GUID:c59fd0d60f1fd7e4fa749a3ced9d2657
 }
 
+def SulfurSmelters : Upgrade
+{
+	name = "Sulfur Smelters"
+	flavor = "Sulfur-bearing rock is heated in simple smelting furnaces, allowing the sulfur to melt and separate from the surrounding stone. The recovered sulfur is used for medicinal ointments, fumigation, and various crafts."
+	icon = "Assets/Icons/Buildings/SulfurSmelters.png:SulfurSmelters#1"
+	
+	ai_eval = (base_ai_eval + (map_clamp(game.time_hours, 3, 6, 0, 5000)))
+}
+
 def DeepMining : Upgrade
 {
 	name = "Deep Mining"

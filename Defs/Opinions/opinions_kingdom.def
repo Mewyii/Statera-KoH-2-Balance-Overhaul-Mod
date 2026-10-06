@@ -1,3 +1,31 @@
+// COURT
+
+def CourtUnderRepresentedClergyOpinionRule : OpinionChangeRule
+{
+	opinion = "ClergyOpinion"
+	amount = -1
+	reason = "court_clergy_underrepresented"
+	flavor = "Our clergy is concerned about the lack of representation in our royal court. They are worried that their influence and power is being diminished."
+	
+	triggers
+	{
+		kingdom court_clergy_underrepresented_penalty
+	}
+}
+
+def CourtUnderRepresentedMerchantsOpinionRule : OpinionChangeRule
+{
+	opinion = "MerchantsOpinion"
+	amount = -1
+	reason = "court_merchants_underrepresented"
+	flavor = "Our merchants are concerned about the lack of representation in our royal court. They don't feel their interests are being adequately represented."
+	
+	triggers
+	{
+		kingdom court_merchants_underrepresented_penalty
+	}
+}
+
 // FOOD
 
 def KingdomFoodNegativePeasantryOpinionRule : OpinionChangeRule

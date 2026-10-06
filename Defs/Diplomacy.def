@@ -17,6 +17,7 @@ extend OffensivePact : Pact
 
 extend Offer
 {
+	ai_propose_cooldown = 600
 	timeout = 150
 }
 
@@ -246,6 +247,29 @@ def PeaceDemandTribute : DiplomacyOffer
 								"DemandAttackKingdom",
 								"DemandReleasePrisoners"
 								]
+}
+
+def SignTrade : DiplomacyOffer
+{
+	name = "Trade Agreement"
+	label = "Sign Trade"
+	tooltip = "Establish a trade agreement, allowing merchants from both kingdoms to trade with eachother"
+	diplomacy_event_id = "Trade"
+	propose_caption = "{src_kingdom} offers a Trade Agreement"
+	illustration = "Assets/UI/Elements/Common/Icons/UI_Illustration_Messsage_TradeOffer.png:UI_Illustration_Messsage_TradeOffer#2" //GUID:39dfe94654245c340a2b4db03058f03f	
+	rel_change_type = "neutral"
+	diplomacy_accept = "event:/sound_effects/notification/diplomatic/offer_accepted"
+	sfx_priority = 1
+}
+
+def SignNonAggression : DiplomacyOffer
+{
+	name = "Non-Aggression"
+	label = "Sign Non-Aggression"
+	tooltip = "Formally forbid any warfare between {tgt_kingdom} and {src_kingdom}"
+	diplomacy_event_id = "NonAggression"
+	propose_caption = "{src_kingdom} offers a Non-Aggression Pact"
+	rel_change_type = "neutral"
 }
 
 def OfferHelpWithRebels : DiplomacyOffer

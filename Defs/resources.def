@@ -584,6 +584,21 @@ def Salt : Resource
 	mod ks_population_growth_perc = 5
 }
 
+delete Sulfur
+def Sulfur : Resource
+{
+	name = "Sulfur"
+	tooltip = "This yellow rock is known for fumigation, medicine and most importantly for creation of black powder."
+	icon = "Assets/UI/Elements/Common/Icons/RealmResources/Icon_Resource_Sulfur.png:Icon_Resource_Sulfur#2" //GUID:ada3bdad760ea5d4ab8b581c8b3e31a1
+	category = "Base"
+	import_commerce = 12
+	import_gold = 6
+
+	mod ks_happiness = 1
+	mod ks_population_growth_perc = 5
+}
+
+
 delete Silver
 def Silver : Resource
 {
