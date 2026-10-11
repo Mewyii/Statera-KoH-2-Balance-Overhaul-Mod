@@ -932,7 +932,7 @@ def Late_Knights : HeavyCavalry
 def AdvancedMilitia_CE : AdvancedMilitia
 {
 	model = "Assets/Units/Militia_CE_03/Militia_CE_03.prefab" //GUID:5de2656d1a8e6614f9d9175e7db57cfc
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Advanced_Militia_CE.tga:Icon_Unit_Advanced_Militia_CE#1" //GUID:828791f53491d5b46846fe7b8fb1d294
+	icon = "Assets/Icons/Units/CityMilitia.png:CityMilitia#1"
 }
 
 def Sword_Militia_CE : Infantry
@@ -942,7 +942,7 @@ def Sword_Militia_CE : Infantry
 		"Assets/Units/Light_Infantry_CE_02/Light_Infantry_CE_02.prefab", //GUID:14abf40aa16232847937de6140eb4002
 		"Assets/Units/Light_Infantry_CE_03/Light_Infantry_CE_03.prefab" //GUID:de8931c475298d347996de954bbf8387
 	]
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Light_Infantry_CE.tga:Icon_Unit_Light_Infantry_CE#2" //GUID:e4d22df4ab829e74d95d37675a0d8bc6
+	icon = "Assets/Icons/Units/CityMilitiaSword.png:CityMilitiaSword#1"
 
 	require
 	{
@@ -957,7 +957,7 @@ def Sword_Militia_CE : Infantry
 def Spear_Militia_CE : Defense
 {
 	model = "Assets/Units/Light_Spearman_CE_01/Light_Spearman_CE_01.prefab" //GUID:3924f21e679e83f49858d1a6cd9d116a
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Light_Spearman_CE.tga:Icon_Unit_Light_Spearman_CE#2" //GUID:94e24f717e3708d42b38b97e9ab3934d
+	icon = "Assets/Icons/Units/CityMilitiaSpear.png:CityMilitiaSpear#1"
 
 	require
 	{
@@ -972,7 +972,7 @@ def Crossbow_Militia_CE : Ranged
 	name = "Crossbow Militia"
 	description = "Archers which require only minimal training. They can shoot at a long distance, but only a few bolts per minute."
 	model = "Assets/Units/Crossbowman_Special_01/Crossbowman_Special_01.prefab" //GUID:0c20f0b0e1eafdb45849cd5646d8655c
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Crossbowman.tga:Icon_Unit_Crossbowman#2" //GUID:9f2d71efe0ba41140a62781472c5a925
+	icon = "Assets/Icons/Units/CityMilitiaCrossbow.png:CityMilitiaCrossbow#1"
 	
 	max_acceleration = 2
 	max_deceleration = 2
@@ -989,7 +989,7 @@ def Crossbow_Militia_CE : Ranged
 def Cavalry_Militia_CE : HorseCavalry
 {
 	model = "Assets/Units/Light_Cavalry_CE_01/Light_Cavalry_CE_01.prefab" //GUID:d78af08f7e176f24e9070901fec14e3c
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Light_Cavalry_CE.tga:Icon_Unit_Light_Cavalry_CE#2" //GUID:7a9c1911b30b2de40bf593d83b83cb8e
+	icon = "Assets/Icons/Units/CityMilitiaCavalry.png:CityMilitiaCavalry#1"
 
 	require
 	{
@@ -1005,7 +1005,7 @@ def Cavalry_Militia_CE : HorseCavalry
 def AdvancedMilitia_IT : AdvancedMilitia
 {
 	model = "Assets/Units/Militia_CE_03/Militia_CE_03.prefab" //GUID:5de2656d1a8e6614f9d9175e7db57cfc
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Advanced_Militia_CE.tga:Icon_Unit_Advanced_Militia_CE#1" //GUID:828791f53491d5b46846fe7b8fb1d294
+	icon = "Assets/Icons/Units/ItalianCityMilitia.png:ItalianCityMilitia#1"
 }
 
 def Sword_Militia_IT : Infantry
@@ -1015,7 +1015,7 @@ def Sword_Militia_IT : Infantry
 		"Assets/Units/Light_Infantry_CE_02/Light_Infantry_CE_02.prefab", //GUID:14abf40aa16232847937de6140eb4002
 		"Assets/Units/Light_Infantry_CE_03/Light_Infantry_CE_03.prefab" //GUID:de8931c475298d347996de954bbf8387
 	]
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Light_Infantry_CE.tga:Icon_Unit_Light_Infantry_CE#2" //GUID:e4d22df4ab829e74d95d37675a0d8bc6
+	icon = "Assets/Icons/Units/ItalianCityMilitiaSword.png:ItalianCityMilitiaSword#1"
 
 	require
 	{
@@ -1030,7 +1030,7 @@ def Sword_Militia_IT : Infantry
 def Spear_Militia_IT : Defense
 {
 	model = "Assets/Units/Light_Spearman_CE_01/Light_Spearman_CE_01.prefab" //GUID:3924f21e679e83f49858d1a6cd9d116a
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Light_Spearman_CE.tga:Icon_Unit_Light_Spearman_CE#2" //GUID:94e24f717e3708d42b38b97e9ab3934d
+	icon = "Assets/Icons/Units/ItalianCityMilitiaSpear.png:ItalianCityMilitiaSpear#1"
 
 	require
 	{
@@ -1045,7 +1045,7 @@ def Crossbow_Militia_IT : Ranged
 	name = "Crossbow Militia"
 	description = "Archers which require only minimal training. They can shoot at a long distance, but only a few bolts per minute."
 	model = "Assets/Units/Crossbowman_Special_01/Crossbowman_Special_01.prefab" //GUID:0c20f0b0e1eafdb45849cd5646d8655c
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Crossbowman.tga:Icon_Unit_Crossbowman#2" //GUID:9f2d71efe0ba41140a62781472c5a925
+	icon = "Assets/Icons/Units/ItalianCityMilitiaCrossbow.png:ItalianCityMilitiaCrossbow#1"
 	
 	max_acceleration = 2
 	max_deceleration = 2
@@ -1062,7 +1062,7 @@ def Crossbow_Militia_IT : Ranged
 def Cavalry_Militia_IT : HorseCavalry
 {
 	model = "Assets/Units/Light_Cavalry_CE_01/Light_Cavalry_CE_01.prefab" //GUID:d78af08f7e176f24e9070901fec14e3c
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Light_Cavalry_CE.tga:Icon_Unit_Light_Cavalry_CE#2" //GUID:7a9c1911b30b2de40bf593d83b83cb8e
+	icon = "Assets/Icons/Units/ItalianCityMilitiaCavalry.png:ItalianCityMilitiaCavalry#1"
 
 	require
 	{
@@ -1155,7 +1155,7 @@ def Halberd_Militia : HeavyInfantry
 	description = "Foot soldiers, heavily armoured and armed with two-handed polearms, unmatched in their defensive capabilities. Two lines of the halberdiers can attack at the same time and they are more effective against cavalry."
 	special = true
 	model = "Assets/Units/Halberdier_Special_01/Halberdier_Special_01.prefab" //GUID:61c4ebf12a68aa94da8465108790632f
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Halberdier_Special.tga:Icon_Unit_Halberdier_Special#2" //GUID:3eb96455cdfa75841878855650423d22
+	icon = "Assets/Icons/Units/CityMilitiaHalberd.png:CityMilitiaHalberd#1"
 	
 	max_acceleration = 3.5
 	max_deceleration = 3.5
@@ -1180,7 +1180,7 @@ def Pike_Militia : HeavyDefense
 	description = "Well armored polearm soldiers, capable to fend off both cavalry and infantry attacks with their goedendag and pikes.{p}Two lines of the pike militia can attack at the same time and they are more effective against cavalry."
 	special = true
 	model = "Assets/Units/Flemish_Pikeman_Special/Flemish_Pikeman_Special.prefab" //GUID:da50c394ea05d9648895b1129bf9fde9
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Flemish_Pikeman_Special.tga:Icon_Unit_Flemish_Pikeman_Special#2" //GUID:219733cca255cb447bb11614e5f26fff
+	icon = "Assets/Icons/Units/CityMilitiaPike.png:CityMilitiaPike#1"
 	
 	max_acceleration = 3.5
 	max_deceleration = 3.5
@@ -1205,7 +1205,7 @@ def Bill_Militia : HeavyDefense
 	description = "English town militias armed with the fearsome billhook, a weapon adapted from agricultural tools into an effective polearm. Well suited to holding the line and bringing down heavily armoured foes.{p}Two lines of the bill militia can attack at the same time and they are more effective against cavalry."
 	special = true
 	model = "Assets/Units/Flemish_Pikeman_Special/Flemish_Pikeman_Special.prefab" //GUID:da50c394ea05d9648895b1129bf9fde9
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Flemish_Pikeman_Special.tga:Icon_Unit_Flemish_Pikeman_Special#2" //GUID:219733cca255cb447bb11614e5f26fff
+	icon = "Assets/Icons/Units/CityMilitiaBill.png:CityMilitiaBill#1"
 	
 	max_acceleration = 3.5
 	max_deceleration = 3.5
@@ -1255,7 +1255,7 @@ def Heavy_Cavalry_Militia : HeavyCavalry
 {
 	description = "Early heavily armored mounted knights representing a switch from the northern infantry fighting tradition towards the central european knighthood."
 	model = "Assets/Units/Heavy_Cavalry_CE_01/Heavy_Cavalry_CE_01.prefab" //GUID:fe0549b7561b18a4382ff700e57beae9
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Heavy_Cavalry_CE.tga:Icon_Unit_Heavy_Cavalry_CE#2" //GUID:de937a70321dde04ea51552d6f23648d
+	icon = "Assets/Icons/Units/CityMilitiaHeavyCavalry.png:CityMilitiaHeavyCavalry#1"
 
 	require
 	{
@@ -1273,7 +1273,7 @@ def Pavise_Crossbow_Militia : HeavyRanged
 	description = "Professional archers, protected in battle by their formidable shields. They can shoot at a long distance, but only a few bolts per minute."
 	special = true
 	model = "Assets/Units/Pavise_Crossbowman_Special_01/Pavise_Crossbowman_Special_01.prefab" //GUID:d15ca6a98b7e69448b83fb3180ccabec
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Pavise_Crossbowman.tga:Icon_Unit_Pavise_Crossbowman#2" //GUID:d7e790b9e59116e408bfc46410bea915
+	icon = "Assets/Icons/Units/CityMilitiaPaviseCrossbow.png:CityMilitiaPaviseCrossbow#1"
 	
 	max_acceleration = 2
 	max_deceleration = 2
@@ -1295,10 +1295,25 @@ def Pavise_Crossbow_Militia : HeavyRanged
 
 // PROFESSIONAL
 
+extend Heavy_Swordman_CE
+{
+	icon = "Assets/Icons/Units/SergeantSword.png:SergeantSword#1"
+}
+
+extend Heavy_Spearman_CE
+{
+	icon = "Assets/Icons/Units/SergeantSpear.png:SergeantSpear#1"
+}
+
+extend Heavy_Archer_CE
+{
+	icon = "Assets/Icons/Units/SergeantBow.png:SergeantBow#1"
+}
+
 def Heavy_Cavalry_CE : HeavyCavalry
 {
 	model = "Assets/Units/Heavy_Cavalry_CE_01/Heavy_Cavalry_CE_01.prefab" //GUID:fe0549b7561b18a4382ff700e57beae9
-	icon = "Assets/UI/Elements/Common/Icons/Units/Icon_Unit_Heavy_Cavalry_CE.tga:Icon_Unit_Heavy_Cavalry_CE#2" //GUID:de937a70321dde04ea51552d6f23648d
+	icon = "Assets/Icons/Units/SergeantCavalry.png:SergeantCavalry#1"
 
 	require
 	{

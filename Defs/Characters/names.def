@@ -46,6 +46,15 @@ extend FinishNames
 	male
 	{
 		Chumblat
+		Lembitu
+		Soini
+		Kargata
+		Purgas
+	}
+	female
+	{
+		Tolava
+		Kima
 	}
 }
 
@@ -54,8 +63,17 @@ extend SlavNames
 	male
 	{
 		Vladimir
+		Mstislav
+		Svyatoslav
 	}
 	female
+	{
+	}
+}
+
+extend NordicNames
+{
+	male
 	{
 	}
 }
