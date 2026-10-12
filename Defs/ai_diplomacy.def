@@ -368,17 +368,22 @@ def PC_Accept_AskForCrusadeOffer : ProsAndCons
 delete PC_War
 def PC_War : ProsAndCons
 {
+	float our_army_count_modifier = (our_kingdom.num_marshals * 3)
+	float enemy_army_count_modifier = ((their_kingdom.num_realms / their_kingdom.num_marshals) * 1.5)
+	float enemy_gold_modifier = (their_kingdom.resources.gold / 2000)
+
 	float enemy_gang_up_modifier = (min((their_kingdom.num_wars * 5), 10))
 
 	float enemy_wars_modifier = (min(their_kingdom.num_wars, 2))
 	float enemy_size_modifier = (If((their_kingdom.num_realms > 9), 1, 0.1))
 	float enemy_empire_gang_up_modifier = (10 * enemy_wars_modifier * enemy_size_modifier)
 
+
 	float great_power_rivalry_modifier = (If((our_kingdom.is_great_power and their_kingdom.is_great_power), 10, 0))
 
 	float non_aggressions_count_modifier = (min((our_kingdom.non_aggressions_count * 5), 10))
 
-	pros = (30 + (their_kingdom.resources.gold / 2000) + (our_kingdom.num_marshals * 3) + ((their_kingdom.num_realms / their_kingdom.num_marshals) * 1.5) + enemy_gang_up_modifier + enemy_empire_gang_up_modifier + great_power_rivalry_modifier + non_aggressions_count_modifier)
+	pros = (30 + our_army_count_modifier + enemy_army_count_modifier + enemy_gold_modifier + enemy_gang_up_modifier + enemy_empire_gang_up_modifier + great_power_rivalry_modifier + non_aggressions_count_modifier)
 	{
 		pc_we_plan_invasion_and_allies_are_ready { max = 50; per_ally_province = 5; per_ally = 15; per_ally_war = -5 }
 		pc_they_plan_invasion_against_us { max = 30; per_ally_province = 10 }
@@ -463,14 +468,16 @@ def PC_War : ProsAndCons
 delete PC_Propose_DeclareWar
 def PC_Propose_DeclareWar : PC_War
 {
+	float enemy_player_modifier = (If((their_kingdom.is_player && their_kingdom.num_wars < 1), 1, 0) * (1 + min((their_kingdom.num_realms / 3), 3)))
+	
 	pros
 	{
 		 pc_they_are_player_by_difficulty
 		 {
 		 	easy = 0
-		 	normal = 10
-		 	hard = 20
-		 	very_hard = 30
+		 	normal = (enemy_player_modifier * 3)
+		 	hard = (enemy_player_modifier * 5)
+		 	very_hard = (enemy_player_modifier * 7)
 		 }
 	}
 

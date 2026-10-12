@@ -113,3 +113,26 @@ def SuccessfulIndependenceClaimRule : GameRule
 		also crown_authority = 1
 	}
 }
+
+def PassiveLeaderRule : GameRule
+{
+	target { kingdom k }
+	triggers
+	{
+		kingdom income_tick
+	}
+	
+	condition active = (k.is_player && (k.num_wars < 1))
+
+	timer ArmyOpinionDecreaseTimer = 1200/2400
+	{
+		outcomes
+		{
+			trigger passive_leader_penalty
+			{
+				target = (kingdom)
+			}
+			// also crown_authority = -1
+		}
+	}
+}

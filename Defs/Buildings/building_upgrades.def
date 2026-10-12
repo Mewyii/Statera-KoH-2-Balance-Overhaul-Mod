@@ -1179,7 +1179,7 @@ def WinePresses: Upgrade
 	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_GrapePres.tga:UI_Structure_Icon_GrapePres#2"
 }
 
-def WineCellars: Upgrade
+def WineCellars : Upgrade
 {
 	name = "Large Wine Cellars"
 	flavor = "Cool cellars and protected storage rooms allow wine to be kept in barrels and large vessels for longer periods. Organized storage improves preservation and quality while making the wine easier to sell later."
@@ -1192,6 +1192,14 @@ extend SunDryingGrapes
 	name = "Grape Sun Drying"
 	flavor = "Large drying racks exposed to the warm light of the sun, where excess yield of grapes are positioned to be turned into long-lasting raisins."
 	icon = "Assets/UI/Elements/Buildings/Icons/UI_Structure_Icon_SunDryingGrapes.tga:UI_Structure_Icon_SunDryingGrapes#2" //GUID:000424e1da0aea34bae3fb216b403a17
+}
+
+def AmberWorkshops : Upgrade
+{
+	name = "Amber Workshops"
+	flavor = "In the amber workshops, raw amber is cleaned, sorted, ground, and polished. Skilled craftsmen turn it into beads, pendants, and precious ornaments for jewelry, religious art, and long-distance trade."
+	
+	icon = "Assets/Icons/Buildings/AmberWorkshop.png:AmberWorkshop#1"
 }
 
 extend Distillery

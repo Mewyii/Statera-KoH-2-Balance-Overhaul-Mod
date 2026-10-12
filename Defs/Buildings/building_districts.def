@@ -41,9 +41,8 @@ def PFDistrict : District
 		GoldMines
 		GemstoneMines
 		SulfurMines
+		AmberGathering
 
-		AmberTrade { prerequisites { MarketSquare } }
-		
 		CamelsTrade { prerequisites { MarketSquare } }
 		FurTrade { prerequisites { MarketSquare } }
 

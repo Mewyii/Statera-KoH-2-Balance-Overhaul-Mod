@@ -390,6 +390,22 @@ def Vineyards : Building
 	illustration = "Assets/Icons/Buildings/Vineyards.png:Vineyards#1"
 }
 
+def AmberGathering : Building
+{
+	name = "Amber Gathering"
+	flavor = "Amber gatherers search the Baltic shores for golden stones washed ashore by waves and storms. Using baskets, nets, and simple tools, they collect amber from seaweed, sand, and shallow coastal waters."
+	upgrades
+	{
+		buildings
+		{
+			AmberWorkshops = 1,1
+		}
+	}
+
+	icon = "Assets/Icons/Buildings/AmberGathering.png:AmberGathering#1"
+	illustration = "Assets/Icons/Buildings/AmberGathering.png:AmberGathering#1"
+}
+
 def Chapel : Building
 {
 	name = "Chapel"
@@ -1760,3 +1776,4 @@ delete LimeTrade
 delete University
 delete Madrasah
 delete SulfurTrade
+delete AmberTrade

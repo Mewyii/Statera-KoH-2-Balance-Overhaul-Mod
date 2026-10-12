@@ -373,3 +373,31 @@ def MerchantTraditionAdoptedArmyOpinionRule : OpinionChangeRule
 }
 
 // PRISON
+
+// PASSIVITY
+
+def PassiveLeaderArmyOpinionRule : OpinionChangeRule
+{
+	opinion = "ArmyOpinion"
+	amount = -1
+	reason = "leader_pasive_army"
+	flavor = "Our army is concerned about the lack of military action from our {king}. They are worried that our kingdom is not being led with the necessary vigor and determination."
+	
+	triggers
+	{
+		kingdom passive_leader_penalty
+	}
+}
+
+def PassiveLeaderNobilityOpinionRule : OpinionChangeRule
+{
+	opinion = "NobilityOpinion"
+	amount = -1
+	reason = "leader_pasive_nobility"
+	flavor = "Our nobility is unhappy about the lack of military initiave from our {king}. They miss the honor of battle and the opportunity that expansion brings."
+	
+	triggers
+	{
+		kingdom passive_leader_penalty
+	}
+}
